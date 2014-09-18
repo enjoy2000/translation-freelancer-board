@@ -15,7 +15,7 @@ class User{
     /**
      * @ORM\id
      * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\Coulumn(type="interger")
+     * @ORM\Column(type="integer")
      */
     protected $id;
 
