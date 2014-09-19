@@ -1,9 +1,10 @@
+<?php $this->headTitle('Customer registration') ?>
 <div class="middle-box text-center loginscreen   animated fadeInDown">
-    <h3>Customer registration</h3>
+    <h3><?php echo $this->translate('Customer registration') ?></h3>
 
-    <p>I need translation services.</p>
+    <p><?php echo $this->translate('I need translation services.') ?></p>
 
-    <form class="m-t" role="form" action="login.html">
+    <form class="m-t" role="form" action="<?php echo $this->url('user') ?>/register/createPost">
         <div class="form-group">
             <input type="text" class="form-control" placeholder="Last Name" required="">
         </div>
@@ -45,12 +46,14 @@
     </form>
 
 </div>
-<script src="js/plugins/iCheck/icheck.min.js"></script>
-<script>
+<?php $this->headScript()->appendFile($this->basePath() . '/js/plugins/iCheck/icheck.min.js') ?>
+<?php
+$this->inlineScript()->appendScript('
     $(document).ready(function () {
-        $('.i-checks').iCheck({
-            checkboxClass: 'icheckbox_square-green',
-            radioClass: 'iradio_square-green',
+        $(".i-checks").iCheck({
+            checkboxClass: "icheckbox_square-green",
+            radioClass: "iradio_square-green",
         });
     });
-</script>
+');
+?>

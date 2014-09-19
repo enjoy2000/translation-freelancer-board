@@ -19,10 +19,34 @@ class RegisterController extends AbstractActionController
     }
 
     public function employerAction(){
-        return new ViewModel();
+        return new ViewModel(array("u"=>'employer'));
     }
 
     public function freelancerAction(){
-        return new ViewModel();
+        return new ViewModel(array("u"=>'freelancer'));
+    }
+
+    public function postAction(){
+        if($this->getRequest()->getPost('agree') == 1){
+            $data = $this->getRequest()->getPost();
+            if($this->getRequest()->get('u') == 'freelancer'){
+                $data['group_id'] = 1;
+            }else if($this->getRequest()->get('u') == 'employer'){
+                $data['group_id'] = 2;
+            }
+            $data['created_time'] = date('Y-m-d H:i:s');
+
+            $objectManage = $this
+                ->getServiceLocator()
+                ->get('Doctrine\ORM\EntityManager');
+
+            $user = new \User\Entity\User();
+            $user->setData($data);
+
+            $objectManage->persist($user);
+            $objectManage->flush();
+        }
+
+        return $this->redirect()->toRoute('user');
     }
 }

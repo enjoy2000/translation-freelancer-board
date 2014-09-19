@@ -1,21 +1,24 @@
 <?php $this->headTitle($this->translate('Register to PaperTask')) ?>
-<h3>Register to PaperTask</h3>
+<h3><?php echo $this->translate('Register to PaperTask') ?></h3>
 <div class="wrapper wrapper-content animated fadeInRight">
     <div class="row">
         <div class="col-lg-5 col-lg-offset-1">
             <div class="jumbotron">
-                <h1>Need translation services</h1>
+                <h1><?php echo $this->translate('Need translation services') ?></h1>
 
-                <p>I have translation requirements, need to translate documents from one language to other
-                    languages.</p>
+                <p>
+                    <?php echo $this->translate('I have translation requirements, need to translate documents from one language to other languages.') ?>
+                </p>
                 <a href="<?php echo $this->url('user') ?>/register/employer" role="button"><i class="fa fa-sign-in" style="font-size: 80px;"></i></a>
             </div>
         </div>
         <div class="col-lg-5">
             <div class="jumbotron">
-                <h1>Find translation works</h1>
+                <h1><?php echo $this->translate('Find translation works') ?></h1>
 
-                <p>I am a professional translator, hope to find a job, make money at here, and grow my career.</p>
+                <p>
+                    <?php echo $this->translate('I am a professional translator, hope to find a job, make money at here, and grow my career.') ?>
+                </p>
                 <a href="<?php echo $this->url('user') ?>/register/freelancer" role="button"><i class="fa fa-sign-in" style="font-size: 80px;"></i></a>
             </div>
         </div>

@@ -20,12 +20,31 @@ class User{
     protected $id;
 
     /** @ORM\Column(type="string") */
-    protected $fullName;
+    protected $firstName;
+
+    /** @ORM\Column(type="string") */
+    protected $lastName;
+
+    /** @ORM\ManyToOne(targetEntity="Group",) */
+    protected $group;
+
+    /** @ORM\Column(type="string") */
+    protected $email;
+
+    /** @ORM\Column(type="string") */
+    protected $password;
+
+    /** @ORM\Column(type="datetime") */
+    protected $lastLogin;
+
+    /** @ORM\Column(type="datetime") */
+    protected $createdTime;
+
 
     /**
      * Get id
      *
-     * @return interger
+     * @return integer
      */
     public function getId(){
         return $this->id;
@@ -33,13 +52,24 @@ class User{
 
     /**
      *
-     * Set full name
-     * @param string $fullName
-     * @return interger
+     * Get group name
+     * @return string
      */
-    public function setFullname($fullName){
-        $this->fullName = $fullName;
-
-        return $this;
+    public function getGroupName(){
+        return $this->group;
     }
+}
+
+/** @ORM\Entity */
+class Group{
+
+    /**
+     * @ORM\id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(type="integer")
+     */
+    protected $id;
+
+    /** @ORM\Column(type="string") */
+    protected $name;
 }
