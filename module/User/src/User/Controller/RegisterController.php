@@ -27,6 +27,7 @@ class RegisterController extends AbstractActionController
     }
 
     public function postAction(){
+
         if($this->getRequest()->getPost('agree') == 1){
             $data = $this->getRequest()->getPost();
 
