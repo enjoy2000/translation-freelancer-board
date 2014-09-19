@@ -1,10 +1,11 @@
 <?php $this->headTitle($this->translate(($this->u == 'freelancer') ? 'Freelancer' : 'Customer' . ' registration')) ?>
 <div class="middle-box text-center loginscreen   animated fadeInDown">
-    <h3><?php echo $this->translate(($this->u == 'freelancer') ? 'Freelancer' : 'Customer' . ' registration') ?></h3>
+    <h3><?php echo $this->translate(($this->u == 'freelancer') ? 'Freelancer registration' : 'Customer registration') ?></h3>
 
     <p><?php echo ($this->u == 'freelancer') ? $this->translate('I want to find translation works.') : $this->translate('I need translation services.') ?></p>
 
-    <form class="m-t" method="post" role="form" action="<?php echo $this->url('user') ?>/register/post?u=<?php echo $this->u ?>">
+    <form class="m-t" method="post" role="form" action="<?php echo $this->url('user') ?>/register/post">
+        <input type="hidden" name="u" value="<?php echo $this->u ?>" />
         <div class="form-group">
             <input name="lastName" type="text" class="form-control" placeholder="<?php echo $this->translate('Last Name') ?>"
                    required="">
@@ -27,7 +28,7 @@
         <div class="form-group">
             <div class="checkbox i-checks">
                 <label>
-                    <input name="agress" type="checkbox" value="1" ><i></i> &nbsp;
+                    <input name="agree" type="checkbox" value="1" ><i></i> &nbsp;
                     <?php echo $this->translate('Agree the <a href="%s" class="color-green">Terms and Conditions.</a>', $this->url('user').'/term') ?>
                 </label>
             </div>

@@ -25,7 +25,9 @@ class User{
     /** @ORM\Column(type="string") */
     protected $lastName;
 
-    /** @ORM\ManyToOne(targetEntity="Group",) */
+    /**
+     * @ORM\ManyToOne(targetEntity="Group")
+     */
     protected $group;
 
     /** @ORM\Column(type="string") */
@@ -52,11 +54,26 @@ class User{
 
     /**
      *
-     * Get group name
-     * @return string
+     * Set group Id
+     * @param integer
      */
-    public function getGroupName(){
-        return $this->group;
+    public function setGroupId(\User\Entity\Group $id){
+        $this->group = $id;
+    }
+
+    /**
+     * Set data
+     * @return object
+     */
+    public function setData($arr){
+        $this->lastName = $arr['lastName'];
+        $this->firstName = $arr['firstName'];
+        $this->email = $arr['email'];
+        $this->password = $arr['password'];
+        $this->lastLogin = $arr['lastLogin'];
+        $this->createdTime = $arr['createdTime'];
+
+        return $this;
     }
 }
 

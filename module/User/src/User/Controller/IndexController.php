@@ -30,8 +30,6 @@ class IndexController extends AbstractActionController
         $objectManage->persist($user);
         $objectManage->flush();
 
-        die('Hello there ' . $user->getId());
-
         return new ViewModel();
     }
 }

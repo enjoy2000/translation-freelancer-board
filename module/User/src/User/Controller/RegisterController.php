@@ -29,24 +29,43 @@ class RegisterController extends AbstractActionController
     public function postAction(){
         if($this->getRequest()->getPost('agree') == 1){
             $data = $this->getRequest()->getPost();
-            if($this->getRequest()->get('u') == 'freelancer'){
-                $data['group_id'] = 1;
-            }else if($this->getRequest()->get('u') == 'employer'){
-                $data['group_id'] = 2;
-            }
-            $data['created_time'] = date('Y-m-d H:i:s');
 
-            $objectManage = $this
+            $objectManager = $this
                 ->getServiceLocator()
                 ->get('Doctrine\ORM\EntityManager');
 
-            $user = new \User\Entity\User();
-            $user->setData($data);
+            /*
+             * Validate
+             */
+            $translator = $this->getServiceLocator()->get('translator');
+            $errors = array();
+            $user = $objectManager->getRepository('User\Entity\User')->findOneBy(array('email'=>$data['email']));
+            if($user){
+                $errors = array_push($errors, $translator->translate('Email exist'));
+            }
 
-            $objectManage->persist($user);
-            $objectManage->flush();
+            if(empty($errors)){
+                $data['createdTime'] = new \DateTime('now', new \DateTimeZone('America/New_York'));
+                $data['lastLogin'] = new \DateTime('now', new \DateTimeZone('America/New_York'));
+
+                $user = new \User\Entity\User();
+
+                // Check register group
+                if($this->getRequest()->getPost('u') == 'freelancer'){
+                    $user->setGroupId($objectManager->getReference('\User\Entity\Group', 1));
+                }else if($this->getRequest()->getPost('u') == 'employer'){
+                    $user->setGroupId($objectManager->getReference('\User\Entity\Group', 2));
+                }
+
+                $user->setData($data);
+
+                $objectManager->persist($user);
+
+                $objectManager->flush();
+            }else{
+                die('error');
+            }
         }
-
-        return $this->redirect()->toRoute('user');
+        return $this->redirect()->toUrl('/user/register');
     }
 }
