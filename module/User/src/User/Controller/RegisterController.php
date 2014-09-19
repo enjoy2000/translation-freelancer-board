@@ -49,6 +49,11 @@ class RegisterController extends AbstractActionController
                 $data['createdTime'] = new \DateTime('now', new \DateTimeZone('America/New_York'));
                 $data['lastLogin'] = new \DateTime('now', new \DateTimeZone('America/New_York'));
 
+                // Create password hash
+                $passClass = new \User\Model\Password();
+                $hash = $passClass->create_hash($data['password']);
+                $data['password'] = $hash;
+
                 $user = new \User\Entity\User();
 
                 // Check register group

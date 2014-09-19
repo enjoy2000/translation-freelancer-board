@@ -27,7 +27,7 @@ class Password{
         // format: algorithm:iterations:salt:hash
         $salt = base64_encode(mcrypt_create_iv(PBKDF2_SALT_BYTE_SIZE, MCRYPT_DEV_URANDOM));
         return PBKDF2_HASH_ALGORITHM . ":" . PBKDF2_ITERATIONS . ":" .  $salt . ":" .
-        base64_encode(pbkdf2(
+        base64_encode($this->pbkdf2(
             PBKDF2_HASH_ALGORITHM,
             $password,
             $salt,
@@ -43,9 +43,9 @@ class Password{
         if(count($params) < HASH_SECTIONS)
             return false;
         $pbkdf2 = base64_decode($params[HASH_PBKDF2_INDEX]);
-        return slow_equals(
+        return $this->slow_equals(
             $pbkdf2,
-            pbkdf2(
+            $this->pbkdf2(
                 $params[HASH_ALGORITHM_INDEX],
                 $password,
                 $params[HASH_SALT_INDEX],
