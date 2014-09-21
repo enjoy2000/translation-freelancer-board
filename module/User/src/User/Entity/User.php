@@ -8,9 +8,13 @@
 namespace User\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Zend\InputFilter\Factory as InputFactory;     // <-- Add this import
+use Zend\InputFilter\InputFilter;                 // <-- Add this import
+use Zend\InputFilter\InputFilterAwareInterface;   // <-- Add this import
+use Zend\InputFilter\InputFilterInterface;        // <-- Add this import
 
 /** @ORM\Entity */
-class User{
+class User implements InputFilterAwareInterface{
 
     /**
      * @ORM\id
@@ -30,7 +34,7 @@ class User{
      */
     protected $group;
 
-    /** @ORM\Column(type="string") */
+    /** @ORM\Column(type="string", unique=true) */
     protected $email;
 
     /** @ORM\Column(type="string") */
@@ -42,6 +46,7 @@ class User{
     /** @ORM\Column(type="datetime") */
     protected $createdTime;
 
+    protected $inputFilter;
 
     /**
      * Get id
@@ -55,38 +60,108 @@ class User{
     /**
      *
      * Set group Id
-     * @param integer
+     * @param Group
      */
-    public function setGroupId(\User\Entity\Group $id){
-        $this->group = $id;
+    public function setGroup(Group $group){
+        $this->group = $group;
     }
 
     /**
      * Set data
-     * @return object
+     * @param array $arr
+     * @return $this
      */
-    public function setData($arr){
-        $this->lastName = $arr['lastName'];
-        $this->firstName = $arr['firstName'];
-        $this->email = $arr['email'];
-        $this->password = $arr['password'];
-        $this->lastLogin = $arr['lastLogin'];
-        $this->createdTime = $arr['createdTime'];
+    public function setData(array $arr){
+        $keys = array('lastName', 'firstName', 'email', 'password', 'lastLogin', 'createdTime');
+        foreach($keys as $key){
+            if(isset($arr[$key])){
+                $this->$key = $arr[$key];
+            }
+        }
+        return $this;
+    }
 
+    public function getArrayCopy()
+    {
+        return get_object_vars($this);
+    }
+
+    function exchangeArray($data){
+        return $this->setData($data);
+    }
+
+    // TODO: Add content to this method:
+    public function setInputFilter(InputFilterInterface $inputFilter)
+    {
+        throw new \Exception("Not used");
+    }
+
+    public function getInputFilter(){
+
+        if (!$this->inputFilter) {
+            $inputFilter = new InputFilter();
+            $factory     = new InputFactory();
+            $inputFilter->add($factory->createInput(array(
+                'name' => 'lastName',
+                'required' => true,
+                'validators' => array(
+                    array(
+                        "name" => "NotEmpty",
+                    )
+                ),
+            )));
+            $inputFilter->add($factory->createInput(array(
+                'name' => 'firstName',
+                'required' => true,
+                'validators' => array(
+                    array(
+                        "name" => "NotEmpty",
+                    )
+                ),
+            )));
+            $inputFilter->add($factory->createInput(array(
+                'name' => 'email',
+                'required' => true,
+                'validators' => array(
+                    array(
+                        "name" => "NotEmpty",
+                    ),
+                    array(
+                        'name' => 'EmailAddress',
+                    )
+                ),
+            )));
+            $inputFilter->add($factory->createInput(array(
+                'name' => 'phone',
+                'required' => true,
+                'validators' => array(
+                    array(
+                        "name" => "NotEmpty",
+                    )
+                ),
+            )));
+            $inputFilter->add($factory->createInput(array(
+                'name' => 'password',
+                'required' => true,
+                'validators' => array(
+                    array(
+                        "name" => "NotEmpty",
+                    )
+                ),
+            )));
+            $this->inputFilter = $inputFilter;
+        }
+
+        return $this->inputFilter;
+    }
+
+    public function encodePassword($newPassword = null){
+        if($newPassword){
+            $this->password = $newPassword;
+        }
+        $passClass = new \User\Model\Password();
+        $this->password = $passClass->create_hash($this->password);
         return $this;
     }
 }
 
-/** @ORM\Entity */
-class Group{
-
-    /**
-     * @ORM\id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\Column(type="integer")
-     */
-    protected $id;
-
-    /** @ORM\Column(type="string") */
-    protected $name;
-}

@@ -1,0 +1,63 @@
+<?php $this->headTitle($this->translate(($this->u == 'freelancer') ? 'Freelancer' : 'Customer' . ' registration')) ?>
+<div class="middle-box text-center loginscreen   animated fadeInDown">
+    <h3><?php echo $this->translate(($this->u == 'freelancer') ? 'Freelancer registration' : 'Customer registration') ?></h3>
+
+    <p><?php echo ($this->u == 'freelancer') ? $this->translate('I want to find translation works.') : $this->translate('I need translation services.') ?></p>
+
+    <form class="m-t" method="post" role="form" action="">
+        <input type="hidden" name="u" value="<?php echo $this->u ?>" />
+        <?php
+        foreach($this->form->getElements() as $element): ?>
+            <?php
+            $messages = $element->getMessages()
+            ?>
+            <div class="form-group<?php if($messages) echo " has-error" ?>">
+                <?php if($messages): ?>
+                    <?php foreach($messages as $message): ?>
+                        <div class="alert-danger"><?php echo $message; ?></div>
+                    <?php endforeach;?>
+                <?php endif; ?>
+                <?php echo $this->formInput($element); ?>
+            </div>
+        <?php endforeach;?>
+        <div class="form-group">
+            <div class="checkbox i-checks">
+                <label>
+                    <input name="agree" type="checkbox" value="1" ><i></i> &nbsp;
+                    <?php echo $this->translate('Agree the <a href="%s" class="color-green">Terms and Conditions.</a>', $this->url('user').'/term') ?>
+                </label>
+            </div>
+
+        </div>
+        <button type="submit"
+                class="btn btn-primary block full-width m-b"><?php echo $this->translate('Register') ?></button>
+
+        <h3><?php echo $this->translate('or Sign up with') ?></h3>
+
+        <div class="col-lg-12 well">
+            <a class="btn btn-success btn-facebook">
+                <i class="fa fa-facebook"> </i> Facebook
+            </a> &nbsp;&nbsp;
+            <a class="btn btn-danger btn-google">
+                <i class="fa fa-google"> </i> Google
+            </a>
+        </div>
+
+        <p class="text-muted text-center">
+            <small><?php echo $this->translate('Already have an account?') ?></small>
+            <a href="<?php echo $this->url('user') ?>/login"><?php echo $this->translate('Login') ?></a></p>
+
+    </form>
+
+</div>
+<?php $this->headScript()->appendFile($this->basePath() . '/js/plugins/iCheck/icheck.min.js') ?>
+<?php
+$this->inlineScript()->appendScript('
+    $(document).ready(function () {
+        $(".i-checks").iCheck({
+            checkboxClass: "icheckbox_square-green",
+            radioClass: "iradio_square-green",
+        });
+    });
+');
+?>

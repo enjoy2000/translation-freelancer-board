@@ -10,6 +10,8 @@ namespace User\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use User\Form\UserForm;
+use \User\Entity\User;
 
 class RegisterController extends AbstractActionController
 {
@@ -19,59 +21,35 @@ class RegisterController extends AbstractActionController
     }
 
     public function employerAction(){
-        return new ViewModel(array("u"=>'employer'));
+        return $this->process('employer');
     }
 
     public function freelancerAction(){
-        return new ViewModel(array("u"=>'freelancer'));
+        return $this->process('freelancer');
     }
 
-    public function postAction(){
+    protected function getForm(){
+        $form = new UserForm();
+        $user = new User();
+        $form->bind($user);
+        return $form;
+    }
 
-        if($this->getRequest()->getPost('agree') == 1){
-            $data = $this->getRequest()->getPost();
+    public function process($userType){
+        $form = $this->getForm();
+        $request = $this->getRequest();
+        if($request->isPost()){
+            $form->setData($request->getPost());
+            if($form->isValid() && $request->getPost('agree') == 1){
+                $form->save($this, $userType);
 
-            $objectManager = $this
-                ->getServiceLocator()
-                ->get('Doctrine\ORM\EntityManager');
-
-            /*
-             * Validate
-             */
-            $translator = $this->getServiceLocator()->get('translator');
-            $errors = array();
-            $user = $objectManager->getRepository('User\Entity\User')->findOneBy(array('email'=>$data['email']));
-            if($user){
-                $errors = array_push($errors, $translator->translate('Email exist'));
-            }
-
-            if(empty($errors)){
-                $data['createdTime'] = new \DateTime('now', new \DateTimeZone('America/New_York'));
-                $data['lastLogin'] = new \DateTime('now', new \DateTimeZone('America/New_York'));
-
-                // Create password hash
-                $passClass = new \User\Model\Password();
-                $hash = $passClass->create_hash($data['password']);
-                $data['password'] = $hash;
-
-                $user = new \User\Entity\User();
-
-                // Check register group
-                if($this->getRequest()->getPost('u') == 'freelancer'){
-                    $user->setGroupId($objectManager->getReference('\User\Entity\Group', 1));
-                }else if($this->getRequest()->getPost('u') == 'employer'){
-                    $user->setGroupId($objectManager->getReference('\User\Entity\Group', 2));
-                }
-
-                $user->setData($data);
-
-                $objectManager->persist($user);
-
-                $objectManager->flush();
-            }else{
-                die('error');
+                return $this->redirect()->toUrl('/user/login');
             }
         }
-        return $this->redirect()->toUrl('/user/register');
+        return new ViewModel(array(
+            "u" => $userType,
+            "form"=> $form,
+            )
+        );
     }
 }
