@@ -68,23 +68,6 @@ class UserForm extends Form
         ));
     }
 
-    public function createInputFilter()
-    {
-        $inputFilter = new InputFilter\InputFilter();
-
-        //username
-        $username = new InputFilter\Input('username');
-        $username->setRequired(true);
-        $inputFilter->add($username);
-
-        //password
-        $password = new InputFilter\Input('password');
-        $password->setRequired(true);
-        $inputFilter->add($password);
-
-        return $inputFilter;
-    }
-
     public function save($controller, $userType){
         $user = $this->getObject();
         $data = array();

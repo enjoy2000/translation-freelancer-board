@@ -12,6 +12,7 @@ use Zend\Form\Form;
 use Zend\Form\Element;
 use Zend\InputFilter;
 use Zend\Session\Container;
+use Zend\Validator;
 
 
 class LoginForm extends Form
@@ -53,6 +54,10 @@ class LoginForm extends Form
         //username
         $username = new InputFilter\Input('email');
         $username->setRequired(true);
+        $validatorChain = new Validator\ValidatorChain();
+        $validatorChain->attach(
+            new Validator\EmailAddress());
+        $username->setValidatorChain($validatorChain);
         $inputFilter->add($username);
 
         //password

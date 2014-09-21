@@ -29,12 +29,14 @@ class LoginController extends AbstractActionController
         $request = $this->getRequest();
         if($request->isPost()){
             $form->setData($request->getPost());
-            if($form->validate($this, $request->getPost('email'), $request->getPost('password'))){
-                $this->redirect()->toUrl('/user/updateInfo');
-            }else{
-                $translator = $this->getServiceLocator()->get('translator');
-                $this->flashMessenger()->addErrorMessage($translator->translate('Wrong username and password'));
-                $this->redirect()->toUrl('/user/login');
+            if($form->isValid()){
+                if($form->validate($this, $request->getPost('email'), $request->getPost('password'))){
+                    $this->redirect()->toUrl('/user/updateInfo');
+                }else{
+                    $translator = $this->getServiceLocator()->get('translator');
+                    $this->flashMessenger()->addErrorMessage($translator->translate('Wrong username and password'));
+                    $this->redirect()->toUrl('/user/login');
+                }
             }
         }
         return new ViewModel(array('form' => $form));
