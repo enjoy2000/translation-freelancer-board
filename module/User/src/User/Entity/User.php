@@ -8,10 +8,12 @@
 namespace User\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Zend\Filter\Null;
 use Zend\InputFilter\Factory as InputFactory;     // <-- Add this import
 use Zend\InputFilter\InputFilter;                 // <-- Add this import
 use Zend\InputFilter\InputFilterAwareInterface;   // <-- Add this import
 use Zend\InputFilter\InputFilterInterface;        // <-- Add this import
+use Zend\Session\Container;
 
 /** @ORM\Entity */
 class User implements InputFilterAwareInterface{
@@ -40,11 +42,20 @@ class User implements InputFilterAwareInterface{
     /** @ORM\Column(type="string") */
     protected $password;
 
+    /** @ORM\Column(type="string") */
+    protected $phone;
+
     /** @ORM\Column(type="datetime") */
     protected $lastLogin;
 
     /** @ORM\Column(type="datetime") */
     protected $createdTime;
+
+    /** @ORM\Column(type="boolean") */
+    protected $isActive = 0;
+
+    /** @ORM\Column(type="string") */
+    protected $token = Null;
 
     protected $inputFilter;
 
@@ -72,7 +83,7 @@ class User implements InputFilterAwareInterface{
      * @return $this
      */
     public function setData(array $arr){
-        $keys = array('lastName', 'firstName', 'email', 'password', 'lastLogin', 'createdTime');
+        $keys = array('lastName', 'firstName', 'email', 'password', 'lastLogin', 'createdTime', 'phone');
         foreach($keys as $key){
             if(isset($arr[$key])){
                 $this->$key = $arr[$key];
@@ -162,6 +173,22 @@ class User implements InputFilterAwareInterface{
         $passClass = new \User\Model\Password();
         $this->password = $passClass->create_hash($this->password);
         return $this;
+    }
+
+    /**
+     * Get password hash
+     * @return string
+     */
+    public function getPasswordHash(){
+        return $this->password;
+    }
+
+    /**
+     * Check user is active or not
+     * @return boolean
+     */
+    public function isActive(){
+        return ($this->isActive == True);
     }
 }
 

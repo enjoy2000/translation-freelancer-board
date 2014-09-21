@@ -75,6 +75,9 @@ return array(
         'invokables' => array(
             'User\Controller\Index' => 'User\Controller\IndexController',
             'User\Controller\Register' => 'User\Controller\RegisterController',
+            'User\Controller\Login' => 'User\Controller\LoginController',
+            'User\Controller\Logout' => 'User\Controller\LogoutController',
+            'User\Controller\ForgotPassword' => 'User\Controller\ForgotPasswordController',
         ),
     ),
     'view_manager' => array(
@@ -88,6 +91,9 @@ return array(
             'user/index/index' => __DIR__ . '/../view/user/index/index.phtml',
             'user/register/index' => __DIR__ . '/../view/user/register/index.phtml',
             'user/register/freelancer' => __DIR__ . '/../view/user/register/form.phtml',
+            'user/register/employer' => __DIR__ . '/../view/user/register/form.phtml',
+            'user/login/index' => __DIR__ . '/../view/user/login/form.phtml',
+            'user/forgot-password/index' => __DIR__ . '/../view/user/forgotPassword/form.phtml',
             'error/404'               => __DIR__ . '/../view/error/404.phtml',
             'error/index'             => __DIR__ . '/../view/error/index.phtml',
         ),

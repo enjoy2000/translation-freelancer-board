@@ -54,7 +54,7 @@ class UserForm extends Form
                 'class' => 'form-control',
                 'placeholder' => 'Phone',
                 'required' => true,
-                'type'  => 'number',
+                'type'  => 'text',
             ),
         ));
         $this->add(array(
@@ -68,6 +68,23 @@ class UserForm extends Form
         ));
     }
 
+    public function createInputFilter()
+    {
+        $inputFilter = new InputFilter\InputFilter();
+
+        //username
+        $username = new InputFilter\Input('username');
+        $username->setRequired(true);
+        $inputFilter->add($username);
+
+        //password
+        $password = new InputFilter\Input('password');
+        $password->setRequired(true);
+        $inputFilter->add($password);
+
+        return $inputFilter;
+    }
+
     public function save($controller, $userType){
         $user = $this->getObject();
         $data = array();
@@ -79,8 +96,6 @@ class UserForm extends Form
         $data['createdTime'] = new \DateTime('now', new \DateTimeZone('America/New_York'));
         $data['lastLogin'] = new \DateTime('now', new \DateTimeZone('America/New_York'));
 
-        // Create password hash
-
         $user->setData($data);
 
         if($userType == 'freelancer'){
@@ -89,6 +104,7 @@ class UserForm extends Form
             $user->setGroup($objectManager->getReference('\User\Entity\Group', 2));
         }
 
+        // Create password hash
         $user->encodePassword();
 
         $objectManager->persist($user);

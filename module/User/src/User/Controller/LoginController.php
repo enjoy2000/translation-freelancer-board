@@ -10,22 +10,33 @@ namespace User\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use User\Form\LoginForm;
+use \User\Entity\User;
 
 class LoginController extends AbstractActionController
 {
 
+    protected function getForm(){
+        $form = new LoginForm();
+        $user = new User();
+        $form->bind($user);
+
+        return $form;
+    }
+
     public function indexAction(){
-        return new ViewModel();
-    }
-
-    public function employerAction(){
-        return new ViewModel(array("u"=>'employer'));
-    }
-
-    public function freelancerAction(){
-        return new ViewModel(array("u"=>'freelancer'));
-    }
-
-    public function postAction(){
+        $form = $this->getForm();
+        $request = $this->getRequest();
+        if($request->isPost()){
+            $form->setData($request->getPost());
+            if($form->validate($this, $request->getPost('email'), $request->getPost('password'))){
+                $this->redirect()->toUrl('/user/updateInfo');
+            }else{
+                $translator = $this->getServiceLocator()->get('translator');
+                $this->flashMessenger()->addErrorMessage($translator->translate('Wrong username and password'));
+                $this->redirect()->toUrl('/user/login');
+            }
+        }
+        return new ViewModel(array('form' => $form));
     }
 }
