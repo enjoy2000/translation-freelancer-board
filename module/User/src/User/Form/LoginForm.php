@@ -14,6 +14,8 @@ use Zend\InputFilter;
 use Zend\Session\Container;
 use Zend\Validator;
 
+use User\Model\Password;
+
 
 class LoginForm extends Form
 {
@@ -78,7 +80,7 @@ class LoginForm extends Form
         $userExist = $entityManager->getRepository('\User\Entity\User')->findOneBy(array('email' => $email));
 
 
-        $passClass = new \User\Model\Password();
+        $passClass = new Password();
         if($userExist && $passClass->validate_password($password, $userExist->getPasswordHash())){
             // Set logged data session to user session container
             $sessionContainer = new Container('user');

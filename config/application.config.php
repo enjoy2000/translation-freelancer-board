@@ -6,7 +6,10 @@ return array(
         'DoctrineModule',
         'DoctrineORMModule',
         'Application',
-        'User'
+        'User',
+        'ScnSocialAuth',
+        'ZfcBase',
+        'ZfcUser',
     ),
 
     // These are various options for the listeners attached to the ModuleManager

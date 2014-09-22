@@ -16,6 +16,9 @@ use \User\Entity\User;
 class LoginController extends AbstractActionController
 {
 
+    /**
+     * @return LoginForm
+     */
     protected function getForm(){
         $form = new LoginForm();
         $user = new User();

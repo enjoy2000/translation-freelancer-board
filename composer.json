@@ -12,6 +12,7 @@
         "zendframework/zendframework": "2.3.*",
         "zendframework/zend-developer-tools": "dev-master",
         "doctrine/doctrine-module": "dev-master",
-        "doctrine/doctrine-orm-module": "dev-master"
+        "doctrine/doctrine-orm-module": "dev-master",
+        "socalnick/scn-social-auth": "1.*"
     }
 }
