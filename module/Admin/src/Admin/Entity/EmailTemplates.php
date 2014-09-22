@@ -25,21 +25,52 @@ class EmailTemplates{
     /** @ORM\Column(type="string") */
     protected $subject;
 
-    /** @ORM\OneToOne(targetEntity="TemplateType") */
+    /**
+     * 0 => English, 1 => Chinese
+     * @ORM\Column(type="boolean")
+     */
+    protected $language;
+
+    /** @ORM\ManyToOne(targetEntity="TemplateType") */
     protected $type;
 
+    /**
+     * Set Template type
+     * @param TemplateType $type
+     */
     public function setTemplateType(\Admin\Entity\TemplateType $type){
         $this->type = $type;
     }
 
+    /**
+     * Set data to object
+     * @param array $arr
+     * @return $this
+     */
     public function setData(array $arr){
-        $keys = array('content', 'subject');
+        $keys = array('content', 'subject', 'language');
         foreach($keys as $key){
             if(isset($arr[$key])){
                 $this->$key = $arr[$key];
             }
         }
         return $this;
+    }
+
+    /**
+     * Get subject of email template
+     * @return string
+     */
+    public function getSubject(){
+        return $this->subject;
+    }
+
+    /**
+     * Get content of email template
+     * @return text
+     */
+    public function getContent(){
+        return $this->content;
     }
 }
 

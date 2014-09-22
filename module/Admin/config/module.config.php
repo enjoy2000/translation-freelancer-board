@@ -73,12 +73,12 @@ return array(
         'not_found_template'       => 'error/404',
         'exception_template'       => 'error/index',
         'template_map' => array(
-            'layout/layout' => __DIR__ . '/../../Application/view/layout/admin.phtml',
             'admin/email/index' => __DIR__ . '/../view/admin/email/index.phtml',
             'admin/email/create' => __DIR__ . '/../view/admin/email/create.phtml',
-            'error/404'               => __DIR__ . '/../view/error/404.phtml',
-            'error/index'             => __DIR__ . '/../view/error/index.phtml',
+            'error/404'               => __DIR__ . '/../../Application/view/error/404.phtml',
+            'error/index'             => __DIR__ . '/../../Application/view/error/index.phtml',
         ),
+        'layout' => 'layout/admin',
         'template_path_stack' => array(
             __DIR__ . '/../view',
         ),
