@@ -1,10 +1,13 @@
+<h3><?php echo $this->translate('Register to PaperTask'); ?></h3>
 <div class="wrapper wrapper-content animated fadeInRight">
     <div class="row">
         <div class="col-lg-6 col-lg-offset-3">
             <div class="jumbotron">
-                <h1>Please login your email and confirm</h1>
-                <p>We have sent an confirmation email to your email: xxx@xx.com</p>
-                <p>If you do not see the confirmation email in you INBOX, please check your JUNK mail.</p>
+                <h1><?php echo $this->translate('Please login your email and confirm'); ?></h1>
+                <p><?php echo $this->translate('We have sent an confirmation email to your email:'); ?>
+                    <?php echo $this->email ?></p>
+                <p><?php echo $this->translate(
+                        'If you do not see the confirmation email in you INBOX, please check your JUNK mail.'); ?></p>
             </div>
         </div>
 

@@ -8,12 +8,12 @@
 namespace User\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Zend\Filter\Null;
 use Zend\InputFilter\Factory as InputFactory;     // <-- Add this import
 use Zend\InputFilter\InputFilter;                 // <-- Add this import
 use Zend\InputFilter\InputFilterAwareInterface;   // <-- Add this import
 use Zend\InputFilter\InputFilterInterface;        // <-- Add this import
 use Zend\Session\Container;
+use User\Model\Password;
 
 /** @ORM\Entity */
 class User implements InputFilterAwareInterface{
@@ -54,7 +54,7 @@ class User implements InputFilterAwareInterface{
     /** @ORM\Column(type="boolean") */
     protected $isActive = 0;
 
-    /** @ORM\Column(type="string") */
+    /** @ORM\Column(type="string", nullable=true) */
     protected $token = Null;
 
     protected $inputFilter;
@@ -170,7 +170,7 @@ class User implements InputFilterAwareInterface{
         if($newPassword){
             $this->password = $newPassword;
         }
-        $passClass = new \User\Model\Password();
+        $passClass = new Password();
         $this->password = $passClass->create_hash($this->password);
         return $this;
     }
@@ -189,6 +189,35 @@ class User implements InputFilterAwareInterface{
      */
     public function isActive(){
         return ($this->isActive == True);
+    }
+
+    public function activate($token, $entityManager){
+        if($this->token === $token && strlen($token) == 32){
+            $this->token = '';
+            $entityManager->persist($this);
+            $entityManager->flush();
+            return true;
+        }
+        return false;
+    }
+
+    public function generateToken(){
+        $tokenLength = 16;
+        $token = time();
+        for($i = 0; $i < $tokenLength; $i++){
+            $token .= chr(rand(1, 255));
+        }
+        $this->token = md5($token);
+    }
+
+    public function authenticate(){
+        $sessionContainer = new Container('user');
+        $sessionContainer->user_id = $this->id;
+    }
+
+    public function checkPassword($password){
+        $passClass = new Password();
+        return $passClass->validate_password($password, $this->password);
     }
 }
 
