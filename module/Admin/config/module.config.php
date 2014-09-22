@@ -100,7 +100,7 @@ return array(
             ),
             'orm_default' => array(
                 'drivers' => array(
-                    'User\Entity' => 'admin_entities'
+                    'Admin\Entity' => 'admin_entities'
                 )
             ))),
 );
