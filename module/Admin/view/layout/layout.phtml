@@ -1,0 +1,67 @@
+<?php echo $this->doctype(); ?>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?php echo $this->headTitle($this->translate('PaperTask'))->setSeparator(' - ')->setAutoEscape(false) ?>
+
+        <?php echo $this->headMeta()
+            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ?>
+
+        <!-- Le styles -->
+        <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+                        ->prependStylesheet($this->basePath() . '/css/style.css')
+                        ->prependStylesheet($this->basePath() . '/css/animate.css')
+                        ->prependStylesheet($this->basePath() . '/css/plugins/iCheck/custom.css')
+                        ->prependStylesheet($this->basePath() . '/font-awesome/css/font-awesome.css')
+                        ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css') ?>
+
+        <!-- Scripts -->
+        <?php echo $this->headScript()
+            ->prependFile($this->basePath() . '/js/bootstrap.min.js')
+            ->prependFile($this->basePath() . '/js/jquery-1.10.2.js')
+            ->prependFile($this->basePath() . '/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+            ->prependFile($this->basePath() . '/js/html5shiv.js',   'text/javascript', array('conditional' => 'lt IE 9',))
+        ; ?>
+
+    </head>
+    <body class="gray-bg">
+
+    <div class="text-center loginscreen   animated fadeInDown">
+        <div>
+            <div>
+
+                <a class="logo-name" href="<?php echo $this->url('home') ?>">
+                    <img src="<?php echo $this->basePath() . '/img/logo.png' ?>" alt="" width="200">
+                </a>
+
+            </div>
+            <div id="content" class="wrapper container">
+                <!-- Flash Messenger -->
+                <?php
+                $flash = $this->flashMessenger();
+                $flash->setMessageOpenFormat('<div%s>
+                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                         &times;
+                     </button>
+                     <ul><li>')
+                    ->setMessageSeparatorString('</li><li>')
+                    ->setMessageCloseString('</li></ul></div>');
+
+                echo $flash->render('error', array('alert', 'alert-dismissable', 'alert-danger'));
+                echo $flash->render('info', array('alert', 'alert-dismissable', 'alert-info'));
+                echo $flash->render('default', array('alert', 'alert-dismissable', 'alert-warning'));
+                echo $flash->render('success', array('alert', 'alert-dismissable', 'alert-success'));
+                ?><!-- End Flash Messenger -->
+
+                <?php echo $this->content ?>
+            </div>
+
+            <p class="m-t"> <small><?php echo date('Y') ?> &copy; <a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('PaperTask') ?></a> {:L('copy_right')}</small> </p>
+        </div>
+    </div>
+        <?php echo $this->inlineScript() ?>
+    </body>
+</html>
