@@ -38,7 +38,7 @@
                 </a>
 
             </div>
-            <div id="content" class="wrapper container">
+            <div id="content" class="">
                 <!-- Flash Messenger -->
                 <?php
                 $flash = $this->flashMessenger();
@@ -46,9 +46,9 @@
                      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
                          &times;
                      </button>
-                     <ul><li>')
-                    ->setMessageSeparatorString('</li><li>')
-                    ->setMessageCloseString('</li></ul></div>');
+                     <div>')
+                    ->setMessageSeparatorString('</div><div>')
+                    ->setMessageCloseString('</div></div>');
 
                 echo $flash->render('error', array('alert', 'alert-dismissable', 'alert-danger'));
                 echo $flash->render('info', array('alert', 'alert-dismissable', 'alert-info'));

@@ -21,9 +21,6 @@ class LoginController extends AbstractActionController
      */
     protected function getForm(){
         $form = new LoginForm();
-        $user = new User();
-        $form->bind($user);
-
         return $form;
     }
 
@@ -33,12 +30,12 @@ class LoginController extends AbstractActionController
         if($request->isPost()){
             $form->setData($request->getPost());
             if($form->isValid()){
-                if($form->validate($this, $request->getPost('email'), $request->getPost('password'))){
-                    $this->redirect()->toUrl('/user/updateInfo');
+                if($form->validate($this)){
+                    return $this->redirect()->toUrl('/user/updateInfo');
                 }else{
                     $translator = $this->getServiceLocator()->get('translator');
                     $this->flashMessenger()->addErrorMessage($translator->translate('Wrong username and password'));
-                    $this->redirect()->toUrl('/user/login');
+                    return $this->redirect()->toUrl('/user/login');
                 }
             }
         }
