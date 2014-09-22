@@ -28,8 +28,9 @@ class TemplateType {
      * @ORM\Column(type="string", nullable=true)
      */
     protected $description;
+
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true, length=50)
      */
     protected $code;
 
@@ -48,4 +49,19 @@ class TemplateType {
     public function getName(){
         return $this->name;
     }
-} 
+
+    /**
+     * Set data to object
+     * @param array $arr
+     * @return $this
+     */
+    public function setData(array $arr){
+        $keys = array('name', 'description');
+        foreach($keys as $key){
+            if(isset($arr[$key])){
+                $this->$key = $arr[$key];
+            }
+        }
+        return $this;
+    }
+}

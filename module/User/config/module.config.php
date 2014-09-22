@@ -95,9 +95,10 @@ return array(
             'user/register/confirm' => __DIR__ . '/../view/user/register/confirm.phtml',
             'user/login/index' => __DIR__ . '/../view/user/login/form.phtml',
             'user/forgot-password/index' => __DIR__ . '/../view/user/forgotPassword/form.phtml',
-            'error/404'               => __DIR__ . '/../view/error/404.phtml',
-            'error/index'             => __DIR__ . '/../view/error/index.phtml',
+            'error/404'               => __DIR__ . '/../../Application/view/error/404.phtml',
+            'error/index'             => __DIR__ . '/../../Application/view/error/index.phtml',
         ),
+        'layout' => 'layout/layout',
         'template_path_stack' => array(
             __DIR__ . '/../view',
         ),

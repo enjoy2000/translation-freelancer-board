@@ -14,12 +14,17 @@ use Zend\Mvc\MvcEvent;
 
 class Module
 {
+
     public function onBootstrap(MvcEvent $e)
     {
         $eventManager        = $e->getApplication()->getEventManager();
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
         date_default_timezone_set('UTC'); // set default timezone
+
+        $eventManager->getSharedManager()->attach(__NAMESPACE__, 'dispatch', function($e) {
+            $e->getTarget()->layout('layout/layout');
+        });
     }
 
     public function getConfig()

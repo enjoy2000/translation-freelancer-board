@@ -13,18 +13,19 @@ use Zend\Form\Element;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\InputFilter;
 use Zend\Validator;
+use Admin\Entity\EmailTemplates;
 
 
 class EmailTemplateForm extends Form {
 
-    public function __construct(AbstractActionController $controller){
+    public function __construct(\Doctrine\ORM\EntityManager $entityManager){
+
+        parent::__construct();
         $this->setAttribute('method', 'post');
         $this->getInputFilter();
 
         // Add select form element
         $templateTypeOptions = array();
-        $entityManager = $controller->getServiceLocator()
-                                    ->get('Doctrine\ORM\EntityManager');
         $types = $entityManager->getRepository('Admin\Entity\TemplateType')->findAll();
         foreach($types as $type){
             $templateTypeOptions[$type->getId()] = $type->getName();
@@ -33,12 +34,26 @@ class EmailTemplateForm extends Form {
         $this->add(array(
             'type' => 'Zend\Form\Element\Select',
             'name' => 'type',
-            'attributes' =>  array(
-                'id' => 'type',
+            'attributes' => array(
                 'class' => 'form-control',
                 'required' => true,
-                'type' => 'select',
-                'options' => $templateTypeOptions,
+            ),
+             'options' => array(
+                'label' => 'Template type?',
+                'value_options' => $templateTypeOptions,
+            )
+         ));
+        $this->add(array(
+            'type' => 'Zend\Form\Element\Radio',
+            'name' => 'language',
+             'options' => array(
+                'value_options' => array(
+                    '0' => 'Female',
+                    '1' => 'Male',
+                ),
+            ),
+            'attributes' => array(
+                'required' => true,
             ),
         ));
         $this->add(array(
@@ -48,23 +63,29 @@ class EmailTemplateForm extends Form {
                 'required' => true,
                 'type'  => 'text',
             ),
+            'options' => array(
+                'label' => 'Email subject',
+            )
         ));
         $this->add(array(
             'name' => 'content',
             'attributes' => array(
-                'class' => 'form-control textarea',
-                'required' => true,
+                'class' => 'form-control summernote',
                 'type'  => 'textarea',
+                'placeholder' => 'Email body'
             ),
+            'options' => array(
+                'label' => 'Email body',
+            )
         ));
-        //$csrf = new Element\Csrf('security');
-        //$this->add($csrf);
+        $csrf = new Element\Csrf('security');
+        $this->add($csrf);
 
         $this->setInputFilter($this->createInputFilter());
     }
 
 
-    public  function createInputFilter()
+    protected  function createInputFilter()
     {
         $inputFilter = new InputFilter\InputFilter();
 
@@ -83,15 +104,39 @@ class EmailTemplateForm extends Form {
         $content->setRequired(true);
         $inputFilter->add($content);
 
+        //language
+        $language = new InputFilter\Input('content');
+        $language->setRequired(true);
+        $validatorChain = new Validator\ValidatorChain();
+        $validatorChain->attach(
+            new Validator\Between(array('min' => 0, 'max' => 1)));
+        $language->setValidatorChain($validatorChain);
+        $inputFilter->add($language);
+
         return $inputFilter;
     }
 
     public function save(\Doctrine\ORM\EntityManager $entityManager){
         $data = $this->getData();
         $type = $entityManager->find('Admin\Entity\TemplateType', $data['type']);
-        $template = $entityManager->getRepository('Admin\Entity\EmailTemplates')->findOneBy(array('type'=>$data['type']));
-        $template->setData($data);
-        $entityManager->merge($template);
+        $template = $entityManager->getRepository('Admin\Entity\EmailTemplates')->findOneBy(
+            array(
+                'type'=>$type,
+                'language'=>$data['language'],
+            )
+        );
+
+        // If template exist update content, if not create new one
+        if($template){
+            $template->setData($data);
+            $template->setTemplateType($type);
+            $entityManager->merge($template);
+        }else{
+            $newTemplate = new EmailTemplates();
+            $newTemplate->setData($data);
+            $newTemplate->setTemplateType($type);
+            $entityManager->persist($newTemplate);
+        }
         $entityManager->flush();
     }
 } 

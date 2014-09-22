@@ -12,6 +12,7 @@ namespace Admin\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Admin\Form\EmailTemplateForm;
+use Zend\Json\Json;
 
 class EmailController extends AbstractActionController
 {
@@ -22,12 +23,15 @@ class EmailController extends AbstractActionController
     }
 
     protected function getForm(){
-        $form = new EmailTemplateForm($this);
+        $entityManager = $this->getServiceLocator()
+            ->get('Doctrine\ORM\EntityManager');
+        $form = new EmailTemplateForm($entityManager);
 
         return $form;
     }
 
     public function createAction(){
+        //$this->layout('layout/admin');
         $entityManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
         $request = $this->getRequest();
         $form = $this->getForm();
@@ -41,5 +45,31 @@ class EmailController extends AbstractActionController
         }
 
         return new ViewModel(array('form' => $form));
+    }
+
+    public function loadTemplateAction(){
+        $request = $this->getRequest();
+        $json = array();
+        $entityManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
+        $type = $entityManager->find('Admin\Entity\TemplateType', $request->getPost('type'));
+        $template = $entityManager->getRepository('Admin\Entity\EmailTemplates')->findOneBy(
+            array(
+                'type' => $type,
+                'language' => (int)$request->getPost('language'),
+            )
+        );
+
+        // Check template exist or not, if exist return subject and content of templtae
+        if($template){
+            $json['result'] = true;
+            $json['subject'] = $template->getSubject();
+            $json['content'] = $template->getContent();
+        }else{
+            $json['result'] = false;
+        }
+
+        // Set content type to json
+        $this->getResponse()->getHeaders()->addHeaders(array('Content-Type'=>'application/json;charset=UTF-8'));
+        return $this->getResponse()->setContent(Json::encode($json));
     }
 }
