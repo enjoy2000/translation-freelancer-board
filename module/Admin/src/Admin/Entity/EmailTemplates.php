@@ -1,11 +1,10 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: hat.dao
- * Date: 9/22/2014
- * Time: 2:18 PM
+ * User: antiprovn
+ * Date: 9/19/14
+ * Time: 12:14 AM
  */
-
 namespace Admin\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -20,27 +19,27 @@ class EmailTemplates {
      */
     protected $id;
 
-    /**
-     * @ORM\Column(type="string")
-     */
-    protected $subject;
-
-    /**
-     * @ORM\Column(type="text")
-     */
+    /** @ORM\Column(type="text") */
     protected $content;
 
-    /**
-     * @ORM\OneToOne(targetEntity="TemplateType")
-     */
+    /** @ORM\Column(type="string") */
+    protected $subject;
+
+    /** @ORM\OneToOne(targetEntity="TemplateType") */
     protected $type;
 
-    /**
-     * Set Template type
-     * @param TemplateType $type
-     */
-    public function setType(TemplateType $type){
-        $this->type_id = $type;
+    public function setTemplateType(\Admin\Entity\TemplateType $type){
+        $this->type = $type;
     }
 
-} 
+    public function setData(array $arr){
+        $keys = array('content', 'subject');
+        foreach($keys as $key){
+            if(isset($arr[$key])){
+                $this->$key = $arr[$key];
+            }
+        }
+        return $this;
+    }
+}
+

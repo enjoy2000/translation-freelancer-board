@@ -25,7 +25,27 @@ class TemplateType {
     protected $name;
 
     /**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $description;
+    /**
      * @ORM\Column(type="string")
      */
     protected $code;
+
+    /**
+     * Get id
+     * @return integer
+     */
+    public function getId(){
+        return $this->id;
+    }
+
+    /**
+     * Get type name
+     * @return string
+     */
+    public function getName(){
+        return $this->name;
+    }
 } 

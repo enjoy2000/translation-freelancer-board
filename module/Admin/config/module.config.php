@@ -63,7 +63,7 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Admin\Controller\Index' => 'Admin\Controller\IndexController'
+            'Admin\Controller\Email' => 'Admin\Controller\EmailController',
         ),
     ),
     'view_manager' => array(
@@ -74,7 +74,8 @@ return array(
         'exception_template'       => 'error/index',
         'template_map' => array(
             'layout/layout' => __DIR__ . '/../../Application/view/layout/admin.phtml',
-            'admin/index/index' => __DIR__ . '/../view/admin/index/index.phtml',
+            'admin/email/index' => __DIR__ . '/../view/admin/email/index.phtml',
+            'admin/email/create' => __DIR__ . '/../view/admin/email/create.phtml',
             'error/404'               => __DIR__ . '/../view/error/404.phtml',
             'error/index'             => __DIR__ . '/../view/error/index.phtml',
         ),
