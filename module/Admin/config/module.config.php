@@ -40,6 +40,32 @@ return array(
                     ),
                 ),
             ),
+            'email' => array(
+                'type'    => 'Literal',
+                'options' => array(
+                    'route'    => '/admin/email',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Admin\Controller',
+                        'controller'    => 'Email',
+                        'action'        => 'index',
+                    ),
+                ),
+                'may_terminate' => true,
+                'child_routes' => array(
+                    'default' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/[:action]',
+                            'constraints' => array(
+                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
+                            'defaults' => array(
+                            ),
+                        ),
+                    ),
+                ),
+            ),
         ),
     ),
     'service_manager' => array(
@@ -75,6 +101,7 @@ return array(
         'template_map' => array(
             'admin/email/index' => __DIR__ . '/../view/admin/email/index.phtml',
             'admin/email/create' => __DIR__ . '/../view/admin/email/create.phtml',
+            'admin/email/new' => __DIR__ . '/../view/admin/email/new.phtml',
             'error/404'               => __DIR__ . '/../../Application/view/error/404.phtml',
             'error/index'             => __DIR__ . '/../../Application/view/error/index.phtml',
         ),

@@ -12,6 +12,7 @@ namespace Admin\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Admin\Form\EmailTemplateForm;
+use Admin\Form\TemplateTypeForm;
 use Zend\Json\Json;
 
 class EmailController extends AbstractActionController
@@ -49,27 +50,45 @@ class EmailController extends AbstractActionController
 
     public function loadTemplateAction(){
         $request = $this->getRequest();
-        $json = array();
-        $entityManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
-        $type = $entityManager->find('Admin\Entity\TemplateType', $request->getPost('type'));
-        $template = $entityManager->getRepository('Admin\Entity\EmailTemplates')->findOneBy(
-            array(
-                'type' => $type,
-                'language' => (int)$request->getPost('language'),
-            )
-        );
+        if($request->isXmlHttpRequest()){
+            $json = array();
+            $entityManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
+            $type = $entityManager->find('Admin\Entity\TemplateType', $request->getPost('type'));
+            $template = $entityManager->getRepository('Admin\Entity\EmailTemplates')->findOneBy(
+                array(
+                    'type' => $type,
+                    'language' => (int)$request->getPost('language'),
+                )
+            );
 
-        // Check template exist or not, if exist return subject and content of templtae
-        if($template){
-            $json['result'] = true;
-            $json['subject'] = $template->getSubject();
-            $json['content'] = $template->getContent();
-        }else{
-            $json['result'] = false;
+            // Check template exist or not, if exist return subject and content of templtae
+            if($template){
+                $json['result'] = true;
+                $json['subject'] = $template->getSubject();
+                $json['content'] = $template->getContent();
+            }else{
+                $json['result'] = false;
+            }
+
+            // Set content type to json
+            $this->getResponse()->getHeaders()->addHeaders(array('Content-Type'=>'application/json;charset=UTF-8'));
+            return $this->getResponse()->setContent(Json::encode($json));
         }
 
-        // Set content type to json
-        $this->getResponse()->getHeaders()->addHeaders(array('Content-Type'=>'application/json;charset=UTF-8'));
-        return $this->getResponse()->setContent(Json::encode($json));
+        return $this->redirect()->toRoute('email');
+    }
+
+    public function newAction(){
+        $form = new TemplateTypeForm();
+        $request = $this->getRequest();
+        if($request->isPost()){
+            $form->setData($request->getPost());
+            if($form->isValid()){
+                $entityManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
+                $form->save($entityManager);
+                return $this->redirect()->toRoute('email');
+            }
+        }
+        return new ViewModel(array('form' => $form));
     }
 }

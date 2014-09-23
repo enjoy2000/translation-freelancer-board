@@ -59,11 +59,10 @@
 
                 </li>
                 <li class="active">
-                    <a href="mailbox.html"><i class="fa fa-envelope"></i> <span class="nav-label">Mailbox </span><span class="label label-warning pull-right">16/24</span></a>
+                    <a href="<?php echo $this->url('email') ?>"><i class="fa fa-envelope"></i> <span class="nav-label">Mailbox </span><span class="label label-warning pull-right">16/24</span></a>
                     <ul class="nav nav-second-level">
-                        <li><a href="mailbox.html">Inbox</a></li>
-                        <li><a href="mail_detail.html">Email view</a></li>
-                        <li class="active"><a href="mail_compose.html">Compose email</a></li>
+                        <li><a href="<?php echo $this->url('email') ?>/new">Create new type</a></li>
+                        <li><a href="<?php echo $this->url('email') ?>/create">Change template</a></li>
                     </ul>
                 </li>
             </ul>
