@@ -11,9 +11,8 @@ namespace User\Form;
 use Zend\Form\Form;
 use Zend\Form\Element;
 use Zend\InputFilter;
+use Zend\Session\Container;
 use Zend\Validator;
-
-use User\Model\Password;
 
 
 class LoginForm extends Form
@@ -69,20 +68,21 @@ class LoginForm extends Form
         return $inputFilter;
     }
 
-    public function validate($controller){
-        $data = $this->getData();
-        $email = $data['email'];
-        $password = $data['password'];
+    public function validate($controller, $email, $password){
+        $user = $this->getObject();
 
         $entityManager = $controller
             ->getServiceLocator()
             ->get('Doctrine\ORM\EntityManager');
 
-        $user = $entityManager->getRepository('\User\Entity\User')->findOneBy(array('email' => $email));
-        
-        if($user && $user->checkPassword($password)){
+        $userExist = $entityManager->getRepository('\User\Entity\User')->findOneBy(array('email' => $email));
+
+
+        $passClass = new \User\Model\Password();
+        if($userExist && $passClass->validate_password($password, $userExist->getPasswordHash())){
             // Set logged data session to user session container
-            $user->authenticate();
+            $sessionContainer = new Container('user');
+            $sessionContainer->user_id = $userExist->getId();
             return True;
         }else{
             return False;
