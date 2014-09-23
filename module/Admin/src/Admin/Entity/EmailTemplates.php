@@ -8,6 +8,7 @@
 namespace Admin\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Zend\Mail\Message;
 
 /** @ORM\Entity */
 

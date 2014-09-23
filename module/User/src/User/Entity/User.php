@@ -191,6 +191,14 @@ class User implements InputFilterAwareInterface{
         return ($this->isActive == True);
     }
 
+    /**
+     * Get email of user
+     * @return mixed
+     */
+    public function getEmail(){
+        return $this->email;
+    }
+
     public function activate($token, $entityManager){
         if($this->token === $token && strlen($token) == 32){
             $this->token = '';
@@ -218,6 +226,35 @@ class User implements InputFilterAwareInterface{
     public function checkPassword($password){
         $passClass = new Password();
         return $passClass->validate_password($password, $this->password);
+    }
+
+    /**
+     * Create email template
+     * @param $mailCode
+     * @param $entityManager
+     * @param $link
+     * @return Message
+     */
+    public function createEmail($mailCode, $entityManager, $link){
+        $mail = new Message();
+        $type = $entityManager->getRepository('Admin\Entity\TemplateType')->findOneBy(array('code' => $mailCode));
+        $template = $entityManager->getRepository('Admin\Entity\EmailTemplates')->findOneBy(array('type' => $type));
+        $mail->setSubject($template->getSubject())
+            ->addTo($this->getEmail());
+        $content = $template->getContent();
+
+        // Replace array variables to user content or link
+        $arrayReplace = array(
+            '{{firstName}}' => $this->firstName,
+            '{{lastName}}' => $this->lastName,
+            '{{link}}' => $link,
+        );
+        foreach($arrayReplace as $search => $replace){
+            $content = str_replace($search, $replace, $content);
+        }
+        $mail->addBody($content);
+
+        return $mail;
     }
 }
 

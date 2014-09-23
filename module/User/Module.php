@@ -11,6 +11,9 @@ namespace User;
 
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
+use Zend\ServiceManager\ServiceManager;
+use Zend\Mail\Transport\Smtp;
+use Zend\Mail\Transport\SmtpOptions;
 
 class Module
 {
@@ -39,6 +42,21 @@ class Module
                 'namespaces' => array(
                     __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
                 ),
+            ),
+        );
+    }
+
+    public function getServiceConfig()
+    {
+        return array(
+            'factories' => array(
+                'mail.transport' => function (ServiceManager $serviceManager) {
+                        $config = $serviceManager->get('Config');
+                        $transport = new Smtp();
+                        $transport->setOptions(new SmtpOptions($config['mail']['transport']['options']));
+
+                        return $transport;
+                    },
             ),
         );
     }

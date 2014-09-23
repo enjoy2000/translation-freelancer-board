@@ -12,6 +12,7 @@ namespace Admin\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Admin\Form\EmailTemplateForm;
+use Admin\Form\TemplateTypeForm;
 use Zend\Json\Json;
 
 class EmailController extends AbstractActionController
