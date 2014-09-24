@@ -8,10 +8,10 @@
 
 namespace User\Controller;
 
-use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+
+use Application\Controller\AbstractActionController;
 use User\Form\LoginForm;
-use \User\Entity\User;
 
 class LoginController extends AbstractActionController
 {
@@ -22,11 +22,6 @@ class LoginController extends AbstractActionController
     protected function getForm(){
         $form = new LoginForm();
         return $form;
-    }
-    public function getEntityManager(){
-        return $entityManager = $this
-            ->getServiceLocator()
-            ->get('Doctrine\ORM\EntityManager');
     }
 
     public function indexAction(){

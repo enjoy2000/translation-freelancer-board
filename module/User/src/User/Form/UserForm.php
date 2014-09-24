@@ -69,6 +69,9 @@ class UserForm extends Form
     }
 
     public function save($entityManager, $userType){
+        /**
+         * @var $user \User\Entity\User
+         */
         $user = $this->getObject();
         $data = array();
 
@@ -90,10 +93,6 @@ class UserForm extends Form
         $entityManager->persist($user);
         $entityManager->flush();
 
-        $this->sendConfirmationEmail($user);
-    }
-
-    public function sendConfirmationEmail($user){
-        // TODO: Send confirmation email
+        $user->sendConfirmationEmail($entityManager);
     }
 }

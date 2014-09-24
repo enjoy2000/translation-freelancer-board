@@ -9,20 +9,20 @@
 
 namespace User\Controller;
 
-use User\Entity\User;
-use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+
+use Application\Controller\AbstractActionController;
+use User\Entity\User;
 use User\Model\UserSession;
 use User\Form\ForgotPasswordForm;
 
 class ForgotPasswordController extends AbstractActionController
 {
-
+    /**
+     * @return ForgotPasswordForm
+     */
     protected function getForm(){
         $form = new ForgotPasswordForm();
-        $user = new User();
-        $form->bind($user);
-
         return $form;
     }
     public function indexAction(){
@@ -32,7 +32,7 @@ class ForgotPasswordController extends AbstractActionController
         if(!$userSession->isLoggedIn()){
             if($request->isPost()){
                 if($form->isValid()){
-                    // TODO: add forgot password function
+                    $form->process($this);
                 }
             }
         }

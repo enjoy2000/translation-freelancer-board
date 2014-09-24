@@ -9,8 +9,10 @@
 
 namespace User\Controller;
 
-use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+
+use Application\Controller\AbstractActionController;
+use User\Entity\User;
 
 class IndexController extends AbstractActionController
 {
@@ -20,11 +22,12 @@ class IndexController extends AbstractActionController
 
     public function testAction()
     {
+
         $objectManage = $this
             ->getServiceLocator()
             ->get('Doctrine\ORM\EntityManager');
 
-        $user = new \User\Entity\User();
+        $user = new User();
         $user->setFullname('Some greate developer Hat');
 
         $objectManage->persist($user);

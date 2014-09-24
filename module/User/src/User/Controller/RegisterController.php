@@ -8,10 +8,11 @@
 
 namespace User\Controller;
 
-use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+
+use Application\Controller\AbstractActionController;
 use User\Form\UserForm;
-use \User\Entity\User;
+use User\Entity\User;
 
 class RegisterController extends AbstractActionController
 {
@@ -33,12 +34,6 @@ class RegisterController extends AbstractActionController
         $user = new User();
         $form->bind($user);
         return $form;
-    }
-
-    public function getEntityManager(){
-        return $entityManager = $this
-                                    ->getServiceLocator()
-                                    ->get('Doctrine\ORM\EntityManager');
     }
 
     public function process($userType){
@@ -81,13 +76,16 @@ class RegisterController extends AbstractActionController
 
         if($token){
             $entityManager = $this->getEntityManager();
+            /**
+             * @var $user \User\Entity\User
+             */
             $user = $entityManager->getRepository('User\Entity\User')
                                     ->findOneBy(array(
                                         'email'=>$request->getPost('email'))
                                     );
-            if($user && $user->activate($token)){
+            if($user && $user->activate($token, $entityManager)){
                 $user->authenticate();
-                // TODO: send welcome email
+                $user->sendWelcomeEmail($this);
                 return $this->redirect()->toUrl("/user/updateInfo");
             }
         }

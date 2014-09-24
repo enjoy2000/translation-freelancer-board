@@ -40,18 +40,4 @@ class Module
         );
     }
 
-    public function getServiceConfig()
-    {
-        return array(
-            'factories' => array(
-                'mail.transport' => function (ServiceManager $serviceManager) {
-                        $config = $serviceManager->get('Config');
-                        $transport = new Smtp();
-                        $transport->setOptions(new SmtpOptions($config['mail']['transport']['options']));
-
-                        return $transport;
-                    },
-            ),
-        );
-    }
 }
