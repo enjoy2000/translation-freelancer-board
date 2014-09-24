@@ -76,13 +76,16 @@ class RegisterController extends AbstractActionController
 
         if($token){
             $entityManager = $this->getEntityManager();
+            /**
+             * @var $user \User\Entity\User
+             */
             $user = $entityManager->getRepository('User\Entity\User')
                                     ->findOneBy(array(
                                         'email'=>$request->getPost('email'))
                                     );
-            if($user && $user->activate($token)){
+            if($user && $user->activate($token, $entityManager)){
                 $user->authenticate();
-                // TODO: send welcome email
+                $user->sendWelcomeEmail($this);
                 return $this->redirect()->toUrl("/user/updateInfo");
             }
         }

@@ -25,6 +25,9 @@ class Mail{
                 'type' => $type,
             )
         );
+        if(!$emailTemplate){
+            throw new \Exception("Missing email template for type {$type}");
+        }
         $emailTemplate->send($controller, $sendTo, $variables);
     }
 }

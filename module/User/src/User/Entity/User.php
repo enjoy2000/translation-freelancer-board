@@ -260,7 +260,21 @@ class User implements InputFilterAwareInterface{
 
     public function sendConfirmationEmail($controller){
         $data = array();
+        // TODO: initial data for email template
         Mail::sendMail($controller, "register-confirmation", $this->email, $data);
     }
+
+    public function sendWelcomeEmail($controller){
+        $data = array();
+        // TODO: initial data for email template
+        Mail::sendMail($controller, "register-welcome", $this->email, $data);
+    }
+
+    public function sendForgotPasswordEmail($controller){
+        $data = array();
+        // TODO: initial data for email template
+        Mail::sendMail($controller, "user-forgot-password", $this->email, $data);
+    }
+
 }
 
