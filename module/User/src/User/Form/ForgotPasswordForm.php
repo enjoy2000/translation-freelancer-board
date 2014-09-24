@@ -42,15 +42,33 @@ class ForgotPasswordForm extends Form
     {
         $inputFilter = new InputFilter\InputFilter();
 
-        //username
-        $username = new InputFilter\Input('email');
-        $username->setRequired(true);
+        $email = new InputFilter\Input('email');
+        $email->setRequired(true);
         $validatorChain = new Validator\ValidatorChain();
         $validatorChain->attach(
             new Validator\EmailAddress());
-        $username->setValidatorChain($validatorChain);
-        $inputFilter->add($username);
+        $email->setValidatorChain($validatorChain);
+        $inputFilter->add($email);
 
         return $inputFilter;
+    }
+
+    /**
+     * @param \Application\Controller\AbstractActionController $controller
+     */
+    function process($controller){
+        $entityManager = $controller->getEntityManager();
+        $email = $this->getData()['email'];
+        /**
+         *
+         */
+        $user = $controller->getUser(array('email' => $email));
+        if($user){
+            $user->generateToken();
+            $entityManager->persist($user);
+            $entityManager->flush();
+
+            $user->sendForgotPasswordEmail($controller);
+        }
     }
 }

@@ -7,25 +7,23 @@
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
-namespace User;
+namespace Common;
 
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 use Zend\ServiceManager\ServiceManager;
-use Zend\Mail\Transport\Smtp;
-use Zend\Mail\Transport\SmtpOptions;
 
 class Module
 {
 
     public function onBootstrap(MvcEvent $e)
     {
-        $eventManager = $e->getApplication()->getEventManager();
+        $eventManager        = $e->getApplication()->getEventManager();
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
         date_default_timezone_set('UTC'); // set default timezone
 
-        $eventManager->getSharedManager()->attach(__NAMESPACE__, 'dispatch', function ($e) {
+        $eventManager->getSharedManager()->attach(__NAMESPACE__, 'dispatch', function($e) {
             $e->getTarget()->layout('layout/layout');
         });
     }
@@ -42,6 +40,26 @@ class Module
                 'namespaces' => array(
                     __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
                 ),
+            ),
+        );
+    }
+
+    public function getServiceConfig()
+    {
+        return array(
+            'factories' => array(
+                'mail.transport' => function (ServiceManager $serviceManager) {
+
+                    $config = $serviceManager->get('Config');
+                    $transportConfig = $config['mail']['transport'];
+                    $transport = new $transportConfig['class']();
+                    if($transportConfig['options']){ # transport has options
+                        $options = new $transportConfig['options']['class']($transportConfig['options']['options']);
+                        $transport->setOptions($options);
+                    }
+                    $transport->mailOptions = $config['mail']['options'];
+                    return $transport;
+                },
             ),
         );
     }

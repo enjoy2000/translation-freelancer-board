@@ -8,10 +8,10 @@
 
 namespace User\Controller;
 
-use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+
+use Application\Controller\AbstractActionController;
 use User\Form\LoginForm;
-use \User\Entity\User;
 
 class LoginController extends AbstractActionController
 {
@@ -23,11 +23,6 @@ class LoginController extends AbstractActionController
         $form = new LoginForm();
         return $form;
     }
-    public function getEntityManager(){
-        return $entityManager = $this
-            ->getServiceLocator()
-            ->get('Doctrine\ORM\EntityManager');
-    }
 
     public function indexAction(){
         $form = $this->getForm();
@@ -36,7 +31,7 @@ class LoginController extends AbstractActionController
             $form->setData($request->getPost());
             if($form->isValid()){
                 if($form->validate($this->getEntityManager())){
-                    return $this->redirect()->toUrl('/user/updateInfo');
+                    return $this->redirect()->toUrl('/admin/dashboard');
                 }else{
                     $translator = $this->getServiceLocator()->get('translator');
                     $this->flashMessenger()->addErrorMessage($translator->translate('Wrong username and password'));

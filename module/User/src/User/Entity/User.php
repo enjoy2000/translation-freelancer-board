@@ -14,6 +14,7 @@ use Zend\InputFilter\InputFilterAwareInterface;   // <-- Add this import
 use Zend\InputFilter\InputFilterInterface;        // <-- Add this import
 use Zend\Session\Container;
 use User\Model\Password;
+use Common\Mail;
 
 /** @ORM\Entity */
 class User implements InputFilterAwareInterface{
@@ -256,5 +257,24 @@ class User implements InputFilterAwareInterface{
 
         return $mail;
     }
+
+    public function sendConfirmationEmail($controller){
+        $data = array();
+        // TODO: initial data for email template
+        Mail::sendMail($controller, "register-confirmation", $this->email, $data);
+    }
+
+    public function sendWelcomeEmail($controller){
+        $data = array();
+        // TODO: initial data for email template
+        Mail::sendMail($controller, "register-welcome", $this->email, $data);
+    }
+
+    public function sendForgotPasswordEmail($controller){
+        $data = array();
+        // TODO: initial data for email template
+        Mail::sendMail($controller, "user-forgot-password", $this->email, $data);
+    }
+
 }
 
