@@ -23,6 +23,11 @@ class LoginController extends AbstractActionController
         $form = new LoginForm();
         return $form;
     }
+    public function getEntityManager(){
+        return $entityManager = $this
+            ->getServiceLocator()
+            ->get('Doctrine\ORM\EntityManager');
+    }
 
     public function indexAction(){
         $form = $this->getForm();
@@ -30,7 +35,7 @@ class LoginController extends AbstractActionController
         if($request->isPost()){
             $form->setData($request->getPost());
             if($form->isValid()){
-                if($form->validate($this)){
+                if($form->validate($this->getEntityManager())){
                     return $this->redirect()->toUrl('/user/updateInfo');
                 }else{
                     $translator = $this->getServiceLocator()->get('translator');

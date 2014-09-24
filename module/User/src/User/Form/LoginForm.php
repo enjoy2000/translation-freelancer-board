@@ -68,21 +68,16 @@ class LoginForm extends Form
         return $inputFilter;
     }
 
-    public function validate($controller, $email, $password){
-        $user = $this->getObject();
+    public function validate($entityManager){
+        $data = $this->getData();
+        $email = $data['email'];
+        $password = $data['password'];
 
-        $entityManager = $controller
-            ->getServiceLocator()
-            ->get('Doctrine\ORM\EntityManager');
+        $user = $entityManager->getRepository('\User\Entity\User')->findOneBy(array('email' => $email));
 
-        $userExist = $entityManager->getRepository('\User\Entity\User')->findOneBy(array('email' => $email));
-
-
-        $passClass = new \User\Model\Password();
-        if($userExist && $passClass->validate_password($password, $userExist->getPasswordHash())){
+        if($user && $user->checkPassword($password)){
             // Set logged data session to user session container
-            $sessionContainer = new Container('user');
-            $sessionContainer->user_id = $userExist->getId();
+            $user->authenticate();
             return True;
         }else{
             return False;
