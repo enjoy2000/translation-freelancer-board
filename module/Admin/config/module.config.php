@@ -2,7 +2,7 @@
 /**
  * Zend Framework (http://framework.zend.com/)
  *
- * @link       for the canonical source repository
+ * @link      http://github.com/zendframework/ZendSkeletonAdmin for the canonical source repository
  * @copyright Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
@@ -10,26 +10,16 @@
 return array(
     'router' => array(
         'routes' => array(
-            'userhome' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
-                'options' => array(
-                    'route'    => '/',
-                    'defaults' => array(
-                        'controller' => 'User\Controller\Index',
-                        'action'     => 'index',
-                    ),
-                ),
-            ),
             // The following is a route to simplify getting started creating
             // new controllers and actions without needing to create a new
             // module. Simply drop new controllers in, and you can access them
-            // using the path /user/:controller/:action
-            'user' => array(
+            // using the path /admin/:controller/:action
+            'admin' => array(
                 'type'    => 'Literal',
                 'options' => array(
-                    'route'    => '/user',
+                    'route'    => '/admin',
                     'defaults' => array(
-                        '__NAMESPACE__' => 'User\Controller',
+                        '__NAMESPACE__' => 'Admin\Controller',
                         'controller'    => 'Index',
                         'action'        => 'index',
                     ),
@@ -40,6 +30,32 @@ return array(
                         'type'    => 'Segment',
                         'options' => array(
                             'route'    => '/[:controller[/[:action[/]]]]',
+                            'constraints' => array(
+                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
+                            'defaults' => array(
+                            ),
+                        ),
+                    ),
+                ),
+            ),
+            'email' => array(
+                'type'    => 'Literal',
+                'options' => array(
+                    'route'    => '/admin/email',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Admin\Controller',
+                        'controller'    => 'Email',
+                        'action'        => 'index',
+                    ),
+                ),
+                'may_terminate' => true,
+                'child_routes' => array(
+                    'default' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/[:action]',
                             'constraints' => array(
                                 'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
                                 'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
@@ -73,11 +89,7 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'User\Controller\Index' => 'User\Controller\IndexController',
-            'User\Controller\Register' => 'User\Controller\RegisterController',
-            'User\Controller\Login' => 'User\Controller\LoginController',
-            'User\Controller\Logout' => 'User\Controller\LogoutController',
-            'User\Controller\ForgotPassword' => 'User\Controller\ForgotPasswordController',
+            'Admin\Controller\Email' => 'Admin\Controller\EmailController',
         ),
     ),
     'view_manager' => array(
@@ -87,18 +99,13 @@ return array(
         'not_found_template'       => 'error/404',
         'exception_template'       => 'error/index',
         'template_map' => array(
-            'layout/layout' => __DIR__ . '/../../Application/view/layout/layout.phtml',
-            'user/index/index' => __DIR__ . '/../view/user/index/index.phtml',
-            'user/register/index' => __DIR__ . '/../view/user/register/index.phtml',
-            'user/register/freelancer' => __DIR__ . '/../view/user/register/form.phtml',
-            'user/register/employer' => __DIR__ . '/../view/user/register/form.phtml',
-            'user/register/confirm' => __DIR__ . '/../view/user/register/confirm.phtml',
-            'user/login/index' => __DIR__ . '/../view/user/login/form.phtml',
-            'user/forgot-password/index' => __DIR__ . '/../view/user/forgotPassword/form.phtml',
+            'admin/email/index' => __DIR__ . '/../view/admin/email/index.phtml',
+            'admin/email/create' => __DIR__ . '/../view/admin/email/create.phtml',
+            'admin/email/new' => __DIR__ . '/../view/admin/email/new.phtml',
             'error/404'               => __DIR__ . '/../../Application/view/error/404.phtml',
             'error/index'             => __DIR__ . '/../../Application/view/error/index.phtml',
         ),
-        'layout' => 'layout/layout',
+        'layout' => 'layout/admin',
         'template_path_stack' => array(
             __DIR__ . '/../view',
         ),
@@ -114,14 +121,14 @@ return array(
     // Doctrine
     'doctrine' => array(
         'driver' => array(
-            'user_entities' => array(
+            'admin_entities' => array(
                 'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
                 'cache' => 'array',
-                'paths' => array(__DIR__ . '/../src/User/Entity')
+                'paths' => array(__DIR__ . '/../src/Admin/Entity')
             ),
             'orm_default' => array(
                 'drivers' => array(
-                    'User\Entity' => 'user_entities'
+                    'Admin\Entity' => 'admin_entities'
                 )
             ))),
 );

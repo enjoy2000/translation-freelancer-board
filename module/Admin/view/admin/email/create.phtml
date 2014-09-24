@@ -1,0 +1,116 @@
+<?php echo $this->headTitle($this->translate('Create Email Template')) ?>
+<?php
+$this->headLink()->appendStylesheet($this->basePath() . '/css/plugins/summernote/summernote.css')
+    ->appendStylesheet($this->basePath() . '/css/plugins/summernote/summernote-bs3.css');
+
+$this->headScript()->appendFile($this->basePath() . '/js/inspinia.js');
+$this->headScript()->appendFile($this->basePath() . '/js/plugins/pace/pace.min.js');
+$this->headScript()->appendFile($this->basePath() . '/js/plugins/iCheck/icheck.min.js');
+$this->headScript()->appendFile($this->basePath() . '/js/plugins/summernote/summernote.min.js');
+
+$this->inlineScript()->appendScript("
+$(document).ready(function(){
+    $('.i-checks').iCheck({
+        checkboxClass: 'icheckbox_square-green',
+        radioClass: 'iradio_square-green',
+    });
+
+
+    $('.summernote').summernote({
+        /*onImageUpload: function(files, editor, editable) {
+            console.log('image upload:', files, editor, editable);
+        },*/
+    });
+
+    // Load template after select template type and languages
+    $('select[name=type], input[name=language]').on('change', function(){
+        var type = $('select[name=type]').val();
+        var language = $('input[name=language]:checked').val();
+        if(type && language){
+            $.ajax({
+                url: '/admin/email/loadTemplate',
+                type: 'post',
+                dataType: 'json',
+                data: 'type=' + type + '&language=' + language,
+                success: function(response){
+                    if(response.result){
+                        $('input[name=subject]').val(response.subject);
+                        $('.summernote').code(response.content);
+                    }else{
+                        $('input[name=subject]').val('');
+                        $('.summernote').code('');
+                    }
+                }
+            });
+        }
+    });
+
+});
+var edit = function() {
+    $('.click2edit').summernote({focus: true});
+};
+var save = function() {
+    var aHTML = $('.click2edit').code(); //save HTML If you need(aHTML: array).
+    $('.click2edit').destroy();
+};
+");
+?>
+<div class="col-lg-12 fadeInRight">
+    <div class="mail-box-header">
+        <h2>
+            <?php echo $this->translate('Create Email Template') ?>
+        </h2>
+    </div>
+    <div class="mail-box">
+        <form class="form-horizontal" method="post" action="">
+
+            <div class="mail-body">
+
+                <?php
+                foreach ($this->form->getElements() as $element): ?>
+                    <?php
+                    $messages = $element->getMessages()
+                    ?>
+                    <div class="form-group<?php if ($messages) echo " has-error" ?>">
+                        <?php if ($messages): ?>
+                            <?php foreach ($messages as $message): ?>
+                                <div class="alert-danger"><?php echo $message; ?></div>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                        <!-- Render nice radio buttons -->
+                        <?php if($element->getName() == 'language'): ?>
+                        <label class="col-sm-2 control-label"><?php echo $this->translate('Choose template language') ?></label>
+                        <div class="col-sm-10" data-toggle="buttons">
+                            <label class="btn btn-outline btn-primary btn-sm">
+                                <input type="radio" name="language" value="0"> <?php echo $this->translate('English') ?>
+                            </label>
+                            &nbsp;
+                            <label class="btn btn-outline btn-primary btn-sm">
+                                <input type="radio" name="language" value="1"> <?php echo $this->translate('Chinese') ?>
+                            </label>
+                        </div>
+                        <?php else: ?>
+                        <label class="col-sm-2 control-label"><?php echo $element->getLabel() ?></label>
+
+                        <div class="col-sm-10">
+                            <?php echo $this->formElement($element); ?>
+                        </div>
+                        <?php endif; ?>
+                    </div>
+                <?php endforeach; ?>
+
+            </div>
+            <div class="mail-body text-right tooltip-demo">
+                <button type="submit" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top"
+                        title="<?php echo $this->translate('Save') ?>">
+                    <i class="fa fa-save"></i> <?php echo $this->translate('Save') ?>
+                </button>
+                <button type="reset" class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top"
+                        title="<?php echo $this->translate('Discard') ?>">
+                    <i class="fa fa-times"></i> <?php echo $this->translate('Discard') ?>
+                </button>
+            </div>
+        </form>
+        <div class="clearfix"></div>
+    </div>
+</div>

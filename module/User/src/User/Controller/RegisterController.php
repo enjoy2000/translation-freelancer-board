@@ -35,28 +35,32 @@ class RegisterController extends AbstractActionController
         return $form;
     }
 
+    public function getEntityManager(){
+        return $entityManager = $this
+                                    ->getServiceLocator()
+                                    ->get('Doctrine\ORM\EntityManager');
+    }
+
     public function process($userType){
         $form = $this->getForm();
         $request = $this->getRequest();
         if($request->isPost()){
-            $translator = $this->getServiceLocator()->get('translator');
-            $entityManager = $this
-                                ->getServiceLocator()
-                                ->get('Doctrine\ORM\EntityManager');
-            $userExist = $entityManager->getRepository('User\Entity\User')->findOneBy(array('email'=>$request->getPost('email')));
-            if($userExist){
-                $this->flashMessenger()->addErrorMessage($translator->translate('This email has been registered already.'));
-                return new ViewModel(array(
-                        "u" => $userType,
-                        "form"=> $form,
-                    )
-                );
-            }
             $form->setData($request->getPost());
             if($form->isValid() && $request->getPost('agree') == 1){
-                $form->save($this, $userType);
+                $translator = $this->getServiceLocator()->get('translator');
+                $entityManager = $this->getEntityManager();
+                $userExist = $entityManager
+                    ->getRepository('User\Entity\User')
+                    ->findOneBy(array(
+                        'email'=>$request->getPost('email')
+                    ));
+                if($userExist){
+                    $this->flashMessenger()->addErrorMessage($translator->translate('This email has been registered already.'));
+                } else {
+                    $form->save($entityManager, $userType);
+                    return $this->redirect()->toUrl('/user/register/confirm?email=' . $request->getPost('email'));
+                }
 
-                return $this->redirect()->toUrl('/user/register/confirm', array('email' => $request->getPost('email')));
             }
         }
         return new ViewModel(array(
@@ -67,6 +71,30 @@ class RegisterController extends AbstractActionController
     }
 
     public function confirmAction(){
-        return new ViewModel(array('email' => $this->getRequest()->getParam('email')));
+        $request = $this->getRequest();
+        $email = $request->getQuery('email');
+        $token = $request->getQuery('token');
+
+        if(!$email){
+            return $this->redirect()->toUrl('/user/login');
+        }
+
+        if($token){
+            $entityManager = $this->getEntityManager();
+            $user = $entityManager->getRepository('User\Entity\User')
+                                    ->findOneBy(array(
+                                        'email'=>$request->getPost('email'))
+                                    );
+            if($user && $user->activate($token)){
+                $user->authenticate();
+                // TODO: send welcome email
+                return $this->redirect()->toUrl("/user/updateInfo");
+            }
+        }
+
+        return new ViewModel(array(
+            'email' => $email
+            )
+        );
     }
 }

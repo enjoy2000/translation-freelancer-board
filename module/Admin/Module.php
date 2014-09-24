@@ -2,12 +2,12 @@
 /**
  * Zend Framework (http://framework.zend.com/)
  *
- * @link       for the canonical source repository
+ * @link      http://github.com/zendframework/ZendSkeletonAdmin for the canonical source repository
  * @copyright Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
-namespace User;
+namespace Admin;
 
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
@@ -17,17 +17,11 @@ use Zend\Mail\Transport\SmtpOptions;
 
 class Module
 {
-
     public function onBootstrap(MvcEvent $e)
     {
         $eventManager        = $e->getApplication()->getEventManager();
         $moduleRouteListener = new ModuleRouteListener();
         $moduleRouteListener->attach($eventManager);
-        date_default_timezone_set('UTC'); // set default timezone
-
-        $eventManager->getSharedManager()->attach(__NAMESPACE__, 'dispatch', function($e) {
-            $e->getTarget()->layout('layout/layout');
-        });
     }
 
     public function getConfig()

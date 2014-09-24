@@ -68,13 +68,9 @@ class UserForm extends Form
         ));
     }
 
-    public function save($controller, $userType){
+    public function save($entityManager, $userType){
         $user = $this->getObject();
         $data = array();
-
-        $objectManager = $controller
-            ->getServiceLocator()
-            ->get('Doctrine\ORM\EntityManager');
 
         $data['createdTime'] = new \DateTime('now', new \DateTimeZone('America/New_York'));
         $data['lastLogin'] = new \DateTime('now', new \DateTimeZone('America/New_York'));
@@ -82,15 +78,22 @@ class UserForm extends Form
         $user->setData($data);
 
         if($userType == 'freelancer'){
-            $user->setGroup($objectManager->getReference('\User\Entity\Group', 1));
+            $user->setGroup($entityManager->getReference('\User\Entity\Group', 1));
         }else if($userType == 'employer'){
-            $user->setGroup($objectManager->getReference('\User\Entity\Group', 2));
+            $user->setGroup($entityManager->getReference('\User\Entity\Group', 2));
         }
 
         // Create password hash
         $user->encodePassword();
+        $user->generateToken();
 
-        $objectManager->persist($user);
-        $objectManager->flush();
+        $entityManager->persist($user);
+        $entityManager->flush();
+
+        $this->sendConfirmationEmail($user);
+    }
+
+    public function sendConfirmationEmail($user){
+        // TODO: Send confirmation email
     }
 }
