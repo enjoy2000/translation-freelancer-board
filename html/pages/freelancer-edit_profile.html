@@ -11,8 +11,8 @@
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" media="screen" />
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
-    <link href="css/plugins/steps/jquery.steps.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/plugins/multiselect/bootstrap-multiselect.css" type="text/css"/>
+    <link href="css/plugins/summernote/summernote.css" rel="stylesheet">
+    <link href="css/plugins/summernote/summernote-bs3.css" rel="stylesheet">
     <link href="css/animate.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
@@ -28,6 +28,9 @@
         }
         .float-e-margins .btn {
             margin-bottom: 0px;
+        }
+        .note-editor {
+            height: 150px;
         }
     </style>
 
@@ -319,7 +322,6 @@
         </nav>
         </div>
 
-<!-- remove animated will solve the modal-form's issue       <div class="wrapper wrapper-content animated fadeInRight"> -->
         <div class="wrapper wrapper-content animated fadeInRight">
 
             <div class="row">
@@ -578,6 +580,111 @@
                                 </div>
                             </div>
 
+                            <div class="panel panel-primary">
+                                <div class="panel-body">
+                                    <h4><i class="fa fa-bank"></i> Payment Information</h4>  
+                                    <div class="hr-line-dashed"></div>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label>PayPal </label>
+                                                <input id="paypal" name="paypal" value="registered@email.com" type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label>Alipay </label>
+                                                <input id="alipay" name="alipay" type="text" value="registered@email.com" class="form-control required">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="hr-line-dashed"></div>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label>Bank Account </label>
+                                                <input id="bank_name" name="bank_name" value="" type="text" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Bank Address </label>
+                                                <input id="bank_address" name="bank_address" value="" type="text" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Bank City </label>
+                                                <input id="bank_city" name="bank_city" value="" type="text" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Bank Country </label>
+                                                <input id="bank_country" name="bank_country" value="" type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label>Beneficiar Name </label>
+                                                <input id="beneficiar" name="beneficiar" value="" type="text" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Account No./IBAN </label>
+                                                <input id="account_no" name="account_no" value="" type="text" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Swift Code </label>
+                                                <input id="swift" name="swift" value="" type="text" class="form-control">
+                                            </div>
+                                            <div class="form-group">
+                                                <label>ABA Routing Number </label>
+                                                <input id="aba" name="aba" value="" type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel panel-primary">
+                                <div class="panel-body">
+                                    <h4><i class="fa fa-file-text"></i> Resume </h4>  
+                                    <div class="hr-line-dashed"></div>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="form-group">
+                                                <label>CV upload </label>
+                                                <table class="table">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="project-title">
+                                                                <i class="fa fa-file-text"></i>&nbsp; <a href="#">John.docx</a> &nbsp;&nbsp;<a href="#"><i class="fa fa-times-circle"></i></a>
+                                                            </td>
+                                                            <td class="project-title" width="10%">
+                                                                <button type="button" class="btn btn-w-m btn-white btn-xs"><i class="fa fa-cloud-upload"> Upload</i></button>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+                                            <div class="form-group">
+                                                <label>Working Experiences </label>
+                                                <div class="summernote">
+
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+                                            <div class="form-group">
+                                                <label>Education </label>
+                                                <div class="summernote">
+
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+                                            <div class="form-group">
+                                                <label>Recommended </label>
+                                                <input id="recommend" name="recommend" value="" placeholder="Name/Email/Phone   " type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -749,16 +856,6 @@
             </div>
         </div>
 
-
-<select class="multiselect" multiple="multiple">
-    <option value="cheese">Cheese</option>
-    <option value="tomatoes">Tomatoes</option>
-    <option value="mozarella">Mozzarella</option>
-    <option value="mushrooms">Mushrooms</option>
-    <option value="pepperoni">Pepperoni</option>
-    <option value="onions">Onions</option>
-</select>
-
         <div class="footer">
             <div class="pull-right">
                 10GB of <strong>250GB</strong> Free.
@@ -784,101 +881,25 @@
     <script src="js/inspinia.js"></script>
     <script src="js/plugins/pace/pace.min.js"></script>
 
-    <!-- Steps -->
-    <script src="js/plugins/staps/jquery.steps.min.js"></script>
-
     <!-- Jquery Validate -->
     <script src="js/plugins/validate/jquery.validate.min.js"></script>
 
-    <!-- Bootstrap Multiselect -->
-    <script type="text/javascript" src="js/plugins/multiselect/bootstrap-multiselect.js"></script>
-
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('.multiselect').multiselect();
-        });
-    </script>
+    <!-- SUMMERNOTE -->
+    <script src="js/plugins/summernote/summernote.min.js"></script>
 
     <script>
         $(document).ready(function(){
-            $("#form").steps({
-                bodyTag: "fieldset",
-                onStepChanging: function (event, currentIndex, newIndex)
-                {
-                    // Always allow going backward even if the current step contains invalid fields!
-                    if (currentIndex > newIndex)
-                    {
-                        return true;
-                    }
+            $('.summernote').summernote();
+        });
+        var edit = function() {
+            $('.click2edit').summernote({focus: true});
+        };
+        var save = function() {
+            var aHTML = $('.click2edit').code(); //save HTML If you need(aHTML: array).
+            $('.click2edit').destroy();
+        };
 
-                    // Forbid suppressing "Warning" step if the user is to young
-                    if (newIndex === 3 && Number($("#age").val()) < 18)
-                    {
-                        return false;
-                    }
-
-                    var form = $(this);
-
-                    // Clean up if user went backward before
-                    if (currentIndex < newIndex)
-                    {
-                        // To remove error styles
-                        $(".body:eq(" + newIndex + ") label.error", form).remove();
-                        $(".body:eq(" + newIndex + ") .error", form).removeClass("error");
-                    }
-
-                    // Disable validation on fields that are disabled or hidden.
-                    form.validate().settings.ignore = ":disabled,:hidden";
-
-                    // Start validation; Prevent going forward if false
-                    return form.valid();
-                },
-                onStepChanged: function (event, currentIndex, priorIndex)
-                {
-                    // Suppress (skip) "Warning" step if the user is old enough.
-                    if (currentIndex === 2 && Number($("#age").val()) >= 18)
-                    {
-                        $(this).steps("next");
-                    }
-
-                    // Suppress (skip) "Warning" step if the user is old enough and wants to the previous step.
-                    if (currentIndex === 2 && priorIndex === 3)
-                    {
-                        $(this).steps("previous");
-                    }
-                },
-                onFinishing: function (event, currentIndex)
-                {
-                    var form = $(this);
-
-                    // Disable validation on fields that are disabled.
-                    // At this point it's recommended to do an overall check (mean ignoring only disabled fields)
-                    form.validate().settings.ignore = ":disabled";
-
-                    // Start validation; Prevent form submission if false
-                    return form.valid();
-                },
-                onFinished: function (event, currentIndex)
-                {
-                    var form = $(this);
-
-                    // Submit form input
-                    form.submit();
-                }
-            }).validate({
-                        errorPlacement: function (error, element)
-                        {
-                            element.before(error);
-                        },
-                        rules: {
-                            confirm: {
-                                equalTo: "#password"
-                            }
-                        }
-                    });
-       });
     </script>
-
 </body>
 
 </html>
