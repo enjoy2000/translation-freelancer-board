@@ -9,9 +9,10 @@
 
 namespace User\Controller;
 
-use User\Entity\User;
-use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+
+use Application\Controller\AbstractActionController;
+use User\Entity\User;
 use User\Model\UserSession;
 use User\Form\ForgotPasswordForm;
 

@@ -8,10 +8,11 @@
 
 namespace User\Controller;
 
-use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+
+use Application\Controller\AbstractActionController;
 use User\Form\UserForm;
-use \User\Entity\User;
+use User\Entity\User;
 
 class RegisterController extends AbstractActionController
 {
@@ -33,12 +34,6 @@ class RegisterController extends AbstractActionController
         $user = new User();
         $form->bind($user);
         return $form;
-    }
-
-    public function getEntityManager(){
-        return $entityManager = $this
-                                    ->getServiceLocator()
-                                    ->get('Doctrine\ORM\EntityManager');
     }
 
     public function process($userType){

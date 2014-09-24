@@ -14,6 +14,7 @@ use Zend\InputFilter\InputFilterAwareInterface;   // <-- Add this import
 use Zend\InputFilter\InputFilterInterface;        // <-- Add this import
 use Zend\Session\Container;
 use User\Model\Password;
+use Common\Mail;
 
 /** @ORM\Entity */
 class User implements InputFilterAwareInterface{
@@ -255,6 +256,11 @@ class User implements InputFilterAwareInterface{
         $mail->addBody($content);
 
         return $mail;
+    }
+
+    public function sendConfirmationEmail($controller){
+        $data = array();
+        Mail::sendMail($controller, "register-confirmation", $this->email, $data);
     }
 }
 

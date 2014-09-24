@@ -9,6 +9,8 @@ namespace Admin\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Zend\Mail\Message;
+use Zend\Mime\Message as MimeMessage;
+use Zend\Mime\Part as MimePart;
 
 /** @ORM\Entity */
 
@@ -73,6 +75,67 @@ class EmailTemplates{
      */
     public function getContent(){
         return $this->content;
+    }
+
+    protected $mailContent = null;
+
+    /**
+     * Format messages by data from variables
+     * @param $variables
+     */
+    public function format($variables){
+        $variables = $this->wrap($variables);
+        $search = array_keys($variables);
+        $replace = array_values($variables);
+        $this->mailContent = str_replace($search, $replace, $this->content);
+    }
+
+    /**
+     * Wrap array to {{key}} => value
+     * @param $variables
+     * @return array
+     */
+    public function wrap($variables){
+        $newArray = array();
+        foreach($variables as $key => $value){
+            $key = '{' . $key . '}';
+            if(!is_scalar($value)){
+                $value = $this->wrap($value);
+            }
+            $newArray[$key] = $value;
+        }
+        return $newArray;
+    }
+
+    /**
+     * @param \Application\Controller\AbstractActionController $controller
+     * @param $sendTo
+     * @param $variables
+     */
+    public function send($controller, $sendTo, $variables){
+        $this->format($variables);
+        $transport = $controller->getServiceLocator()->get('mail.transport');
+        $message = $this->getMailMessage();
+
+        $message->addTo($sendTo);
+        $message->addFrom($transport->mailOptions['from']);
+
+        $transport->send($message);
+    }
+
+    public function getMailMessage(){
+
+        $html = new MimePart($this->mailContent);
+        $html->type = "text/html";
+
+        $body = new MimeMessage();
+        $body->setParts(array($html));
+
+        $message = new Message();
+        $message->setBody($body);
+        $message->setSubject($this->subject);
+
+        return $message;
     }
 }
 
