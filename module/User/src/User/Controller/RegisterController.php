@@ -86,7 +86,7 @@ class RegisterController extends AbstractActionController
             if($user && $user->activate($token, $entityManager)){
                 $user->authenticate();
                 $user->sendWelcomeEmail($this);
-                return $this->redirect()->toUrl("/user/updateInfo");
+                return $this->redirect()->toUrl("/admin/user/updateInfo");
             }
         }
 
