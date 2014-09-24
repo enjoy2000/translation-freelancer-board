@@ -11,4 +11,11 @@ namespace Admin\Model;
 
 class Helper {
 
+    /**
+     * @param $time
+     * @return bool|string
+     */
+    public function formatDate($time){
+        return $time->format('d.m.Y');
+    }
 } 

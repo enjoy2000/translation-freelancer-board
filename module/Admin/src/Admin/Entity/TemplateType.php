@@ -9,6 +9,7 @@
 namespace Admin\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Admin\Model\Helper;
 
 /** @ORM\Entity */
 class TemplateType {
@@ -34,6 +35,12 @@ class TemplateType {
      */
     protected $code;
 
+    /** @ORM\Column(type="datetime", nullable=true) */
+    protected $updateTime;
+
+    /** @ORM\Column(type="datetime") */
+    protected $createdTime;
+
     /**
      * Get id
      * @return integer
@@ -51,17 +58,33 @@ class TemplateType {
     }
 
     /**
+     * Get type name
+     * @return string
+     */
+    public function getDescription(){
+        return $this->description;
+    }
+
+    /**
      * Set data to object
      * @param array $arr
      * @return $this
      */
     public function setData(array $arr){
-        $keys = array('name', 'description');
+        $keys = array('name', 'description','createdTime', 'updateTime');
         foreach($keys as $key){
             if(isset($arr[$key])){
                 $this->$key = $arr[$key];
             }
         }
         return $this;
+    }
+
+    public function getTouchTime(){
+        return $this->updateTime ? Helper::formatDate($this->updateTime) : Helper::formatDate($this->createdTime);
+    }
+
+    public function getEditUrl(){
+        //TODO: Add edit and delete function
     }
 }

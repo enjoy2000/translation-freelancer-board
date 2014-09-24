@@ -75,8 +75,8 @@ class UserForm extends Form
         $user = $this->getObject();
         $data = array();
 
-        $data['createdTime'] = new \DateTime('now', new \DateTimeZone('America/New_York'));
-        $data['lastLogin'] = new \DateTime('now', new \DateTimeZone('America/New_York'));
+        $data['createdTime'] = new \DateTime('now');
+        $data['lastLogin'] = new \DateTime('now');
 
         $user->setData($data);
 

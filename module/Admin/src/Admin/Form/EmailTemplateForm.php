@@ -132,6 +132,7 @@ class EmailTemplateForm extends Form {
             $template->setTemplateType($type);
             $entityManager->merge($template);
         }else{
+            $data['createdTime'] = new \DateTime('now');
             $newTemplate = new EmailTemplates();
             $newTemplate->setData($data);
             $newTemplate->setTemplateType($type);

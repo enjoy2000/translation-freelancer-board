@@ -69,6 +69,7 @@ class TemplateTypeForm extends Form {
 
     public function save(\Doctrine\ORM\EntityManager $entityManager){
         $data = $this->getData();
+        $data['createdTime'] = new \DateTime('now');
         $templateType = new TemplateType();
         $templateType->setData($data);
         $entityManager->persist($templateType);

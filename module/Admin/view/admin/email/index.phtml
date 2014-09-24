@@ -1,0 +1,41 @@
+<div class="wrapper wrapper-content animated fadeInUp">
+
+    <div class="ibox">
+        <div class="ibox-title">
+            <h5><?php echo $this->translate('Email Templates') ?></h5>
+            <div class="ibox-tools">
+                <a href="" class="btn btn-primary btn-xs"><?php echo $this->translate('Create new email template') ?></a>
+            </div>
+        </div>
+        <div class="ibox-content">
+
+            <div class="project-list">
+
+                <table class="table table-hover">
+                    <tbody>
+                    <?php foreach($this->templates as $template): ?>
+                        <tr>
+                            <td class="project-title">
+                                <a href="project_detail.html"><?php echo $template->getName() ?></a>
+                                <br/>
+                                <small><?php echo $this->translate('Create/update'). ' ' .$template->getTouchTime() ?></small>
+                            </td>
+                            <td class="project-completion">
+                                <small><?php echo $template->getDescription() ?></small>
+                            </td>
+                            <td class="project-actions">
+                                <a href="#" class="btn btn-white btn-sm">
+                                    <i class="fa fa-pencil"></i> <?php echo $this->translate('Edit') ?>
+                                </a>
+                                <a href="#" class="btn btn-danger btn-sm btn-delete">
+                                    <i class="fa fa-remove"></i> <?php echo $this->translate('Delete') ?>
+                                </a>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

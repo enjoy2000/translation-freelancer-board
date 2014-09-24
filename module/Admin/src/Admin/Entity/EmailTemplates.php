@@ -52,7 +52,7 @@ class EmailTemplates{
      * @return $this
      */
     public function setData(array $arr){
-        $keys = array('content', 'subject', 'language');
+        $keys = array('content', 'subject', 'language', 'createdTime', 'updateTime');
         foreach($keys as $key){
             if(isset($arr[$key])){
                 $this->$key = $arr[$key];
