@@ -31,7 +31,7 @@ class LoginController extends AbstractActionController
             $form->setData($request->getPost());
             if($form->isValid()){
                 if($form->validate($this->getEntityManager())){
-                    return $this->redirect()->toUrl('/user/updateInfo');
+                    return $this->redirect()->toUrl('/admin/dashboard');
                 }else{
                     $translator = $this->getServiceLocator()->get('translator');
                     $this->flashMessenger()->addErrorMessage($translator->translate('Wrong username and password'));
