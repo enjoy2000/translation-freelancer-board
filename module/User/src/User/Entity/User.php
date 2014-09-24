@@ -210,6 +210,17 @@ class User implements InputFilterAwareInterface{
         return false;
     }
 
+    public function reset($token, $newPassword, $entityManager){
+        if($this->token === $token && strlen($token) == 32){
+            $this->token = '';
+            $this->encodePassword($newPassword);
+            $entityManager->persist($this);
+            $entityManager->flush();
+            return true;
+        }
+        return false;
+    }
+
     public function generateToken(){
         $tokenLength = 16;
         $token = time();
@@ -261,19 +272,24 @@ class User implements InputFilterAwareInterface{
     public function sendConfirmationEmail($controller){
         $data = array();
         // TODO: initial data for email template
-        Mail::sendMail($controller, "register-confirmation", $this->email, $data);
+        // Mail::sendMail($controller, "register-confirmation", $this->email, $data);
     }
 
     public function sendWelcomeEmail($controller){
         $data = array();
         // TODO: initial data for email template
-        Mail::sendMail($controller, "register-welcome", $this->email, $data);
+        // Mail::sendMail($controller, "register-welcome", $this->email, $data);
     }
 
     public function sendForgotPasswordEmail($controller){
-        $data = array();
         // TODO: initial data for email template
-        Mail::sendMail($controller, "user-forgot-password", $this->email, $data);
+        $forgotLink = $controller->getBaseUrl() . '/user/forgotPassword/reset?token=' . $this->token;
+        $data = array(
+            'firstName' => $this->firstName,
+            'lastName' => $this->lastName,
+            'link' => $forgotLink,
+        );
+        Mail::sendMail($controller, "USER_RESET", $this->email, $data);
     }
 
 }

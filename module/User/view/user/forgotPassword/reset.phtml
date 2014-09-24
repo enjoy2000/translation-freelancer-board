@@ -1,0 +1,22 @@
+<?php $this->headTitle($this->translate('Reset your password')) ?>
+<div class="middle-box text-center loginscreen  animated fadeInDown">
+    <h3><?php echo $this->translate('Reset your password') ?></h3>
+
+    <form class="m-t" method="post" role="form" action="">
+        <?php
+        foreach ($this->form->getElements() as $element): ?>
+            <?php
+            $messages = $element->getMessages()
+            ?>
+            <div class="form-group<?php if ($messages) echo " has-error" ?>">
+                <?php if ($messages): ?>
+                    <?php foreach ($messages as $message): ?>
+                        <div class="alert-danger"><?php echo $message; ?></div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+                <?php echo $this->formInput($element); ?>
+            </div>
+        <?php endforeach; ?>
+        <button type="submit" class="btn btn-primary block full-width m-b"><?php echo $this->translate('Reset') ?></button>
+    </form>
+</div>

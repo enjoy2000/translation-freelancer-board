@@ -23,7 +23,8 @@ class UserSession {
         return ($this->user_id > 0);
     }
 
-    public function getUser(){
-
+    public function getUser($entityManager){
+        $user = $entityManager->getRepository('User\Entity\User')->findOneBy(array('id'=>$this->user_id));
+        return $user;
     }
 } 

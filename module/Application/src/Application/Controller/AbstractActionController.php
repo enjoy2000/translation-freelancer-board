@@ -27,4 +27,18 @@ class AbstractActionController extends ZendAbstractActionController{
     public function getUser($criteria){
         return $this->getEntityManager()->getRepository('\User\Entity\User')->findOneBy($criteria);
     }
+
+    /**
+     * Get base url
+     * @return string
+     */
+    public function getBaseUrl(){
+        $uri = $this->getRequest()->getUri();
+        $base = sprintf('%s://%s', $uri->getScheme(), $uri->getHost());
+        return $base;
+    }
+
+    public function getTranslator(){
+        return $this->getServiceLocator()->get('translator');
+    }
 }

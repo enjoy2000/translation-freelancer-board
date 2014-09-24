@@ -95,6 +95,7 @@ return array(
             'user/register/confirm' => __DIR__ . '/../view/user/register/confirm.phtml',
             'user/login/index' => __DIR__ . '/../view/user/login/form.phtml',
             'user/forgot-password/index' => __DIR__ . '/../view/user/forgotPassword/form.phtml',
+            'user/forgot-password/reset' => __DIR__ . '/../view/user/forgotPassword/reset.phtml',
             'error/404'               => __DIR__ . '/../../Application/view/error/404.phtml',
             'error/index'             => __DIR__ . '/../../Application/view/error/index.phtml',
         ),

@@ -98,7 +98,7 @@ class EmailTemplates{
     public function wrap($variables){
         $newArray = array();
         foreach($variables as $key => $value){
-            $key = '{' . $key . '}';
+            $key = '{{' . $key . '}}';
             if(!is_scalar($value)){
                 $value = $this->wrap($value);
             }

@@ -18,11 +18,20 @@ class Mail{
     static public function sendMail($controller, $type, $sendTo, $variables){
         $entityManager = $controller->getEntityManager();
         /**
+         * @var $templateType \Admin\Entity\TemplateType
+         */
+        $templateType = $entityManager->getRepository('Admin\Entity\TemplateType')->findOneBy(
+            array(
+                'code' => $type,
+            )
+        );
+        /**
          * @var $emailTemplate \Admin\Entity\EmailTemplates
          */
         $emailTemplate = $entityManager->getRepository('Admin\Entity\EmailTemplates')->findOneBy(
             array(
-                'type' => $type,
+                'type' => $templateType,
+                'language' => 0  // TODO: define current language
             )
         );
         if(!$emailTemplate){
