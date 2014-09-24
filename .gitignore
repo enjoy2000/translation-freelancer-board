@@ -21,3 +21,4 @@ extras/documentation
 
 # PHPStorm
 .idea/
+.DS_Store
