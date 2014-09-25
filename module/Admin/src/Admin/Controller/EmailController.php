@@ -9,7 +9,7 @@
 
 namespace Admin\Controller;
 
-use Zend\Mvc\Controller\AbstractActionController;
+use Application\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Admin\Form\EmailTemplateForm;
 use Admin\Form\TemplateTypeForm;
@@ -20,20 +20,19 @@ class EmailController extends AbstractActionController
 
     public function indexAction()
     {
-        $entityManager = $this->getEventManager();
+        $entityManager = $this->getEntityManager();
         $templates = $entityManager->getRepository('Admin\Entity\TemplateType')->findAll();
         return new ViewModel(array('templates' => $templates));
     }
 
     protected function getForm(){
-        $entityManager = $this->getServiceLocator()
-            ->get('Doctrine\ORM\EntityManager');
+        $entityManager = $this->getEntityManager();
         $form = new EmailTemplateForm($entityManager);
 
         return $form;
     }
 
-    public function createAction(){
+    public function editAction(){
         //$this->layout('layout/admin');
         $entityManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
         $request = $this->getRequest();
@@ -43,8 +42,25 @@ class EmailController extends AbstractActionController
             if($form->isValid()){
                 $form->save($entityManager);
 
+                // Add success message
+                $translator = $this->getTranslator();
+                $this->flashMessenger()->addSuccessMessage($translator->translate('Your template has been saved.'));
                 return $this->redirect()->toUrl('/admin/email');
             }
+        }
+        //var_dump($request);die;
+        if($request->getQuery('type')){
+            $templateType = $entityManager->find('Admin\Entity\TemplateType', (int)$request->getQuery('type'));
+            $template = $entityManager->getRepository('Admin\Entity\EmailTemplates')
+                                      ->findOneBy(array(
+                                            'type' => $templateType,
+                                            'language' => (int)$request->getQuery('language')
+                                        ));
+            return new ViewModel(array(
+                'form' => $form,
+                'type' => $request->getQuery('type'),
+                'language' => $request->getQuery('language'),
+            ));
         }
 
         return new ViewModel(array('form' => $form));
@@ -92,5 +108,30 @@ class EmailController extends AbstractActionController
             }
         }
         return new ViewModel(array('form' => $form));
+    }
+
+    public function deleteAction(){
+        $type = (int)$this->request->getQuery('type');
+        if(null === $type) {
+            return $this->redirect()->toRoute('mail');
+        }
+        $entityManager = $this->getEntityManager();
+        $templateType = $entityManager->find('Admin\Entity\TemplateType', $type);
+
+        // Check if template is system template -> cannot be deleted
+        if(!$templateType->getCode()){
+            $entityManager->remove($templateType);
+            $entityManager->flush();
+
+            // Add success message
+            $translator = $this->getTranslator();
+            $this->flashMessenger()->addSuccessMessage($translator->translate('Your template has been deleted.'));
+        }else{
+            // Add error message
+            $translator = $this->getTranslator();
+            $this->flashMessenger()->addErrorMessage($translator->translate('System template cannot be deleted.'));
+        }
+
+        return $this->redirect()->toRoute('email');
     }
 }

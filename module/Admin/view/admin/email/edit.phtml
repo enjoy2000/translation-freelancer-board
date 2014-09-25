@@ -45,14 +45,10 @@ $(document).ready(function(){
         }
     });
 
+    // set data when edit
+    $('select[name=type]').val(".$this->type.");
+    $('input[value=".$this->language."]').click();
 });
-var edit = function() {
-    $('.click2edit').summernote({focus: true});
-};
-var save = function() {
-    var aHTML = $('.click2edit').code(); //save HTML If you need(aHTML: array).
-    $('.click2edit').destroy();
-};
 ");
 ?>
 <div class="col-lg-12 fadeInRight">

@@ -1,10 +1,27 @@
+<?php
+$this->headTitle($this->translate('Email Templates'));
+$this->headScript()->appendFile($this->basePath() . '/js/plugins/bootbox/bootbox.min.js');
+$this->inlineScript()->appendScript("
+    $(document).ready(function(){
+        $('.btn-delete').click(function(e){
+            e.preventDefault();
+            var that = $(this);
+            bootbox.confirm('". $this->translate('Are you sure to delete this?') ."', function(e){
+                if(e === true){
+                    window.location.href = that.attr('href');
+                }
+            });
+        });
+    });
+");
+?>
 <div class="wrapper wrapper-content animated fadeInUp">
 
     <div class="ibox">
         <div class="ibox-title">
             <h5><?php echo $this->translate('Email Templates') ?></h5>
             <div class="ibox-tools">
-                <a href="" class="btn btn-primary btn-xs"><?php echo $this->translate('Create new email template') ?></a>
+                <a href="<?php echo $this->url('email') ?>/new" class="btn btn-primary btn-xs"><?php echo $this->translate('Create new email template') ?></a>
             </div>
         </div>
         <div class="ibox-content">
@@ -24,12 +41,14 @@
                                 <small><?php echo $template->getDescription() ?></small>
                             </td>
                             <td class="project-actions">
-                                <a href="#" class="btn btn-white btn-sm">
+                                <a href="<?php echo $template->getEditUrl() ?>" class="btn btn-white btn-sm">
                                     <i class="fa fa-pencil"></i> <?php echo $this->translate('Edit') ?>
                                 </a>
-                                <a href="#" class="btn btn-danger btn-sm btn-delete">
-                                    <i class="fa fa-remove"></i> <?php echo $this->translate('Delete') ?>
-                                </a>
+                                <?php if(!$template->getCode()): ?>
+                                    <a href="<?php echo $template->getDeleteUrl() ?>" class="btn btn-danger btn-sm btn-delete">
+                                        <i class="fa fa-remove"></i> <?php echo $this->translate('Delete') ?>
+                                    </a>
+                                <?php endif; ?>
                             </td>
                         </tr>
                     <?php endforeach; ?>
