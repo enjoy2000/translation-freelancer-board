@@ -188,7 +188,7 @@ class User implements InputFilterAwareInterface{
      * Check user is active or not
      * @return boolean
      */
-    public function isActive(){
+    public function isActivated(){
         return ($this->isActive == True);
     }
 
@@ -203,6 +203,7 @@ class User implements InputFilterAwareInterface{
     public function activate($token, $entityManager){
         if($this->token === $token && strlen($token) == 32){
             $this->token = '';
+            $this->isActive = true;
             $entityManager->persist($this);
             $entityManager->flush();
             return true;

@@ -8,11 +8,11 @@
 
 namespace User\Form;
 
-use Zend\Form\Form;
 use Zend\Form\Element;
 use Zend\InputFilter;
-use Zend\Session\Container;
 use Zend\Validator;
+
+use Common\Form;
 
 
 class LoginForm extends Form
@@ -68,7 +68,14 @@ class LoginForm extends Form
         return $inputFilter;
     }
 
-    public function validate($entityManager){
+    /**
+     * @param \Application\Controller\AbstractActionController $controller
+     * @return bool
+     */
+    public function validate($controller){
+        $entityManager = $controller->getEntityManager();
+        $translator = $controller->getTranslator();
+
         $data = $this->getData();
         $email = $data['email'];
         $password = $data['password'];
@@ -76,11 +83,18 @@ class LoginForm extends Form
         $user = $entityManager->getRepository('\User\Entity\User')->findOneBy(array('email' => $email));
 
         if($user && $user->checkPassword($password)){
-            // Set logged data session to user session container
-            $user->authenticate();
-            return True;
-        }else{
-            return False;
+            if($user->isActivated()){
+                $user->authenticate();
+                return true;
+            } else {
+                $msg = $translator->translate('You must confirm your email to be able to login');
+                $controller->flashMessenger()->addErrorMessage($msg);
+                $controller->redirect()->toUrl("/user/register/confirm?email=" . $email);
+                return false;
+            }
+        } else {
+            $this->addNonElementMessage('danger', $translator->translate('Wrong username or password'));
         }
+        return False;
     }
 }

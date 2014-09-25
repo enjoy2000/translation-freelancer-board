@@ -4,6 +4,20 @@
 
     <form class="m-t" method="post" role="form" action="">
         <?php
+        if($this->form->isHasNonElementMessages()){
+            ?>
+            <div class="form-group has-error">
+                <?php
+
+                foreach ($this->form->getNonElementMessages() as $scope => $messages){
+                    foreach($messages as $message){
+                        ?><div class="alert-<?php echo $scope;?>"><?php echo $message; ?></div><?php
+                    }
+                }
+                ?>
+            </div>
+            <?php
+        }
         foreach ($this->form->getElements() as $element): ?>
             <?php
             $messages = $element->getMessages()

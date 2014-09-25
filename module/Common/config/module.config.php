@@ -42,8 +42,14 @@ return array(
     // Doctrine
     'doctrine' => array(
         'driver' => array(
+            'common_entities' => array(
+                'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
+                'cache' => 'array',
+                'paths' => array(__DIR__ . '/../src/Common/Entity')
+            ),
             'orm_default' => array(
                 'drivers' => array(
+                    'Common\Entity' => 'common_entities'
                 )
             ))),
 );
