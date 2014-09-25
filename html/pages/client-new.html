@@ -6,11 +6,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>PaperTask | Freelancer Edit Profile</title>
+    <title>PaperTask | Create Client Account</title>
 
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" media="screen" />
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="css/plugins/steps/jquery.steps.css" rel="stylesheet">
     <link href="css/plugins/summernote/summernote.css" rel="stylesheet">
     <link href="css/plugins/summernote/summernote-bs3.css" rel="stylesheet">
     <link href="css/animate.css" rel="stylesheet">
@@ -322,435 +323,288 @@
         </nav>
         </div>
 
-        <div class="wrapper wrapper-content fadeInRight">
+        <div class="wrapper wrapper-content animated fadeInRight">
 
             <div class="row">
                 <div class="col-lg-12">
                     <div class="ibox float-e-margins">
                         <div class="ibox-title">
-                            <h4><i class="fa fa-edit"></i> Edit Profile</h4>
+                            <h3><i class="fa fa-user"></i> Create Client Account</h3>
                         </div>
-
                         <div class="ibox-content">
-                            <form method="">
-
-                            <div class="panel panel-primary">
-                                <div class="panel-body">
-                                    <div class="row">
-                                        <div class="col-lg-8">
-                                            <h4><i class="fa fa-file-text"></i> Comments from PaperTask </h4>  
-                                        </div>
-                                        <div class="col-lg-4">
-                                            <div class="form-group">
-                                                <label class="col-sm-4 control-label"><i class="fa fa-star"></i> Rating</label>
-                                                <div class="col-sm-6">
-                                                    <select name="">
-                                                      <option></option>
-                                                      <option value="">A+</option>
-                                                      <option value="">A</option>
-                                                      <option value="">A-</option>
-                                                      <option value="">B+</option>
-                                                      <option value="">B</option>
-                                                      <option value="">B-</option>
+                            <form>
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        <i class="fa fa-info-circle"> <strong>Basic Information</strong></i>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label>Email *</label>
+                                                    <input id="email" name="email" value="registered@email.com" type="text" class="form-control">
+                                                </div>
+                                                <div class="hr-line-dashed"></div>
+                                                <div class="form-group">
+                                                    <label>First name *</label>
+                                                    <input id="name" name="name" type="text" value="John" class="form-control required">
+                                                </div>
+                                                <div class="hr-line-dashed"></div>
+                                                <div class="form-group">
+                                                    <label>Gender *</label>
+                                                    <div data-toggle="buttons">
+                                                        <label class="btn btn-outline btn-primary btn-sm">
+                                                            <input type="radio" name="gender" value="male" /> Male
+                                                        </label>
+                                                        &nbsp;
+                                                        <label class="btn btn-outline btn-primary btn-sm">
+                                                            <input type="radio" name="gender" value="female" /> Female
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="hr-line-dashed"></div>
+                                                <div class="form-group">
+                                                    <label>City *</label>
+                                                    <input id="city" name="city" value="1" type="text" class="form-control required">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label>Username *</label>
+                                                    <input id="userName" name="userName" type="text" value="1" class="form-control required">
+                                                </div>
+                                                <div class="hr-line-dashed"></div>
+                                                <div class="form-group">
+                                                    <label>Last name *</label>
+                                                    <input id="surname" name="surname" type="text" value="Doe" class="form-control required">
+                                                </div>
+                                                <div class="hr-line-dashed"></div>
+                                                <div class="form-group">
+                                                    <label>Phone *</label>
+                                                    <input id="phone" name="phone" type="phone" value="001 12345678" class="form-control required">
+                                                </div>
+                                                <div class="hr-line-dashed"></div>
+                                                <div class="form-group">
+                                                    <label>Country *</label>
+                                                    <select class="form-control required" id="country" name="country" value="">
+                                                        <option>option 1</option>
+                                                        <option>option 2</option>
+                                                        <option>option 3</option>
+                                                        <option>option 4</option>
                                                     </select>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="hr-line-dashed"></div>
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <div class="summernote"></div>
-                                        </div>
-                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="panel panel-primary">
-                                <div class="panel-body">
-                                    <h4><i class="fa fa-info-circle"></i> Basic Information</h4>  
-                                    <div class="hr-line-dashed"></div>
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label>Email *</label>
-                                                <input id="email" name="email" disabled="" value="registered@email.com" type="text" class="form-control">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        <i class="fa fa-building"> <strong>Company Information</strong></i>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label>Position </label>
+                                                    <input id="position" name="position" value="" type="text" class="form-control">
+                                                </div>
+
                                             </div>
-                                            <div class="hr-line-dashed"></div>
-                                            <div class="form-group">
-                                                <label>First name *</label>
-                                                <input id="name" name="name" type="text" value="John" class="form-control required">
-                                            </div>
-                                            <div class="hr-line-dashed"></div>
-                                            <div class="form-group">
-                                                <label>Gender *</label>
-                                                <div data-toggle="buttons">
-                                                    <label class="btn btn-outline btn-primary btn-sm">
-                                                        <input type="radio" name="gender" value="male" /> Male
-                                                    </label>
-                                                    &nbsp;
-                                                    <label class="btn btn-outline btn-primary btn-sm">
-                                                        <input type="radio" name="gender" value="female" /> Female
-                                                    </label>
+                                            <div class="col-lg-6">
+                                                <div class="form-group">
+                                                    <label>Company </label>
+                                                    <select class="form-control required" id="company" name="company" value="">
+                                                        <option>option 1</option>
+                                                        <option>option 2</option>
+                                                        <option>option 3</option>
+                                                        <option>option 4</option>
+                                                    </select>
+                                                    <span class="help-block m-b-none"> &nbsp;Not in the list? Please <a data-toggle="modal" class="text-info" href="#modal-company">create a new company</a>.</span>
                                                 </div>
                                             </div>
-                                            <div class="hr-line-dashed"></div>
-                                            <div class="form-group">
-                                                <label>City *</label>
-                                                <input id="city" name="city" value="1" type="text" class="form-control required">
-                                            </div>
-                                            <div class="hr-line-dashed"></div>
-                                            <div class="form-group">
-                                                <label>Alias </label>
-                                                <input id="Alias" name="Alias" value="1" type="text" class="form-control" disabled="">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label>Username *</label>
-                                                <input id="userName" name="userName" type="text" value="1" class="form-control required">
-                                            </div>
-                                            <div class="hr-line-dashed"></div>
-                                            <div class="form-group">
-                                                <label>Last name *</label>
-                                                <input id="surname" name="surname" type="text" value="Doe" class="form-control required">
-                                            </div>
-                                            <div class="hr-line-dashed"></div>
-                                            <div class="form-group">
-                                                <label>Phone *</label>
-                                                <input id="phone" name="phone" type="phone" value="001 12345678" class="form-control required">
-                                            </div>
-                                            <div class="hr-line-dashed"></div>
-                                            <div class="form-group">
-                                                <label>Country *</label>
-                                                <select class="form-control required" id="country" name="country" value="">
-                                                    <option>option 1</option>
-                                                    <option>option 2</option>
-                                                    <option>option 3</option>
-                                                    <option>option 4</option>
-                                                </select>
-                                            </div>
-                                            <div class="hr-line-dashed"></div>
-                                            <div class="form-group">
-                                                <label>Senior Freelancer</label>
-                                                <div data-toggle="buttons">
-                                                    <label class="btn btn-outline btn-primary btn-sm">
-                                                        <input type="checkbox" name="gender" value="male" /> Yes
-                                                    </label>
-                                                </div>
-                                            </div>
-
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="panel panel-primary">
-                                <div class="panel-body">
-                                    <h4><i class="fa fa-puzzle-piece"></i> Resource Type</h4>  
-                                    <div class="hr-line-dashed"></div>
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">
-                                            <h4><i class="fa fa-coffee"></i>&nbsp; Translation</h4>
-                                        </label>
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        <i class="fa fa-cogs"> <strong>Service Prices</strong></i>
+                                    </div>
+                                    <div class="panel-body">
+                                        <h4><i class="fa fa-tags"></i>&nbsp; Currency</h4>
                                         <div data-toggle="buttons">
                                             <label class="btn btn-outline btn-primary">
-                                                <input type="checkbox" name="translator" value="" /> Translator
+                                                <input type="radio" name="cny" value="" /> <i class="fa fa-cny"> CNY</i>
                                             </label>
                                             &nbsp;
                                             <label class="btn btn-outline btn-primary">
-                                                <input type="checkbox" name="proofreader" value="" /> Proofreader
+                                                <input type="radio" name="usd" value="" /> <i class="fa fa-usd"> USD</i>
                                             </label>
                                         </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">
-                                            <h4><i class="fa fa-desktop"></i> &nbsp;Desktop Publishing</h4>
-                                        </label>
+                                        <div class="hr-line-dashed"></div>
+
+                                        <h4><i class="fa fa-sitemap"></i>&nbsp; Service Level <small>Project default service level</small></h4>
                                         <div data-toggle="buttons">
                                             <label class="btn btn-outline btn-primary">
-                                                <input type="checkbox" name="dtp" value="" /> Desktop Publishing
+                                                <input type="radio" name="professional" value="" /> Professional
+                                            </label>
+                                            &nbsp;
+                                            <label class="btn btn-outline btn-primary">
+                                                <input type="radio" name="business" value="" /> Business
+                                            </label>
+                                            &nbsp;
+                                            <label class="btn btn-outline btn-primary">
+                                                <input type="radio" name="premium" value="" /> Premium
                                             </label>
                                         </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">
-                                            <h4><i class="fa fa-comments-o"></i> &nbsp; Interpreting</h4>
-                                        </label>
-                                        <div data-toggle="buttons">
-                                            <label class="btn btn-outline btn-primary">
-                                                <input type="checkbox" name="simul" value="" /> Simultaneous
-                                            </label>
-                                            &nbsp;
-                                            <label class="btn btn-outline btn-primary">
-                                                <input type="checkbox" name="consec" value="" /> Consecutive
-                                            </label>
-                                            &nbsp;
-                                            <label class="btn btn-outline btn-primary">
-                                                <input type="checkbox" name="bescort" value="" /> Business Escort
-                                            </label>
-                                            &nbsp;
-                                            <label class="btn btn-outline btn-primary">
-                                                <input type="checkbox" name="tescort" value="" /> Tourism Escort
-                                            </label>
+                                        <div class="hr-line-dashed"></div>
+                                        <h4><i class="fa fa-coffee"></i>&nbsp; Translation</h4>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered table-striped">
+                                                <thead>
+                                                  <tr>
+                                                    <th>TM</th>
+                                                    <th>Repetitions</th>
+                                                    <th>100%</th>
+                                                    <th>95% - 99%</th>
+                                                    <th>85% - 94%</th>
+                                                    <th>75% - 84%</th>
+                                                    <th>50% - 74%</th>
+                                                    <th>No Match</th>
+                                                  </tr>
+                                                </thead>
+                                                <tbody>
+                                                  <tr>
+                                                    <td>TM Rate</td>
+                                                    <td><input id="repetition" name="repetition" type="text" value="" class="form-control"></td>
+                                                    <td><input id="tm_100" name="tm_100" type="text" value="" class="form-control"></td>
+                                                    <td><input id="tm_95-99" name="tm_95-99" type="text" value="" class="form-control"></td>
+                                                    <td><input id="tm_85-94" name="tm_85-94" type="text" value="" class="form-control"></td>
+                                                    <td><input id="tm_75-84" name="tm_75-84" type="text" value="" class="form-control"></td>
+                                                    <td><input id="tm_50-74" name="tm_50-74" type="text" value="" class="form-control"></td>
+                                                    <td><input id="tm_no_match" name="tm_no_match" type="text" value="" class="form-control"></td>
+                                                  </tr>
+                                                </tbody>
+                                            </table>
                                         </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div class="panel panel-primary">
-                                <div class="panel-body">
-                                    <h4><i class="fa fa-usd"></i> Price for PaperTask</h4>  
-                                    <div class="hr-line-dashed"></div>
-
-                                    <div class="panel panel-primary">
-                                        <div class="panel-body">
-                                            <h4><i class="fa fa-coffee"></i>&nbsp; Translation</h4>
-                                            <div class="hr-line-dashed"></div>
-                                            <div class="table-responsive">
-                                                <table class="table table-bordered table-striped">
-                                                    <thead>
-                                                      <tr>
-                                                        <th>TM</th>
-                                                        <th>Repetitions</th>
-                                                        <th>100%</th>
-                                                        <th>95% - 99%</th>
-                                                        <th>85% - 94%</th>
-                                                        <th>75% - 84%</th>
-                                                        <th>50% - 74%</th>
-                                                        <th>No Match</th>
-                                                      </tr>
+                                        <div class="table-responsive">
+                                            <table class="table table-striped table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>Source Language </th>
+                                                        <th>Target Language </th>
+                                                        <th>Translation Price</th>
+                                                        <th>Action</th>
+                                                    </tr>
                                                     </thead>
                                                     <tbody>
-                                                      <tr>
-                                                        <td>TM Rate</td>
-                                                        <td><input id="repetition" name="repetition" type="text" value="" class="form-control"></td>
-                                                        <td><input id="tm_100" name="tm_100" type="text" value="" class="form-control"></td>
-                                                        <td><input id="tm_95-99" name="tm_95-99" type="text" value="" class="form-control"></td>
-                                                        <td><input id="tm_85-94" name="tm_85-94" type="text" value="" class="form-control"></td>
-                                                        <td><input id="tm_75-84" name="tm_75-84" type="text" value="" class="form-control"></td>
-                                                        <td><input id="tm_50-74" name="tm_50-74" type="text" value="" class="form-control"></td>
-                                                        <td><input id="tm_no_match" name="tm_no_match" type="text" value="" class="form-control"></td>
-                                                      </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="table-responsive">
-                                                <table class="table table-striped table-bordered">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>#</th>
-                                                            <th>Source Language </th>
-                                                            <th>Target Language </th>
-                                                            <th>Translation Price</th>
-                                                            <th>Action</th>
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                        <tr>
-                                                            <td>1</td>
-                                                            <td>English</td>
-                                                            <td>Chinese</td>
-                                                            <td class="text-info"><strong>CNY 0.10</strong></td>
-                                                            <td><a data-toggle="modal" href="#modal-translation"><i class="fa fa-edit"></i></a> &nbsp;<a href="#"><i class="fa fa-trash-o text-danger"></i></a></td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="hr-line-dashed"></div>
-                                            <div class="text-center">
-                                                <a data-toggle="modal" class="btn btn-outline btn-primary" href="#modal-translation">Add Language pairs and prices</a>
-                                            </div>
+                                                    <tr>
+                                                        <td>1</td>
+                                                        <td>English</td>
+                                                        <td>Chinese</td>
+                                                        <td>0.12</td>
+                                                        <td>
+                                                            <a data-toggle="modal" href="#modal-translation"><i class="fa fa-edit"></i></a> 
+                                                            <a href="#"><i class="fa fa-trash-o text-danger"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
                                         </div>
-                                    </div>
+                                        <div class="text-center">
+                                            <a data-toggle="modal" class="btn btn-outline btn-primary" href="#modal-translation">Add Language pairs and prices</a>
+                                        </div>
+                                        <div class="hr-line-dashed"></div>
 
-                                    <div class="panel panel-info">
-                                        <div class="panel-body">
-                                            <h4><i class="fa fa-desktop"></i>&nbsp; Desktop Publishing</h4>
-                                            <div class="hr-line-dashed"></div>
-                                            <div class="table-responsive">
-                                                <table class="table table-striped">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>#</th>
-                                                            <th>Languages </th>
-                                                            <th>DTP software </th>
-                                                            <th>Price/Page <i class="fa fa-apple"></th>
-                                                            <th>Price/Page <i class="fa fa-windows"></i></th>
-                                                            <th>Price/Hour <i class="fa fa-apple"></th>
-                                                            <th>Price/Hour <i class="fa fa-windows"></i></th>
-                                                            <th>Action</th>
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                        <tr>
-                                                            <td>1</td>
-                                                            <td>European/CE/Greek/Russian</td>
-                                                            <td>Indesign</td>
-                                                            <td class="text-info"><strong>CNY 10.00</strong></td>
-                                                            <td class="text-info"><strong>CNY 10.00</strong></td>
-                                                            <td class="text-info"><strong>CNY 40.00</strong></td>
-                                                            <td class="text-info"><strong>CNY 30.00</strong></td>
-                                                            <td><a data-toggle="modal" href="#modal-dtp"><i class="fa fa-edit"></i></a> &nbsp;<a href="#"><i class="fa fa-trash-o text-danger"></i></a></td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="text-center">
-                                                <a data-toggle="modal" class="btn btn-outline btn-info" href="#modal-dtp">Add DTP prices</a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="panel panel-success">
-                                        <div class="panel-body">
-                                            <h4><i class="fa fa-comments-o"></i>&nbsp; Interpreting</h4>
-                                            <div class="hr-line-dashed"></div>
-                                            <div class="table-responsive">
-                                                <table class="table table-striped">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>#</th>
-                                                            <th>Source Language </th>
-                                                            <th>Target Language </th>
-                                                            <th>Interpreting Service</th>
-                                                            <th>Price/Day</th>
-                                                            <th>Price/half-Day</th>
-                                                            <th>Action</th>
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                        <tr>
-                                                            <td>1</td>
-                                                            <td>English</td>
-                                                            <td>Chinese</td>
-                                                            <td>Consecutive</td>
-                                                            <td class="text-info"><strong>CNY 3000.00</strong></td>
-                                                            <td class="text-info"><strong>CNY 2000.00</strong></td>
-                                                            <td><a data-toggle="modal" href="#modal-interpreting"><i class="fa fa-edit"></i></a> &nbsp;<a href="#"><i class="fa fa-trash-o text-danger"></i></a></td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="text-center">
-                                                <a data-toggle="modal" class="btn btn-outline btn-success" href="#modal-interpreting">Add Interpreting prices</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="panel panel-primary">
-                                <div class="panel-body">
-                                    <h4><i class="fa fa-bank"></i> Payment Information</h4>  
-                                    <div class="hr-line-dashed"></div>
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label>PayPal </label>
-                                                <input id="paypal" name="paypal" value="registered@email.com" type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label>Alipay </label>
-                                                <input id="alipay" name="alipay" type="text" value="registered@email.com" class="form-control required">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="hr-line-dashed"></div>
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label>Bank Account </label>
-                                                <input id="bank_name" name="bank_name" value="" type="text" class="form-control">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Bank Address </label>
-                                                <input id="bank_address" name="bank_address" value="" type="text" class="form-control">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Bank City </label>
-                                                <input id="bank_city" name="bank_city" value="" type="text" class="form-control">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Bank Country </label>
-                                                <input id="bank_country" name="bank_country" value="" type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <div class="form-group">
-                                                <label>Beneficiar Name </label>
-                                                <input id="beneficiar" name="beneficiar" value="" type="text" class="form-control">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Account No./IBAN </label>
-                                                <input id="account_no" name="account_no" value="" type="text" class="form-control">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Swift Code </label>
-                                                <input id="swift" name="swift" value="" type="text" class="form-control">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>ABA Routing Number </label>
-                                                <input id="aba" name="aba" value="" type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="panel panel-primary">
-                                <div class="panel-body">
-                                    <h4><i class="fa fa-file-text"></i> Resume </h4>  
-                                    <div class="hr-line-dashed"></div>
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <div class="form-group">
-                                                <label>CV upload </label>
-                                                <table class="table">
+                                        <h4><i class="fa fa-desktop"></i>&nbsp; Desktop Publishing</h4>
+                                        <div class="table-responsive">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>Languages </th>
+                                                        <th>DTP software </th>
+                                                        <th>Price/Page <i class="fa fa-apple"></th>
+                                                        <th>Price/Page <i class="fa fa-windows"></i></th>
+                                                        <th>Price/Hour <i class="fa fa-apple"></th>
+                                                        <th>Price/Hour <i class="fa fa-windows"></i></th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                    </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            <td class="project-title">
-                                                                <i class="fa fa-file-text"></i>&nbsp; <a href="#">John.docx</a> &nbsp;&nbsp;<a href="#"><i class="fa fa-times-circle"></i></a>
-                                                            </td>
-                                                            <td class="project-title" width="10%">
-                                                                <button type="button" class="btn btn-w-m btn-white btn-xs"><i class="fa fa-cloud-upload"> Upload</i></button>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="hr-line-dashed"></div>
-                                            <div class="form-group">
-                                                <label>Working Experiences </label>
-                                                <div class="summernote">
+                                                    <tr>
+                                                        <td>1</td>
+                                                        <td>European/CE/Greek/Russian</td>
+                                                        <td>Indesign</td>
+                                                        <td>12.00</td>
+                                                        <td>10.00</td>
+                                                        <td>50.00</td>
+                                                        <td>40.00</td>
+                                                        <td>
+                                                            <a data-toggle="modal" href="#modal-dtp"><i class="fa fa-edit"></i></a>
+                                                            <a href="#"><i class="fa fa-trash-o text-danger"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="text-center">
+                                            <a data-toggle="modal" class="btn btn-outline btn-info" href="#modal-dtp">Add DTP prices</a>
+                                        </div>
+                                        <div class="hr-line-dashed"></div>
 
-                                                </div>
-                                            </div>
-                                            <div class="hr-line-dashed"></div>
-                                            <div class="form-group">
-                                                <label>Education </label>
-                                                <div class="summernote">
-
-                                                </div>
-                                            </div>
-                                            <div class="hr-line-dashed"></div>
-                                            <div class="form-group">
-                                                <label>Recommended </label>
-                                                <input id="recommend" name="recommend" value="" placeholder="Name/Email/Phone   " type="text" class="form-control">
-                                            </div>
+                                        <h4><i class="fa fa-comments-o"></i>&nbsp; Interpreting</h4>
+                                        <div class="table-responsive">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>Source Language </th>
+                                                        <th>Target Language </th>
+                                                        <th>Interpreting Service</th>
+                                                        <th>Price/Day</th>
+                                                        <th>Price/half-Day</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr>
+                                                        <td>1</td>
+                                                        <td>English</td>
+                                                        <td>Chinese</td>
+                                                        <td>Consecutive</td>
+                                                        <td>5000</td>
+                                                        <td>4000</td>
+                                                        <td>
+                                                            <a data-toggle="modal" href="#modal-interpreting"><i class="fa fa-edit"></i></a> 
+                                                            <a href="#"><i class="fa fa-trash-o text-danger"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="text-center">
+                                            <a data-toggle="modal" class="btn btn-outline btn-success" href="#modal-interpreting">Add Interpreting prices</a>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="row">
-                                <div class="col-sm-4 col-sm-offset-4">
-                                    <button class="btn btn-primary btn-block" type="submit">Save changes</button>
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        <i class="fa fa-file-text"> <strong>Comments from PaperTask</strong></i>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="summernote"></div>
+                                    </div>
                                 </div>
-                            </div>
+
+                                <div class="row">
+                                    <div class="col-sm-4 col-sm-offset-4">
+                                        <button class="btn btn-primary btn-block" type="submit">Save</button>
+                                    </div>
+                                </div>
 
                             </form>
                         </div>
@@ -758,6 +612,63 @@
                 </div>
             </div>
 
+        </div>
+
+        <!-- add company -->
+        <div id="modal-company" class="modal fade" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Add Company</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label>Company Name *</label>
+                                        <input id="c-name" name="c-name" type="text" class="form-control required">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Telephone </label>
+                                        <input id="c-tel" name="c-tel" type="text" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Fax </label>
+                                        <input id="c-fax" name="c-fax" type="text" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Address </label>
+                                        <input id="c-address" name="c-address" type="text" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>City *</label>
+                                        <input id="c-city" name="c-city" type="text" class="form-control required">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Country *</label>
+                                        <select class="form-control required" id="country" name="country" value="">
+                                            <option>option 1</option>
+                                            <option>option 2</option>
+                                            <option>option 3</option>
+                                            <option>option 4</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Website *</label>
+                                        <input id="web" name="web" type="text" class="form-control required">
+                                    </div>                                    
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-w-m btn-white" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-w-m btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- add language pair and price -->
@@ -949,6 +860,9 @@
     <script src="js/inspinia.js"></script>
     <script src="js/plugins/pace/pace.min.js"></script>
 
+    <!-- Steps -->
+    <script src="js/plugins/staps/jquery.steps.min.js"></script>
+
     <!-- Jquery Validate -->
     <script src="js/plugins/validate/jquery.validate.min.js"></script>
 
@@ -968,6 +882,87 @@
         };
 
     </script>
+
+    <script>
+        $(document).ready(function(){
+            $("#form").steps({
+                bodyTag: "fieldset",
+                onStepChanging: function (event, currentIndex, newIndex)
+                {
+                    // Always allow going backward even if the current step contains invalid fields!
+                    if (currentIndex > newIndex)
+                    {
+                        return true;
+                    }
+
+                    // Forbid suppressing "Warning" step if the user is to young
+                    if (newIndex === 3 && Number($("#age").val()) < 18)
+                    {
+                        return false;
+                    }
+
+                    var form = $(this);
+
+                    // Clean up if user went backward before
+                    if (currentIndex < newIndex)
+                    {
+                        // To remove error styles
+                        $(".body:eq(" + newIndex + ") label.error", form).remove();
+                        $(".body:eq(" + newIndex + ") .error", form).removeClass("error");
+                    }
+
+                    // Disable validation on fields that are disabled or hidden.
+                    form.validate().settings.ignore = ":disabled,:hidden";
+
+                    // Start validation; Prevent going forward if false
+                    return form.valid();
+                },
+                onStepChanged: function (event, currentIndex, priorIndex)
+                {
+                    // Suppress (skip) "Warning" step if the user is old enough.
+                    if (currentIndex === 2 && Number($("#age").val()) >= 18)
+                    {
+                        $(this).steps("next");
+                    }
+
+                    // Suppress (skip) "Warning" step if the user is old enough and wants to the previous step.
+                    if (currentIndex === 2 && priorIndex === 3)
+                    {
+                        $(this).steps("previous");
+                    }
+                },
+                onFinishing: function (event, currentIndex)
+                {
+                    var form = $(this);
+
+                    // Disable validation on fields that are disabled.
+                    // At this point it's recommended to do an overall check (mean ignoring only disabled fields)
+                    form.validate().settings.ignore = ":disabled";
+
+                    // Start validation; Prevent form submission if false
+                    return form.valid();
+                },
+                onFinished: function (event, currentIndex)
+                {
+                    var form = $(this);
+
+                    // Submit form input
+                    form.submit();
+                }
+            }).validate({
+                        errorPlacement: function (error, element)
+                        {
+                            element.before(error);
+                        },
+                        rules: {
+                            confirm: {
+                                equalTo: "#password"
+                            }
+                        }
+                    });
+       });
+    </script>
+
 </body>
 
 </html>
