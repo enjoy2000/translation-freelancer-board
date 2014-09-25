@@ -55,6 +55,9 @@ class User implements InputFilterAwareInterface{
     /** @ORM\Column(type="boolean") */
     protected $isActive = 0;
 
+    /** @ORM\Column(type="boolean") */
+    protected $profileUpdated = false;
+
     /** @ORM\Column(type="string", nullable=true) */
     protected $token = Null;
 
@@ -193,6 +196,14 @@ class User implements InputFilterAwareInterface{
     }
 
     /**
+     * Check if user profile is updated
+     * @return bool
+     */
+    public function isProfileUpdated(){
+        return $this->profileUpdated;
+    }
+
+    /**
      * Get email of user
      * @return mixed
      */
@@ -234,6 +245,15 @@ class User implements InputFilterAwareInterface{
     public function authenticate(){
         $sessionContainer = new Container('user');
         $sessionContainer->user_id = $this->id;
+    }
+
+    /**
+     * Get current login user id
+     * @return int
+     */
+    static public function currentLoginId(){
+        $sessionContainer = new Container('user');
+        return $sessionContainer->user_id;
     }
 
     public function checkPassword($password){

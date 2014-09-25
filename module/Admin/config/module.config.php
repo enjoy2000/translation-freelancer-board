@@ -66,6 +66,32 @@ return array(
                     ),
                 ),
             ),
+            'dashboard' => array(
+                'type'    => 'Literal',
+                'options' => array(
+                    'route'    => '/admin/dashboard',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Admin\Controller',
+                        'controller'    => 'Dashboard',
+                        'action'        => 'index',
+                    ),
+                ),
+                'may_terminate' => true,
+                'child_routes' => array(
+                    'default' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/[:action]',
+                            'constraints' => array(
+                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
+                            'defaults' => array(
+                            ),
+                        ),
+                    ),
+                ),
+            ),
         ),
     ),
     'service_manager' => array(
@@ -90,6 +116,7 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'Admin\Controller\Email' => 'Admin\Controller\EmailController',
+            'Admin\Controller\Dashboard' => 'Admin\Controller\DashboardController',
         ),
     ),
     'view_manager' => array(

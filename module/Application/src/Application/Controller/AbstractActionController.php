@@ -8,8 +8,42 @@
 namespace Application\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController as ZendAbstractActionController;
+use Zend\Stdlib\RequestInterface as Request;
+use Zend\Stdlib\ResponseInterface as Response;
+
+use User\Entity\User;
 
 class AbstractActionController extends ZendAbstractActionController{
+
+    /**
+     * @var bool
+     */
+    protected $requiredLogin = false;
+
+    /**
+     * @var null|\User\Entity\User
+     */
+    protected $currentUser = null;
+
+    /**
+     * Dispatch a request
+     *
+     * @events dispatch.pre, dispatch.post
+     * @param  Request $request
+     * @param  null|Response $response
+     * @return Response|mixed
+     */
+    public function dispatch(Request $request, Response $response = null){
+        if($this->requiredLogin){
+            $user = $this->getCurrentUser();
+            if(!$user){
+                $msg = $this->getTranslator()->translate("You must login in order to process this page.");
+                $this->flashMessenger()->addErrorMessage($msg);
+                return $this->redirect()->toUrl("/user/login");
+            }
+        }
+        return parent::dispatch($request, $response);
+    }
 
     /**
      * @return \Doctrine\ORM\EntityManager
@@ -40,5 +74,16 @@ class AbstractActionController extends ZendAbstractActionController{
 
     public function getTranslator(){
         return $this->getServiceLocator()->get('translator');
+    }
+
+    /**
+     * @return null|\User\Entity\User
+     */
+    public function getCurrentUser(){
+        $userId = User::currentLoginId();
+        if($this->currentUser === null){
+            $this->currentUser = $this->getUser(array('id' => $userId));
+        }
+        return $this->currentUser;
     }
 }
