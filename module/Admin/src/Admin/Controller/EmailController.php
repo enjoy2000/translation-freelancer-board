@@ -20,8 +20,7 @@ class EmailController extends AbstractActionController
 
     public function indexAction()
     {
-        $entityManager = $this->getServiceLocator()
-            ->get('Doctrine\ORM\EntityManager');
+        $entityManager = $this->getEventManager();
         $templates = $entityManager->getRepository('Admin\Entity\TemplateType')->findAll();
         return new ViewModel(array('templates' => $templates));
     }

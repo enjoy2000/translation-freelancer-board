@@ -71,8 +71,9 @@ class ResetForm  extends Form{
         return $inputFilter;
     }
 
-    public function reset($controller, $token){
+    public function reset($controller){
         $data = $this->getData();
+        $token = $data['token'];
         if($data['password'] == $data['confirmation']){
             $entityManager = $controller->getEntityManager();
             $user = $controller->getUser(array('token' => $token));

@@ -52,7 +52,7 @@ class ForgotPasswordController extends AbstractActionController
         if($request->isPost()){
             $form->setData($request->getPost());
             if($form->isValid()){
-                $form->reset($this, $request->getQuery('token'));
+                $form->reset($this);
             }
         }
 

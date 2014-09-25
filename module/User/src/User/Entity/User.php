@@ -278,11 +278,11 @@ class User implements InputFilterAwareInterface{
     public function sendWelcomeEmail($controller){
         $data = array();
         // TODO: initial data for email template
-        // Mail::sendMail($controller, "register-welcome", $this->email, $data);
+        Mail::sendMail($controller, "register-welcome", $this->email, $data);
     }
 
     public function sendForgotPasswordEmail($controller){
-        // TODO: initial data for email template
+        // initial data for email template
         $forgotLink = $controller->getBaseUrl() . '/user/forgotPassword/reset?token=' . $this->token;
         $data = array(
             'firstName' => $this->firstName,

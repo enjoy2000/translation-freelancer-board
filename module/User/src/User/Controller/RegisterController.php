@@ -42,7 +42,7 @@ class RegisterController extends AbstractActionController
         if($request->isPost()){
             $form->setData($request->getPost());
             if($form->isValid() && $request->getPost('agree') == 1){
-                $translator = $this->getServiceLocator()->get('translator');
+                $translator = $this->getTranslator();
                 $entityManager = $this->getEntityManager();
                 $userExist = $entityManager
                     ->getRepository('User\Entity\User')
