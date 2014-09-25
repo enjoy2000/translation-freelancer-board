@@ -44,6 +44,10 @@ return array(
                 'type'    => 'Literal',
                 'options' => array(
                     'route'    => '/admin/email',
+                    'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id' => '[0-9]+',
+                    ),
                     'defaults' => array(
                         '__NAMESPACE__' => 'Admin\Controller',
                         'controller'    => 'Email',
@@ -100,7 +104,7 @@ return array(
         'exception_template'       => 'error/index',
         'template_map' => array(
             'admin/email/index' => __DIR__ . '/../view/admin/email/index.phtml',
-            'admin/email/create' => __DIR__ . '/../view/admin/email/create.phtml',
+            'admin/email/edit' => __DIR__ . '/../view/admin/email/edit.phtml',
             'admin/email/new' => __DIR__ . '/../view/admin/email/new.phtml',
             'error/404'               => __DIR__ . '/../../Application/view/error/404.phtml',
             'error/index'             => __DIR__ . '/../../Application/view/error/index.phtml',
