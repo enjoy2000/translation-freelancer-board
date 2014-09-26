@@ -61,6 +61,12 @@ class User implements InputFilterAwareInterface{
     /** @ORM\Column(type="string", nullable=true) */
     protected $token = Null;
 
+    /** @ORM\Column(type="string", nullable=true) */
+    protected $country = null;
+
+    /** @ORM\Column(type="string", nullable=true) */
+    protected $city = null;
+
     protected $inputFilter;
 
     /**
@@ -211,8 +217,16 @@ class User implements InputFilterAwareInterface{
         return $this->email;
     }
 
+    /**
+     * @param $token
+     * @return bool
+     */
+    public function isTokenValid($token){
+        return $this->token === $token && strlen($token) == 32;
+    }
+
     public function activate($token, $entityManager){
-        if($this->token === $token && strlen($token) == 32){
+        if($this->isTokenValid($token)){
             $this->token = '';
             $this->isActive = true;
             $entityManager->persist($this);
@@ -223,7 +237,7 @@ class User implements InputFilterAwareInterface{
     }
 
     public function reset($token, $newPassword, $entityManager){
-        if($this->token === $token && strlen($token) == 32){
+        if($this->isTokenValid($token)){
             $this->token = '';
             $this->encodePassword($newPassword);
             $entityManager->persist($this);

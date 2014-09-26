@@ -96,6 +96,32 @@ return array(
                     ),
                 ),
             ),
+            'user' => array(
+                'type'    => 'Literal',
+                'options' => array(
+                    'route'    => '/admin/user',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Admin\Controller',
+                        'controller'    => 'User',
+                        'action'        => 'index',
+                    ),
+                ),
+                'may_terminate' => true,
+                'child_routes' => array(
+                    'default' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/[:action]',
+                            'constraints' => array(
+                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
+                            'defaults' => array(
+                            ),
+                        ),
+                    ),
+                ),
+            ),
         ),
     ),
     'service_manager' => array(
@@ -119,8 +145,9 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Admin\Controller\Email' => 'Admin\Controller\EmailController',
             'Admin\Controller\Dashboard' => 'Admin\Controller\DashboardController',
+            'Admin\Controller\Email' => 'Admin\Controller\EmailController',
+            'Admin\Controller\User' => 'Admin\Controller\UserController',
         ),
     ),
     'view_manager' => array(
@@ -133,6 +160,7 @@ return array(
             'admin/email/index' => __DIR__ . '/../view/admin/email/index.phtml',
             'admin/email/edit' => __DIR__ . '/../view/admin/email/edit.phtml',
             'admin/email/new' => __DIR__ . '/../view/admin/email/new.phtml',
+            'admin/user/update-info' => __DIR__ . '/../view/admin/user/update-info.phtml',
             'error/404'               => __DIR__ . '/../../Application/view/error/404.phtml',
             'error/index'             => __DIR__ . '/../../Application/view/error/index.phtml',
         ),

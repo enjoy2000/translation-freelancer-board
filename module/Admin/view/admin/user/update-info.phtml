@@ -1,0 +1,661 @@
+
+<!-- Le styles -->
+<?php $this->headLink()
+        ->prependStylesheet($this->basePath() . '/css/plugins/multiselect/bootstrap-multiselect.css')
+        ->prependStylesheet($this->basePath() . '/css/plugins/steps/jquery.steps.css')
+?>
+
+<!-- Scripts -->
+<?php $this->headScript()
+    ->prependFile($this->basePath() . '/js/plugins/multiselect/bootstrap-multiselect.js')
+    ->prependFile($this->basePath() . '/js/plugins/validate/jquery.validate.min.js')
+    ->prependFile($this->basePath() . '/js/plugins/steps/jquery.steps.min.js')
+    ->prependFile($this->basePath() . '/js/plugins/pace/pace.min.js')
+    ->prependFile($this->basePath() . '/js/inspinia.js')
+?>
+
+<!-- Add custom style -->
+<style type="text/css">
+    .wizard-big.wizard > .content {
+        min-height: 1200px;
+    }
+
+    .label {
+        font-size: 15px;
+    }
+
+    h3 {
+        font-size: 18px;
+    }
+
+    .float-e-margins .btn {
+        margin-bottom: 0px;
+    }
+</style>
+<!-- End custom style -->
+
+<div class="row">
+<div class="col-lg-12">
+<div class="ibox float-e-margins">
+
+<div class="ibox-content">
+<h2>
+    Please finish your account information
+</h2>
+
+<p>
+    This example show how to use Steps with jQuery Validation plugin.
+</p>
+
+<form id="form" action="#" class="wizard-big">
+<h1>Basic Information</h1>
+<fieldset>
+    <div class="panel panel-primary">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input id="email" name="email" disabled="" value="registered@email.com" type="text"
+                               class="form-control">
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group">
+                        <label>First name *</label>
+                        <input id="name" name="name" type="text" value="John" class="form-control required">
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group">
+                        <label>Gender *</label>
+
+                        <div data-toggle="buttons">
+                            <label class="btn btn-outline btn-primary btn-sm">
+                                <input type="radio" name="gender" value="male"/> Male
+                            </label>
+                            &nbsp;
+                            <label class="btn btn-outline btn-primary btn-sm">
+                                <input type="radio" name="gender" value="female"/> Female
+                            </label>
+                        </div>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group">
+                        <label>City *</label>
+                        <input id="city" name="city" value="1" type="text" class="form-control required">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label>Username *</label>
+                        <input id="userName" name="userName" type="text" value="1" class="form-control required">
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group">
+                        <label>Last name *</label>
+                        <input id="surname" name="surname" type="text" value="Doe" class="form-control required">
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group">
+                        <label>Phone *</label>
+                        <input id="phone" name="phone" type="phone" value="001 12345678" class="form-control required">
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                    <div class="form-group">
+                        <label>Country *</label>
+                        <select class="form-control required" id="country" name="country" value="">
+                            <option>option 1</option>
+                            <option>option 2</option>
+                            <option>option 3</option>
+                            <option>option 4</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</fieldset>
+<h1>Resource Type</h1>
+<fieldset>
+    <p>Please choose your resource type. You should at least select one of the below service type.</p>
+
+    <div class="panel panel-primary">
+        <div class="panel-body">
+            <h2><i class="fa fa-coffee"></i>&nbsp; Translation</h2>
+            <br/>
+
+            <div data-toggle="buttons">
+                <label class="btn btn-outline btn-primary">
+                    <input type="checkbox" name="translator" value=""/> Translator
+                </label>
+                &nbsp;
+                <label class="btn btn-outline btn-primary">
+                    <input type="checkbox" name="proofreader" value=""/> Proofreader
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-info">
+        <div class="panel-body">
+            <h2><i class="fa fa-desktop"></i> &nbsp;Desktop Publishing</h2>
+            <br/>
+
+            <div data-toggle="buttons">
+                <label class="btn btn-outline btn-primary">
+                    <input type="checkbox" name="dtp" value=""/> Desktop Publishing
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-success">
+        <div class="panel-body">
+            <h2><i class="fa fa-comments-o"></i> &nbsp; Interpreting</h2>
+            <br/>
+
+            <div data-toggle="buttons">
+                <label class="btn btn-outline btn-primary">
+                    <input type="checkbox" name="simul" value=""/> Simultaneous
+                </label>
+                &nbsp;
+                <label class="btn btn-outline btn-primary">
+                    <input type="checkbox" name="consec" value=""/> Consecutive
+                </label>
+                &nbsp;
+                <label class="btn btn-outline btn-primary">
+                    <input type="checkbox" name="bescort" value=""/> Business Escort
+                </label>
+                &nbsp;
+                <label class="btn btn-outline btn-primary">
+                    <input type="checkbox" name="tescort" value=""/> Tourism Escort
+                </label>
+            </div>
+        </div>
+    </div>
+</fieldset>
+
+<h1>Languages/Skills/Prices</h1>
+<fieldset>
+
+<div class="panel panel-info">
+    <div class="panel-body">
+        <h2><i class="fa fa-desktop"></i>&nbsp; Currency</h2>
+        <br/>
+
+        <div data-toggle="buttons">
+            <label class="btn btn-outline btn-primary">
+                <input type="radio" name="cny" value=""/> CNY
+            </label>
+            &nbsp;
+            <label class="btn btn-outline btn-primary">
+                <input type="radio" name="usd" value=""/> USD
+            </label>
+        </div>
+
+    </div>
+</div>
+<div class="panel panel-primary">
+    <div class="panel-body">
+        <h2><i class="fa fa-coffee"></i>&nbsp; Translation</h2>
+
+        <div class="hr-line-dashed"></div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label>Specialisms * &nbsp; </label>
+                    <select class="form-control required multiselect" multiple="multiple">
+                        <option value="cheese">Cheese</option>
+                        <option value="tomatoes">Tomatoes</option>
+                        <option value="mozarella">Mozzarella</option>
+                        <option value="mushrooms">Mushrooms</option>
+                        <option value="pepperoni">Pepperoni</option>
+                        <option value="onions">Onions</option>
+                        <option value="cheese">Cheese</option>
+                        <option value="tomatoes">Tomatoes</option>
+                        <option value="mozarella">Mozzarella</option>
+                        <option value="mushrooms">Mushrooms</option>
+                        <option value="pepperoni">Pepperoni</option>
+                        <option value="onions">Onions</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label>CAT Tools * &nbsp; </label>
+                    <select class="form-control required multiselect" multiple="multiple">
+                        <option value="cheese">Cheese</option>
+                        <option value="tomatoes">Tomatoes</option>
+                        <option value="mozarella">Mozzarella</option>
+                        <option value="mushrooms">Mushrooms</option>
+                        <option value="pepperoni">Pepperoni</option>
+                        <option value="onions">Onions</option>
+                        <option value="cheese">Cheese</option>
+                        <option value="tomatoes">Tomatoes</option>
+                        <option value="mozarella">Mozzarella</option>
+                        <option value="mushrooms">Mushrooms</option>
+                        <option value="pepperoni">Pepperoni</option>
+                        <option value="onions">Onions</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Source Language</th>
+                    <th>Target Language</th>
+                    <th>Translation Price</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>English</td>
+                    <td>Chinese</td>
+                    <td>0.12</td>
+                    <td><a href="#"><i class="fa fa-trash-o text-danger"></i></a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="hr-line-dashed"></div>
+        <div class="text-center">
+            <a data-toggle="modal" class="btn btn-outline btn-primary" href="#modal-translation">Add Language pairs and
+                prices</a>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-info">
+    <div class="panel-body">
+        <h2><i class="fa fa-desktop"></i>&nbsp; Desktop Publishing</h2>
+
+        <div class="hr-line-dashed"></div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label>Operating System * &nbsp; </label>
+                    <select class="form-control required multiselect" multiple="multiple">
+                        <option value="PC">PC</option>
+                        <option value="MAC">MAC</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label>CAT Tools * &nbsp; </label>
+                    <select class="form-control required multiselect" multiple="multiple">
+                        <option value="cheese">Cheese</option>
+                        <option value="tomatoes">Tomatoes</option>
+                        <option value="mozarella">Mozzarella</option>
+                        <option value="mushrooms">Mushrooms</option>
+                        <option value="pepperoni">Pepperoni</option>
+                        <option value="onions">Onions</option>
+                        <option value="cheese">Cheese</option>
+                        <option value="tomatoes">Tomatoes</option>
+                        <option value="mozarella">Mozzarella</option>
+                        <option value="mushrooms">Mushrooms</option>
+                        <option value="pepperoni">Pepperoni</option>
+                        <option value="onions">Onions</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Languages</th>
+                    <th>DTP software</th>
+                    <th>Price/Page <i class="fa fa-apple"/></th>
+                    <th>Price/Page <i class="fa fa-windows"></i></th>
+                    <th>Price/Hour <i class="fa fa-apple"/></th>
+                    <th>Price/Hour <i class="fa fa-windows"></i></th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>European/CE/Greek/Russian</td>
+                    <td>Indesign</td>
+                    <td>12.00</td>
+                    <td>10.00</td>
+                    <td>50.00</td>
+                    <td>40.00</td>
+                    <td><a href="#"><i class="fa fa-trash-o text-danger"></i></a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="text-center">
+            <a data-toggle="modal" class="btn btn-outline btn-info" href="#modal-dtp">Add DTP prices</a>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-success">
+    <div class="panel-body">
+        <h2><i class="fa fa-comments-o"></i>&nbsp; Interpreting</h2>
+
+        <div class="hr-line-dashed"></div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="form-group">
+                    <label>Specialisms * &nbsp; </label>
+                    <select class="form-control required multiselect" multiple="multiple">
+                        <option value="cheese">Cheese</option>
+                        <option value="tomatoes">Tomatoes</option>
+                        <option value="mozarella">Mozzarella</option>
+                        <option value="mushrooms">Mushrooms</option>
+                        <option value="pepperoni">Pepperoni</option>
+                        <option value="onions">Onions</option>
+                        <option value="cheese">Cheese</option>
+                        <option value="tomatoes">Tomatoes</option>
+                        <option value="mozarella">Mozzarella</option>
+                        <option value="mushrooms">Mushrooms</option>
+                        <option value="pepperoni">Pepperoni</option>
+                        <option value="onions">Onions</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Source Language</th>
+                    <th>Target Language</th>
+                    <th>Interpreting Service</th>
+                    <th>Price/Day</th>
+                    <th>Price/half-Day</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>English</td>
+                    <td>Chinese</td>
+                    <td>Consecutive</td>
+                    <td>5000</td>
+                    <td>4000</td>
+                    <td><a href="#"><i class="fa fa-trash-o text-danger"></i></a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="text-center">
+            <a data-toggle="modal" class="btn btn-outline btn-success" href="#modal-interpreting">Add Interpreting
+                prices</a>
+        </div>
+    </div>
+</div>
+</fieldset>
+
+
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div
+
+<!-- add language pair and price -->
+<div id="modal-translation" class="modal fade" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Add Language pairs and prices</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label>Source Language *</label>
+                                <select class="form-control required" id="country" name="country" value="">
+                                    <option>option 1</option>
+                                    <option>option 2</option>
+                                    <option>option 3</option>
+                                    <option>option 4</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Target Language *</label>
+                                <select class="form-control required" id="country" name="country" value="">
+                                    <option>option 1</option>
+                                    <option>option 2</option>
+                                    <option>option 3</option>
+                                    <option>option 4</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Price/word *</label>
+                                <input id="phone" name="phone" type="phone" value="" class="form-control required">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-w-m btn-white" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-w-m btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- add DTP price -->
+<div id="modal-dtp" class="modal fade" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Add DTP prices</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label>Languages *</label>
+                                <select class="form-control required" id="country" name="country" value="">
+                                    <option>European/CE/Greek/Russian</option>
+                                    <option>SC/TC/JP/KO</option>
+                                    <option>TH/VN</option>
+                                    <option>Others</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>DTP software *</label>
+                                <select class="form-control required" id="country" name="country" value="">
+                                    <option>option 1</option>
+                                    <option>option 2</option>
+                                    <option>option 3</option>
+                                    <option>option 4</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Price/Page (MAC) *</label>
+                                <input id="phone" name="phone" type="phone" value="" class="form-control required">
+                            </div>
+                            <div class="form-group">
+                                <label>Price/Page (PC) *</label>
+                                <input id="phone" name="phone" type="phone" value="" class="form-control required">
+                            </div>
+                            <div class="form-group">
+                                <label>Price/Hour (MAC) *</label>
+                                <input id="phone" name="phone" type="phone" value="" class="form-control required">
+                            </div>
+                            <div class="form-group">
+                                <label>Price/Hour (PC) *</label>
+                                <input id="phone" name="phone" type="phone" value="" class="form-control required">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-w-m btn-white" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-w-m btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- add interpreting price -->
+<div id="modal-interpreting" class="modal fade" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Add Interpreting prices</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label>Source Language *</label>
+                                <select class="form-control required" id="country" name="country" value="">
+                                    <option>option 1</option>
+                                    <option>option 2</option>
+                                    <option>option 3</option>
+                                    <option>option 4</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Target Language *</label>
+                                <select class="form-control required" id="country" name="country" value="">
+                                    <option>option 1</option>
+                                    <option>option 2</option>
+                                    <option>option 3</option>
+                                    <option>option 4</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Interpreting Service *</label>
+                                <select class="form-control required" id="country" name="country" value="">
+                                    <option></option>
+                                    <option>Simultaneous</option>
+                                    <option>Consecutive</option>
+                                    <option>Business</option>
+                                    <option>Tourist</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Price/Day *</label>
+                                <input id="phone" name="phone" type="phone" value="" class="form-control required">
+                            </div>
+                            <div class="form-group">
+                                <label>Price/Half-day *</label>
+                                <input id="phone" name="phone" type="phone" value="" class="form-control required">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-w-m btn-white" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-w-m btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<select class="multiselect" multiple="multiple">
+    <option value="cheese">Cheese</option>
+    <option value="tomatoes">Tomatoes</option>
+    <option value="mozarella">Mozzarella</option>
+    <option value="mushrooms">Mushrooms</option>
+    <option value="pepperoni">Pepperoni</option>
+    <option value="onions">Onions</option>
+</select>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.multiselect').multiselect();
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("#form").steps({
+            bodyTag: "fieldset",
+            onStepChanging: function (event, currentIndex, newIndex) {
+                // Always allow going backward even if the current step contains invalid fields!
+                if (currentIndex > newIndex) {
+                    return true;
+                }
+
+                // Forbid suppressing "Warning" step if the user is to young
+                if (newIndex === 3 && Number($("#age").val()) < 18) {
+                    return false;
+                }
+
+                var form = $(this);
+
+                // Clean up if user went backward before
+                if (currentIndex < newIndex) {
+                    // To remove error styles
+                    $(".body:eq(" + newIndex + ") label.error", form).remove();
+                    $(".body:eq(" + newIndex + ") .error", form).removeClass("error");
+                }
+
+                // Disable validation on fields that are disabled or hidden.
+                form.validate().settings.ignore = ":disabled,:hidden";
+
+                // Start validation; Prevent going forward if false
+                return form.valid();
+            },
+            onStepChanged: function (event, currentIndex, priorIndex) {
+                // Suppress (skip) "Warning" step if the user is old enough.
+                if (currentIndex === 2 && Number($("#age").val()) >= 18) {
+                    $(this).steps("next");
+                }
+
+                // Suppress (skip) "Warning" step if the user is old enough and wants to the previous step.
+                if (currentIndex === 2 && priorIndex === 3) {
+                    $(this).steps("previous");
+                }
+            },
+            onFinishing: function (event, currentIndex) {
+                var form = $(this);
+
+                // Disable validation on fields that are disabled.
+                // At this point it's recommended to do an overall check (mean ignoring only disabled fields)
+                form.validate().settings.ignore = ":disabled";
+
+                // Start validation; Prevent form submission if false
+                return form.valid();
+            },
+            onFinished: function (event, currentIndex) {
+                var form = $(this);
+
+                // Submit form input
+                form.submit();
+            }
+        }).validate({
+            errorPlacement: function (error, element) {
+                element.before(error);
+            },
+            rules: {
+                confirm: {
+                    equalTo: "#password"
+                }
+            }
+        });
+    });
+</script>
