@@ -80,11 +80,21 @@ class TemplateType {
         return $this;
     }
 
+    public function getCode(){
+        return $this->code;
+    }
+
     public function getTouchTime(){
         return $this->updateTime ? Helper::formatDate($this->updateTime) : Helper::formatDate($this->createdTime);
     }
 
     public function getEditUrl(){
-        //TODO: Add edit and delete function
+        $url = '/admin/email/edit?type=' . $this->id . '&language=0';  // TODO: get current language here
+        return $url;
+    }
+
+    public function getDeleteUrl(){
+        $deleteUrl = '/admin/email/delete?type=' . $this->id;
+        return $deleteUrl;
     }
 }
