@@ -93,7 +93,7 @@ class EmailController extends AbstractActionController
             return $this->getResponse()->setContent(Json::encode($json));
         }
 
-        return $this->redirect()->toRoute('email');
+        return $this->redirect()->toUrl('/admin/email');
     }
 
     public function newAction(){
@@ -104,7 +104,7 @@ class EmailController extends AbstractActionController
             if($form->isValid()){
                 $entityManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
                 $form->save($entityManager);
-                return $this->redirect()->toRoute('email');
+                return $this->redirect()->toUrl('/admin/email');
             }
         }
         return new ViewModel(array('form' => $form));
@@ -132,6 +132,6 @@ class EmailController extends AbstractActionController
             $this->flashMessenger()->addErrorMessage($translator->translate('System template cannot be deleted.'));
         }
 
-        return $this->redirect()->toRoute('email');
+        return $this->redirect()->toUrl('/admin/email');
     }
 }

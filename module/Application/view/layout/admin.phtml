@@ -59,11 +59,16 @@
 
                 </li>
                 <li class="active">
-
-                    <a href="<?php echo $this->url('email') ?>"><i class="fa fa-envelope"></i> <span class="nav-label">Email Templates </span></a>
+                    <a href="<?php
+                    echo $this->url('admin', array('controller' => 'email'))
+                    ?>"><i class="fa fa-envelope"></i> <span class="nav-label">Email Templates </span></a>
                     <ul class="nav nav-second-level">
-                        <li><a href="<?php echo $this->url('email') ?>/new">Create new type</a></li>
-                        <li><a href="<?php echo $this->url('email') ?>/edit">Change template</a></li>
+                        <li><a href="<?php
+                            echo $this->url('admin', array('controller' => 'email', 'action' => 'new'))
+                            ?>">Create new type</a></li>
+                        <li><a href="<?php
+                            echo $this->url('admin', array('controller' => 'email', 'action' => 'edit'))
+                            ?>">Change template</a></li>
                     </ul>
                 </li>
             </ul>
@@ -195,28 +200,28 @@
             </nav>
         </div>
 
-        <div class="wrapper wrapper-content">
-            <div class="col-lg-12">
-                <!-- Flash Messenger -->
-                <?php
-                $flash = $this->flashMessenger();
-                $flash->setMessageOpenFormat('<div%s>
-                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
-                             &times;
-                         </button>
-                         <ul><li>')
-                    ->setMessageSeparatorString('</li><li>')
-                    ->setMessageCloseString('</li></ul></div>');
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Flash Messenger -->
+                    <?php
+                    $flash = $this->flashMessenger();
+                    $flash->setMessageOpenFormat('<div%s>
+                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                                 &times;
+                             </button>
+                             <ul><li>')
+                        ->setMessageSeparatorString('</li><li>')
+                        ->setMessageCloseString('</li></ul></div>');
 
-                echo $flash->render('error', array('alert', 'alert-dismissable', 'alert-danger'));
-                echo $flash->render('info', array('alert', 'alert-dismissable', 'alert-info'));
-                echo $flash->render('default', array('alert', 'alert-dismissable', 'alert-warning'));
-                echo $flash->render('success', array('alert', 'alert-dismissable', 'alert-success'));
-                ?><!-- End Flash Messenger -->
-                <div class="row">
-                    <?php echo $this->content ?>
+                    echo $flash->render('error', array('alert', 'alert-dismissable', 'alert-danger'));
+                    echo $flash->render('info', array('alert', 'alert-dismissable', 'alert-info'));
+                    echo $flash->render('default', array('alert', 'alert-dismissable', 'alert-warning'));
+                    echo $flash->render('success', array('alert', 'alert-dismissable', 'alert-success'));
+                    ?><!-- End Flash Messenger -->
                 </div>
             </div>
+            <?php echo $this->content ?>
         </div>
 
         <!-- Footer -->

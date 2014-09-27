@@ -20,62 +20,6 @@ return array(
                     'route'    => '/admin',
                     'defaults' => array(
                         '__NAMESPACE__' => 'Admin\Controller',
-                        'controller'    => 'Index',
-                        'action'        => 'index',
-                    ),
-                ),
-                'may_terminate' => true,
-                'child_routes' => array(
-                    'default' => array(
-                        'type'    => 'Segment',
-                        'options' => array(
-                            'route'    => '/[:controller[/[:action[/]]]]',
-                            'constraints' => array(
-                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
-                            ),
-                            'defaults' => array(
-                            ),
-                        ),
-                    ),
-                ),
-            ),
-            'email' => array(
-                'type'    => 'Literal',
-                'options' => array(
-                    'route'    => '/admin/email',
-                    'constraints' => array(
-                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                        'id' => '[0-9]+',
-                    ),
-                    'defaults' => array(
-                        '__NAMESPACE__' => 'Admin\Controller',
-                        'controller'    => 'Email',
-                        'action'        => 'index',
-                    ),
-                ),
-                'may_terminate' => true,
-                'child_routes' => array(
-                    'default' => array(
-                        'type'    => 'Segment',
-                        'options' => array(
-                            'route'    => '/[:action]',
-                            'constraints' => array(
-                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
-                            ),
-                            'defaults' => array(
-                            ),
-                        ),
-                    ),
-                ),
-            ),
-            'dashboard' => array(
-                'type'    => 'Literal',
-                'options' => array(
-                    'route'    => '/admin/dashboard',
-                    'defaults' => array(
-                        '__NAMESPACE__' => 'Admin\Controller',
                         'controller'    => 'Dashboard',
                         'action'        => 'index',
                     ),
@@ -85,33 +29,7 @@ return array(
                     'default' => array(
                         'type'    => 'Segment',
                         'options' => array(
-                            'route'    => '/[:action]',
-                            'constraints' => array(
-                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
-                            ),
-                            'defaults' => array(
-                            ),
-                        ),
-                    ),
-                ),
-            ),
-            'user' => array(
-                'type'    => 'Literal',
-                'options' => array(
-                    'route'    => '/admin/user',
-                    'defaults' => array(
-                        '__NAMESPACE__' => 'Admin\Controller',
-                        'controller'    => 'User',
-                        'action'        => 'index',
-                    ),
-                ),
-                'may_terminate' => true,
-                'child_routes' => array(
-                    'default' => array(
-                        'type'    => 'Segment',
-                        'options' => array(
-                            'route'    => '/[:action]',
+                            'route'    => '/[:controller[/[:action[/]]]]',
                             'constraints' => array(
                                 'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
                                 'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
@@ -146,7 +64,6 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'Admin\Controller\Dashboard' => 'Admin\Controller\DashboardController',
-            'Admin\Controller\Email' => 'Admin\Controller\EmailController',
             'Admin\Controller\User' => 'Admin\Controller\UserController',
         ),
     ),
@@ -157,12 +74,7 @@ return array(
         'not_found_template'       => 'error/404',
         'exception_template'       => 'error/index',
         'template_map' => array(
-            'admin/email/index' => __DIR__ . '/../view/admin/email/index.phtml',
-            'admin/email/edit' => __DIR__ . '/../view/admin/email/edit.phtml',
-            'admin/email/new' => __DIR__ . '/../view/admin/email/new.phtml',
             'admin/user/update-info' => __DIR__ . '/../view/admin/user/update-info.phtml',
-            'error/404'               => __DIR__ . '/../../Application/view/error/404.phtml',
-            'error/index'             => __DIR__ . '/../../Application/view/error/index.phtml',
         ),
         'layout' => 'layout/admin',
         'template_path_stack' => array(
