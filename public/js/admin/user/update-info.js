@@ -54,8 +54,7 @@ angularApp.run(function($rootScope){
         onFinished: function (event, currentIndex) {
             var form = $(this);
 
-            // Submit form input
-            form.submit();
+            angular.element('#UpdateInfoController').scope().submit();
         }
     }).validate({
         errorPlacement: function (error, element) {
@@ -70,14 +69,38 @@ angularApp.run(function($rootScope){
 });
 angularApp.controller('UpdateInfoController', function($scope, $http){
     $scope.userInfo = {};
+    $scope.countries = [];
 
     $http.get("/api/user-info")
         .success(function($data){
             $scope.userInfo = $data['user'];
+            if($scope.countries.length){
+                $scope.userInfo.country = findOption($scope.countries, $scope.userInfo.country);
+            }
         });
 
+    $http.get("/api/common-country")
+        .success(function($data){
+            $scope.countries = $data['countries'];
+            if($scope.userInfo.country){
+                $scope.userInfo.country = findOption($scope.countries, $scope.userInfo.country);
+            }
+        });
+
+    /**
+     * Submit the form
+     */
     $scope.submit = function(){
-        alert($scope.userInfo.firstName);
+        $http.put("/api/user-info/" + $scope.userInfo.id, $scope.userInfo)
+            .success(function($data){
+                alert($data);
+            });
     }
 
+    /**
+     * Display activate class
+     */
+    $scope.active_class = function(a, b){
+        return a == b ? 'active' : '';
+    }
 });

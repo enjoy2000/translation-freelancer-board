@@ -1,3 +1,3 @@
-INSERT INTO `papertask`.`Group` (`name`) VALUES ('Freelancer');
-INSERT INTO `papertask`.`Group` (`name`) VALUES ('Employer');
-INSERT INTO `papertask`.`Group` (`name`) VALUES ('Admin');
+INSERT INTO `papertask`.`UserGroup` (`name`) VALUES ('Freelancer');
+INSERT INTO `papertask`.`UserGroup` (`name`) VALUES ('Employer');
+INSERT INTO `papertask`.`UserGroup` (`name`) VALUES ('Admin');

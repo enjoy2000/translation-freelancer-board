@@ -32,9 +32,7 @@ class User implements InputFilterAwareInterface{
     /** @ORM\Column(type="string") */
     protected $lastName;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="Group")
-     */
+    /** @ORM\ManyToOne(targetEntity="UserGroup") */
     protected $group;
 
     /** @ORM\Column(type="string", unique=true) */
@@ -67,6 +65,9 @@ class User implements InputFilterAwareInterface{
     /** @ORM\Column(type="string", nullable=true) */
     protected $city = null;
 
+    /** @ORM\Column(type="boolean") */
+    protected $gender = 0;
+
     protected $inputFilter;
 
     /**
@@ -81,9 +82,9 @@ class User implements InputFilterAwareInterface{
     /**
      *
      * Set group Id
-     * @param Group
+     * @param UserGroup
      */
-    public function setGroup(Group $group){
+    public function setGroup(UserGroup $group){
         $this->group = $group;
     }
 
@@ -93,7 +94,40 @@ class User implements InputFilterAwareInterface{
      * @return $this
      */
     public function setData(array $arr){
-        $keys = array('lastName', 'firstName', 'email', 'password', 'lastLogin', 'createdTime', 'phone');
+        $keys = array(
+            'city',
+            'country',
+            'createdTime',
+            'email',
+            'firstName',
+            'gender',
+            'lastLogin',
+            'lastName',
+            'password',
+            'phone',
+        );
+        foreach($keys as $key){
+            if(isset($arr[$key])){
+                $this->$key = $arr[$key];
+            }
+        }
+        return $this;
+    }
+
+    /**
+     * update data
+     * @param array $arr
+     * @return $this
+     */
+    public function updateData(array $arr){
+        $keys = array(
+            'city',
+            'country',
+            'firstName',
+            'gender',
+            'lastName',
+            'phone',
+        );
         foreach($keys as $key){
             if(isset($arr[$key])){
                 $this->$key = $arr[$key];
@@ -327,5 +361,22 @@ class User implements InputFilterAwareInterface{
         Mail::sendMail($controller, "USER_RESET", $this->email, $data);
     }
 
+    public function getData(){
+        return array(
+            "city" => $this->city,
+            "country" => $this->country,
+            "createdTime" => $this->createdTime,
+            "email" => $this->email,
+            "firstName" => $this->firstName,
+            'gender' => $this->gender,
+            "group" => $this->group->getData(),
+            "id" => $this->id,
+            "isActive" => $this->isActive,
+            "lastLogin" => $this->lastLogin,
+            "lastName" => $this->lastName,
+            "phone" => $this->phone,
+            "profileUpdated" => $this->profileUpdated,
+        );
+    }
 }
 

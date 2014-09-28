@@ -38,14 +38,13 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
-                <div class="ibox-content" ng-controller="UpdateInfoController">
-                    <h2>
+                <div class="ibox-content" id="UpdateInfoController" ng-controller="UpdateInfoController">
+                    <h2 ng-show="!userInfo.profileUpdated">
                         Please finish your account information
                     </h2>
-
-                    <p>
-                        This example show how to use Steps with jQuery Validation plugin.
-                    </p>
+                    <h2 ng-show="userInfo.profileUpdated">
+                        Update your account information
+                    </h2>
 
                     <form id="form" action="#" class="wizard-big">
                         <?php include __DIR__ . "/update-info/basic-info.phtml" ?>
