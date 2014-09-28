@@ -24,6 +24,7 @@ return array(
             'Api\Controller\Index' => 'Api\Controller\IndexController',
             'Api\Controller\CommonCountry' => 'Api\Controller\Common\CountryController',
             'Api\Controller\UserInfo' => 'Api\Controller\User\InfoController',
+            'Api\Controller\UserResource' => 'Api\Controller\User\ResourceController',
         ),
     ),
     'view_manager' => array(

@@ -17,13 +17,9 @@ class InfoController extends AbstractRestfulController
     {
         $user = $this->getCurrentUser();
 
-        $config = $this->getServiceLocator()->get('Config');
-        $countries = $config['countries'];
-
         $userData = $user->getData();
         $userData['country'] = array(
-            'select' => $userData['country'],
-            'label' => $countries[$userData['country']],
+            'select' => $userData['country'],  # ng-option
         );
 
         return new JsonModel(
@@ -43,8 +39,6 @@ class InfoController extends AbstractRestfulController
         $entityManager->persist($user);
         $entityManager->flush();
 
-        return new JsonModel(array(
-            'success' => true,
-        ));
+        return new JsonModel(array());
     }
 }

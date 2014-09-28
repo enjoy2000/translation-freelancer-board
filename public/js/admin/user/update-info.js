@@ -70,6 +70,9 @@ angularApp.run(function($rootScope){
 angularApp.controller('UpdateInfoController', function($scope, $http){
     $scope.userInfo = {};
     $scope.countries = [];
+    $scope.resources = [];
+    $scope.userResources = [];
+    $scope.resource_active = {};
 
     $http.get("/api/user-info")
         .success(function($data){
@@ -77,7 +80,16 @@ angularApp.controller('UpdateInfoController', function($scope, $http){
             if($scope.countries.length){
                 $scope.userInfo.country = findOption($scope.countries, $scope.userInfo.country);
             }
+            $scope.userResources = $scope.userInfo.resources;
+            delete $scope.userInfo.resources;
+            generateActiveResources();
         });
+
+    function generateActiveResources(){
+        for(var i = 0; i < $scope.userResources.length; i++){
+            $scope.resource_active[$scope.userResources[i]] = 'active';
+        }
+    }
 
     $http.get("/api/common-country")
         .success(function($data){
@@ -87,14 +99,41 @@ angularApp.controller('UpdateInfoController', function($scope, $http){
             }
         });
 
+    $http.get("/api/user-resource")
+        .success(function($data){
+            $scope.resources = $data['resources'];
+        });
+
     /**
      * Submit the form
      */
     $scope.submit = function(){
         $http.put("/api/user-info/" + $scope.userInfo.id, $scope.userInfo)
             .success(function($data){
-                alert($data);
+                console.log("User info updaet");
+                console.log($data);
             });
+        $http.put("/api/user-resource/" + $scope.userInfo.id, {
+                'resources': $scope.userResources
+            })
+            .success(function($data){
+                console.log("User info updaet");
+                console.log($data);
+            });
+    }
+
+    /**
+     * Toggle resource
+     */
+    $scope.toggleResource = function($id){
+        console.log($scope.userResources);
+        var $index = $scope.userResources.indexOf($id);
+        if($index == -1){
+            $scope.userResources.push($id);
+        } else {
+            $scope.userResources.splice($index, 1);
+        }
+        console.log($scope.userResources);
     }
 
     /**
@@ -103,4 +142,7 @@ angularApp.controller('UpdateInfoController', function($scope, $http){
     $scope.active_class = function(a, b){
         return a == b ? 'active' : '';
     }
+    /**
+     * Display activate class
+     */
 });

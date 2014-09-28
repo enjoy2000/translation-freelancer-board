@@ -8,10 +8,10 @@
 namespace User\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Zend\InputFilter\Factory as InputFactory;     // <-- Add this import
-use Zend\InputFilter\InputFilter;                 // <-- Add this import
-use Zend\InputFilter\InputFilterAwareInterface;   // <-- Add this import
-use Zend\InputFilter\InputFilterInterface;        // <-- Add this import
+use Zend\InputFilter\Factory as InputFactory;
+use Zend\InputFilter\InputFilter;
+use Zend\InputFilter\InputFilterAwareInterface;
+use Zend\InputFilter\InputFilterInterface;
 use Zend\Session\Container;
 use User\Model\Password;
 use Common\Mail;
@@ -67,6 +67,12 @@ class User implements InputFilterAwareInterface{
 
     /** @ORM\Column(type="boolean") */
     protected $gender = 0;
+
+    /** @ORM\ManyToMany(targetEntity="Resource") */
+    protected $resources = null;
+
+
+    // class variables
 
     protected $inputFilter;
 
@@ -133,6 +139,7 @@ class User implements InputFilterAwareInterface{
                 $this->$key = $arr[$key];
             }
         }
+
         return $this;
     }
 
@@ -376,7 +383,16 @@ class User implements InputFilterAwareInterface{
             "lastName" => $this->lastName,
             "phone" => $this->phone,
             "profileUpdated" => $this->profileUpdated,
+            'resources' => $this->getResourceIds(),
         );
+    }
+
+    public function getResources(){
+        return $this->resources;
+    }
+
+    public function getResourceIds(){
+        return $this->resources->map( function( $obj ) { return $obj->getId(); } )->toArray();
     }
 }
 
