@@ -21,7 +21,9 @@ $this->inlineScript()->appendScript("
         <div class="ibox-title">
             <h5><?php echo $this->translate('Email Templates') ?></h5>
             <div class="ibox-tools">
-                <a href="<?php echo $this->url('email') ?>/new" class="btn btn-primary btn-xs"><?php echo $this->translate('Create new email template') ?></a>
+                <a href="<?php
+                echo $this->url('admin', array('controller' => 'email', 'action' => 'new'))
+                ?>" class="btn btn-primary btn-xs"><?php echo $this->translate('Create new email template') ?></a>
             </div>
         </div>
         <div class="ibox-content">
