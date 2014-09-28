@@ -71,6 +71,19 @@ class User implements InputFilterAwareInterface{
     /** @ORM\ManyToMany(targetEntity="Resource") */
     protected $resources = null;
 
+    /** @ORM\Column(type="string") */
+    protected $currency = 'cny';
+
+    /** @ORM\ManyToMany(targetEntity="DesktopCatTool") */
+    protected $DesktopCatTools = null;
+    /** @ORM\ManyToMany(targetEntity="DesktopOperatingSystem") */
+    protected $DesktopOperatingSystems = null;
+    /** @ORM\ManyToMany(targetEntity="InterpretingSpecialism") */
+    protected $InterpretingSpecialisms = null;
+    /** @ORM\ManyToMany(targetEntity="TranslationCatTool") */
+    protected $TranslationCatTools = null;
+    /** @ORM\ManyToMany(targetEntity="TranslationSpecialism") */
+    protected $TranslationSpecialisms = null;
 
     // class variables
 
@@ -103,6 +116,7 @@ class User implements InputFilterAwareInterface{
         $keys = array(
             'city',
             'country',
+            'currency',
             'createdTime',
             'email',
             'firstName',
@@ -129,6 +143,7 @@ class User implements InputFilterAwareInterface{
         $keys = array(
             'city',
             'country',
+            'currency',
             'firstName',
             'gender',
             'lastName',
@@ -372,6 +387,7 @@ class User implements InputFilterAwareInterface{
         return array(
             "city" => $this->city,
             "country" => $this->country,
+            'currency' => $this->currency,
             "createdTime" => $this->createdTime,
             "email" => $this->email,
             "firstName" => $this->firstName,

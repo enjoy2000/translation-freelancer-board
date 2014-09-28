@@ -19,12 +19,14 @@
                     <div class="form-group">
                         <label>Gender *</label>
                         <div data-toggle="buttons">
-                            <label class="btn btn-outline btn-primary btn-sm {{active_class(userInfo.gender, true)}}"
+                            <label class="btn btn-outline btn-primary btn-sm
+                                            {{userInfo.gender ? 'active' : ''}}"
                                 ng-click="userInfo.gender=true">
                                 <input type="radio" name="gender" value="1" /> Male
                             </label>
                             &nbsp;
-                            <label class="btn btn-outline btn-primary btn-sm {{active_class(userInfo.gender, false)}}"
+                            <label class="btn btn-outline btn-primary btn-sm
+                                            {{!userInfo.gender ? 'active' : ''}}"
                                 ng-click="userInfo.gender=false">
                                 <input type="radio" name="gender" value="0" /> Female
                             </label>

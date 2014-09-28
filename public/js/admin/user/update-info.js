@@ -110,14 +110,14 @@ angularApp.controller('UpdateInfoController', function($scope, $http){
     $scope.submit = function(){
         $http.put("/api/user-info/" + $scope.userInfo.id, $scope.userInfo)
             .success(function($data){
-                console.log("User info updaet");
+                console.log("User info updated");
                 console.log($data);
             });
         $http.put("/api/user-resource/" + $scope.userInfo.id, {
                 'resources': $scope.userResources
             })
             .success(function($data){
-                console.log("User info updaet");
+                console.log("User resource updated");
                 console.log($data);
             });
     }

@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: antiprovn
  * Date: 9/28/14
- * Time: 9:16 AM
+ * Time: 11:50 AM
  */
 
 namespace User\Entity;
@@ -11,7 +11,7 @@ namespace User\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /** @ORM\Entity */
-class Resource{
+class TranslationCatTool{
 
     /**
      * @ORM\id
@@ -23,18 +23,11 @@ class Resource{
     /** @ORM\Column(type="string") */
     protected $name;
 
-    /** @ORM\ManyToOne(targetEntity="ResourceGroup") */
-    protected $group;
-
     public function getData(){
         return array(
             'id' => $this->id,
             'name' => $this->name,
         );
-    }
-
-    public function getGroup(){
-        return $this->group;
     }
 
     public function getId(){
