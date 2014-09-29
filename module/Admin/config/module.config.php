@@ -15,28 +15,17 @@ return array(
             // module. Simply drop new controllers in, and you can access them
             // using the path /admin/:controller/:action
             'admin' => array(
-                'type'    => 'Literal',
+                'type'    => 'Segment',
                 'options' => array(
-                    'route'    => '/admin',
+                    'route'    => '/admin/[:controller[/[:action[/]]]]',
                     'defaults' => array(
                         '__NAMESPACE__' => 'Admin\Controller',
                         'controller'    => 'Dashboard',
                         'action'        => 'index',
                     ),
-                ),
-                'may_terminate' => true,
-                'child_routes' => array(
-                    'default' => array(
-                        'type'    => 'Segment',
-                        'options' => array(
-                            'route'    => '/[:controller[/[:action[/]]]]',
-                            'constraints' => array(
-                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
-                            ),
-                            'defaults' => array(
-                            ),
-                        ),
+                    'constraints' => array(
+                        'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
                     ),
                 ),
             ),
@@ -64,6 +53,7 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'Admin\Controller\Dashboard' => 'Admin\Controller\DashboardController',
+            'Admin\Controller\Email' => 'Admin\Controller\EmailController',
             'Admin\Controller\User' => 'Admin\Controller\UserController',
         ),
     ),
