@@ -69,14 +69,15 @@ angularApp.run(function($rootScope){
     });
 });
 angularApp.controller('UpdateInfoController', function($scope, $http, $timeout, $q){
+    $scope.catTools = [];
     $scope.countries = [];
-    $scope.desktopCatTools = [];
-    $scope.desktopOperatingSystems = [];
-    $scope.interpretingSpecialisms = [];
+    $scope.languages = [];
+    $scope.operatingSystems = [];
     $scope.resource_active = {};
     $scope.resources = [];
-    $scope.translationCatTools = [];
-    $scope.translationSpecialisms = [];
+    $scope.specialisms = [];
+    $scope.translationPrice = {};
+    $scope.translationPrices = [];
     $scope.userInfo = {
         "city": null,
         "country": {
@@ -143,8 +144,9 @@ angularApp.controller('UpdateInfoController', function($scope, $http, $timeout, 
             $http.get("/api/user/priceData")
                 .success(function($data){
                     $scope.catTools = $data['catTools'];
-                    $scope.specialisms = $data['specialisms'];
+                    $scope.languages = $data['languages'];
                     $scope.operatingSystems = $data['operatingSystems'];
+                    $scope.specialisms = $data['specialisms'];
 
                     updateUserInfoPriceData();
 
