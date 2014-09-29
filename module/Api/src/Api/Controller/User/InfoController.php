@@ -17,9 +17,28 @@ class InfoController extends AbstractRestfulController
     {
         $user = $this->getCurrentUser();
 
+        $userData = $user->getData();
+        $userData['country'] = array(
+            'select' => $userData['country'],  # ng-option
+        );
+
         return new JsonModel(
-            array('user' => $user->getArrayCopy(),
+            array(
+                'user' => $userData,
             )
         );
+    }
+
+    public function update($id, $data){
+        $data['country'] = $data['country']['select'];
+
+        $user = $this->getCurrentUser();
+        $user->updateData($data);
+
+        $entityManager = $this->getEntityManager();
+        $entityManager->persist($user);
+        $entityManager->flush();
+
+        return new JsonModel(array());
     }
 }

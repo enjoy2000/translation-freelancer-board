@@ -12,19 +12,23 @@
                     <div class="hr-line-dashed"></div>
                     <div class="form-group">
                         <label>First name *</label>
-                        <input id="name" name="name" type="text" ng-model="userInfo['firstName']"
+                        <input id="name" name="name" type="text" ng-model="userInfo.firstName"
                                class="form-control required" />
                     </div>
                     <div class="hr-line-dashed"></div>
                     <div class="form-group">
                         <label>Gender *</label>
                         <div data-toggle="buttons">
-                            <label class="btn btn-outline btn-primary btn-sm">
-                                <input type="radio" name="gender" value="male" /> Male
+                            <label class="btn btn-outline btn-primary btn-sm
+                                            {{userInfo.gender ? 'active' : ''}}"
+                                ng-click="userInfo.gender=true">
+                                <input type="radio" name="gender" value="1" /> Male
                             </label>
                             &nbsp;
-                            <label class="btn btn-outline btn-primary btn-sm">
-                                <input type="radio" name="gender" value="female" /> Female
+                            <label class="btn btn-outline btn-primary btn-sm
+                                            {{!userInfo.gender ? 'active' : ''}}"
+                                ng-click="userInfo.gender=false">
+                                <input type="radio" name="gender" value="0" /> Female
                             </label>
                         </div>
                     </div>
@@ -39,7 +43,7 @@
                     <div class="form-group" style="visibility: hidden">
                         <label>Last name *</label>
                         <input id="surname2" name="surname2" type="text"
-                               class="form-control required" />
+                               class="form-control" />
                     </div>
                     <div class="hr-line-dashed"></div>
                     <div class="form-group">
@@ -56,11 +60,8 @@
                     <div class="hr-line-dashed"></div>
                     <div class="form-group">
                         <label>Country *</label>
-                        <select class="form-control required" id="country" name="country" ng-model="userInfo.country">
-                            <option>option 1</option>
-                            <option>option 2</option>
-                            <option>option 3</option>
-                            <option>option 4</option>
+                        <select class="form-control required" id="country" name="country"
+                                ng-model="userInfo.country" ng-options="country.label for country in countries">
                         </select>
                     </div>
                 </div>

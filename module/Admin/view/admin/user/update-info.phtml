@@ -32,20 +32,24 @@
     .float-e-margins .btn {
         margin-bottom: 0px;
     }
+
+    .resource-types .panel-body label{
+        margin-right: 0.5em;
+    }
+
 </style>
 <!-- End custom style -->
 
     <div class="row">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
-                <div class="ibox-content" ng-controller="UpdateInfoController">
-                    <h2>
-                        Please finish your account information <button ng-click="submit()">Click</button>
+                <div class="ibox-content" id="UpdateInfoController" ng-controller="UpdateInfoController">
+                    <h2 ng-show="!userInfo.profileUpdated">
+                        Please finish your account information
                     </h2>
-
-                    <p>
-                        This example show how to use Steps with jQuery Validation plugin.
-                    </p>
+                    <h2 ng-show="userInfo.profileUpdated">
+                        Update your account information
+                    </h2>
 
                     <form id="form" action="#" class="wizard-big">
                         <?php include __DIR__ . "/update-info/basic-info.phtml" ?>
@@ -226,18 +230,10 @@
     </div>
 </div>
 
-
-<select class="multiselect" multiple="multiple">
-    <option value="cheese">Cheese</option>
-    <option value="tomatoes">Tomatoes</option>
-    <option value="mozarella">Mozzarella</option>
-    <option value="mushrooms">Mushrooms</option>
-    <option value="pepperoni">Pepperoni</option>
-    <option value="onions">Onions</option>
-</select>
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('.multiselect').multiselect();
-    });
-</script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.multiselect').multiselect({
+                numberDisplayed: 1
+            });
+        });
+    </script>
