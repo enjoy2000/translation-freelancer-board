@@ -230,18 +230,10 @@
     </div>
 </div>
 
-
-<select class="multiselect" multiple="multiple">
-    <option value="cheese">Cheese</option>
-    <option value="tomatoes">Tomatoes</option>
-    <option value="mozarella">Mozzarella</option>
-    <option value="mushrooms">Mushrooms</option>
-    <option value="pepperoni">Pepperoni</option>
-    <option value="onions">Onions</option>
-</select>
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('.multiselect').multiselect();
-    });
-</script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.multiselect').multiselect({
+                numberDisplayed: 1
+            });
+        });
+    </script>

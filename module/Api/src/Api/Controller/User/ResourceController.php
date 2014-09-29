@@ -41,9 +41,17 @@ class ResourceController extends AbstractRestfulController
         );
     }
 
+    /**
+     * @param mixed $id
+     * @param mixed $data
+     * @return void|JsonModel
+     *
+     * $data['resources'] must be array of resource id
+     */
     public function update($id, $data){
         $entityManager = $this->getEntityManager();
         $resourceIds = $data['resources'];
+
 
         $resources = $entityManager->getRepository('\User\Entity\Resource')->findBy(array(
             'id' => $resourceIds

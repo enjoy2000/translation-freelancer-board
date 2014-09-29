@@ -13,3 +13,10 @@ INSERT INTO `papertask`.`Resource` (`group_id`, `name`) VALUES ('3', 'Simultaneo
 INSERT INTO `papertask`.`Resource` (`group_id`, `name`) VALUES ('3', 'Consecutive');
 INSERT INTO `papertask`.`Resource` (`group_id`, `name`) VALUES ('3', 'Business Escort');
 INSERT INTO `papertask`.`Resource` (`group_id`, `name`) VALUES ('3', 'Tourism Escort');
+
+INSERT INTO `papertask`.`TranslationSpecialism`(`name`) VALUES ('Cheese'),('Tomatoes'),('Mozzarella'),('Mushrooms'),('Pepperoni'),('Onions'),('Cheese'),('Tomatoes'),('Mozzarella'),('Mushrooms'),('Pepperoni'),('Onions');
+INSERT INTO `papertask`.`TranslationCatTool`(`name`) VALUES ('Cheese'),('Tomatoes'),('Mozzarella'),('Mushrooms'),('Pepperoni'),('Onions'),('Cheese'),('Tomatoes'),('Mozzarella'),('Mushrooms'),('Pepperoni'),('Onions');
+INSERT INTO `papertask`.`DesktopCatTool`(`name`) VALUES ('Cheese'),('Tomatoes'),('Mozzarella'),('Mushrooms'),('Pepperoni'),('Onions'),('Cheese'),('Tomatoes'),('Mozzarella'),('Mushrooms'),('Pepperoni'),('Onions');
+INSERT INTO `papertask`.`DesktopOperatingSystem` (`name`) VALUES ('MAC');
+INSERT INTO `papertask`.`DesktopOperatingSystem` (`name`) VALUES ('PC');
+INSERT INTO `papertask`.`InterpretingSpecialism`(`name`) VALUES ('Cheese'),('Tomatoes'),('Mozzarella'),('Mushrooms'),('Pepperoni'),('Onions'),('Cheese'),('Tomatoes'),('Mozzarella'),('Mushrooms'),('Pepperoni'),('Onions');

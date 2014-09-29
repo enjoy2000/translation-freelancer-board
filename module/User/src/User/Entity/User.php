@@ -13,8 +13,10 @@ use Zend\InputFilter\InputFilter;
 use Zend\InputFilter\InputFilterAwareInterface;
 use Zend\InputFilter\InputFilterInterface;
 use Zend\Session\Container;
+
 use User\Model\Password;
 use Common\Mail;
+use Common\Func;
 
 /** @ORM\Entity */
 class User implements InputFilterAwareInterface{
@@ -32,7 +34,10 @@ class User implements InputFilterAwareInterface{
     /** @ORM\Column(type="string") */
     protected $lastName;
 
-    /** @ORM\ManyToOne(targetEntity="UserGroup") */
+    /**
+     * @var \User\Entity\UserGroup
+     * @ORM\ManyToOne(targetEntity="UserGroup")
+     */
     protected $group;
 
     /** @ORM\Column(type="string", unique=true) */
@@ -68,21 +73,43 @@ class User implements InputFilterAwareInterface{
     /** @ORM\Column(type="boolean") */
     protected $gender = 0;
 
-    /** @ORM\ManyToMany(targetEntity="Resource") */
+    /**
+     * @var \Doctrine\ORM\PersistentCollection
+     * @ORM\ManyToMany(targetEntity="Resource")
+     */
     protected $resources = null;
 
     /** @ORM\Column(type="string") */
     protected $currency = 'cny';
 
-    /** @ORM\ManyToMany(targetEntity="DesktopCatTool") */
+    /**
+     * @var \Doctrine\ORM\PersistentCollection
+     * @ORM\ManyToMany(targetEntity="DesktopCatTool")
+     */
     protected $DesktopCatTools = null;
-    /** @ORM\ManyToMany(targetEntity="DesktopOperatingSystem") */
+
+    /**
+     * @var \Doctrine\ORM\PersistentCollection
+     * @ORM\ManyToMany(targetEntity="DesktopOperatingSystem")
+     */
     protected $DesktopOperatingSystems = null;
-    /** @ORM\ManyToMany(targetEntity="InterpretingSpecialism") */
+
+    /**
+     * @var \Doctrine\ORM\PersistentCollection
+     * @ORM\ManyToMany(targetEntity="InterpretingSpecialism")
+     */
     protected $InterpretingSpecialisms = null;
-    /** @ORM\ManyToMany(targetEntity="TranslationCatTool") */
+
+    /**
+     * @var \Doctrine\ORM\PersistentCollection
+     * @ORM\ManyToMany(targetEntity="TranslationCatTool")
+     */
     protected $TranslationCatTools = null;
-    /** @ORM\ManyToMany(targetEntity="TranslationSpecialism") */
+
+    /**
+     * @var \Doctrine\ORM\PersistentCollection
+     * @ORM\ManyToMany(targetEntity="TranslationSpecialism")
+     */
     protected $TranslationSpecialisms = null;
 
     // class variables
@@ -281,6 +308,11 @@ class User implements InputFilterAwareInterface{
         return $this->token === $token && strlen($token) == 32;
     }
 
+    /**
+     * @param string $token
+     * @param \Doctrine\ORM\EntityManager $entityManager
+     * @return bool
+     */
     public function activate($token, $entityManager){
         if($this->isTokenValid($token)){
             $this->token = '';
@@ -292,6 +324,12 @@ class User implements InputFilterAwareInterface{
         return false;
     }
 
+    /**
+     * @param string $token
+     * @param string $newPassword
+     * @param \Doctrine\ORM\EntityManager $entityManager
+     * @return bool
+     */
     public function reset($token, $newPassword, $entityManager){
         if($this->isTokenValid($token)){
             $this->token = '';
@@ -332,46 +370,26 @@ class User implements InputFilterAwareInterface{
     }
 
     /**
-     * Create email template
-     * @param $mailCode
-     * @param $entityManager
-     * @param $link
-     * @return Message
+     * @param \Application\Controller\AbstractActionController $controller
      */
-    public function createEmail($mailCode, $entityManager, $link){
-        $mail = new Message();
-        $type = $entityManager->getRepository('Admin\Entity\TemplateType')->findOneBy(array('code' => $mailCode));
-        $template = $entityManager->getRepository('Admin\Entity\EmailTemplates')->findOneBy(array('type' => $type));
-        $mail->setSubject($template->getSubject())
-            ->addTo($this->getEmail());
-        $content = $template->getContent();
-
-        // Replace array variables to user content or link
-        $arrayReplace = array(
-            '{{firstName}}' => $this->firstName,
-            '{{lastName}}' => $this->lastName,
-            '{{link}}' => $link,
-        );
-        foreach($arrayReplace as $search => $replace){
-            $content = str_replace($search, $replace, $content);
-        }
-        $mail->addBody($content);
-
-        return $mail;
-    }
-
     public function sendConfirmationEmail($controller){
         $data = array();
         // TODO: initial data for email template
-        // Mail::sendMail($controller, "register-confirmation", $this->email, $data);
+        Mail::sendMail($controller, "register-confirmation", $this->email, $data);
     }
 
+    /**
+     * @param \Application\Controller\AbstractActionController $controller
+     */
     public function sendWelcomeEmail($controller){
         $data = array();
         // TODO: initial data for email template
         Mail::sendMail($controller, "register-welcome", $this->email, $data);
     }
 
+    /**
+     * @param \Application\Controller\AbstractActionController $controller
+     */
     public function sendForgotPasswordEmail($controller){
         // initial data for email template
         $forgotLink = $controller->getBaseUrl() . '/user/forgotPassword/reset?token=' . $this->token;
@@ -399,7 +417,12 @@ class User implements InputFilterAwareInterface{
             "lastName" => $this->lastName,
             "phone" => $this->phone,
             "profileUpdated" => $this->profileUpdated,
-            'resources' => $this->getResourceIds(),
+            'resources' => Func::getReferenceIds($this->resources),
+            'DesktopCatTools' => Func::getReferenceIds($this->DesktopCatTools),
+            'DesktopOperatingSystems' => Func::getReferenceIds($this->DesktopOperatingSystems),
+            'InterpretingSpecialisms' => Func::getReferenceIds($this->InterpretingSpecialisms),
+            'TranslationCatTools' => Func::getReferenceIds($this->TranslationCatTools),
+            'TranslationSpecialisms' => Func::getReferenceIds($this->TranslationSpecialisms),
         );
     }
 
@@ -407,8 +430,97 @@ class User implements InputFilterAwareInterface{
         return $this->resources;
     }
 
-    public function getResourceIds(){
-        return $this->resources->map( function( $obj ) { return $obj->getId(); } )->toArray();
+    /**
+     * @param \Doctrine\ORM\EntityManager $entityManager
+     * @param array $userTranslationCatTools
+     */
+    public function updateTranslationCatTools($entityManager, $userTranslationCatTools){
+
+        $values = $entityManager->getRepository('\User\Entity\TranslationCatTool')->findBy([
+            'id' => $userTranslationCatTools
+        ]);
+
+        $this->TranslationCatTools->clear();
+
+        foreach($values as $value){
+            $this->TranslationCatTools->add($value);
+        }
+    }
+
+    /**
+     * @param \Doctrine\ORM\EntityManager $entityManager
+     * @param array $userTranslationSpecialisms
+     */
+    public function updateTranslationSpecialisms($entityManager, $userTranslationSpecialisms){
+
+        $values = $entityManager->getRepository('\User\Entity\TranslationSpecialism')->findBy([
+            'id' => $userTranslationSpecialisms
+        ]);
+
+        $this->TranslationSpecialisms->clear();
+
+        foreach($values as $value){
+            $this->TranslationSpecialisms->add($value);
+        }
+    }
+
+    /**
+     * @param \Doctrine\ORM\EntityManager $entityManager
+     * @param array $userDesktopCatTools
+     */
+    public function updateDesktopCatTools($entityManager, $userDesktopCatTools){
+
+        $values = $entityManager->getRepository('\User\Entity\DesktopCatTool')->findBy([
+            'id' => $userDesktopCatTools
+        ]);
+
+        $this->DesktopCatTools->clear();
+
+        foreach($values as $value){
+            $this->DesktopCatTools->add($value);
+        }
+    }
+
+    /**
+     * @param \Doctrine\ORM\EntityManager $entityManager
+     * @param array $userDesktopOperatingSystems
+     */
+    public function updateDesktopOperatingSystems($entityManager, $userDesktopOperatingSystems){
+
+        $values = $entityManager->getRepository('\User\Entity\DesktopOperatingSystem')->findBy([
+            'id' => $userDesktopOperatingSystems
+        ]);
+
+        $this->DesktopOperatingSystems->clear();
+
+        foreach($values as $value){
+            $this->DesktopOperatingSystems->add($value);
+        }
+    }
+
+    /**
+     * @param \Doctrine\ORM\EntityManager $entityManager
+     * @param array $userInterpretingSpecialisms
+     */
+    public function updateInterpretingSpecialisms($entityManager, $userInterpretingSpecialisms){
+
+        $values = $entityManager->getRepository('\User\Entity\InterpretingSpecialism')->findBy([
+            'id' => $userInterpretingSpecialisms
+        ]);
+
+        $this->InterpretingSpecialisms->clear();
+
+        foreach($values as $value){
+            $this->InterpretingSpecialisms->add($value);
+        }
+    }
+
+    /**
+     * @param \Doctrine\ORM\EntityManager $entityManager
+     */
+    public function save($entityManager){
+        $entityManager->persist($this);
+        $entityManager->flush();
     }
 }
 
