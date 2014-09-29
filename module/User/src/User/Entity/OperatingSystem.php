@@ -11,7 +11,7 @@ namespace User\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /** @ORM\Entity */
-class DesktopOperatingSystem{
+class OperatingSystem{
 
     /**
      * @ORM\id

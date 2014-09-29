@@ -91,8 +91,8 @@ class User implements InputFilterAwareInterface{
 
     /**
      * @var \Doctrine\ORM\PersistentCollection
-     * @ORM\ManyToMany(targetEntity="DesktopOperatingSystem")
-     * @ORM\JoinTable(name="UserDesktopOperatingSystem")
+     * @ORM\ManyToMany(targetEntity="OperatingSystem")
+     * @ORM\JoinTable(name="UserOperatingSystem")
      */
     protected $DesktopOperatingSystems = null;
 
