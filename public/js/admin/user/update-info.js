@@ -5,6 +5,7 @@ angularApp.run(function($rootScope){
     $("#form").steps({
         bodyTag: "fieldset",
         showFinishButtonAlways: true,
+        paginationPosition: "top",
         onStepChanging: function (event, currentIndex, newIndex) {
             // Always allow going backward even if the current step contains invalid fields!
             if (currentIndex > newIndex) {
@@ -147,6 +148,7 @@ angularApp.controller('UpdateInfoController', function($scope, $http, $timeout, 
                     $scope.languages = $data['languages'];
                     $scope.operatingSystems = $data['operatingSystems'];
                     $scope.specialisms = $data['specialisms'];
+                    angular.element("#modalContainer").scope().setData('languages', $scope.languages);
 
                     updateUserInfoPriceData();
 
