@@ -127,6 +127,24 @@ angularApp.controller('UpdateInfoController', function($scope, $http, $timeout, 
         $scope.userInfo.InterpretingSpecialisms = values;
     }
 
+    function initModal(){
+        setModalControllerData('desktopPrice', {});
+        setModalControllerData('interpretingPrice', {});
+        setModalControllerData('translationPrice', {});
+
+        setModalControllerData('languages', $scope.languages);
+        setModalControllerData('services', $scope.services);
+        setModalControllerData('softwares', $scope.softwares);
+    }
+
+    function rebuildMultiSelect(){
+        $timeout(function(){
+            $(".multiselect").multiselect("destroy");
+        }).then(function(){
+            $(".multiselect").multiselect();
+        });
+    }
+
     /** end mapping function **/
 
     $http.get("/api/user/info")
@@ -144,20 +162,18 @@ angularApp.controller('UpdateInfoController', function($scope, $http, $timeout, 
 
             $http.get("/api/user/priceData")
                 .success(function($data){
+                    /** map data **/
                     $scope.catTools = $data['catTools'];
                     $scope.languages = $data['languages'];
                     $scope.operatingSystems = $data['operatingSystems'];
                     $scope.specialisms = $data['specialisms'];
-                    angular.element("#modalContainer").scope().setData('languages', $scope.languages);
+                    $scope.services = $data['services'];
+                    $scope.softwares = $data['softwares'];
 
+                    initModal();
                     updateUserInfoPriceData();
 
-                    $timeout(function(){
-                        $(".multiselect").multiselect("destroy");
-                    }).then(function(){
-                        $(".multiselect").multiselect();
-                    });
-
+                    rebuildMultiSelect();
                 });
         });
 
@@ -197,6 +213,7 @@ angularApp.controller('UpdateInfoController', function($scope, $http, $timeout, 
         // wait all done
         $q.all([requestDesktop, requestInfo, requestInterpreting, requestResource, requestTranslation])
             .then(function(result){
+                // TODO: change this callback
                 alert("Success update all");
             });
     };
@@ -221,4 +238,32 @@ angularApp.controller('UpdateInfoController', function($scope, $http, $timeout, 
     $scope.active_class = function(a, b){
         return a == b ? 'active' : '';
     };
+
+    /**
+     * Save translation price from modal
+     * @param translationPrice
+     */
+    $scope.saveTranslationPrice = function(translationPrice){
+        console.log(translationPrice);
+    }
+
+    /**
+     * Save desktop price from modal
+     * @param desktopPrice
+     */
+    $scope.saveDesktopPrice = function(desktopPrice){
+        console.log(desktopPrice);
+    }
+
+    /**
+     * Save interpreting price from modal
+     * @param interpretingPrice
+     */
+    $scope.saveInterpretingPrice = function(interpretingPrice){
+        console.log(interpretingPrice);
+    }
+
+    $scope.test = function(){
+        console.log($scope.userInfo);
+    }
 });

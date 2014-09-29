@@ -54,3 +54,7 @@ function callOnce(){
     }
     return false;
 }
+
+function setModalControllerData(key, value){
+    angular.element("#modalContainer").scope().setData(key, value);
+}

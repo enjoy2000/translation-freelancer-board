@@ -15,15 +15,19 @@
                             <div class="form-group">
                                 <label>Source Language *</label>
                                 <select class="form-control required" name="sourceLanguage"
-                                        ng-model="translationPrice.sourceLanguage"
-                                        ng-options="language.name for language in languages">
+                                        ng-model="translationPrice.sourceLanguage">
+                                    <option value="">--</option>
+                                    <option ng-repeat="language in languages"
+                                            value="{{language.id}}">{{language.name}}</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label>Target Language *</label>
                                 <select class="form-control required" name="targetLanguage"
-                                        ng-model="translationPrice.targetLanguage"
-                                        ng-options="language.name for language in languages">
+                                        ng-model="translationPrice.targetLanguage">
+                                    <option value="">--</option>
+                                    <option ng-repeat="language in languages"
+                                            value="{{language.id}}">{{language.name}}</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -37,7 +41,10 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-w-m btn-white" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-w-m btn-primary">Save changes</button>
+                <button type="button" class="btn btn-w-m btn-primary"
+                    ng-click="submitTo('#modal-translation','#UpdateInfoController', 'saveTranslationPrice',
+                                       translationPrice)"
+                    >Save changes</button>
             </div>
         </div>
     </div>
@@ -59,36 +66,38 @@
                             <div class="form-group">
                                 <label>Languages *</label>
                                 <select class="form-control required" name="language"
-                                        ng-model="desktop.language"
-                                        ng-options="language.name for language in languages">
+                                        ng-model="desktopPrice.language">
+                                    <option value="">--</option>
+                                    <option ng-repeat="language in languages"
+                                            value="{{language.id}}">{{language.name}}</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label>DTP software *</label>
                                 <select class="form-control required" name="software"
-                                        ng-model="desktop.software"
+                                        ng-model="desktopPrice.software"
                                         ng-options="software.name for software in softwares">
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label>Price/Page (MAC) *</label>
                                 <input name="priceMac" type="number" value="" class="form-control required"
-                                       ng-model="desktop.priceMac">
+                                       ng-model="desktopPrice.priceMac">
                             </div>
                             <div class="form-group">
                                 <label>Price/Page (PC) *</label>
                                 <input name="pricePc" type="number" value="" class="form-control required"
-                                       ng-model="desktop.pricePc">
+                                       ng-model="desktopPrice.pricePc">
                             </div>
                             <div class="form-group">
                                 <label>Price/Hour (MAC) *</label>
                                 <input name="priceHourMac" type="number" value="" class="form-control required"
-                                       ng-model="desktop.priceHourMac">
+                                       ng-model="desktopPrice.priceHourMac">
                             </div>
                             <div class="form-group">
                                 <label>Price/Hour (PC) *</label>
                                 <input name="priceHourPc" type="number" value="" class="form-control required"
-                                       ng-model="desktop.priceHourPc">
+                                       ng-model="desktopPrice.priceHourPc">
                             </div>
                         </div>
                     </div>
@@ -96,7 +105,9 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-w-m btn-white" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-w-m btn-primary">Save changes</button>
+                <button type="button" class="btn btn-w-m btn-primary"
+                        ng-click="submitTo('#modal-dtp','#UpdateInfoController', 'saveDesktopPrice',
+                                           desktopPrice)">Save changes</button>
             </div>
         </div>
     </div>
@@ -118,33 +129,35 @@
                             <div class="form-group">
                                 <label>Source Language *</label>
                                 <select class="form-control required" name="sourceLanguage"
-                                        ng-model="interpreting.sourceLanguage"
-                                        ng-options="language.name for language in languages">
+                                        ng-model="interpretingPrice.sourceLanguage">
+                                    <option value="">--</option>
+                                    <option ng-repeat="language in languages"
+                                            value="{{language.id}}">{{language.name}}</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label>Target Language *</label>
                                 <select class="form-control required" name="targetLanguage"
-                                        ng-model="interpreting.targetLanguage"
+                                        ng-model="interpretingPrice.targetLanguage"
                                         ng-options="language.name for language in languages">
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label>Interpreting Service *</label>
                                 <select class="form-control required" name="service"
-                                        ng-model="interpreting.service"
+                                        ng-model="interpretingPrice.service"
                                         ng-options="service.name for service in services">
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label>Price/Day *</label>
                                 <input name="priceDay" type="number" class="form-control required"
-                                       ng-model="interpreting.priceDay">
+                                       ng-model="interpretingPrice.priceDay">
                             </div>
                             <div class="form-group">
                                 <label>Price/Half-day *</label>
                                 <input name="priceHalfDay" type="number" class="form-control required"
-                                       ng-model="interpreting.priceHalfDay">
+                                       ng-model="interpretingPrice.priceHalfDay">
                             </div>
                         </div>
                     </div>
@@ -152,7 +165,9 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-w-m btn-white" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-w-m btn-primary">Save changes</button>
+                <button type="button" class="btn btn-w-m btn-primary"
+                        ng-click="submitTo('#modal-interpreting','#UpdateInfoController', 'saveInterpretingPrice',
+                                           interpretingPrice)">Save changes</button>
             </div>
         </div>
     </div>

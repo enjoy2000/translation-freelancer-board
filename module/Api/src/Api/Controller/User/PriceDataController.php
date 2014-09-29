@@ -27,6 +27,8 @@ class PriceDataController extends AbstractRestfulController
         $data['operatingSystems'] = $this->getAllData('\User\Entity\OperatingSystem');
         $data['specialisms'] = $this->getAllData('\User\Entity\Specialism');
         $data['languages'] = $this->getAllData('\User\Entity\Language');
+        $data['softwares'] = $this->getAllData('\User\Entity\DesktopSoftware');
+        $data['services'] = $this->getAllData('\User\Entity\InterpretingService');
 
         return new JsonModel($data);
     }
