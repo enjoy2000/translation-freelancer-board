@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: antiprovn
  * Date: 9/28/14
- * Time: 11:50 AM
+ * Time: 11:51 AM
  */
 
 namespace User\Entity;
@@ -11,7 +11,7 @@ namespace User\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /** @ORM\Entity */
-class TranslationCatTool{
+class Language{
 
     /**
      * @ORM\id
@@ -20,12 +20,16 @@ class TranslationCatTool{
      */
     protected $id;
 
+    /** @ORM\Column(type="string", length=2) */
+    protected $code;
+
     /** @ORM\Column(type="string") */
     protected $name;
 
     public function getData(){
         return array(
             'id' => $this->id,
+            'code' => $this->code,
             'name' => $this->name,
         );
     }

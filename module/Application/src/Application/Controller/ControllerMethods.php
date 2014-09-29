@@ -26,6 +26,8 @@ trait ControllerMethods{
      */
     protected $currentUser = null;
 
+    protected $_entityManager = null;
+
     /**
      * Dispatch a request
      *
@@ -50,9 +52,11 @@ trait ControllerMethods{
      * @return \Doctrine\ORM\EntityManager
      */
     public function getEntityManager(){
-        return $entityManager = $this
-            ->getServiceLocator()
-            ->get('Doctrine\ORM\EntityManager');
+        if($this->_entityManager === null){
+            $this->_entityManager = $this->getServiceLocator()
+                                         ->get('Doctrine\ORM\EntityManager');
+        }
+        return $this->_entityManager;
     }
 
     /**

@@ -13,27 +13,6 @@ use Application\Controller\AbstractRestfulController;
 
 class DesktopPublishController extends AbstractRestfulController
 {
-    public function getList()
-    {
-        $data = array(
-            'desktopCatTools' => [],
-            'desktopOperatingSystems' => [],
-        );
-
-        $entityManager = $this->getEntityManager();
-        $catTools = $entityManager->getRepository('\User\Entity\DesktopCatTool')->findAll();
-        $operatingSystems = $entityManager->getRepository('\User\Entity\DesktopOperatingSystem')->findAll();
-
-        foreach($catTools as $catTool){
-            $data['desktopCatTools'][] = $catTool->getData();
-        }
-        foreach($operatingSystems as $operatingSystem){
-            $data['desktopOperatingSystems'][] = $operatingSystem->getData();
-        }
-
-        return new JsonModel($data);
-    }
-
     /**
      * @param mixed $id
      * @param array $data

@@ -84,31 +84,36 @@ class User implements InputFilterAwareInterface{
 
     /**
      * @var \Doctrine\ORM\PersistentCollection
-     * @ORM\ManyToMany(targetEntity="DesktopCatTool")
+     * @ORM\ManyToMany(targetEntity="CatTool")
+     * @ORM\JoinTable(name="UserDesktopCatTools")
      */
     protected $DesktopCatTools = null;
 
     /**
      * @var \Doctrine\ORM\PersistentCollection
-     * @ORM\ManyToMany(targetEntity="DesktopOperatingSystem")
+     * @ORM\ManyToMany(targetEntity="OperatingSystem")
+     * @ORM\JoinTable(name="UserOperatingSystem")
      */
     protected $DesktopOperatingSystems = null;
 
     /**
      * @var \Doctrine\ORM\PersistentCollection
-     * @ORM\ManyToMany(targetEntity="InterpretingSpecialism")
+     * @ORM\ManyToMany(targetEntity="Specialism")
+     * @ORM\JoinTable(name="UserInterpretingSpecialisms")
      */
     protected $InterpretingSpecialisms = null;
 
     /**
      * @var \Doctrine\ORM\PersistentCollection
-     * @ORM\ManyToMany(targetEntity="TranslationCatTool")
+     * @ORM\ManyToMany(targetEntity="CatTool")
+     * @ORM\JoinTable(name="UserTranslationCatTools")
      */
     protected $TranslationCatTools = null;
 
     /**
      * @var \Doctrine\ORM\PersistentCollection
-     * @ORM\ManyToMany(targetEntity="TranslationSpecialism")
+     * @ORM\ManyToMany(targetEntity="Specialism")
+     * @ORM\JoinTable(name="UserTranslationSpecialisms")
      */
     protected $TranslationSpecialisms = null;
 
@@ -436,7 +441,7 @@ class User implements InputFilterAwareInterface{
      */
     public function updateTranslationCatTools($entityManager, $userTranslationCatTools){
 
-        $values = $entityManager->getRepository('\User\Entity\TranslationCatTool')->findBy([
+        $values = $entityManager->getRepository('\User\Entity\CatTool')->findBy([
             'id' => $userTranslationCatTools
         ]);
 
@@ -453,7 +458,7 @@ class User implements InputFilterAwareInterface{
      */
     public function updateTranslationSpecialisms($entityManager, $userTranslationSpecialisms){
 
-        $values = $entityManager->getRepository('\User\Entity\TranslationSpecialism')->findBy([
+        $values = $entityManager->getRepository('\User\Entity\Specialism')->findBy([
             'id' => $userTranslationSpecialisms
         ]);
 
@@ -470,7 +475,7 @@ class User implements InputFilterAwareInterface{
      */
     public function updateDesktopCatTools($entityManager, $userDesktopCatTools){
 
-        $values = $entityManager->getRepository('\User\Entity\DesktopCatTool')->findBy([
+        $values = $entityManager->getRepository('\User\Entity\CatTool')->findBy([
             'id' => $userDesktopCatTools
         ]);
 
@@ -487,7 +492,7 @@ class User implements InputFilterAwareInterface{
      */
     public function updateDesktopOperatingSystems($entityManager, $userDesktopOperatingSystems){
 
-        $values = $entityManager->getRepository('\User\Entity\DesktopOperatingSystem')->findBy([
+        $values = $entityManager->getRepository('\User\Entity\OperatingSystem')->findBy([
             'id' => $userDesktopOperatingSystems
         ]);
 
@@ -504,7 +509,7 @@ class User implements InputFilterAwareInterface{
      */
     public function updateInterpretingSpecialisms($entityManager, $userInterpretingSpecialisms){
 
-        $values = $entityManager->getRepository('\User\Entity\InterpretingSpecialism')->findBy([
+        $values = $entityManager->getRepository('\User\Entity\Specialism')->findBy([
             'id' => $userInterpretingSpecialisms
         ]);
 

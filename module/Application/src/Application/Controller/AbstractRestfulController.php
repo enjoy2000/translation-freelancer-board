@@ -14,6 +14,19 @@ class AbstractRestfulController extends ZendAbstractRestfulController{
 
     use ControllerMethods;
 
+    public function getDataList($array){
+        $data = [];
+        foreach($array as $member){
+            $data[] = $member->getData();
+        }
+        return $data;
+    }
+
+    function getAllData($entityPath){
+        $rows = $this->getEntityManager()->getRepository($entityPath)->findAll();
+        return $this->getDataList($rows);
+    }
+
     protected function methodNotAllowed()
     {
         $this->response->setStatusCode(405);

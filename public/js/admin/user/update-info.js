@@ -5,6 +5,7 @@ angularApp.run(function($rootScope){
     $("#form").steps({
         bodyTag: "fieldset",
         showFinishButtonAlways: true,
+        paginationPosition: "top",
         onStepChanging: function (event, currentIndex, newIndex) {
             // Always allow going backward even if the current step contains invalid fields!
             if (currentIndex > newIndex) {
@@ -69,14 +70,15 @@ angularApp.run(function($rootScope){
     });
 });
 angularApp.controller('UpdateInfoController', function($scope, $http, $timeout, $q){
+    $scope.catTools = [];
     $scope.countries = [];
-    $scope.desktopCatTools = [];
-    $scope.desktopOperatingSystems = [];
-    $scope.interpretingSpecialisms = [];
+    $scope.languages = [];
+    $scope.operatingSystems = [];
     $scope.resource_active = {};
     $scope.resources = [];
-    $scope.translationCatTools = [];
-    $scope.translationSpecialisms = [];
+    $scope.specialisms = [];
+    $scope.translationPrice = {};
+    $scope.translationPrices = [];
     $scope.userInfo = {
         "city": null,
         "country": {
@@ -112,45 +114,37 @@ angularApp.controller('UpdateInfoController', function($scope, $http, $timeout, 
         }
     }
 
-    function attachUserTranslationCatTools(){
-        if($scope.userInfo.id && $scope.translationCatTools){
-            var values = findOptions($scope.translationCatTools, $scope.userInfo.TranslationCatTools);
-            $scope.userInfo.TranslationCatTools = values;
-            return true;
-        }
+    function updateUserInfoPriceData(){
+        var values = findOptions($scope.catTools, $scope.userInfo.TranslationCatTools);
+        $scope.userInfo.TranslationCatTools = values;
+        values = findOptions($scope.specialisms, $scope.userInfo.TranslationSpecialisms);
+        $scope.userInfo.TranslationSpecialisms = values;
+        values = findOptions($scope.catTools, $scope.userInfo.DesktopCatTools);
+        $scope.userInfo.DesktopCatTools = values;
+        values = findOptions($scope.operatingSystems, $scope.userInfo.DesktopOperatingSystems);
+        $scope.userInfo.DesktopOperatingSystems = values;
+        values = findOptions($scope.specialisms, $scope.userInfo.InterpretingSpecialisms);
+        $scope.userInfo.InterpretingSpecialisms = values;
     }
 
-    function attachUserTranslationSpecialisms(){
-        if($scope.userInfo.id && $scope.translationSpecialisms){
-            var values = findOptions($scope.translationSpecialisms, $scope.userInfo.TranslationSpecialisms);
-            $scope.userInfo.TranslationSpecialisms = values;
-            return true;
-        }
+    function initModal(){
+        setModalControllerData('desktopPrice', {});
+        setModalControllerData('interpretingPrice', {});
+        setModalControllerData('translationPrice', {});
+
+        setModalControllerData('languages', $scope.languages);
+        setModalControllerData('services', $scope.services);
+        setModalControllerData('softwares', $scope.softwares);
     }
 
-    function attachUserDesktopCatTools(){
-        if($scope.userInfo.id && $scope.desktopCatTools){
-            var values = findOptions($scope.desktopCatTools, $scope.userInfo.DesktopCatTools);
-            $scope.userInfo.DesktopCatTools = values;
-            return true;
-        }
+    function rebuildMultiSelect(){
+        $timeout(function(){
+            $(".multiselect").multiselect("destroy");
+        }).then(function(){
+            $(".multiselect").multiselect();
+        });
     }
 
-    function attachUserDesktopOperatingSystems(){
-        if($scope.userInfo.id && $scope.desktopOperatingSystems){
-            var values = findOptions($scope.desktopOperatingSystems, $scope.userInfo.DesktopOperatingSystems);
-            $scope.userInfo.DesktopOperatingSystems = values;
-            return true;
-        }
-    }
-
-    function attachUserInterpretingSpecialisms(){
-        if($scope.userInfo.id && $scope.interpretingSpecialisms){
-            var values = findOptions($scope.interpretingSpecialisms, $scope.userInfo.InterpretingSpecialisms);
-            $scope.userInfo.InterpretingSpecialisms = values;
-            return true;
-        }
-    }
     /** end mapping function **/
 
     $http.get("/api/user/info")
@@ -166,38 +160,20 @@ angularApp.controller('UpdateInfoController', function($scope, $http, $timeout, 
                     $scope.resources = $data['resources'];
                 });
 
-            $http.get("/api/user/translation")
+            $http.get("/api/user/priceData")
                 .success(function($data){
-                    $scope.translationCatTools = $data['translationCatTools'];
-                    $scope.translationSpecialisms = $data['translationSpecialisms'];
-                    callOnce(attachUserTranslationCatTools);
-                    callOnce(attachUserTranslationSpecialisms);
-                    $timeout(function(){
-                        jQuery("#userTranslationCatTools")
-                            .add("#userTranslationSpecialisms")
-                            .multiselect('rebuild');
-                    }, 10);
-                });
-            $http.get("/api/user/desktop-publish")
-                .success(function($data){
-                    $scope.desktopCatTools = $data['desktopCatTools'];
-                    $scope.desktopOperatingSystems = $data['desktopOperatingSystems'];
-                    callOnce(attachUserDesktopCatTools);
-                    callOnce(attachUserDesktopOperatingSystems);
-                    $timeout(function(){
-                        jQuery("#userDesktopCatTools")
-                            .add("#userDesktopOperatingSystems")
-                            .multiselect('rebuild');
-                    }, 10);
-                });
-            $http.get("/api/user/interpreting")
-                .success(function($data){
-                    $scope.interpretingSpecialisms = $data['interpretingSpecialisms'];
-                    callOnce(attachUserInterpretingSpecialisms);
-                    $timeout(function(){
-                        jQuery("#userInterpretingSpecialisms")
-                            .multiselect('rebuild');
-                    }, 10);
+                    /** map data **/
+                    $scope.catTools = $data['catTools'];
+                    $scope.languages = $data['languages'];
+                    $scope.operatingSystems = $data['operatingSystems'];
+                    $scope.specialisms = $data['specialisms'];
+                    $scope.services = $data['services'];
+                    $scope.softwares = $data['softwares'];
+
+                    initModal();
+                    updateUserInfoPriceData();
+
+                    rebuildMultiSelect();
                 });
         });
 
@@ -234,8 +210,10 @@ angularApp.controller('UpdateInfoController', function($scope, $http, $timeout, 
             'userInterpretingSpecialisms': getIds($scope.userInfo.InterpretingSpecialisms)
         });
 
+        // wait all done
         $q.all([requestDesktop, requestInfo, requestInterpreting, requestResource, requestTranslation])
             .then(function(result){
+                // TODO: change this callback
                 alert("Success update all");
             });
     };
@@ -260,4 +238,32 @@ angularApp.controller('UpdateInfoController', function($scope, $http, $timeout, 
     $scope.active_class = function(a, b){
         return a == b ? 'active' : '';
     };
+
+    /**
+     * Save translation price from modal
+     * @param translationPrice
+     */
+    $scope.saveTranslationPrice = function(translationPrice){
+        console.log(translationPrice);
+    }
+
+    /**
+     * Save desktop price from modal
+     * @param desktopPrice
+     */
+    $scope.saveDesktopPrice = function(desktopPrice){
+        console.log(desktopPrice);
+    }
+
+    /**
+     * Save interpreting price from modal
+     * @param interpretingPrice
+     */
+    $scope.saveInterpretingPrice = function(interpretingPrice){
+        console.log(interpretingPrice);
+    }
+
+    $scope.test = function(){
+        console.log($scope.userInfo);
+    }
 });

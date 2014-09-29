@@ -13,21 +13,6 @@ use Application\Controller\AbstractRestfulController;
 
 class InterpretingController extends AbstractRestfulController
 {
-    public function getList()
-    {
-        $data = array(
-            'interpretingSpecialisms' => [],
-        );
-
-        $entityManager = $this->getEntityManager();
-        $interpretingSpecialisms = $entityManager->getRepository('\User\Entity\InterpretingSpecialism')->findAll();
-
-        foreach($interpretingSpecialisms as $interpretingSpecialism){
-            $data['interpretingSpecialisms'][] = $interpretingSpecialism->getData();
-        }
-
-        return new JsonModel($data);
-    }
 
     /**
      * @param mixed $id
