@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: antiprovn
  * Date: 9/28/14
- * Time: 11:51 AM
+ * Time: 11:50 AM
  */
 
 namespace User\Entity;
@@ -11,7 +11,7 @@ namespace User\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /** @ORM\Entity */
-class InterpretingSpecialism{
+class Specialism{
 
     /**
      * @ORM\id

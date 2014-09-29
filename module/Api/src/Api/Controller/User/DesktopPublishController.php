@@ -21,7 +21,7 @@ class DesktopPublishController extends AbstractRestfulController
         );
 
         $entityManager = $this->getEntityManager();
-        $catTools = $entityManager->getRepository('\User\Entity\DesktopCatTool')->findAll();
+        $catTools = $entityManager->getRepository('\User\Entity\CatTool')->findAll();
         $operatingSystems = $entityManager->getRepository('\User\Entity\DesktopOperatingSystem')->findAll();
 
         foreach($catTools as $catTool){

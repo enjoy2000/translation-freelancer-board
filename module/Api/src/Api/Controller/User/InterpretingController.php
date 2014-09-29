@@ -20,7 +20,7 @@ class InterpretingController extends AbstractRestfulController
         );
 
         $entityManager = $this->getEntityManager();
-        $interpretingSpecialisms = $entityManager->getRepository('\User\Entity\InterpretingSpecialism')->findAll();
+        $interpretingSpecialisms = $entityManager->getRepository('\User\Entity\Specialism')->findAll();
 
         foreach($interpretingSpecialisms as $interpretingSpecialism){
             $data['interpretingSpecialisms'][] = $interpretingSpecialism->getData();

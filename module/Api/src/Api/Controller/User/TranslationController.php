@@ -20,8 +20,8 @@ class TranslationController extends AbstractRestfulController
         );
 
         $entityManager = $this->getEntityManager();
-        $catTools = $entityManager->getRepository('\User\Entity\TranslationCatTool')->findAll();
-        $specialisms = $entityManager->getRepository('\User\Entity\TranslationSpecialism')->findAll();
+        $catTools = $entityManager->getRepository('\User\Entity\CatTool')->findAll();
+        $specialisms = $entityManager->getRepository('\User\Entity\Specialism')->findAll();
 
         foreach($catTools as $catTool){
             $data['translationCatTools'][] = $catTool->getData();

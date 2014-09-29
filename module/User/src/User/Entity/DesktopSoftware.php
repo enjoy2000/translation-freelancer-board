@@ -11,7 +11,7 @@ namespace User\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /** @ORM\Entity */
-class DesktopCatTool{
+class DesktopSoftware{
 
     /**
      * @ORM\id
@@ -20,12 +20,16 @@ class DesktopCatTool{
      */
     protected $id;
 
-    /** @ORM\Column(type="string") */
+    /** @ORM\Column(type="string", length=50) */
+    protected $code;
+
+    /** @ORM\Column(type="string", length=50) */
     protected $name;
 
     public function getData(){
         return array(
             'id' => $this->id,
+            'code' => $this->code,
             'name' => $this->name,
         );
     }
