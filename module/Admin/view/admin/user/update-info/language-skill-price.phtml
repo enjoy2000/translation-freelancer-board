@@ -29,7 +29,7 @@
                     <label>Specialisms * &nbsp; </label>
                     <select class="form-control required multiselect" multiple="multiple"
                             ng-model="userInfo.TranslationSpecialisms"
-                            ng-options="t.name for t in translationSpecialisms"
+                            ng-options="t.name for t in specialisms"
                             name="userTranslationSpecialisms" id="userTranslationSpecialisms">
                     </select>
                 </div>
@@ -39,7 +39,7 @@
                     <label>CAT Tools * &nbsp; </label>
                     <select class="form-control required multiselect" multiple="multiple"
                             ng-model="userInfo.TranslationCatTools"
-                            ng-options="t.name for t in translationCatTools"
+                            ng-options="t.name for t in catTools"
                             name="userTranslationCatTools" id="userTranslationCatTools">
                     </select>
                 </div>
@@ -84,7 +84,7 @@
                     <label>Operating System * &nbsp; </label>
                     <select class="form-control required multiselect" multiple="multiple"
                             ng-model="userInfo.DesktopOperatingSystems"
-                            ng-options="t.name for t in desktopOperatingSystems"
+                            ng-options="t.name for t in operatingSystems"
                             name="userDesktopOperatingSystems" id="userDesktopOperatingSystems">
                     </select>
                 </div>
@@ -94,7 +94,7 @@
                     <label>CAT Tools * &nbsp; </label>
                     <select class="form-control required multiselect" multiple="multiple"
                             ng-model="userInfo.DesktopCatTools"
-                            ng-options="t.name for t in desktopCatTools"
+                            ng-options="t.name for t in catTools"
                             name="userDesktopCatTools" id="userDesktopCatTools">
                     </select>
                 </div>
@@ -144,7 +144,7 @@
                     <label>Specialisms * &nbsp; </label>
                     <select class="form-control required multiselect" multiple="multiple"
                             ng-model="userInfo.InterpretingSpecialisms"
-                            ng-options="t.name for t in interpretingSpecialisms"
+                            ng-options="t.name for t in specialisms"
                             name="userInterpretingSpecialisms" id="userInterpretingSpecialisms">
                     </select>
                 </div>

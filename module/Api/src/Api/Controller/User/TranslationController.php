@@ -13,26 +13,6 @@ use Application\Controller\AbstractRestfulController;
 
 class TranslationController extends AbstractRestfulController
 {
-    public function getList(){
-        $data = array(
-            'translationCatTools' => [],
-            'translationSpecialisms' => [],
-        );
-
-        $entityManager = $this->getEntityManager();
-        $catTools = $entityManager->getRepository('\User\Entity\CatTool')->findAll();
-        $specialisms = $entityManager->getRepository('\User\Entity\Specialism')->findAll();
-
-        foreach($catTools as $catTool){
-            $data['translationCatTools'][] = $catTool->getData();
-        }
-        foreach($specialisms as $specialism){
-            $data['translationSpecialisms'][] = $specialism->getData();
-        }
-
-        return new JsonModel($data);
-    }
-
     /**
      * @param mixed $id
      * @param array $data

@@ -51,6 +51,7 @@ return array(
             'Api\Controller\User\DesktopPublish'    => 'Api\Controller\User\DesktopPublishController',
             'Api\Controller\User\Info'              => 'Api\Controller\User\InfoController',
             'Api\Controller\User\Interpreting'      => 'Api\Controller\User\InterpretingController',
+            'Api\Controller\User\PriceData'         => 'Api\Controller\User\PriceDataController',
             'Api\Controller\User\Resource'          => 'Api\Controller\User\ResourceController',
             'Api\Controller\User\Translation'       => 'Api\Controller\User\TranslationController',
         ),

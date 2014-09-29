@@ -492,7 +492,7 @@ class User implements InputFilterAwareInterface{
      */
     public function updateDesktopOperatingSystems($entityManager, $userDesktopOperatingSystems){
 
-        $values = $entityManager->getRepository('\User\Entity\DesktopOperatingSystem')->findBy([
+        $values = $entityManager->getRepository('\User\Entity\OperatingSystem')->findBy([
             'id' => $userDesktopOperatingSystems
         ]);
 
