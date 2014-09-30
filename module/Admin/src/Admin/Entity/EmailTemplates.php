@@ -35,7 +35,10 @@ class EmailTemplates{
      */
     protected $language;
 
-    /** @ORM\ManyToOne(targetEntity="TemplateType") */
+    /**
+     * @ORM\ManyToOne(targetEntity="TemplateType")
+     * @ORM\JoinColumn(nullable=true, onDelete="CASCADE")
+     */
     protected $type;
 
     /**

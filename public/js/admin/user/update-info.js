@@ -5,7 +5,7 @@ angularApp.run(function($rootScope){
     $("#form").steps({
         bodyTag: "fieldset",
         showFinishButtonAlways: true,
-        paginationPosition: "top",
+        paginationPosition: "bottom",
         onStepChanging: function (event, currentIndex, newIndex) {
             // Always allow going backward even if the current step contains invalid fields!
             if (currentIndex > newIndex) {
