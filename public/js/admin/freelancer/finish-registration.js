@@ -230,7 +230,7 @@ angularApp.controller('UpdateInfoController', function($scope, $http, $timeout, 
             $scope.userInfo.resources.splice($index, 1);
         }
         console.log($scope.userInfo.resources);
-    }
+    };
 
     /**
      * Display activate class
@@ -245,7 +245,7 @@ angularApp.controller('UpdateInfoController', function($scope, $http, $timeout, 
      */
     $scope.saveTranslationPrice = function(translationPrice){
         console.log(translationPrice);
-    }
+    };
 
     /**
      * Save desktop price from modal
@@ -253,7 +253,7 @@ angularApp.controller('UpdateInfoController', function($scope, $http, $timeout, 
      */
     $scope.saveDesktopPrice = function(desktopPrice){
         console.log(desktopPrice);
-    }
+    };
 
     /**
      * Save interpreting price from modal
@@ -261,9 +261,5 @@ angularApp.controller('UpdateInfoController', function($scope, $http, $timeout, 
      */
     $scope.saveInterpretingPrice = function(interpretingPrice){
         console.log(interpretingPrice);
-    }
-
-    $scope.test = function(){
-        console.log($scope.userInfo);
-    }
+    };
 });
