@@ -32,12 +32,12 @@ class InfoController extends AbstractRestfulController
     public function update($id, $data){
         $data['country'] = $data['country']['select'];
 
+        $data['profileUpdated'] = true;
         $user = $this->getCurrentUser();
         $user->updateData($data);
 
         $entityManager = $this->getEntityManager();
-        $entityManager->persist($user);
-        $entityManager->flush();
+        $user->save($entityManager);
 
         return new JsonModel(array());
     }

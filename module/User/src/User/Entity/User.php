@@ -180,6 +180,7 @@ class User implements InputFilterAwareInterface{
             'gender',
             'lastName',
             'phone',
+            'profileUpdated',
         );
         foreach($keys as $key){
             if(isset($arr[$key])){
