@@ -7,7 +7,7 @@
 
 <!-- Scripts -->
 <?php $this->headScript()
-    ->prependFile($this->basePath() . '/js/admin/user/update-info.js')
+    ->prependFile($this->basePath() . '/js/admin/user/finish-registration.js')
     ->prependFile($this->basePath() . '/js/admin/bootstrap-modal.js')
     ->prependScript("angularApp = angular.module('project', []);")
     ->prependFile($this->basePath() . '/js/plugins/multiselect/bootstrap-multiselect.js')
@@ -56,9 +56,9 @@
                     </h2>
 
                     <form id="form" action="#" class="wizard-big">
-                        <?php include __DIR__ . "/update-info/basic-info.phtml" ?>
-                        <?php include __DIR__ . "/update-info/resource-type.phtml" ?>
-                        <?php include __DIR__ . "/update-info/language-skill-price.phtml" ?>
+                        <?php include __DIR__ . "/finish-registration/basic-info.phtml" ?>
+                        <?php include __DIR__ . "/finish-registration/resource-type.phtml" ?>
+                        <?php include __DIR__ . "/finish-registration/language-skill-price.phtml" ?>
                     </form>
                 </div>
             </div>
@@ -66,7 +66,7 @@
     </div>
 </div> <!-- close the container div -->
 <div ng-controller="ModalController" id="modalContainer"> <!-- open new temporary container -->
-    <?php include __DIR__ . "/update-info/modal.phtml" ?>
+    <?php include __DIR__ . "/finish-registration/modal.phtml" ?>
 
     <script type="text/javascript">
         $(document).ready(function () {
