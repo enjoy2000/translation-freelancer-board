@@ -22,10 +22,21 @@ class UserGroup{
     /** @ORM\Column(type="string") */
     protected $name;
 
+    /** @ORM\Column(type="string") */
+    protected $firstLoginUrl = '';
+
     public function getData(){
         return array(
             'id' => $this->id,
             'name' => $this->name,
         );
+    }
+
+    public function getId(){
+        return $this->id;
+    }
+
+    public function getFirstLoginUrl(){
+        return $this->firstLoginUrl;
     }
 }

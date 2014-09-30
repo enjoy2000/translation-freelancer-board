@@ -55,6 +55,7 @@ return array(
             'Admin\Controller\Dashboard' => 'Admin\Controller\DashboardController',
             'Admin\Controller\Email' => 'Admin\Controller\EmailController',
             'Admin\Controller\Freelancer' => 'Admin\Controller\FreelancerController',
+            'Admin\Controller\Employer' => 'Admin\Controller\EmployerController',
         ),
     ),
     'view_manager' => array(

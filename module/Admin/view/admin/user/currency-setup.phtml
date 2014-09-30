@@ -1,0 +1,11 @@
+<div data-toggle="buttons">
+    <label class="btn btn-outline btn-primary {{userInfo.currency == 'cny' ? 'active' : ''}}"
+           ng-click="userInfo.currency = 'cny'">
+        <input type="radio" name="currency" value="cny" /><i class="fa fa-cny"> CNY</i>
+    </label>
+    &nbsp;
+    <label class="btn btn-outline btn-primary {{userInfo.currency == 'usd' ? 'active' : ''}}"
+           ng-click="userInfo.currency = 'usd'">
+        <input type="radio" name="currency" value="usd" /><i class="fa fa-usd"> USD</i>
+    </label>
+</div>

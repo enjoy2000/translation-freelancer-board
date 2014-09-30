@@ -1,6 +1,5 @@
 .note-editor {
-    /*height: 300px;*/
-    border: solid 1px #e5e6e7;
+    height: 300px;
 }
 
 .note-editor .note-dropzone {
@@ -370,8 +369,7 @@
 .note-editor .note-editable {
     padding: 20px;
     overflow: auto;
-    outline: 0;
-    height: 250px;
+    outline: 0
 }
 
 .note-editor .note-editable[contenteditable="false"] {

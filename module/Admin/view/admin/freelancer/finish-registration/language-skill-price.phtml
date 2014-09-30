@@ -1,184 +1,90 @@
 <h1>Languages/Skills/Prices</h1>
 <fieldset>
 
-<div class="panel panel-info">
-    <div class="panel-body">
-        <h2><i class="fa fa-desktop"></i>&nbsp; Currency</h2>
-        <br />
-        <div data-toggle="buttons">
-            <label class="btn btn-outline btn-primary {{userInfo.currency == 'cny' ? 'active' : ''}}"
-                ng-click="userInfo.currency = 'cny'">
-                <input type="radio" name="currency" value="cny" /> CNY
-            </label>
-            &nbsp;
-            <label class="btn btn-outline btn-primary {{userInfo.currency == 'usd' ? 'active' : ''}}"
-                ng-click="userInfo.currency = 'usd'">
-                <input type="radio" name="currency" value="usd" /> USD
-            </label>
+    <div class="panel panel-info">
+        <div class="panel-body">
+            <h2><i class="fa fa-desktop"></i>&nbsp; Currency</h2>
+            <br />
+            <?php include "/../../user/currency-setup.phtml"; ?>
         </div>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-body">
+            <h2><i class="fa fa-coffee"></i>&nbsp; Translation</h2>
+            <div class="hr-line-dashed"></div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label>Specialisms * &nbsp; </label>
+                        <select class="form-control required multiselect" multiple="multiple"
+                                ng-model="userInfo.TranslationSpecialisms"
+                                ng-options="t.name for t in specialisms"
+                                name="userTranslationSpecialisms" id="userTranslationSpecialisms">
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label>CAT Tools * &nbsp; </label>
+                        <select class="form-control required multiselect" multiple="multiple"
+                                ng-model="userInfo.TranslationCatTools"
+                                ng-options="t.name for t in catTools"
+                                name="userTranslationCatTools" id="userTranslationCatTools">
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <?php include "/../../user/translation-pair.phtml" ?>
+        </div>
+    </div>
 
-    </div>
-</div>
-<div class="panel panel-primary">
-    <div class="panel-body">
-        <h2><i class="fa fa-coffee"></i>&nbsp; Translation</h2>
-        <div class="hr-line-dashed"></div>
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="form-group">
-                    <label>Specialisms * &nbsp; </label>
-                    <select class="form-control required multiselect" multiple="multiple"
-                            ng-model="userInfo.TranslationSpecialisms"
-                            ng-options="t.name for t in specialisms"
-                            name="userTranslationSpecialisms" id="userTranslationSpecialisms">
-                    </select>
+    <div class="panel panel-info">
+        <div class="panel-body">
+            <h2><i class="fa fa-desktop"></i>&nbsp; Desktop Publishing</h2>
+            <div class="hr-line-dashed"></div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label>Operating System * &nbsp; </label>
+                        <select class="form-control required multiselect" multiple="multiple"
+                                ng-model="userInfo.DesktopOperatingSystems"
+                                ng-options="t.name for t in operatingSystems"
+                                name="userDesktopOperatingSystems" id="userDesktopOperatingSystems">
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label>CAT Tools * &nbsp; </label>
+                        <select class="form-control required multiselect" multiple="multiple"
+                                ng-model="userInfo.DesktopCatTools"
+                                ng-options="t.name for t in catTools"
+                                name="userDesktopCatTools" id="userDesktopCatTools">
+                        </select>
+                    </div>
                 </div>
             </div>
-            <div class="col-lg-6">
-                <div class="form-group">
-                    <label>CAT Tools * &nbsp; </label>
-                    <select class="form-control required multiselect" multiple="multiple"
-                            ng-model="userInfo.TranslationCatTools"
-                            ng-options="t.name for t in catTools"
-                            name="userTranslationCatTools" id="userTranslationCatTools">
-                    </select>
-                </div>
-            </div>
-        </div>
-        <div class="table-responsive">
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Source Language </th>
-                    <th>Target Language </th>
-                    <th>Translation Price</th>
-                    <th>Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>English</td>
-                    <td>Chinese</td>
-                    <td>0.12</td>
-                    <td><a href="#"><i class="fa fa-trash-o text-danger"></i></a></td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="hr-line-dashed"></div>
-        <div class="text-center">
-            <a data-toggle="modal" class="btn btn-outline btn-primary" href="#modal-translation">Add Language pairs and prices</a>
+            <?php include "/../../user/desktop-pair.phtml" ?>
         </div>
     </div>
-</div>
 
-<div class="panel panel-info">
-    <div class="panel-body">
-        <h2><i class="fa fa-desktop"></i>&nbsp; Desktop Publishing</h2>
-        <div class="hr-line-dashed"></div>
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="form-group">
-                    <label>Operating System * &nbsp; </label>
-                    <select class="form-control required multiselect" multiple="multiple"
-                            ng-model="userInfo.DesktopOperatingSystems"
-                            ng-options="t.name for t in operatingSystems"
-                            name="userDesktopOperatingSystems" id="userDesktopOperatingSystems">
-                    </select>
+    <div class="panel panel-success">
+        <div class="panel-body">
+            <h2><i class="fa fa-comments-o"></i>&nbsp; Interpreting</h2>
+            <div class="hr-line-dashed"></div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="form-group">
+                        <label>Specialisms * &nbsp; </label>
+                        <select class="form-control required multiselect" multiple="multiple"
+                                ng-model="userInfo.InterpretingSpecialisms"
+                                ng-options="t.name for t in specialisms"
+                                name="userInterpretingSpecialisms" id="userInterpretingSpecialisms">
+                        </select>
+                    </div>
                 </div>
             </div>
-            <div class="col-lg-6">
-                <div class="form-group">
-                    <label>CAT Tools * &nbsp; </label>
-                    <select class="form-control required multiselect" multiple="multiple"
-                            ng-model="userInfo.DesktopCatTools"
-                            ng-options="t.name for t in catTools"
-                            name="userDesktopCatTools" id="userDesktopCatTools">
-                    </select>
-                </div>
-            </div>
-        </div>
-        <div class="table-responsive">
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Languages </th>
-                    <th>DTP software </th>
-                    <th>Price/Page <i class="fa fa-apple"></th>
-                    <th>Price/Page <i class="fa fa-windows"></i></th>
-                    <th>Price/Hour <i class="fa fa-apple"></th>
-                    <th>Price/Hour <i class="fa fa-windows"></i></th>
-                    <th>Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>European/CE/Greek/Russian</td>
-                    <td>Indesign</td>
-                    <td>12.00</td>
-                    <td>10.00</td>
-                    <td>50.00</td>
-                    <td>40.00</td>
-                    <td><a href="#"><i class="fa fa-trash-o text-danger"></i></a></td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="text-center">
-            <a data-toggle="modal" class="btn btn-outline btn-info" href="#modal-dtp">Add DTP prices</a>
+            <?php include "/../../user/interpreting-pair.phtml" ?>
         </div>
     </div>
-</div>
-
-<div class="panel panel-success">
-    <div class="panel-body">
-        <h2><i class="fa fa-comments-o"></i>&nbsp; Interpreting</h2>
-        <div class="hr-line-dashed"></div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="form-group">
-                    <label>Specialisms * &nbsp; </label>
-                    <select class="form-control required multiselect" multiple="multiple"
-                            ng-model="userInfo.InterpretingSpecialisms"
-                            ng-options="t.name for t in specialisms"
-                            name="userInterpretingSpecialisms" id="userInterpretingSpecialisms">
-                    </select>
-                </div>
-            </div>
-        </div>
-        <div class="table-responsive">
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Source Language </th>
-                    <th>Target Language </th>
-                    <th>Interpreting Service</th>
-                    <th>Price/Day</th>
-                    <th>Price/half-Day</th>
-                    <th>Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>English</td>
-                    <td>Chinese</td>
-                    <td>Consecutive</td>
-                    <td>5000</td>
-                    <td>4000</td>
-                    <td><a href="#"><i class="fa fa-trash-o text-danger"></i></a></td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="text-center">
-            <a data-toggle="modal" class="btn btn-outline btn-success" href="#modal-interpreting">Add Interpreting prices</a>
-        </div>
-    </div>
-</div>
 </fieldset>

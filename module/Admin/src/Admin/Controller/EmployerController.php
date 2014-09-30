@@ -13,16 +13,12 @@ use Zend\View\Model\ViewModel;
 
 use Application\Controller\AbstractActionController;
 
-class DashboardController extends AbstractActionController
+class EmployerController extends AbstractActionController
 {
     protected $requiredLogin = true;
 
-    public function indexAction()
+    public function finishRegistrationAction()
     {
-        $user = $this->getCurrentUser();
-        if(!$user->isProfileUpdated()){
-            $this->redirect()->toUrl($user->getGroup()->getFirstLoginUrl());
-        }
         return new ViewModel(array());
     }
 

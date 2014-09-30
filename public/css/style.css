@@ -5,16 +5,6 @@
  *   Copyright 2014 Webapplayers.com
  *
 */
-.logo-name {
-    font-size: 80px;
-}
-
-hr {
-    border-top: 1px solid #2f4050;
-}
-.jumbotron h1, .jumbotron .h1 {
-    font-size: 40px;
-}
 h1,
 h2,
 h3,
@@ -2580,7 +2570,13 @@ table.table-mail tr td {
 }
 /* ERROR & LOGIN & LOCKSCREEN*/
 .middle-box {
-
+  height: 400px;
+  width: 400px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -250px;
+  margin-left: -200px;
   z-index: 100;
 }
 .lockscreen.middle-box {
@@ -2590,12 +2586,12 @@ table.table-mail tr td {
 }
 .loginscreen.middle-box {
   width: 300px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: -150px;
+  margin-top: -330px;
 }
 .logo-name {
   color: #e6e6e6;
-  font-size: 90px;
+  font-size: 180px;
   font-weight: 800;
   letter-spacing: -10px;
   margin-bottom: 0px;
@@ -2604,6 +2600,7 @@ table.table-mail tr td {
   font-size: 170px;
 }
 .wrapper .middle-box {
+  margin-top: 140px;
 }
 .lock-word {
   z-index: 10;

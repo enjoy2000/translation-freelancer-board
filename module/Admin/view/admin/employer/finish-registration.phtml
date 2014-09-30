@@ -1,0 +1,296 @@
+
+<!-- Le styles -->
+<?php $this->headLink()
+        ->prependStylesheet($this->basePath() . '/css/plugins/summernote/summernote-bs3.css')
+        ->prependStylesheet($this->basePath() . '/css/plugins/summernote/summernote.css')
+        ->prependStylesheet($this->basePath() . '/css/plugins/steps/jquery.steps.css')
+?>
+
+<!-- Scripts -->
+<?php $this->headScript()
+    ->prependFile($this->basePath() . '/js/admin/employer/finish-registration.js')
+    ->prependFile($this->basePath() . '/js/admin/bootstrap-modal.js')
+    ->prependScript("angularApp = angular.module('project', []);")
+    ->prependFile($this->basePath() . '/js/plugins/summernote/summernote.min.js')
+    ->prependFile($this->basePath() . '/js/plugins/validate/jquery.validate.min.js')
+    ->prependFile($this->basePath() . '/js/plugins/steps/jquery.steps.min.js')
+    ->prependFile($this->basePath() . '/js/plugins/pace/pace.min.js')
+    ->prependFile($this->basePath() . '/js/inspinia.js')
+?>
+<!-- Add custom style -->
+<style type="text/css">
+
+    .label {
+        font-size: 15px;
+    }
+
+    h3 {
+        font-size: 18px;
+    }
+
+    .float-e-margins .btn {
+        margin-bottom: 0px;
+    }
+
+    .resource-types .panel-body label{
+        margin-right: 0.5em;
+    }
+
+    .note-editor {
+        height: 150px;
+    }
+</style>
+<!-- End custom style -->
+
+
+<div class="row" id="UpdateInfoController" ng-controller="UpdateInfoController">
+<div class="col-lg-12">
+<div class="ibox float-e-margins">
+<div class="ibox-title">
+    <h3><i class="fa fa-user"></i> Create Client Account</h3>
+</div>
+<div class="ibox-content">
+<form>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <i class="fa fa-info-circle"> <strong>Basic Information</strong></i>
+    </div>
+    <div class="panel-body">
+        <?php include __DIR__ . "/../user/basic-info.phtml" ?>
+    </div>
+</div>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <i class="fa fa-building"> <strong>Company Information</strong></i>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label>Position </label>
+                    <input id="position" name="position" value="" type="text" class="form-control">
+                </div>
+
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label>Company </label>
+                    <select class="form-control required" id="company" name="company" value="">
+                        <option>option 1</option>
+                        <option>option 2</option>
+                        <option>option 3</option>
+                        <option>option 4</option>
+                    </select>
+                    <span class="help-block m-b-none"> &nbsp;Not in the list? Please <a data-toggle="modal" class="text-info" href="#modal-company">create a new company</a>.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <i class="fa fa-cogs"> <strong>Service Prices</strong></i>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label>Sales </label>
+                    <select class="form-control required" id="sales" name="sales" value="">
+                        <option>option 1</option>
+                        <option>option 2</option>
+                        <option>option 3</option>
+                        <option>option 4</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label>PM </label>
+                    <select class="form-control required" id="pm" name="pm" value="">
+                        <option>option 1</option>
+                        <option>option 2</option>
+                        <option>option 3</option>
+                        <option>option 4</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="hr-line-dashed"></div>
+        <h4><i class="fa fa-tags"></i>&nbsp; Currency</h4>
+        <?php include __DIR__ . "/../user/currency-setup.phtml" ?>
+        <div class="hr-line-dashed"></div>
+
+        <h4><i class="fa fa-sitemap"></i>&nbsp; Service Level <small>Project default service level</small></h4>
+        <div data-toggle="buttons">
+            <label class="btn btn-outline btn-primary">
+                <input type="radio" name="professional" value="" /> Professional
+            </label>
+            &nbsp;
+            <label class="btn btn-outline btn-primary">
+                <input type="radio" name="business" value="" /> Business
+            </label>
+            &nbsp;
+            <label class="btn btn-outline btn-primary">
+                <input type="radio" name="premium" value="" /> Premium
+            </label>
+        </div>
+        <div class="hr-line-dashed"></div>
+        <h4><i class="fa fa-coffee"></i>&nbsp; Translation</h4>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                    <th>TM</th>
+                    <th>Repetitions</th>
+                    <th>100%</th>
+                    <th>95% - 99%</th>
+                    <th>85% - 94%</th>
+                    <th>75% - 84%</th>
+                    <th>50% - 74%</th>
+                    <th>No Match</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>TM Rate</td>
+                    <td><input id="repetition" name="repetition" type="text" value="" class="form-control"></td>
+                    <td><input id="tm_100" name="tm_100" type="text" value="" class="form-control"></td>
+                    <td><input id="tm_95-99" name="tm_95-99" type="text" value="" class="form-control"></td>
+                    <td><input id="tm_85-94" name="tm_85-94" type="text" value="" class="form-control"></td>
+                    <td><input id="tm_75-84" name="tm_75-84" type="text" value="" class="form-control"></td>
+                    <td><input id="tm_50-74" name="tm_50-74" type="text" value="" class="form-control"></td>
+                    <td><input id="tm_no_match" name="tm_no_match" type="text" value="" class="form-control"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Source Language </th>
+                    <th>Target Language </th>
+                    <th>Translation Price</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>English</td>
+                    <td>Chinese</td>
+                    <td>0.12</td>
+                    <td>
+                        <a data-toggle="modal" href="#modal-translation"><i class="fa fa-edit"></i></a>
+                        <a href="#"><i class="fa fa-trash-o text-danger"></i></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="text-center">
+            <a data-toggle="modal" class="btn btn-outline btn-primary" href="#modal-translation">Add Language pairs and prices</a>
+        </div>
+        <div class="hr-line-dashed"></div>
+
+        <h4><i class="fa fa-desktop"></i>&nbsp; Desktop Publishing</h4>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Languages </th>
+                    <th>DTP software </th>
+                    <th>Price/Page <i class="fa fa-apple"></th>
+                    <th>Price/Page <i class="fa fa-windows"></i></th>
+                    <th>Price/Hour <i class="fa fa-apple"></th>
+                    <th>Price/Hour <i class="fa fa-windows"></i></th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>European/CE/Greek/Russian</td>
+                    <td>Indesign</td>
+                    <td>12.00</td>
+                    <td>10.00</td>
+                    <td>50.00</td>
+                    <td>40.00</td>
+                    <td>
+                        <a data-toggle="modal" href="#modal-dtp"><i class="fa fa-edit"></i></a>
+                        <a href="#"><i class="fa fa-trash-o text-danger"></i></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="text-center">
+            <a data-toggle="modal" class="btn btn-outline btn-info" href="#modal-dtp">Add DTP prices</a>
+        </div>
+        <div class="hr-line-dashed"></div>
+
+        <h4><i class="fa fa-comments-o"></i>&nbsp; Interpreting</h4>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Source Language </th>
+                    <th>Target Language </th>
+                    <th>Interpreting Service</th>
+                    <th>Price/Day</th>
+                    <th>Price/half-Day</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>English</td>
+                    <td>Chinese</td>
+                    <td>Consecutive</td>
+                    <td>5000</td>
+                    <td>4000</td>
+                    <td>
+                        <a data-toggle="modal" href="#modal-interpreting"><i class="fa fa-edit"></i></a>
+                        <a href="#"><i class="fa fa-trash-o text-danger"></i></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="text-center">
+            <a data-toggle="modal" class="btn btn-outline btn-success" href="#modal-interpreting">Add Interpreting prices</a>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <i class="fa fa-file-text"> <strong>Comments from PaperTask</strong></i>
+    </div>
+    <div class="panel-body">
+        <div class="summernote"></div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-4 col-sm-offset-4">
+        <button class="btn btn-primary btn-block" type="submit">Save</button>
+    </div>
+</div>
+
+</form>
+</div>
+</div>
+</div>
+</div>
+
+</div> <!-- close the container div -->
+<div ng-controller="ModalController" id="modalContainer"> <!-- open new temporary container -->
+    <?php include __DIR__ . "/../user/modal.phtml" ?>

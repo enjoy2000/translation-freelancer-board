@@ -307,6 +307,13 @@ class User implements InputFilterAwareInterface{
     }
 
     /**
+     * @return UserGroup
+     */
+    function getGroup(){
+        return $this->group;
+    }
+
+    /**
      * @param $token
      * @return bool
      */
