@@ -20,7 +20,7 @@ class FreelancerController extends AbstractActionController
     public function finishRegistrationAction()
     {
         return new ViewModel(array(
-            "userId" => $this->getCurrentUser()->getId(),
+            "user" => $this->getCurrentUser(),
         ));
     }
 

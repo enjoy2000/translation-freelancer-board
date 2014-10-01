@@ -19,7 +19,9 @@ class EmployerController extends AbstractActionController
 
     public function finishRegistrationAction()
     {
-        return new ViewModel(array());
+        return new ViewModel(array(
+            "user" => $this->getCurrentUser(),
+        ));
     }
 
 }

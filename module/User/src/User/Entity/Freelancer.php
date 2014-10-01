@@ -64,94 +64,9 @@ class Freelancer extends Entity{
      */
     protected $TranslationSpecialisms = null;
 
-
-    /**
-     * @param \Doctrine\ORM\EntityManager $entityManager
-     * @param array $userTranslationCatTools
-     */
-    public function updateTranslationCatTools($entityManager, $userTranslationCatTools){
-
-        $values = $entityManager->getRepository('\User\Entity\CatTool')->findBy([
-            'id' => $userTranslationCatTools
-        ]);
-
-        $this->TranslationCatTools->clear();
-
-        foreach($values as $value){
-            $this->TranslationCatTools->add($value);
-        }
-    }
-
-    /**
-     * @param \Doctrine\ORM\EntityManager $entityManager
-     * @param array $userTranslationSpecialisms
-     */
-    public function updateTranslationSpecialisms($entityManager, $userTranslationSpecialisms){
-
-        $values = $entityManager->getRepository('\User\Entity\Specialism')->findBy([
-            'id' => $userTranslationSpecialisms
-        ]);
-
-        $this->TranslationSpecialisms->clear();
-
-        foreach($values as $value){
-            $this->TranslationSpecialisms->add($value);
-        }
-    }
-
-    /**
-     * @param \Doctrine\ORM\EntityManager $entityManager
-     * @param array $userDesktopCatTools
-     */
-    public function updateDesktopCatTools($entityManager, $userDesktopCatTools){
-
-        $values = $entityManager->getRepository('\User\Entity\CatTool')->findBy([
-            'id' => $userDesktopCatTools
-        ]);
-
-        $this->DesktopCatTools->clear();
-
-        foreach($values as $value){
-            $this->DesktopCatTools->add($value);
-        }
-    }
-
-    /**
-     * @param \Doctrine\ORM\EntityManager $entityManager
-     * @param array $userDesktopOperatingSystems
-     */
-    public function updateDesktopOperatingSystems($entityManager, $userDesktopOperatingSystems){
-
-        $values = $entityManager->getRepository('\User\Entity\OperatingSystem')->findBy([
-            'id' => $userDesktopOperatingSystems
-        ]);
-
-        $this->DesktopOperatingSystems->clear();
-
-        foreach($values as $value){
-            $this->DesktopOperatingSystems->add($value);
-        }
-    }
-
-    /**
-     * @param \Doctrine\ORM\EntityManager $entityManager
-     * @param array $userInterpretingSpecialisms
-     */
-    public function updateInterpretingSpecialisms($entityManager, $userInterpretingSpecialisms){
-
-        $values = $entityManager->getRepository('\User\Entity\Specialism')->findBy([
-            'id' => $userInterpretingSpecialisms
-        ]);
-
-        $this->InterpretingSpecialisms->clear();
-
-        foreach($values as $value){
-            $this->InterpretingSpecialisms->add($value);
-        }
-    }
-
     public function getData(){
         return array(
+            'id' => $this->id,
             'DesktopCatTools' => Func::getReferenceIds($this->DesktopCatTools),
             'DesktopOperatingSystems' => Func::getReferenceIds($this->DesktopOperatingSystems),
             'InterpretingSpecialisms' => Func::getReferenceIds($this->InterpretingSpecialisms),

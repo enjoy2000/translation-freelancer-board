@@ -54,7 +54,29 @@ function callOnce(){
     }
     return false;
 }
+(function(){
+    modalData = {};
+    var $scope = angular.element("#modalContainer").scope();
 
-function setModalControllerData(key, value){
-    angular.element("#modalContainer").scope().setData(key, value);
-}
+    function isModalControllerReady(){
+        return  $scope && $scope.setData ? true : false;
+    }
+
+    setModalControllerData = function(key, value){
+        if(isModalControllerReady()){
+            $scope.setData(key, value);
+        } else {
+            modalData[key] = value;
+        }
+    };
+    var listener;
+    listener = setInterval(function(){
+        $scope = angular.element("#modalContainer").scope();
+        if(isModalControllerReady()){
+            for(var key in modalData){
+                $scope.setData(key, modalData[key]);
+            }
+            clearInterval(listener);
+        }
+    }, 100);
+})();
