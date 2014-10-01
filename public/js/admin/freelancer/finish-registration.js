@@ -125,9 +125,19 @@ angularApp.controller('UpdateInfoController', function($scope, $http, $timeout, 
     }
 
     function initModal(){
-        setModalControllerData('desktopPrice', {});
-        setModalControllerData('interpretingPrice', {});
-        setModalControllerData('translationPrice', {});
+        setModalControllerData('desktopPrice', {
+            language: $scope.languages[0],
+            software: $scope.softwares[0]
+        });
+        setModalControllerData('interpretingPrice', {
+            sourceLanguage: $scope.languages[0],
+            targetLanguage: $scope.languages[0],
+            service: $scope.services[0]
+        });
+        setModalControllerData('translationPrice', {
+            sourceLanguage: $scope.languages[0],
+            targetLanguage: $scope.languages[0]
+        });
 
         setModalControllerData('languages', $scope.languages);
         setModalControllerData('services', $scope.services);

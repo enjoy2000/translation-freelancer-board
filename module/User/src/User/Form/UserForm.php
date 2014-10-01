@@ -84,12 +84,7 @@ class UserForm extends Form
         $data['lastLogin'] = new \DateTime('now');
 
         $user->setData($data);
-
-        if($userType == 'freelancer'){
-            $user->setGroup($entityManager->getReference('\User\Entity\UserGroup', 1));
-        }else if($userType == 'employer'){
-            $user->setGroup($entityManager->getReference('\User\Entity\UserGroup', 2));
-        }
+        $user->setGroupByName($userType, $entityManager);
 
         // Create password hash
         $user->encodePassword();

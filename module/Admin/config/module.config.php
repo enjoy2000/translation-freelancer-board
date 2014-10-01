@@ -65,10 +65,12 @@ return array(
         'not_found_template'       => 'error/404',
         'exception_template'       => 'error/index',
         'template_map' => array(
+            'admin/dashboard/index' => __DIR__ . '/../view/admin/dashboard/index.phtml',
             'admin/email/index' => __DIR__ . '/../view/admin/email/index.phtml',
             'admin/email/edit' => __DIR__ . '/../view/admin/email/edit.phtml',
             'admin/email/new' => __DIR__ . '/../view/admin/email/new.phtml',
             'admin/freelancer/finish-registration' => __DIR__ . '/../view/admin/freelancer/finish-registration.phtml',
+            'admin/freelancer/update-info' => __DIR__ . '/../view/admin/freelancer/finish-registration.phtml',
         ),
         'layout' => 'layout/admin',
         'template_path_stack' => array(

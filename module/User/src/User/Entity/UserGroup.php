@@ -12,6 +12,10 @@ use Doctrine\ORM\Mapping as ORM;
 /** @ORM\Entity */
 class UserGroup{
 
+    const FREELANCER_GROUP_ID = 1;
+    const EMPLOYER_GROUP_ID = 2;
+    const ADMIN_GROUP_ID = 3;
+
     /**
      * @ORM\id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -38,5 +42,26 @@ class UserGroup{
 
     public function getFirstLoginUrl(){
         return $this->firstLoginUrl;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isEmployer(){
+        return $this->id == static::EMPLOYER_GROUP_ID;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isFreelancer(){
+        return $this->id == static::FREELANCER_GROUP_ID;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isAdmin(){
+        return $this->id == static::ADMIN_GROUP_ID;
     }
 }

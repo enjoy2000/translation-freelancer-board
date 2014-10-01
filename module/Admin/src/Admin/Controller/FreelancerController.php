@@ -24,4 +24,8 @@ class FreelancerController extends AbstractActionController
         ));
     }
 
+    public function updateInfoAction(){
+        return $this->finishRegistrationAction();
+    }
+
 }

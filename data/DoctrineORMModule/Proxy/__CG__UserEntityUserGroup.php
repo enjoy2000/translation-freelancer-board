@@ -206,4 +206,37 @@ class UserGroup extends \User\Entity\UserGroup implements \Doctrine\ORM\Proxy\Pr
         return parent::getFirstLoginUrl();
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    public function isEmployer()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'isEmployer', array());
+
+        return parent::isEmployer();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function isFreelancer()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'isFreelancer', array());
+
+        return parent::isFreelancer();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function isAdmin()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'isAdmin', array());
+
+        return parent::isAdmin();
+    }
+
 }

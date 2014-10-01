@@ -76,11 +76,18 @@ class User extends Entity implements InputFilterAwareInterface{
 
     /** @ORM\Column(type="string") */
     protected $currency = 'cny';
+
     /**
      * @var \User\Entity\Freelancer
      * @ORM\ManyToOne(targetEntity="Freelancer")
      */
     protected $freelancer;
+
+    /**
+     * @var \User\Entity\Employer
+     * @ORM\ManyToOne(targetEntity="Employer")
+     */
+    protected $employer;
 
 
     // class variables
@@ -404,6 +411,41 @@ class User extends Entity implements InputFilterAwareInterface{
      */
     public function getFreelancer(){
         return $this->freelancer;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isEmployer(){
+        return $this->getGroup()->isEmployer();
+    }
+
+    /**
+     * @return bool
+     */
+    public function isFreelancer(){
+        return $this->getGroup()->isFreelancer();
+    }
+
+    /**
+     * @return bool
+     */
+    public function isAdmin(){
+        return $this->getGroup()->isAdmin();
+    }
+
+    public function setGroupByName($name, $entityManager){
+        if($name == 'freelancer'){
+            $this->setGroup($entityManager->getReference('\User\Entity\UserGroup', UserGroup::FREELANCER_GROUP_ID));
+            $freelancer = new Freelancer();
+            $freelancer->save($entityManager);
+            $this->freelancer = $freelancer;
+        }else if($name == 'employer'){
+            $this->setGroup($entityManager->getReference('\User\Entity\UserGroup', UserGroup::EMPLOYER_GROUP_ID));
+            $employer = new Employer();
+            $employer->save($entityManager);
+            $this->employer = $employer;
+        }
     }
 }
 
