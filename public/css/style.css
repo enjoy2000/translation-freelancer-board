@@ -2570,14 +2570,8 @@ table.table-mail tr td {
 }
 /* ERROR & LOGIN & LOCKSCREEN*/
 .middle-box {
-  height: 400px;
   width: 400px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-top: -250px;
-  margin-left: -200px;
-  z-index: 100;
+  margin: auto;
 }
 .lockscreen.middle-box {
   width: 200px;
@@ -2586,8 +2580,6 @@ table.table-mail tr td {
 }
 .loginscreen.middle-box {
   width: 300px;
-  margin-left: -150px;
-  margin-top: -330px;
 }
 .logo-name {
   color: #e6e6e6;

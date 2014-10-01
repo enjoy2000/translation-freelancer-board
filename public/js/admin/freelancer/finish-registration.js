@@ -5,7 +5,7 @@ angularApp.run(function($rootScope){
     $("#form").steps({
         bodyTag: "fieldset",
         showFinishButtonAlways: true,
-        paginationPosition: "top",
+        paginationPosition: "both",
         onStepChanging: function (event, currentIndex, newIndex) {
             // Always allow going backward even if the current step contains invalid fields!
             if (currentIndex > newIndex) {
@@ -102,29 +102,26 @@ angularApp.controller('UpdateInfoController', function($scope, $http, $timeout, 
         "InterpretingSpecialisms": null,
         "TranslationCatTools": null,
         "TranslationSpecialisms": null
-    }
+    };
+    $scope.freelancerInfo = {};
 
     /**
      * Mark resource active params
      */
     function generateActiveResources(){
-        $scope.userInfo.resources = $scope.userInfo.resources;
-        for(var i = 0; i < $scope.userInfo.resources.length; i++){
-            $scope.resource_active[$scope.userInfo.resources[i]] = 'active';
+        $scope.freelancerInfo.Resources = $scope.freelancerInfo.Resources;
+        for(var i = 0; i < $scope.freelancerInfo.Resources.length; i++){
+            $scope.resource_active[$scope.freelancerInfo.Resources[i]] = 'active';
         }
     }
 
     function updateUserInfoPriceData(){
-        var values = findOptions($scope.catTools, $scope.userInfo.TranslationCatTools);
-        $scope.userInfo.TranslationCatTools = values;
-        values = findOptions($scope.specialisms, $scope.userInfo.TranslationSpecialisms);
-        $scope.userInfo.TranslationSpecialisms = values;
-        values = findOptions($scope.catTools, $scope.userInfo.DesktopCatTools);
-        $scope.userInfo.DesktopCatTools = values;
-        values = findOptions($scope.operatingSystems, $scope.userInfo.DesktopOperatingSystems);
-        $scope.userInfo.DesktopOperatingSystems = values;
-        values = findOptions($scope.specialisms, $scope.userInfo.InterpretingSpecialisms);
-        $scope.userInfo.InterpretingSpecialisms = values;
+        var $info = $scope.freelancerInfo;
+        $info.TranslationCatTools = findOptions($scope.catTools, $info.TranslationCatTools);
+        $info.TranslationSpecialisms = findOptions($scope.specialisms, $info.TranslationSpecialisms);
+        $info.DesktopCatTools = findOptions($scope.catTools, $info.DesktopCatTools);
+        $info.DesktopOperatingSystems = findOptions($scope.operatingSystems, $info.DesktopOperatingSystems);
+        $info.InterpretingSpecialisms = findOptions($scope.specialisms, $info.InterpretingSpecialisms);
     }
 
     function initModal(){
@@ -147,12 +144,17 @@ angularApp.controller('UpdateInfoController', function($scope, $http, $timeout, 
 
     /** end mapping function **/
 
-    $http.get("/api/user/info")
+    $http.get("/api/user/" + USER_ID + "/info")
         .success(function($data){
             $scope.userInfo = $data['user'];
             if($scope.countries.length){
                 $scope.userInfo.country = findOption($scope.countries, $scope.userInfo.country);
             }
+        });
+    $http.get("/api/user/" + USER_ID + "/freelancer")
+        .success(function($data){
+            $scope.freelancerInfo = $data['freelancer'];
+
             generateActiveResources();
 
             $http.get("/api/user/resource")
@@ -191,27 +193,17 @@ angularApp.controller('UpdateInfoController', function($scope, $http, $timeout, 
     $scope.submit = function(){
 
         var requestInfo = $http.put("/api/user/" + $scope.userInfo.id + "/info/", $scope.userInfo);
-
-        var requestResource = $http.put("/api/user/" + $scope.userInfo.id + "/resource/", {
-            'resources': $scope.userInfo.resources
-        });
-
-        var requestTranslation = $http.put("/api/user/" + $scope.userInfo.id + "/translation/", {
-            'userTranslationCatTools': getIds($scope.userInfo.TranslationCatTools),
-            'userTranslationSpecialisms': getIds($scope.userInfo.TranslationSpecialisms)
-        });
-
-        var requestDesktop = $http.put("/api/user/" + $scope.userInfo.id + "/desktop-publish/", {
-            'userDesktopCatTools': getIds($scope.userInfo.DesktopCatTools),
-            'userDesktopOperatingSystems': getIds($scope.userInfo.DesktopOperatingSystems)
-        });
-
-        var requestInterpreting = $http.put("/api/user/" + $scope.userInfo.id + "/interpreting/", {
-            'userInterpretingSpecialisms': getIds($scope.userInfo.InterpretingSpecialisms)
+        var requestFreelancer = $http.put("/api/user/" + $scope.userInfo.id + "/freelancer/", {
+            'DesktopCatTools': getIds($scope.freelancerInfo.DesktopCatTools),
+            'DesktopOperatingSystems': getIds($scope.freelancerInfo.DesktopOperatingSystems),
+            'InterpretingSpecialisms': getIds($scope.freelancerInfo.InterpretingSpecialisms),
+            'Resources': getIds($scope.freelancerInfo.Resources),
+            'TranslationCatTools': getIds($scope.freelancerInfo.TranslationCatTools),
+            'TranslationSpecialisms': getIds($scope.freelancerInfo.TranslationSpecialisms)
         });
 
         // wait all done
-        $q.all([requestDesktop, requestInfo, requestInterpreting, requestResource, requestTranslation])
+        $q.all([requestFreelancer, requestInfo])
             .then(function(result){
                 // TODO: change this callback
                 alert("Success update all");
@@ -222,14 +214,12 @@ angularApp.controller('UpdateInfoController', function($scope, $http, $timeout, 
      * Toggle resource
      */
     $scope.toggleResource = function($id){
-        console.log($scope.userInfo.resources);
-        var $index = $scope.userInfo.resources.indexOf($id);
+        var $index = $scope.freelancerInfo.Resources.indexOf($id);
         if($index == -1){
-            $scope.userInfo.resources.push($id);
+            $scope.freelancerInfo.Resources.push($id);
         } else {
-            $scope.userInfo.resources.splice($index, 1);
+            $scope.freelancerInfo.Resources.splice($index, 1);
         }
-        console.log($scope.userInfo.resources);
     };
 
     /**

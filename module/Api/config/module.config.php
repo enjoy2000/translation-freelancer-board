@@ -49,6 +49,7 @@ return array(
             'Api\Controller\Common\Country'         => 'Api\Controller\Common\CountryController',
             'Api\Controller\Index'                  => 'Api\Controller\IndexController',
             'Api\Controller\User\DesktopPublish'    => 'Api\Controller\User\DesktopPublishController',
+            'Api\Controller\User\Freelancer'        => 'Api\Controller\User\FreelancerController',
             'Api\Controller\User\Info'              => 'Api\Controller\User\InfoController',
             'Api\Controller\User\Interpreting'      => 'Api\Controller\User\InterpretingController',
             'Api\Controller\User\PriceData'         => 'Api\Controller\User\PriceDataController',

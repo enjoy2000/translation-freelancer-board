@@ -5,7 +5,7 @@
         <div class="panel-body">
             <h2><i class="fa fa-desktop"></i>&nbsp; Currency</h2>
             <br />
-            <?php include "/../../user/currency-setup.phtml"; ?>
+            <?php include __DIR__ . "/../../user/currency-setup.phtml"; ?>
         </div>
     </div>
     <div class="panel panel-primary">
@@ -17,7 +17,7 @@
                     <div class="form-group">
                         <label>Specialisms * &nbsp; </label>
                         <select class="form-control required multiselect" multiple="multiple"
-                                ng-model="userInfo.TranslationSpecialisms"
+                                ng-model="freelancerInfo.TranslationSpecialisms"
                                 ng-options="t.name for t in specialisms"
                                 name="userTranslationSpecialisms" id="userTranslationSpecialisms">
                         </select>
@@ -27,14 +27,14 @@
                     <div class="form-group">
                         <label>CAT Tools * &nbsp; </label>
                         <select class="form-control required multiselect" multiple="multiple"
-                                ng-model="userInfo.TranslationCatTools"
+                                ng-model="freelancerInfo.TranslationCatTools"
                                 ng-options="t.name for t in catTools"
                                 name="userTranslationCatTools" id="userTranslationCatTools">
                         </select>
                     </div>
                 </div>
             </div>
-            <?php include "/../../user/translation-pair.phtml" ?>
+            <?php include __DIR__ . "/../../user/translation-pair.phtml" ?>
         </div>
     </div>
 
@@ -47,7 +47,7 @@
                     <div class="form-group">
                         <label>Operating System * &nbsp; </label>
                         <select class="form-control required multiselect" multiple="multiple"
-                                ng-model="userInfo.DesktopOperatingSystems"
+                                ng-model="freelancerInfo.DesktopOperatingSystems"
                                 ng-options="t.name for t in operatingSystems"
                                 name="userDesktopOperatingSystems" id="userDesktopOperatingSystems">
                         </select>
@@ -57,14 +57,14 @@
                     <div class="form-group">
                         <label>CAT Tools * &nbsp; </label>
                         <select class="form-control required multiselect" multiple="multiple"
-                                ng-model="userInfo.DesktopCatTools"
+                                ng-model="freelancerInfo.DesktopCatTools"
                                 ng-options="t.name for t in catTools"
                                 name="userDesktopCatTools" id="userDesktopCatTools">
                         </select>
                     </div>
                 </div>
             </div>
-            <?php include "/../../user/desktop-pair.phtml" ?>
+            <?php include __DIR__ . "/../../user/desktop-pair.phtml" ?>
         </div>
     </div>
 
@@ -77,14 +77,14 @@
                     <div class="form-group">
                         <label>Specialisms * &nbsp; </label>
                         <select class="form-control required multiselect" multiple="multiple"
-                                ng-model="userInfo.InterpretingSpecialisms"
+                                ng-model="freelancerInfo.InterpretingSpecialisms"
                                 ng-options="t.name for t in specialisms"
                                 name="userInterpretingSpecialisms" id="userInterpretingSpecialisms">
                         </select>
                     </div>
                 </div>
             </div>
-            <?php include "/../../user/interpreting-pair.phtml" ?>
+            <?php include __DIR__ . "/../../user/interpreting-pair.phtml" ?>
         </div>
     </div>
 </fieldset>

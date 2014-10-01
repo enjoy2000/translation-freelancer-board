@@ -11,31 +11,26 @@ use Zend\View\Model\JsonModel;
 
 use Application\Controller\AbstractRestfulController;
 
-class InfoController extends AbstractRestfulController
+class FreelancerController extends AbstractRestfulController
 {
     public function get($id){
         $user = $this->getUserById($id);
-        $userData = $user->getData();
-        $userData['country'] = array(
-            'select' => $userData['country'],  # ng-option
-        );
+        $freelancerData = $user->getFreelancer()->getData();
 
         return new JsonModel(
             array(
-                'user' => $userData,
+                'freelancer' => $freelancerData,
             )
         );
     }
 
     public function update($id, $data){
-        $data['country'] = $data['country']['select'];
-
-        $data['profileUpdated'] = true;
-        $user = $this->getCurrentUser();
-        $user->updateData($data);
-
         $entityManager = $this->getEntityManager();
-        $user->save($entityManager);
+        $user = $this->getUserById($id);
+        $freelancer = $user->getFreelancer();
+
+        $freelancer->updateData($data, $entityManager);
+        $freelancer->save($entityManager);
 
         return new JsonModel(array());
     }
