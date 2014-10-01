@@ -10,12 +10,15 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>1</td>
-            <td>English</td>
-            <td>Chinese</td>
-            <td>0.12</td>
-            <td><a href="#"><i class="fa fa-trash-o text-danger"></i></a></td>
+        <tr ng-repeat="translationPrice in translationPrices">
+            <td>{{$index + 1}}</td>
+            <td>{{translationPrice.sourceLanguage.name}}</td>
+            <td>{{translationPrice.targetLanguage.name}}</td>
+            <td>{{translationPrice.price}}</td>
+            <td><a href="#" ng-click="deleteTranslationPrice($index)" onClick="return false;">
+                <i class="fa fa-trash-o text-danger"></i>
+                </a>
+            </td>
         </tr>
         </tbody>
     </table>

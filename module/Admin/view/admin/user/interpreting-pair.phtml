@@ -12,14 +12,15 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>1</td>
-            <td>English</td>
-            <td>Chinese</td>
-            <td>Consecutive</td>
-            <td>5000</td>
-            <td>4000</td>
-            <td><a href="#"><i class="fa fa-trash-o text-danger"></i></a></td>
+        <tr ng-repeat="interpretingPrice in interpretingPrices">
+            <td>{{$index + 1}}</td>
+            <td>{{interpretingPrice.sourceLanguage.name}}</td>
+            <td>{{interpretingPrice.targetLanguage.name}}</td>
+            <td>{{interpretingPrice.service.name}}</td>
+            <td>{{interpretingPrice.priceDay}}</td>
+            <td>{{interpretingPrice.priceHalfDay}}</td>
+            <td><a href="#" ng-click="deleteInterpretingPrice($index)" onClick="return false;">
+                    <i class="fa fa-trash-o text-danger"></i></a></td>
         </tr>
         </tbody>
     </table>

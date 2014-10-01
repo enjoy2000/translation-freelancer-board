@@ -17,9 +17,22 @@ class FreelancerController extends AbstractRestfulController
         $user = $this->getUserById($id);
         $freelancerData = $user->getFreelancer()->getData();
 
+        $desktopPriceData = $this->getAllData('\User\Entity\UserDesktopPrice', [
+            'user' => $user,
+        ]);
+        $interpretingPriceData = $this->getAllData('\User\Entity\UserInterpretingPrice', [
+            'user' => $user,
+        ]);
+        $translationPriceData = $this->getAllData('\User\Entity\UserTranslationPrice', [
+            'user' => $user,
+        ]);
+
         return new JsonModel(
             array(
+                'desktopPrices' => $desktopPriceData,
                 'freelancer' => $freelancerData,
+                'interpretingPrices' => $interpretingPriceData,
+                'translationPrices' => $translationPriceData,
             )
         );
     }

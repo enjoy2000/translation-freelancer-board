@@ -10,8 +10,10 @@ namespace User\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+use Common\Entity;
+
 /** @ORM\Entity */
-class UserDesktopPrice{
+class UserDesktopPrice extends Entity{
 
     /**
      * @ORM\id
@@ -19,6 +21,12 @@ class UserDesktopPrice{
      * @ORM\Column(type="integer")
      */
     protected $id;
+
+    /**
+     * @var \User\Entity\User
+     * @ORM\ManyToOne(targetEntity="User")
+     */
+    protected $user;
 
     /**
      * @var \User\Entity\Language

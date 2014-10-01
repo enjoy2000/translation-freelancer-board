@@ -11,7 +11,7 @@ use Zend\View\Model\JsonModel;
 
 use Application\Controller\AbstractRestfulController;
 
-class InfoController extends AbstractRestfulController
+class IndexController extends AbstractRestfulController
 {
     public function get($id){
         $user = $this->getUserById($id);

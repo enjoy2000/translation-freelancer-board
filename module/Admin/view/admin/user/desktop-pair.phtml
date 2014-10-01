@@ -13,15 +13,16 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>1</td>
-            <td>European/CE/Greek/Russian</td>
-            <td>Indesign</td>
-            <td>12.00</td>
-            <td>10.00</td>
-            <td>50.00</td>
-            <td>40.00</td>
-            <td><a href="#"><i class="fa fa-trash-o text-danger"></i></a></td>
+        <tr ng-repeat="desktopPrice in desktopPrices">
+            <td>{{$index + 1}}</td>
+            <td>{{desktopPrice.language.name}}</td>
+            <td>{{desktopPrice.software.name}}</td>
+            <td>{{desktopPrice.priceMac}}</td>
+            <td>{{desktopPrice.pricePc}}</td>
+            <td>{{desktopPrice.priceHourMac}}</td>
+            <td>{{desktopPrice.priceHourPc}}</td>
+            <td><a href="#" ng-click="deleteDesktopPrice($index)" onClick="return false;">
+                    <i class="fa fa-trash-o text-danger"></i></a></td>
         </tr>
         </tbody>
     </table>

@@ -79,6 +79,8 @@ angularApp.controller('UpdateInfoController', function($scope, $http, $timeout, 
     $scope.specialisms = [];
     $scope.translationPrice = {};
     $scope.translationPrices = [];
+    $scope.desktopPrices = [];
+    $scope.interpretingPrices = [];
     $scope.userInfo = {
         "city": null,
         "country": {
@@ -124,20 +126,33 @@ angularApp.controller('UpdateInfoController', function($scope, $http, $timeout, 
         $info.InterpretingSpecialisms = findOptions($scope.specialisms, $info.InterpretingSpecialisms);
     }
 
-    function initModal(){
-        setModalControllerData('desktopPrice', {
+    function translationPricePlaceholder(){
+        return {
+            sourceLanguage: $scope.languages[0],
+            targetLanguage: $scope.languages[0],
+            userId: $scope.userInfo.id
+        };
+    }
+
+    function desktopPricePlaceholder(){
+        return {
             language: $scope.languages[0],
             software: $scope.softwares[0]
-        });
-        setModalControllerData('interpretingPrice', {
+        };
+    }
+
+    function interpretingPricePlaceholder(){
+        return {
             sourceLanguage: $scope.languages[0],
             targetLanguage: $scope.languages[0],
             service: $scope.services[0]
-        });
-        setModalControllerData('translationPrice', {
-            sourceLanguage: $scope.languages[0],
-            targetLanguage: $scope.languages[0]
-        });
+        };
+    }
+
+    function initModal(){
+        setModalControllerData('desktopPrice', desktopPricePlaceholder());
+        setModalControllerData('interpretingPrice', interpretingPricePlaceholder());
+        setModalControllerData('translationPrice', translationPricePlaceholder());
 
         setModalControllerData('languages', $scope.languages);
         setModalControllerData('services', $scope.services);
@@ -154,7 +169,7 @@ angularApp.controller('UpdateInfoController', function($scope, $http, $timeout, 
 
     /** end mapping function **/
 
-    $http.get("/api/user/" + USER_ID + "/info")
+    $http.get("/api/user/" + USER_ID + "")
         .success(function($data){
             $scope.userInfo = $data['user'];
             if($scope.countries.length){
@@ -164,6 +179,9 @@ angularApp.controller('UpdateInfoController', function($scope, $http, $timeout, 
     $http.get("/api/user/" + USER_ID + "/freelancer")
         .success(function($data){
             $scope.freelancerInfo = $data['freelancer'];
+            $scope.translationPrices = $data['translationPrices'];
+            $scope.interpretingPrices = $data['interpretingPrices'];
+            $scope.desktopPrices = $data['desktopPrices'];
 
             generateActiveResources();
 
@@ -202,7 +220,7 @@ angularApp.controller('UpdateInfoController', function($scope, $http, $timeout, 
      */
     $scope.submit = function(){
 
-        var requestInfo = $http.put("/api/user/" + $scope.userInfo.id + "/info/", $scope.userInfo);
+        var requestInfo = $http.put("/api/user/" + $scope.userInfo.id, $scope.userInfo);
         var requestFreelancer = $http.put("/api/user/" + $scope.userInfo.id + "/freelancer/", {
             'DesktopCatTools': getIds($scope.freelancerInfo.DesktopCatTools),
             'DesktopOperatingSystems': getIds($scope.freelancerInfo.DesktopOperatingSystems),
@@ -244,7 +262,26 @@ angularApp.controller('UpdateInfoController', function($scope, $http, $timeout, 
      * @param translationPrice
      */
     $scope.saveTranslationPrice = function(translationPrice){
-        console.log(translationPrice);
+        var translationPriceData = {
+            userId: $scope.userInfo.id,
+            sourceLanguageId: translationPrice.sourceLanguage.id,
+            targetLanguageId: translationPrice.targetLanguage.id,
+            price: translationPrice.price
+        }
+        $http.post("/api/user/" + $scope.userInfo.id + "/translationPrice", translationPriceData)
+            .success(function($data){
+                jQuery("#modal-translation").modal("hide");
+                $scope.translationPrices.push($data['translationPrice']);
+                setModalControllerData('translationPrice', translationPricePlaceholder())
+            });
+    };
+
+    $scope.deleteTranslationPrice = function($index){
+        var translationPrice = $scope.translationPrices[$index];
+        $http.delete("/api/user/" + $scope.userInfo.id + "/translationPrice/" + translationPrice.id)
+            .success(function(){
+                $scope.translationPrices.splice($index, 1);
+            });
     };
 
     /**
@@ -252,7 +289,30 @@ angularApp.controller('UpdateInfoController', function($scope, $http, $timeout, 
      * @param desktopPrice
      */
     $scope.saveDesktopPrice = function(desktopPrice){
-        console.log(desktopPrice);
+
+        var desktopPriceData = {
+            userId: $scope.userInfo.id,
+            languageId: desktopPrice.language.id,
+            softwareId: desktopPrice.software.id,
+            priceMac: desktopPrice.priceMac,
+            pricePc: desktopPrice.pricePc,
+            priceHourMac: desktopPrice.priceHourMac,
+            priceHourPc: desktopPrice.priceHourPc
+        }
+        $http.post("/api/user/" + $scope.userInfo.id + "/desktopPrice", desktopPriceData)
+            .success(function($data){
+                jQuery("#modal-dtp").modal("hide");
+                $scope.desktopPrices.push($data['desktopPrice']);
+                setModalControllerData('desktopPrice', desktopPricePlaceholder())
+            });
+    };
+
+    $scope.deleteDesktopPrice = function($index){
+        var desktopPrice = $scope.desktopPrices[$index];
+        $http.delete("/api/user/" + $scope.userInfo.id + "/desktopPrice/" + desktopPrice.id)
+            .success(function(){
+                $scope.desktopPrices.splice($index, 1);
+            });
     };
 
     /**
@@ -260,6 +320,26 @@ angularApp.controller('UpdateInfoController', function($scope, $http, $timeout, 
      * @param interpretingPrice
      */
     $scope.saveInterpretingPrice = function(interpretingPrice){
-        console.log(interpretingPrice);
+        var interpretingPriceData = {
+            userId: $scope.userInfo.id,
+            sourceLanguageId: interpretingPrice.sourceLanguage.id,
+            targetLanguageId: interpretingPrice.targetLanguage.id,
+            serviceId: interpretingPrice.service.id,
+            priceDay: interpretingPrice.priceDay,
+            priceHalfDay: interpretingPrice.priceHalfDay
+        }
+        $http.post("/api/user/" + $scope.userInfo.id + "/interpretingPrice", interpretingPriceData)
+            .success(function($data){
+                jQuery("#modal-interpreting").modal("hide");
+                $scope.interpretingPrices.push($data['interpretingPrice']);
+                setModalControllerData('interpretingPrice', interpretingPricePlaceholder())
+            });
+    };
+    $scope.deleteInterpretingPrice = function($index){
+        var interpretingPrice = $scope.interpretingPrices[$index];
+        $http.delete("/api/user/" + $scope.userInfo.id + "/interpretingPrice/" + interpretingPrice.id)
+            .success(function(){
+                $scope.interpretingPrices.splice($index, 1);
+            });
     };
 });

@@ -53,4 +53,17 @@ class Entity {
             }
         }
     }
+
+    /**
+     * @param array $arr
+     */
+    public function setData(array $arr){
+        foreach($arr as $k => $v){
+            $this->$k = $v;
+        }
+    }
+
+    public function getData(){
+        throw new \Exception("Not implemented");
+    }
 } 
