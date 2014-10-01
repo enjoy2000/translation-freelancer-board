@@ -378,18 +378,26 @@ class User implements InputFilterAwareInterface{
      * @param \Application\Controller\AbstractActionController $controller
      */
     public function sendConfirmationEmail($controller){
-        $data = array();
-        // TODO: initial data for email template
-        Mail::sendMail($controller, "register-confirmation", $this->email, $data);
+        // initial data for email template
+        $confirmLink = $controller->getBaseUrl() . '/user/register/confirm?token=' . $this->token;
+        $data = array(
+            'firstName' => $this->firstName,
+            'lastName' => $this->lastName,
+            'link' => $confirmLink,
+        );
+        Mail::sendMail($controller, "USER_CONFIRM", $this->email, $data);
     }
 
     /**
      * @param \Application\Controller\AbstractActionController $controller
      */
     public function sendWelcomeEmail($controller){
-        $data = array();
-        // TODO: initial data for email template
-        Mail::sendMail($controller, "register-welcome", $this->email, $data);
+        // initial data for email template
+        $data = array(
+            'firstName' => $this->firstName,
+            'lastName' => $this->lastName,
+        );
+        Mail::sendMail($controller, "USER_WELCOME", $this->email, $data);
     }
 
     /**
