@@ -60,10 +60,14 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
+            'Api\Controller\Common\Company' => 'Api\Controller\Common\CompanyController',
             'Api\Controller\Common\Country' => 'Api\Controller\Common\CountryController',
             'Api\Controller\Index' => 'Api\Controller\IndexController',
             'Api\Controller\User\DesktopPrice' => 'Api\Controller\User\DesktopPriceController',
+            'Api\Controller\User\Employer' => 'Api\Controller\User\EmployerController',
+            'Api\Controller\User\EmployerData' => 'Api\Controller\User\EmployerDataController',
             'Api\Controller\User\Freelancer' => 'Api\Controller\User\FreelancerController',
+            'Api\Controller\User\FreelancerData' => 'Api\Controller\User\FreelancerDataController',
             'Api\Controller\User\Index' => 'Api\Controller\User\IndexController',
             'Api\Controller\User\InterpretingPrice' => 'Api\Controller\User\InterpretingPriceController',
             'Api\Controller\User\PriceData' => 'Api\Controller\User\PriceDataController',

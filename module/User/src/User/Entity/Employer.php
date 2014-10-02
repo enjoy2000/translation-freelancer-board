@@ -22,4 +22,36 @@ class Employer extends Entity{
      * @ORM\Column(type="integer")
      */
     protected $id;
+
+    /**
+     * @var \User\Entity\Company
+     * @ORM\ManyToOne(targetEntity="Company")
+     */
+    protected $company;
+
+    /**
+     * @var string
+     * @ORM\Column(type="string")
+     */
+    protected $position = '';
+
+    /**
+     * @var int
+     * @ORM\Column(type="integer")
+     */
+    protected $defaultServiceLevel = 1;
+
+
+    public function getData(){
+        return [
+            'id' => $this->id,
+            'position' => $this->position,
+            'defaultServiceLevel' => $this->defaultServiceLevel,
+            'company' => $this->company ? $this->company->getData() : null,
+        ];
+    }
+
+    public function updateData($data){
+        $this->setData($data);
+    }
 } 

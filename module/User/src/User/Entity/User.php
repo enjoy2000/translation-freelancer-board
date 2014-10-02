@@ -79,13 +79,13 @@ class User extends Entity implements InputFilterAwareInterface{
 
     /**
      * @var \User\Entity\Freelancer
-     * @ORM\ManyToOne(targetEntity="Freelancer")
+     * @ORM\OneToOne(targetEntity="Freelancer")
      */
     protected $freelancer;
 
     /**
      * @var \User\Entity\Employer
-     * @ORM\ManyToOne(targetEntity="Employer")
+     * @ORM\OneToOne(targetEntity="Employer")
      */
     protected $employer;
 
@@ -411,6 +411,13 @@ class User extends Entity implements InputFilterAwareInterface{
      */
     public function getFreelancer(){
         return $this->freelancer;
+    }
+
+    /**
+     * @return Employer
+     */
+    public function getEmployer(){
+        return $this->employer;
     }
 
     /**

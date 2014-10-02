@@ -38,9 +38,15 @@ angularApp.controller("InterpretingPriceListController", function($scope, $http)
             });
     };
 
+    function ready(){
+        return ($scope.languages && $scope.languages.length > 0 && $scope.services && $scope.services.length > 0);
+    }
+
     $scope.$watch(function(){
-        return $scope.languages && $scope.languages.length > 0;
+        return ready();
     }, function(){
-        setModalControllerData('interpretingPrice', interpretingPricePlaceholder());
+        if(ready()){
+            setModalControllerData('interpretingPrice', interpretingPricePlaceholder());
+        }
     });
 });

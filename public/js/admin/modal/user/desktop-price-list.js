@@ -42,7 +42,7 @@ angularApp.controller("DesktopPriceListController", function($scope, $http){
     };
 
     $scope.$watch(function(){
-        return $scope.languages && $scope.languages.length > 0;
+        return ($scope.languages && $scope.languages.length > 0 && $scope.softwares && $scope.softwares.length > 0);
     }, function(){
         setModalControllerData('desktopPrice', desktopPricePlaceholder());
     });

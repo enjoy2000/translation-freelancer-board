@@ -66,4 +66,11 @@ class Entity {
     public function getData(){
         throw new \Exception("Not implemented");
     }
+
+    public function formatPrice($price){
+        if($price === null){
+            return $price;
+        }
+        return sprintf("%0.2f", $price);
+    }
 } 

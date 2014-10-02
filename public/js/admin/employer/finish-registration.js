@@ -74,13 +74,12 @@ angularApp.controller('UpdateInfoController', function($scope, $http, $timeout, 
     $scope.countries = [];
     $scope.languages = [];
     $scope.operatingSystems = [];
-    $scope.resource_active = {};
-    $scope.resources = [];
-    $scope.specialisms = [];
-    $scope.translationPrice = {};
+    $scope.softwares = [];
+
     $scope.translationPrices = [];
     $scope.desktopPrices = [];
     $scope.interpretingPrices = [];
+
     $scope.userInfo = {
         "city": null,
         "country": {
@@ -126,59 +125,26 @@ angularApp.controller('UpdateInfoController', function($scope, $http, $timeout, 
         $info.InterpretingSpecialisms = findOptions($scope.specialisms, $info.InterpretingSpecialisms);
     }
 
-    function translationPricePlaceholder(){
-        return {
-            sourceLanguage: $scope.languages[0],
-            targetLanguage: $scope.languages[0],
-            userId: $scope.userInfo.id
-        };
-    }
-
-    function desktopPricePlaceholder(){
-        return {
-            language: $scope.languages[0],
-            software: $scope.softwares[0]
-        };
-    }
-
-    function interpretingPricePlaceholder(){
-        return {
-            sourceLanguage: $scope.languages[0],
-            targetLanguage: $scope.languages[0],
-            service: $scope.services[0]
-        };
-    }
 
     function initModal(){
-        setModalControllerData('desktopPrice', desktopPricePlaceholder());
-        setModalControllerData('interpretingPrice', interpretingPricePlaceholder());
-        setModalControllerData('translationPrice', translationPricePlaceholder());
-
         setModalControllerData('languages', $scope.languages);
         setModalControllerData('services', $scope.services);
         setModalControllerData('softwares', $scope.softwares);
     }
 
-    function rebuildMultiSelect(){
-        $timeout(function(){
-            $(".multiselect").multiselect("destroy");
-        }).then(function(){
-            $(".multiselect").multiselect();
-        });
-    }
 
     /** end mapping function **/
     function init($userId){
-        $http.get("/api/user/" + USER_ID + "")
+        $http.get("/api/user/" + $userId + "")
             .success(function($data){
                 $scope.userInfo = $data['user'];
                 if($scope.countries.length){
                     $scope.userInfo.country = findOption($scope.countries, $scope.userInfo.country);
                 }
             });
-        $http.get("/api/user/" + USER_ID + "/freelancer")
+        $http.get("/api/user/" + $userId + "/employer")
             .success(function($data){
-                $scope.freelancerInfo = $data['freelancer'];
+                $scope.employerInfo = $data['employer'];
                 $scope.translationPrices = $data['translationPrices'];
                 $scope.interpretingPrices = $data['interpretingPrices'];
                 $scope.desktopPrices = $data['desktopPrices'];
@@ -202,8 +168,6 @@ angularApp.controller('UpdateInfoController', function($scope, $http, $timeout, 
 
                         initModal();
                         updateUserInfoPriceData();
-
-                        rebuildMultiSelect();
                     });
             });
 
@@ -222,105 +186,18 @@ angularApp.controller('UpdateInfoController', function($scope, $http, $timeout, 
      * Submit the form
      */
     $scope.submit = function(){
-        form = jQuery("#UpdateInfoController form");
+        var form = jQuery("#UpdateInfoController form");
         form.validate().settings.ignore = ":disabled,:hidden";
         if(form.valid()){
 
             var requestInfo = $http.put("/api/user/" + $scope.userInfo.id, $scope.userInfo);
-            var requestFreelancer = $http.put("/api/user/" + $scope.userInfo.id + "/freelancer/", {
-                'DesktopCatTools': getIds($scope.freelancerInfo.DesktopCatTools),
-                'DesktopOperatingSystems': getIds($scope.freelancerInfo.DesktopOperatingSystems),
-                'InterpretingSpecialisms': getIds($scope.freelancerInfo.InterpretingSpecialisms),
-                'Resources': getIds($scope.freelancerInfo.Resources),
-                'TranslationCatTools': getIds($scope.freelancerInfo.TranslationCatTools),
-                'TranslationSpecialisms': getIds($scope.freelancerInfo.TranslationSpecialisms)
-            });
-
             // wait all done
-            $q.all([requestFreelancer, requestInfo])
+            $q.all([requestInfo])
                 .then(function(result){
                     // TODO: change this callback
                     alert("Success update all");
                 });
         }
     };
-
-    /**
-     * Toggle resource
-     */
-    $scope.toggleResource = function($id){
-        var $index = $scope.freelancerInfo.Resources.indexOf($id);
-        if($index == -1){
-            $scope.freelancerInfo.Resources.push($id);
-        } else {
-            $scope.freelancerInfo.Resources.splice($index, 1);
-        }
-    };
-
-    /**
-     * Display activate class
-     */
-    $scope.active_class = function(a, b){
-        return a == b ? 'active' : '';
-    };
-
-    /**
-     * Save translation price from modal
-     * @param translationPrice
-     */
-    $scope.saveTranslationPrice = function(translationPrice){
-        var translationPriceData = {
-            userId: $scope.userInfo.id,
-            sourceLanguageId: translationPrice.sourceLanguage.id,
-            targetLanguageId: translationPrice.targetLanguage.id,
-            price: translationPrice.price
-        }
-        $http.post("/api/user/" + $scope.userInfo.id + "/translationPrice", translationPriceData)
-            .success(function($data){
-                jQuery("#modal-translation").modal("hide");
-                $scope.translationPrices.push($data['translationPrice']);
-                setModalControllerData('translationPrice', translationPricePlaceholder())
-            });
-    };
-
-    $scope.deleteTranslationPrice = function($index){
-        var translationPrice = $scope.translationPrices[$index];
-        $http.delete("/api/user/" + $scope.userInfo.id + "/translationPrice/" + translationPrice.id)
-            .success(function(){
-                $scope.translationPrices.splice($index, 1);
-            });
-    };
-
-    /**
-     * Save desktop price from modal
-     * @param desktopPrice
-     */
-    $scope.saveDesktopPrice = function(desktopPrice){
-
-        var desktopPriceData = {
-            userId: $scope.userInfo.id,
-            languageId: desktopPrice.language.id,
-            softwareId: desktopPrice.software.id,
-            priceMac: desktopPrice.priceMac,
-            pricePc: desktopPrice.pricePc,
-            priceHourMac: desktopPrice.priceHourMac,
-            priceHourPc: desktopPrice.priceHourPc
-        }
-        $http.post("/api/user/" + $scope.userInfo.id + "/desktopPrice", desktopPriceData)
-            .success(function($data){
-                jQuery("#modal-dtp").modal("hide");
-                $scope.desktopPrices.push($data['desktopPrice']);
-                setModalControllerData('desktopPrice', desktopPricePlaceholder())
-            });
-    };
-
-    $scope.deleteDesktopPrice = function($index){
-        var desktopPrice = $scope.desktopPrices[$index];
-        $http.delete("/api/user/" + $scope.userInfo.id + "/desktopPrice/" + desktopPrice.id)
-            .success(function(){
-                $scope.desktopPrices.splice($index, 1);
-            });
-    };
-
 
 });

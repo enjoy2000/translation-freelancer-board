@@ -68,10 +68,10 @@ class UserDesktopPrice extends Entity{
         return array(
             'id' => $this->id,
             'language' => $this->language->getData(),
-            'priceHourMac' => $this->priceHourMac,
-            'priceHourPc' => $this->priceHourPc,
-            'priceMac' => $this->priceMac,
-            'pricePc' => $this->pricePc,
+            'priceHourMac' => $this->formatPrice($this->priceHourMac),
+            'priceHourPc' => $this->formatPrice($this->priceHourPc),
+            'priceMac' => $this->formatPrice($this->priceMac),
+            'pricePc' => $this->formatPrice($this->pricePc),
             'software' => $this->software->getData(),
         );
     }

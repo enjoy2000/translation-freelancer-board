@@ -64,8 +64,8 @@ class UserInterpretingPrice extends Entity{
             'sourceLanguage' => $this->sourceLanguage->getData(),
             'targetLanguage' => $this->targetLanguage->getData(),
             'service' => $this->service->getData(),
-            'priceDay' => $this->priceDay,
-            'priceHalfDay' => $this->priceHalfDay
+            'priceDay' => $this->formatPrice($this->priceDay),
+            'priceHalfDay' => $this->formatPrice($this->priceHalfDay),
         );
     }
 

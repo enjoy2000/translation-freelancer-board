@@ -16,15 +16,23 @@ class IndexController extends AbstractRestfulController
     public function get($id){
         $user = $this->getUserById($id);
         $userData = $user->getData();
-        $userData['country'] = array(
-            'select' => $userData['country'],  # ng-option
-        );
 
-        return new JsonModel(
-            array(
-                'user' => $userData,
-            )
-        );
+        $desktopPriceData = $this->getAllDataBy('\User\Entity\UserDesktopPrice', [
+            'user' => $user,
+        ]);
+        $interpretingPriceData = $this->getAllDataBy('\User\Entity\UserInterpretingPrice', [
+            'user' => $user,
+        ]);
+        $translationPriceData = $this->getAllDataBy('\User\Entity\UserTranslationPrice', [
+            'user' => $user,
+        ]);
+
+        return new JsonModel([
+            'user' => $userData,
+            'desktopPrices' => $desktopPriceData,
+            'interpretingPrices' => $interpretingPriceData,
+            'translationPrices' => $translationPriceData,
+        ]);
     }
 
     public function update($id, $data){
@@ -37,6 +45,6 @@ class IndexController extends AbstractRestfulController
         $entityManager = $this->getEntityManager();
         $user->save($entityManager);
 
-        return new JsonModel(array());
+        return new JsonModel([]);
     }
 }

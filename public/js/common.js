@@ -4,7 +4,7 @@
 
 function findOption(options, value){
     for(var i = 0; i < options.length; i++){
-        if(options[i].select == value.select){
+        if(options[i].select == value){
             return options[i];
         }
     }

@@ -33,6 +33,9 @@ class UserGroup{
         return array(
             'id' => $this->id,
             'name' => $this->name,
+            'isFreelancer' => $this->isFreelancer(),
+            'isAdmin' => $this->isAdmin(),
+            'isEmployer' => $this->isEmployer(),
         );
     }
 

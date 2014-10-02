@@ -8,7 +8,7 @@
 
 <!-- Scripts -->
 <?php $this->headScript()
-    ->prependFile($this->basePath() . '/js/admin/employer/finish-registration.js')
+    ->prependFile($this->basePath() . '/js/admin/freelancer/finish-registration.js')
     ->prependFile($this->basePath() . '/js/admin/bootstrap-modal.js')
     ->prependScript("angularApp = angular.module('project', []);")
     ->prependFile($this->basePath() . '/js/plugins/summernote/summernote.min.js')
@@ -72,18 +72,20 @@
             <div class="col-lg-6">
                 <div class="form-group">
                     <label>Position </label>
-                    <input id="position" name="position" value="" type="text" class="form-control">
+                    <input id="position" name="position" type="text" class="form-control"
+                           ng-model="employerInfo.position" />
                 </div>
 
             </div>
             <div class="col-lg-6">
-                <div class="form-group">
+                <?php $this->headScript()
+                            ->appendFile($this->basePath() . "/js/admin/modal/user/companies-list.js")
+                ?>
+                <div class="form-group" ng-controller="CompaniesListController" id="CompaniesListController">
                     <label>Company </label>
-                    <select class="form-control required" id="company" name="company" value="">
-                        <option>option 1</option>
-                        <option>option 2</option>
-                        <option>option 3</option>
-                        <option>option 4</option>
+                    <select class="form-control required" id="company" name="company" value=""
+                            ng-model="employerInfo.company"
+                            ng-options="company.name for company in companies">
                     </select>
                     <span class="help-block m-b-none"> &nbsp;Not in the list? Please <a data-toggle="modal" class="text-info" href="#modal-company">create a new company</a>.</span>
                 </div>
@@ -128,16 +130,22 @@
 
         <h4><i class="fa fa-sitemap"></i>&nbsp; Service Level <small>Project default service level</small></h4>
         <div data-toggle="buttons">
-            <label class="btn btn-outline btn-primary">
-                <input type="radio" name="professional" value="" /> Professional
+            <label class="btn btn-outline btn-primary {{active_class(employerInfo.defaultServiceLevel, 1)}}"
+                ng-click="employerInfo.defaultServiceLevel=1">
+                <input type="radio" name="defaultServiceLevel" ng-model="employerInfo.defaultServiceLevel"
+                       value="1" /> Professional
             </label>
             &nbsp;
-            <label class="btn btn-outline btn-primary">
-                <input type="radio" name="business" value="" /> Business
+            <label class="btn btn-outline btn-primary {{active_class(employerInfo.defaultServiceLevel, 2)}}"
+                   ng-click="employerInfo.defaultServiceLevel=2">
+                <input type="radio" name="defaultServiceLevel" ng-model="employerInfo.defaultServiceLevel"
+                       value="2" /> Business
             </label>
             &nbsp;
-            <label class="btn btn-outline btn-primary">
-                <input type="radio" name="premium" value="" /> Premium
+            <label class="btn btn-outline btn-primary {{active_class(employerInfo.defaultServiceLevel, 3)}}"
+                   ng-click="employerInfo.defaultServiceLevel=3">
+                <input type="radio" name="defaultServiceLevel" ng-model="employerInfo.defaultServiceLevel"
+                       value="3" /> Premium
             </label>
         </div>
         <div class="hr-line-dashed"></div>
@@ -173,75 +181,10 @@
         <?php include __DIR__ . "/../user/translation-pair.phtml" ?>
 
         <h4><i class="fa fa-desktop"></i>&nbsp; Desktop Publishing</h4>
-        <div class="table-responsive">
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Languages </th>
-                    <th>DTP software </th>
-                    <th>Price/Page <i class="fa fa-apple"></th>
-                    <th>Price/Page <i class="fa fa-windows"></i></th>
-                    <th>Price/Hour <i class="fa fa-apple"></th>
-                    <th>Price/Hour <i class="fa fa-windows"></i></th>
-                    <th>Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>European/CE/Greek/Russian</td>
-                    <td>Indesign</td>
-                    <td>12.00</td>
-                    <td>10.00</td>
-                    <td>50.00</td>
-                    <td>40.00</td>
-                    <td>
-                        <a data-toggle="modal" href="#modal-dtp"><i class="fa fa-edit"></i></a>
-                        <a href="#"><i class="fa fa-trash-o text-danger"></i></a>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="text-center">
-            <a data-toggle="modal" class="btn btn-outline btn-info" href="#modal-dtp">Add DTP prices</a>
-        </div>
-        <div class="hr-line-dashed"></div>
+        <?php include __DIR__ . "/../user/desktop-pair.phtml" ?>
 
         <h4><i class="fa fa-comments-o"></i>&nbsp; Interpreting</h4>
-        <div class="table-responsive">
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Source Language </th>
-                    <th>Target Language </th>
-                    <th>Interpreting Service</th>
-                    <th>Price/Day</th>
-                    <th>Price/half-Day</th>
-                    <th>Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>English</td>
-                    <td>Chinese</td>
-                    <td>Consecutive</td>
-                    <td>5000</td>
-                    <td>4000</td>
-                    <td>
-                        <a data-toggle="modal" href="#modal-interpreting"><i class="fa fa-edit"></i></a>
-                        <a href="#"><i class="fa fa-trash-o text-danger"></i></a>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="text-center">
-            <a data-toggle="modal" class="btn btn-outline btn-success" href="#modal-interpreting">Add Interpreting prices</a>
-        </div>
+        <?php include __DIR__ . "/../user/interpreting-pair.phtml" ?>
     </div>
 </div>
 
@@ -270,3 +213,65 @@
 </div> <!-- close the container div -->
 <div ng-controller="ModalController" id="modalContainer"> <!-- open new temporary container -->
     <?php include __DIR__ . "/../user/modal.phtml" ?>
+    <!-- add company -->
+    <div id="modal-company" class="modal fade" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Add Company</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label>Company Name *</label>
+                                    <input id="c-name" name="c-name" type="text" class="form-control required"
+                                           ng-model="company.name">
+                                </div>
+                                <div class="form-group">
+                                    <label>Telephone </label>
+                                    <input id="c-tel" name="c-tel" type="text" class="form-control"
+                                           ng-model="company.telephone">
+                                </div>
+                                <div class="form-group">
+                                    <label>Fax </label>
+                                    <input id="c-fax" name="c-fax" type="text" class="form-control"
+                                           ng-model="company.fax">
+                                </div>
+                                <div class="form-group">
+                                    <label>Address </label>
+                                    <input id="c-address" name="c-address" type="text" class="form-control"
+                                           ng-model="company.address">
+                                </div>
+                                <div class="form-group">
+                                    <label>City *</label>
+                                    <input id="c-city" name="c-city" type="text" class="form-control required"
+                                           ng-model="company.city">
+                                </div>
+                                <div class="form-group">
+                                    <label>Country *</label>
+                                    <select class="form-control required" id="country" name="country" value=""
+                                            ng-model="company.country"
+                                            ng-options="country.label for country in countries">
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Website *</label>
+                                    <input id="web" name="web" type="text" class="form-control required"
+                                           ng-model="company.website">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-w-m btn-white" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-w-m btn-primary"
+                            ng-click="submitTo('#modal-company', '#CompaniesListController', 'saveCompany',
+                                               company)">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>

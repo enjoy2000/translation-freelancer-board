@@ -11,14 +11,14 @@ use Zend\View\Model\JsonModel;
 
 use Application\Controller\AbstractRestfulController;
 
-class FreelancerController extends AbstractRestfulController
+class EmployerController extends AbstractRestfulController
 {
     public function get($id){
         $user = $this->getUserById($id);
-        $freelancerData = $user->getFreelancer()->getData();
+        $employerData = $user->getEmployer()->getData();
 
         return new JsonModel([
-            'freelancer' => $freelancerData,
+            'employer' => $employerData,
         ]);
     }
 
@@ -26,10 +26,10 @@ class FreelancerController extends AbstractRestfulController
         $userId = $this->getEvent()->getRouteMatch()->getParam('user_id');
         $entityManager = $this->getEntityManager();
         $user = $this->getUserById($userId);
-        $freelancer = $user->getFreelancer();
 
-        $freelancer->updateData($data, $entityManager);
-        $freelancer->save($entityManager);
+        $employer = $user->getEmployer();
+        $employer->updateData($data);
+        $employer->save($entityManager);
 
         return new JsonModel([]);
     }

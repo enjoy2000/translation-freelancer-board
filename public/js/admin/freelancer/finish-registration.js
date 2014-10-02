@@ -73,14 +73,18 @@ angularApp.controller('UpdateInfoController', function($scope, $http, $timeout, 
     $scope.catTools = [];
     $scope.countries = [];
     $scope.languages = [];
-    $scope.operatingSystems = [];
-    $scope.resource_active = {};
     $scope.resources = [];
+    $scope.softwares = [];
+    $scope.companies = [];
+
+    $scope.operatingSystems = [];
     $scope.specialisms = [];
-    $scope.translationPrice = {};
-    $scope.translationPrices = [];
+
     $scope.desktopPrices = [];
     $scope.interpretingPrices = [];
+    $scope.resource_active = {};
+    $scope.translationPrices = [];
+
     $scope.userInfo = {
         "city": null,
         "country": {
@@ -130,7 +134,7 @@ angularApp.controller('UpdateInfoController', function($scope, $http, $timeout, 
         return resources;
     }
 
-    function updateUserInfoPriceData(){
+    function updateFreelancerSkillData(){
         var $info = $scope.freelancerInfo;
         $info.TranslationCatTools = findOptions($scope.catTools, $info.TranslationCatTools);
         $info.TranslationSpecialisms = findOptions($scope.specialisms, $info.TranslationSpecialisms);
@@ -156,34 +160,92 @@ angularApp.controller('UpdateInfoController', function($scope, $http, $timeout, 
 
     /** end mapping function **/
     function init($userId){
-        $http.get("/api/user/" + USER_ID + "")
+        $http.get("/api/user/" + $userId + "")
             .success(function($data){
                 $scope.userInfo = $data['user'];
-                if($scope.countries.length){
-                    $scope.userInfo.country = findOption($scope.countries, $scope.userInfo.country);
-                }
-            });
-
-        $http.get("/api/user/" + USER_ID + "/freelancer")
-            .success(function($data){
-                $scope.freelancerInfo = $data['freelancer'];
                 $scope.translationPrices = $data['translationPrices'];
                 $scope.interpretingPrices = $data['interpretingPrices'];
                 $scope.desktopPrices = $data['desktopPrices'];
+                if($scope.countries.length){
+                    $scope.userInfo.country = findOption($scope.countries, $scope.userInfo.country);
+                }
 
+                if($scope.userInfo.group.isFreelancer){
+                    loadFreelancerData();
+                } else if ($scope.userInfo.group.isEmployer) {
+                    loadEmployerData();
+                } else {
+                    loadAdminData();
+                }
+            });
+
+        var priceDataRequest = $http.get("/api/user/priceData")
+            .success(function($data){
+                $scope.languages = $data['languages'];
+                $scope.services = $data['services'];
+                $scope.softwares = $data['softwares'];
+
+                initModal();
+            });
+
+        $http.get("/api/common/country")
+            .success(function($data){
+                $scope.countries = $data['countries'];
+                setModalControllerData('countries', $scope.countries);
+                if($scope.userInfo.country){
+                    $scope.userInfo.country = findOption($scope.countries, $scope.userInfo.country);
+                }
+            });
+    };
+
+    function loadFreelancerData(){
+
+        $http.get("/api/user/" + $scope.userInfo.id + "/freelancer")
+            .success(function($data){
+                $scope.freelancerInfo = $data['freelancer'];
                 generateActiveResources();
 
-                var priceDataRequest = $http.get("/api/user/priceData")
+                var priceDataRequest = $http.get("/api/user/freelancerData")
                     .success(function($data){
                         /** map data **/
                         $scope.catTools = $data['catTools'];
-                        $scope.languages = $data['languages'];
                         $scope.operatingSystems = $data['operatingSystems'];
                         $scope.specialisms = $data['specialisms'];
-                        $scope.services = $data['services'];
-                        $scope.softwares = $data['softwares'];
+                        $scope.resources = $data['resources'];
+                        rebuildMultiSelect();
+                        updateFreelancerSkillData();
+                    });
+            });
+    }
 
-                        initModal();
+    function loadEmployerData(){
+
+        $http.get("/api/user/" + $scope.userInfo.id + "/employer")
+            .success(function($data){
+                $scope.employerInfo = $data['employer'];
+                var priceDataRequest = $http.get("/api/user/employerData")
+                    .success(function($data){
+                    });
+            });
+        $http.get("/api/common/company")
+            .success(function($data){
+                $scope.companies = $data['companies'];
+            });
+    }
+
+    function loadAdminData(){
+
+        $http.get("/api/user/" + $scope.userInfo.id + "/freelancer")
+            .success(function($data){
+                $scope.freelancerInfo = $data['freelancer'];
+                generateActiveResources();
+
+                var priceDataRequest = $http.get("/api/user/freelancerData")
+                    .success(function($data){
+                        /** map data **/
+                        $scope.catTools = $data['catTools'];
+                        $scope.operatingSystems = $data['operatingSystems'];
+                        $scope.specialisms = $data['specialisms'];
                         rebuildMultiSelect();
                     });
 
@@ -193,28 +255,15 @@ angularApp.controller('UpdateInfoController', function($scope, $http, $timeout, 
                     });
                 $q.all([priceDataRequest, resourceRequest])
                     .then(function(){
-                        updateUserInfoPriceData();
+                        updateFreelancerSkillData();
                     });
             });
-
-        $http.get("/api/common/country")
-            .success(function($data){
-                $scope.countries = $data['countries'];
-                if($scope.userInfo.country){
-                    $scope.userInfo.country = findOption($scope.countries, $scope.userInfo.country);
-                }
-            });
-    };
+    }
 
     init(USER_ID);
 
-    /**
-     * Submit the form
-     */
-    $scope.submit = function(){
-
-        var requestInfo = $http.put("/api/user/" + $scope.userInfo.id, $scope.userInfo);
-        var requestFreelancer = $http.put("/api/user/" + $scope.userInfo.id + "/freelancer/" + $scope.freelancerInfo.id, {
+    function updateFreelancer(){
+        return $http.put("/api/user/" + $scope.userInfo.id + "/freelancer/" + $scope.freelancerInfo.id, {
             'DesktopCatTools': getIds($scope.freelancerInfo.DesktopCatTools),
             'DesktopOperatingSystems': getIds($scope.freelancerInfo.DesktopOperatingSystems),
             'InterpretingSpecialisms': getIds($scope.freelancerInfo.InterpretingSpecialisms),
@@ -222,12 +271,34 @@ angularApp.controller('UpdateInfoController', function($scope, $http, $timeout, 
             'TranslationCatTools': getIds($scope.freelancerInfo.TranslationCatTools),
             'TranslationSpecialisms': getIds($scope.freelancerInfo.TranslationSpecialisms)
         });
+    }
+
+    function updateEmployer(){
+        return $http.put("/api/user/" + $scope.userInfo.id + "/employer/" + $scope.employerInfo.id, $scope.employerInfo);
+    }
+
+    $scope.submitGroup = function(){
+        if($scope.userInfo.group.isFreelancer){
+            return updateFreelancer();
+        } else if ($scope.userInfo.group.isEmployer){
+            return updateEmployer();
+        } else {
+            return updateAdmin();  // TODO: implement this
+        }
+    }
+
+    /**
+     * Submit the form
+     */
+    $scope.submit = function(){
+
+        var requestInfo = $http.put("/api/user/" + $scope.userInfo.id, $scope.userInfo);
+        var requestGroup = $scope.submitGroup();
 
         // wait all done
-        $q.all([requestFreelancer, requestInfo])
+        $q.all([requestGroup, requestInfo])
             .then(function(result){
-                // TODO: change this callback
-                alert("Success update all");
+                location.href = "/admin/dashboard";
             });
     };
 
