@@ -1,5 +1,10 @@
 <?php $this->headTitle($this->translate(($this->u == 'freelancer') ? 'Freelancer' : 'Customer' . ' registration')) ?>
-<div class="middle-box text-center loginscreen   animated fadeInDown">
+<style>
+    .logo-name {
+        font-size: 80px;
+    }
+</style>
+<div class="middle-box">
     <h3><?php echo $this->translate(($this->u == 'freelancer') ? 'Freelancer registration' : 'Customer registration') ?></h3>
 
     <p><?php echo ($this->u == 'freelancer') ? $this->translate('I want to find translation works.') : $this->translate('I need translation services.') ?></p>
@@ -48,7 +53,6 @@
             <a href="<?php echo $this->url('user') ?>/login"><?php echo $this->translate('Login') ?></a></p>
 
     </form>
-
 </div>
 <?php $this->headScript()->appendFile($this->basePath() . '/js/plugins/iCheck/icheck.min.js') ?>
 <?php

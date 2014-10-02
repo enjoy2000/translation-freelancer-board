@@ -68,6 +68,14 @@ trait ControllerMethods{
     }
 
     /**
+     * @param integer $id
+     * @return null|\User\Entity\User
+     */
+    function getUserById($id){
+        return $this->getEntityManager()->find('\User\Entity\User', $id);
+    }
+
+    /**
      * Get base url
      * @return string
      */
@@ -85,9 +93,9 @@ trait ControllerMethods{
      * @return null|\User\Entity\User
      */
     public function getCurrentUser(){
-        $userId = User::currentLoginId();
         if($this->currentUser === null){
-            $this->currentUser = $this->getUser(array('id' => $userId));
+            $userId = User::currentLoginId();
+            $this->currentUser = $this->getUserById($userId);
         }
         return $this->currentUser;
     }

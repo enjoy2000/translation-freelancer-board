@@ -160,6 +160,7 @@
 
 .wizard > .content > .body
 {
+    float: left;
     width: 95%;
     height: 95%;
     padding: 2.5%;

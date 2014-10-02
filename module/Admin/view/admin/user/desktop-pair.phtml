@@ -1,0 +1,38 @@
+<?php
+$this->headScript()
+    ->appendFile($this->basePath() . '/js/admin/modal/user/desktop-price-list.js')
+?>
+<div class="table-responsive">
+    <table class="table table-striped" ng-controller="DesktopPriceListController"
+           id="DesktopPriceListController">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Languages </th>
+            <th>DTP software </th>
+            <th>Price/Page <i class="fa fa-apple"></th>
+            <th>Price/Page <i class="fa fa-windows"></i></th>
+            <th>Price/Hour <i class="fa fa-apple"></th>
+            <th>Price/Hour <i class="fa fa-windows"></i></th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="desktopPrice in desktopPrices">
+            <td>{{$index + 1}}</td>
+            <td>{{desktopPrice.language.name}}</td>
+            <td>{{desktopPrice.software.name}}</td>
+            <td>{{desktopPrice.priceMac}}</td>
+            <td>{{desktopPrice.pricePc}}</td>
+            <td>{{desktopPrice.priceHourMac}}</td>
+            <td>{{desktopPrice.priceHourPc}}</td>
+            <td><a href="#" ng-click="deleteDesktopPrice($index)" onClick="return false;">
+                    <i class="fa fa-trash-o text-danger"></i></a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="text-center">
+    <a data-toggle="modal" class="btn btn-outline btn-info" href="#modal-dtp">Add DTP prices</a>
+</div>
+<div class="hr-line-dashed"></div>

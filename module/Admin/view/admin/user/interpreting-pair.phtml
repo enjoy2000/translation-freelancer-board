@@ -1,0 +1,36 @@
+<?php
+$this->headScript()
+    ->appendFile($this->basePath() . '/js/admin/modal/user/interpreting-price-list.js')
+?>
+<div class="table-responsive">
+    <table class="table table-striped" ng-controller="InterpretingPriceListController"
+           id="InterpretingPriceListController">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Source Language </th>
+            <th>Target Language </th>
+            <th>Interpreting Service</th>
+            <th>Price/Day</th>
+            <th>Price/half-Day</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="interpretingPrice in interpretingPrices">
+            <td>{{$index + 1}}</td>
+            <td>{{interpretingPrice.sourceLanguage.name}}</td>
+            <td>{{interpretingPrice.targetLanguage.name}}</td>
+            <td>{{interpretingPrice.service.name}}</td>
+            <td>{{interpretingPrice.priceDay}}</td>
+            <td>{{interpretingPrice.priceHalfDay}}</td>
+            <td><a href="#" ng-click="deleteInterpretingPrice($index)" onClick="return false;">
+                    <i class="fa fa-trash-o text-danger"></i></a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="text-center">
+    <a data-toggle="modal" class="btn btn-outline btn-success" href="#modal-interpreting">Add Interpreting prices</a>
+</div>
+<div class="hr-line-dashed"></div>

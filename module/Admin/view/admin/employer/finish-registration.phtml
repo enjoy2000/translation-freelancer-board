@@ -1,0 +1,277 @@
+
+<!-- Le styles -->
+<?php $this->headLink()
+        ->prependStylesheet($this->basePath() . '/css/plugins/summernote/summernote-bs3.css')
+        ->prependStylesheet($this->basePath() . '/css/plugins/summernote/summernote.css')
+        ->prependStylesheet($this->basePath() . '/css/plugins/steps/jquery.steps.css')
+?>
+
+<!-- Scripts -->
+<?php $this->headScript()
+    ->prependFile($this->basePath() . '/js/admin/freelancer/finish-registration.js')
+    ->prependFile($this->basePath() . '/js/admin/bootstrap-modal.js')
+    ->prependScript("angularApp = angular.module('project', []);")
+    ->prependFile($this->basePath() . '/js/plugins/summernote/summernote.min.js')
+    ->prependFile($this->basePath() . '/js/plugins/validate/jquery.validate.min.js')
+    ->prependFile($this->basePath() . '/js/plugins/steps/jquery.steps.min.js')
+    ->prependFile($this->basePath() . '/js/plugins/pace/pace.min.js')
+    ->prependFile($this->basePath() . '/js/inspinia.js')
+?>
+<!-- Add custom style -->
+<style type="text/css">
+
+    .label {
+        font-size: 15px;
+    }
+
+    h3 {
+        font-size: 18px;
+    }
+
+    .float-e-margins .btn {
+        margin-bottom: 0px;
+    }
+
+    .resource-types .panel-body label{
+        margin-right: 0.5em;
+    }
+
+    .note-editor {
+        height: 150px;
+    }
+</style>
+<!-- End custom style -->
+
+<script>
+    USER_ID = "<?php echo $this->user->getId() ?>";
+</script>
+
+<div class="row" id="UpdateInfoController" ng-controller="UpdateInfoController">
+<div class="col-lg-12">
+<div class="ibox float-e-margins">
+<div class="ibox-title">
+    <h3><i class="fa fa-user"></i> Create Client Account</h3>
+</div>
+<div class="ibox-content">
+<form>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <i class="fa fa-info-circle"> <strong>Basic Information</strong></i>
+    </div>
+    <div class="panel-body">
+        <?php include __DIR__ . "/../user/basic-info.phtml" ?>
+    </div>
+</div>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <i class="fa fa-building"> <strong>Company Information</strong></i>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label>Position </label>
+                    <input id="position" name="position" type="text" class="form-control"
+                           ng-model="employerInfo.position" />
+                </div>
+
+            </div>
+            <div class="col-lg-6">
+                <?php $this->headScript()
+                            ->appendFile($this->basePath() . "/js/admin/modal/user/companies-list.js")
+                ?>
+                <div class="form-group" ng-controller="CompaniesListController" id="CompaniesListController">
+                    <label>Company </label>
+                    <select class="form-control required" id="company" name="company" value=""
+                            ng-model="employerInfo.company"
+                            ng-options="company.name for company in companies">
+                    </select>
+                    <span class="help-block m-b-none"> &nbsp;Not in the list? Please <a data-toggle="modal" class="text-info" href="#modal-company">create a new company</a>.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <i class="fa fa-cogs"> <strong>Service Prices</strong></i>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label>Sales </label>
+                    <select class="form-control required" id="sales" name="sales" value="">
+                        <option>option 1</option>
+                        <option>option 2</option>
+                        <option>option 3</option>
+                        <option>option 4</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label>PM </label>
+                    <select class="form-control required" id="pm" name="pm" value="">
+                        <option>option 1</option>
+                        <option>option 2</option>
+                        <option>option 3</option>
+                        <option>option 4</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="hr-line-dashed"></div>
+        <h4><i class="fa fa-tags"></i>&nbsp; Currency</h4>
+        <?php include __DIR__ . "/../user/currency-setup.phtml" ?>
+        <div class="hr-line-dashed"></div>
+
+        <h4><i class="fa fa-sitemap"></i>&nbsp; Service Level <small>Project default service level</small></h4>
+        <div data-toggle="buttons">
+            <label class="btn btn-outline btn-primary {{active_class(employerInfo.defaultServiceLevel, 1)}}"
+                ng-click="employerInfo.defaultServiceLevel=1">
+                <input type="radio" name="defaultServiceLevel" ng-model="employerInfo.defaultServiceLevel"
+                       value="1" /> Professional
+            </label>
+            &nbsp;
+            <label class="btn btn-outline btn-primary {{active_class(employerInfo.defaultServiceLevel, 2)}}"
+                   ng-click="employerInfo.defaultServiceLevel=2">
+                <input type="radio" name="defaultServiceLevel" ng-model="employerInfo.defaultServiceLevel"
+                       value="2" /> Business
+            </label>
+            &nbsp;
+            <label class="btn btn-outline btn-primary {{active_class(employerInfo.defaultServiceLevel, 3)}}"
+                   ng-click="employerInfo.defaultServiceLevel=3">
+                <input type="radio" name="defaultServiceLevel" ng-model="employerInfo.defaultServiceLevel"
+                       value="3" /> Premium
+            </label>
+        </div>
+        <div class="hr-line-dashed"></div>
+        <h4><i class="fa fa-coffee"></i>&nbsp; Translation</h4>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                    <th>TM</th>
+                    <th>Repetitions</th>
+                    <th>100%</th>
+                    <th>95% - 99%</th>
+                    <th>85% - 94%</th>
+                    <th>75% - 84%</th>
+                    <th>50% - 74%</th>
+                    <th>No Match</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>TM Rate</td>
+                    <td><input id="repetition" name="repetition" type="text" value="" class="form-control"></td>
+                    <td><input id="tm_100" name="tm_100" type="text" value="" class="form-control"></td>
+                    <td><input id="tm_95-99" name="tm_95-99" type="text" value="" class="form-control"></td>
+                    <td><input id="tm_85-94" name="tm_85-94" type="text" value="" class="form-control"></td>
+                    <td><input id="tm_75-84" name="tm_75-84" type="text" value="" class="form-control"></td>
+                    <td><input id="tm_50-74" name="tm_50-74" type="text" value="" class="form-control"></td>
+                    <td><input id="tm_no_match" name="tm_no_match" type="text" value="" class="form-control"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <?php include __DIR__ . "/../user/translation-pair.phtml" ?>
+
+        <h4><i class="fa fa-desktop"></i>&nbsp; Desktop Publishing</h4>
+        <?php include __DIR__ . "/../user/desktop-pair.phtml" ?>
+
+        <h4><i class="fa fa-comments-o"></i>&nbsp; Interpreting</h4>
+        <?php include __DIR__ . "/../user/interpreting-pair.phtml" ?>
+    </div>
+</div>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <i class="fa fa-file-text"> <strong>Comments from PaperTask</strong></i>
+    </div>
+    <div class="panel-body">
+        <div class="summernote"></div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-4 col-sm-offset-4">
+        <button class="btn btn-primary btn-block" type="submit"
+            ng-click="submit()">Save</button>
+    </div>
+</div>
+
+</form>
+</div>
+</div>
+</div>
+</div>
+
+</div> <!-- close the container div -->
+<div ng-controller="ModalController" id="modalContainer"> <!-- open new temporary container -->
+    <?php include __DIR__ . "/../user/modal.phtml" ?>
+    <!-- add company -->
+    <div id="modal-company" class="modal fade" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Add Company</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label>Company Name *</label>
+                                    <input id="c-name" name="c-name" type="text" class="form-control required"
+                                           ng-model="company.name">
+                                </div>
+                                <div class="form-group">
+                                    <label>Telephone </label>
+                                    <input id="c-tel" name="c-tel" type="text" class="form-control"
+                                           ng-model="company.telephone">
+                                </div>
+                                <div class="form-group">
+                                    <label>Fax </label>
+                                    <input id="c-fax" name="c-fax" type="text" class="form-control"
+                                           ng-model="company.fax">
+                                </div>
+                                <div class="form-group">
+                                    <label>Address </label>
+                                    <input id="c-address" name="c-address" type="text" class="form-control"
+                                           ng-model="company.address">
+                                </div>
+                                <div class="form-group">
+                                    <label>City *</label>
+                                    <input id="c-city" name="c-city" type="text" class="form-control required"
+                                           ng-model="company.city">
+                                </div>
+                                <div class="form-group">
+                                    <label>Country *</label>
+                                    <select class="form-control required" id="country" name="country" value=""
+                                            ng-model="company.country"
+                                            ng-options="country.label for country in countries">
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Website *</label>
+                                    <input id="web" name="web" type="text" class="form-control required"
+                                           ng-model="company.website">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-w-m btn-white" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-w-m btn-primary"
+                            ng-click="submitTo('#modal-company', '#CompaniesListController', 'saveCompany',
+                                               company)">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
