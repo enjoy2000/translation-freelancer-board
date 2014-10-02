@@ -64,10 +64,10 @@ class UserGroup extends \User\Entity\UserGroup implements \Doctrine\ORM\Proxy\Pr
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', 'id', 'name');
+            return array('__isInitialized__', 'id', 'name', 'firstLoginUrl');
         }
 
-        return array('__isInitialized__', 'id', 'name');
+        return array('__isInitialized__', 'id', 'name', 'firstLoginUrl');
     }
 
     /**
@@ -182,6 +182,61 @@ class UserGroup extends \User\Entity\UserGroup implements \Doctrine\ORM\Proxy\Pr
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getData', array());
 
         return parent::getData();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getId()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', array());
+
+        return parent::getId();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getFirstLoginUrl()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFirstLoginUrl', array());
+
+        return parent::getFirstLoginUrl();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function isEmployer()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'isEmployer', array());
+
+        return parent::isEmployer();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function isFreelancer()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'isFreelancer', array());
+
+        return parent::isFreelancer();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function isAdmin()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'isAdmin', array());
+
+        return parent::isAdmin();
     }
 
 }

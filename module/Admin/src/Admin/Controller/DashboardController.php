@@ -21,7 +21,7 @@ class DashboardController extends AbstractActionController
     {
         $user = $this->getCurrentUser();
         if(!$user->isProfileUpdated()){
-            $this->redirect()->toUrl("/admin/user/updateInfo");
+            $this->redirect()->toUrl($user->getGroup()->getFirstLoginUrl());
         }
         return new ViewModel(array());
     }

@@ -17,15 +17,11 @@ class PriceDataController extends AbstractRestfulController
     public function getList()
     {
         $data = array(
-            'catTools' => [],
-            'operatingSystems' => [],
-            'specialisms' => [],
             'languages' => [],
+            'softwares' => [],
+            'services' => [],
         );
 
-        $data['catTools'] = $this->getAllData('\User\Entity\CatTool');
-        $data['operatingSystems'] = $this->getAllData('\User\Entity\OperatingSystem');
-        $data['specialisms'] = $this->getAllData('\User\Entity\Specialism');
         $data['languages'] = $this->getAllData('\User\Entity\Language');
         $data['softwares'] = $this->getAllData('\User\Entity\DesktopSoftware');
         $data['services'] = $this->getAllData('\User\Entity\InterpretingService');

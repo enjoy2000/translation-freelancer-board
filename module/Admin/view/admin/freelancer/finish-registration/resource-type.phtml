@@ -8,9 +8,9 @@
             <br />
             <div data-toggle="buttons">
                 <label class="btn btn-outline btn-primary {{resource_active[resource.id]}}"
-                       ng-repeat="resource in resourceGroup.resources" ng-click="toggleResource(resource.id)">
+                       ng-repeat="resource in resourceGroup.resources" ng-click="toggleResource(resource)">
                     <input type="checkbox" name="resource_{{resource.id}}"
-                           ng-value="resource.id"/> {{resource.name}}
+                           ng-value=""/> {{resource.name}}
                 </label>
             </div>
         </div>

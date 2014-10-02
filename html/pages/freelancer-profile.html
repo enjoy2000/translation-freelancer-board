@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>PaperTask | Profile</title>
+    <title>PaperTask | Freelancer Profile</title>
 
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" media="screen" />
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -393,20 +393,175 @@
                                 <div id="tab-1" class="tab-pane active">
                                     <div class="ibox float-e-margins">
                                         <div class="ibox-title">
-                                            <h3><i class="fa fa-coffee"></i> Translation</h3>
+                                            <h5><i class="fa fa-coffee"></i> Translation</h5>
+                                            <div class="ibox-tools">
+                                                <a data-toggle="collapse" href="#translation_client" class="btn btn-primary btn-xs"><i class="fa fa-search"></i> Search Clients</a>
+                                            </div>
                                         </div>
                                         <div class="ibox-content">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div id="translation_client" class="panel-collapse collapse faq-answer">
+                                                        <form method="" class="form-horizontal">
+                                                            <div class="row">
+                                                                <div class="col-lg-4">
+                                                                    <div class="form-group">
+                                                                        <label class="col-sm-4 control-label">Name</label>
+                                                                        <div class="col-sm-8"><input type="text" class="form-control"></div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="col-sm-4 control-label">Company</label>
+                                                                        <div class="col-sm-8"><input type="text" class="form-control"></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-4">
+                                                                    <div class="form-group">
+                                                                        <label class="col-sm-4 control-label">ID</label>
+                                                                        <div class="col-sm-8"><input type="text" class="form-control"></div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="col-sm-4 control-label">Country</label>
+                                                                        <div class="col-sm-8">
+                                                                            <select class="form-control" name="">
+                                                                              <option></option>
+                                                                              <option value="">A+</option>
+                                                                              <option value="">A</option>
+                                                                              <option value="">A-</option>
+                                                                              <option value="">B+</option>
+                                                                              <option value="">B</option>
+                                                                              <option value="">B-</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-4">
+                                                                    <div class="form-group">
+                                                                        <label class="col-sm-4 control-label">Email</label>
+                                                                        <div class="col-sm-8"><input type="text" class="form-control"></div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="col-sm-4 control-label">Currency</label>
+                                                                        <div class="col-sm-8">
+                                                                            <select class="form-control" name="">
+                                                                              <option></option>
+                                                                              <option value="">CNY</option>
+                                                                              <option value="">USD</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="text-right tooltip-demo">
+                                                                <a href="#" class="btn btn-sm btn-primary"><i class="fa fa-search"></i> Search</a>
+                                                                <a href="#" class="btn btn-white btn-sm" type="reset"><i class="fa fa-times"></i> Reset</a>
+                                                            </div>
+                                                        </form>
+                                                        <div class="project-list">
+                                                            <table class="table table-hover">
+                                                                <tbody>
+                                                                <tr>
+                                                                    <td class="project-status" width="1%">
+                                                                        <span class="label label-primary">Active</span>
+                                                                    </td>
+                                                                    <td class="project-title">
+                                                                        <strong><i class="fa fa-user"></i> Doe, John</strong>
+                                                                        <br/>
+                                                                        <small>Created 14.08.2014</small>
+                                                                    </td>
+                                                                    <td class="project-title">
+                                                                        <strong><i class="fa fa-envelope"></i> john.doe@yahoo.com</strong>
+                                                                        <br/>
+                                                                        <small>Marketing Manager</small>
+                                                                    </td>
+                                                                    <td class="project-title">
+                                                                        <strong><i class="fa fa-building"></i> IBM</strong>
+                                                                        <br/>
+                                                                        <small>United States</small>
+                                                                    </td>
+                                                                    <td class="project-actions">
+                                                                        <a href="#" class="btn btn-white btn-sm"> Add </a>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="project-status" width="1%">
+                                                                        <span class="label label-default">Unactive</span>
+                                                                    </td>
+                                                                    <td class="project-title">
+                                                                        <strong><i class="fa fa-user"></i> Jiang, Kevin</strong>
+                                                                        <br/>
+                                                                        <small>Created/Update 11.08.2014</small>
+                                                                    </td>
+                                                                    <td class="project-title">
+                                                                        <strong><i class="fa fa-envelope"></i> kevin@papertask.com</strong>
+                                                                        <br/>
+                                                                        <small>Manager</small>
+                                                                    </td>
+                                                                    <td class="project-title">
+                                                                        <strong><i class="fa fa-building"></i> PaperTask</strong>
+                                                                        <br/>
+                                                                        <small>China</small>
+                                                                    </td>
+                                                                    <td class="project-actions">
+                                                                        <a href="#" class="btn btn-white btn-sm"> Add </a>
+                                                                    </td>
+                                                                </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                        <div class="btn-group text-right">
+                                                            <button type="button" class="btn btn-white"><i class="fa fa-chevron-left"></i></button>
+                                                            <button class="btn btn-white">1</button>
+                                                            <button class="btn btn-white  active">2</button>
+                                                            <button class="btn btn-white">3</button>
+                                                            <button class="btn btn-white">4</button>
+                                                            <button type="button" class="btn btn-white"><i class="fa fa-chevron-right"></i> </button>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <h4>Clients <small>- means freelancer can do tasks for these clients.</small></h4>
+                                            <table class="table">
+                                                <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Name</th>
+                                                    <th>Company</th>
+                                                    <th>Task Done</th>
+                                                    <th></th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td><a href="">Doe, John</a></td>
+                                                    <td>IBM</td>
+                                                    <td>88</td>
+                                                    <td><a href=""><i class="fa fa-trash-o text-danger"></i></a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td><a href="">Leo, Jacob</a></td>
+                                                    <td>Intel</td>
+                                                    <td>68</td>
+                                                    <td><a href=""><i class="fa fa-trash-o text-danger"></i></a></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+
+                                            <div class="hr-line-dashed"></div>
                                             <h4>Specialism <small>- with <i class="fa fa-check"></i> means field tested and pass.</small></h4>
                                             <div class="row file-manager">
-                                                <ul class="tag-list" style="padding: 0">
-                                                    <li><a href=""><i class="fa fa-check"></i> Family</a></li>
-                                                    <li><a href=""><i class="fa fa-check"></i> Work</a></li>
-                                                    <li><a href=""><i class="fa fa-check"></i> Home</a></li>
-                                                    <li><a href="">Children</a></li>
-                                                    <li><a href="">Holidays</a></li>
-                                                    <li><a href="">Music</a></li>
-                                                    <li><a href="">Photography</a></li>
-                                                </ul>
+                                                <label class="checkbox-inline"> <input type="checkbox" checked value="option1" id="inlineCheckbox1"> Information System </label>
+                                                <label class="checkbox-inline"> <input type="checkbox" checked value="option1" id="inlineCheckbox1"> Mobile </label>
+                                                <label class="checkbox-inline"> <input type="checkbox" checked value="option1" id="inlineCheckbox1"> Contstruction </label>
+                                                <label class="checkbox-inline"> <input type="checkbox" value="option1" id="inlineCheckbox1"> Travel </label>
+                                                <label class="checkbox-inline"> <input type="checkbox" value="option1" id="inlineCheckbox1"> Marketing </label>
+                                                <label class="checkbox-inline"> <input type="checkbox" value="option1" id="inlineCheckbox1"> Telecom </label>
+                                                <label class="checkbox-inline"> <input type="checkbox" value="option1" id="inlineCheckbox1"> Medicine </label>
+                                                <label class="checkbox-inline"> <input type="checkbox" value="option1" id="inlineCheckbox1"> Accounting </label>
+                                                <label class="checkbox-inline"> <input type="checkbox" value="option1" id="inlineCheckbox1"> Finance </label>
+                                                <label class="checkbox-inline"> <input type="checkbox" value="option1" id="inlineCheckbox1"> Insurance </label>
                                             </div>
                                             <div class="hr-line-dashed"></div>
                                             <h4>Cat tools </h4>
@@ -473,9 +628,161 @@
                                     </div>
                                     <div class="ibox float-e-margins">
                                         <div class="ibox-title">
-                                            <h3><i class="fa fa-desktop"></i> Desktop Publishing</h3>
+                                            <h5><i class="fa fa-desktop"></i> Desktop Publishing</h5>
+                                            <div class="ibox-tools">
+                                                <a data-toggle="collapse" href="#dtp_client" class="btn btn-primary btn-xs"><i class="fa fa-search"></i> Search Clients</a>
+                                            </div>
                                         </div>
                                         <div class="ibox-content">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div id="dtp_client" class="panel-collapse collapse faq-answer">
+                                                        <form method="" class="form-horizontal">
+                                                            <div class="row">
+                                                                <div class="col-lg-4">
+                                                                    <div class="form-group">
+                                                                        <label class="col-sm-4 control-label">Name</label>
+                                                                        <div class="col-sm-8"><input type="text" class="form-control"></div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="col-sm-4 control-label">Company</label>
+                                                                        <div class="col-sm-8"><input type="text" class="form-control"></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-4">
+                                                                    <div class="form-group">
+                                                                        <label class="col-sm-4 control-label">ID</label>
+                                                                        <div class="col-sm-8"><input type="text" class="form-control"></div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="col-sm-4 control-label">Country</label>
+                                                                        <div class="col-sm-8">
+                                                                            <select class="form-control" name="">
+                                                                              <option></option>
+                                                                              <option value="">A+</option>
+                                                                              <option value="">A</option>
+                                                                              <option value="">A-</option>
+                                                                              <option value="">B+</option>
+                                                                              <option value="">B</option>
+                                                                              <option value="">B-</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-4">
+                                                                    <div class="form-group">
+                                                                        <label class="col-sm-4 control-label">Email</label>
+                                                                        <div class="col-sm-8"><input type="text" class="form-control"></div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="col-sm-4 control-label">Currency</label>
+                                                                        <div class="col-sm-8">
+                                                                            <select class="form-control" name="">
+                                                                              <option></option>
+                                                                              <option value="">CNY</option>
+                                                                              <option value="">USD</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="text-right tooltip-demo">
+                                                                <a href="#" class="btn btn-sm btn-primary"><i class="fa fa-search"></i> Search</a>
+                                                                <a href="#" class="btn btn-white btn-sm" type="reset"><i class="fa fa-times"></i> Reset</a>
+                                                            </div>
+                                                        </form>
+                                                        <div class="project-list">
+                                                            <table class="table table-hover">
+                                                                <tbody>
+                                                                <tr>
+                                                                    <td class="project-status" width="1%">
+                                                                        <span class="label label-primary">Active</span>
+                                                                    </td>
+                                                                    <td class="project-title">
+                                                                        <strong><i class="fa fa-user"></i> Doe, John</strong>
+                                                                        <br/>
+                                                                        <small>Created 14.08.2014</small>
+                                                                    </td>
+                                                                    <td class="project-title">
+                                                                        <strong><i class="fa fa-envelope"></i> john.doe@yahoo.com</strong>
+                                                                        <br/>
+                                                                        <small>Marketing Manager</small>
+                                                                    </td>
+                                                                    <td class="project-title">
+                                                                        <strong><i class="fa fa-building"></i> IBM</strong>
+                                                                        <br/>
+                                                                        <small>United States</small>
+                                                                    </td>
+                                                                    <td class="project-actions">
+                                                                        <a href="#" class="btn btn-white btn-sm"> Add </a>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="project-status" width="1%">
+                                                                        <span class="label label-default">Unactive</span>
+                                                                    </td>
+                                                                    <td class="project-title">
+                                                                        <strong><i class="fa fa-user"></i> Jiang, Kevin</strong>
+                                                                        <br/>
+                                                                        <small>Created/Update 11.08.2014</small>
+                                                                    </td>
+                                                                    <td class="project-title">
+                                                                        <strong><i class="fa fa-envelope"></i> kevin@papertask.com</strong>
+                                                                        <br/>
+                                                                        <small>Manager</small>
+                                                                    </td>
+                                                                    <td class="project-title">
+                                                                        <strong><i class="fa fa-building"></i> PaperTask</strong>
+                                                                        <br/>
+                                                                        <small>China</small>
+                                                                    </td>
+                                                                    <td class="project-actions">
+                                                                        <a href="#" class="btn btn-white btn-sm"> Add </a>
+                                                                    </td>
+                                                                </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                        <div class="btn-group text-right">
+                                                            <button type="button" class="btn btn-white"><i class="fa fa-chevron-left"></i></button>
+                                                            <button class="btn btn-white">1</button>
+                                                            <button class="btn btn-white  active">2</button>
+                                                            <button class="btn btn-white">3</button>
+                                                            <button class="btn btn-white">4</button>
+                                                            <button type="button" class="btn btn-white"><i class="fa fa-chevron-right"></i> </button>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <h4>Clients <small>- means freelancer can do tasks for these clients.</small></h4>
+                                            <table class="table">
+                                                <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Name</th>
+                                                    <th>Company</th>
+                                                    <th>Task Done</th>
+                                                    <th></th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td><a href="">Doe, John</a></td>
+                                                    <td>IBM</td>
+                                                    <td>88</td>
+                                                    <td><a href=""><i class="fa fa-trash-o text-danger"></i></a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td><a href="">Leo, Jacob</a></td>
+                                                    <td>Intel</td>
+                                                    <td>68</td>
+                                                    <td><a href=""><i class="fa fa-trash-o text-danger"></i></a></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
                                             <h4>Operating System </h4>
                                             <div class="row file-manager">
                                                 <ul class="tag-list" style="padding: 0">
@@ -525,20 +832,174 @@
                                     </div>
                                     <div class="ibox float-e-margins">
                                         <div class="ibox-title">
-                                            <h3><i class="fa fa-comments-o"></i> Interpreting</h3>
+                                            <h5><i class="fa fa-comments-o"></i> Interpreting</h5>
+                                            <div class="ibox-tools">
+                                                <a data-toggle="collapse" href="#interpreting_client" class="btn btn-primary btn-xs"><i class="fa fa-search"></i> Search Clients</a>
+                                            </div>
                                         </div>
                                         <div class="ibox-content">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div id="interpreting_client" class="panel-collapse collapse faq-answer">
+                                                        <form method="" class="form-horizontal">
+                                                            <div class="row">
+                                                                <div class="col-lg-4">
+                                                                    <div class="form-group">
+                                                                        <label class="col-sm-4 control-label">Name</label>
+                                                                        <div class="col-sm-8"><input type="text" class="form-control"></div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="col-sm-4 control-label">Company</label>
+                                                                        <div class="col-sm-8"><input type="text" class="form-control"></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-4">
+                                                                    <div class="form-group">
+                                                                        <label class="col-sm-4 control-label">ID</label>
+                                                                        <div class="col-sm-8"><input type="text" class="form-control"></div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="col-sm-4 control-label">Country</label>
+                                                                        <div class="col-sm-8">
+                                                                            <select class="form-control" name="">
+                                                                              <option></option>
+                                                                              <option value="">A+</option>
+                                                                              <option value="">A</option>
+                                                                              <option value="">A-</option>
+                                                                              <option value="">B+</option>
+                                                                              <option value="">B</option>
+                                                                              <option value="">B-</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-4">
+                                                                    <div class="form-group">
+                                                                        <label class="col-sm-4 control-label">Email</label>
+                                                                        <div class="col-sm-8"><input type="text" class="form-control"></div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="col-sm-4 control-label">Currency</label>
+                                                                        <div class="col-sm-8">
+                                                                            <select class="form-control" name="">
+                                                                              <option></option>
+                                                                              <option value="">CNY</option>
+                                                                              <option value="">USD</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="text-right tooltip-demo">
+                                                                <a href="#" class="btn btn-sm btn-primary"><i class="fa fa-search"></i> Search</a>
+                                                                <a href="#" class="btn btn-white btn-sm" type="reset"><i class="fa fa-times"></i> Reset</a>
+                                                            </div>
+                                                        </form>
+                                                        <div class="project-list">
+                                                            <table class="table table-hover">
+                                                                <tbody>
+                                                                <tr>
+                                                                    <td class="project-status" width="1%">
+                                                                        <span class="label label-primary">Active</span>
+                                                                    </td>
+                                                                    <td class="project-title">
+                                                                        <strong><i class="fa fa-user"></i> Doe, John</strong>
+                                                                        <br/>
+                                                                        <small>Created 14.08.2014</small>
+                                                                    </td>
+                                                                    <td class="project-title">
+                                                                        <strong><i class="fa fa-envelope"></i> john.doe@yahoo.com</strong>
+                                                                        <br/>
+                                                                        <small>Marketing Manager</small>
+                                                                    </td>
+                                                                    <td class="project-title">
+                                                                        <strong><i class="fa fa-building"></i> IBM</strong>
+                                                                        <br/>
+                                                                        <small>United States</small>
+                                                                    </td>
+                                                                    <td class="project-actions">
+                                                                        <a href="#" class="btn btn-white btn-sm"> Add </a>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="project-status" width="1%">
+                                                                        <span class="label label-default">Unactive</span>
+                                                                    </td>
+                                                                    <td class="project-title">
+                                                                        <strong><i class="fa fa-user"></i> Jiang, Kevin</strong>
+                                                                        <br/>
+                                                                        <small>Created/Update 11.08.2014</small>
+                                                                    </td>
+                                                                    <td class="project-title">
+                                                                        <strong><i class="fa fa-envelope"></i> kevin@papertask.com</strong>
+                                                                        <br/>
+                                                                        <small>Manager</small>
+                                                                    </td>
+                                                                    <td class="project-title">
+                                                                        <strong><i class="fa fa-building"></i> PaperTask</strong>
+                                                                        <br/>
+                                                                        <small>China</small>
+                                                                    </td>
+                                                                    <td class="project-actions">
+                                                                        <a href="#" class="btn btn-white btn-sm"> Add </a>
+                                                                    </td>
+                                                                </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                        <div class="btn-group text-right">
+                                                            <button type="button" class="btn btn-white"><i class="fa fa-chevron-left"></i></button>
+                                                            <button class="btn btn-white">1</button>
+                                                            <button class="btn btn-white  active">2</button>
+                                                            <button class="btn btn-white">3</button>
+                                                            <button class="btn btn-white">4</button>
+                                                            <button type="button" class="btn btn-white"><i class="fa fa-chevron-right"></i> </button>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>                                        
+                                            <h4>Clients <small>- means freelancer can do tasks for these clients.</small></h4>
+                                            <table class="table">
+                                                <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Name</th>
+                                                    <th>Company</th>
+                                                    <th>Task Done</th>
+                                                    <th></th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td><a href="">Doe, John</a></td>
+                                                    <td>IBM</td>
+                                                    <td>88</td>
+                                                    <td><a href=""><i class="fa fa-trash-o text-danger"></i></a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td><a href="">Leo, Jacob</a></td>
+                                                    <td>Intel</td>
+                                                    <td>68</td>
+                                                    <td><a href=""><i class="fa fa-trash-o text-danger"></i></a></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                            <div class="hr-line-dashed"></div>
                                             <h4>Specialism </h4>
                                             <div class="row file-manager">
-                                                <ul class="tag-list" style="padding: 0">
-                                                    <li><a href=""><i class="fa fa-check"></i> Family</a></li>
-                                                    <li><a href=""><i class="fa fa-check"></i> Work</a></li>
-                                                    <li><a href=""><i class="fa fa-check"></i> Home</a></li>
-                                                    <li><a href="">Children</a></li>
-                                                    <li><a href="">Holidays</a></li>
-                                                    <li><a href="">Music</a></li>
-                                                    <li><a href="">Photography</a></li>
-                                                </ul>
+                                                <label class="checkbox-inline"> <input type="checkbox" checked value="option1" id="inlineCheckbox1"> Information System </label>
+                                                <label class="checkbox-inline"> <input type="checkbox" checked value="option1" id="inlineCheckbox1"> Mobile </label>
+                                                <label class="checkbox-inline"> <input type="checkbox" checked value="option1" id="inlineCheckbox1"> Contstruction </label>
+                                                <label class="checkbox-inline"> <input type="checkbox" value="option1" id="inlineCheckbox1"> Travel </label>
+                                                <label class="checkbox-inline"> <input type="checkbox" value="option1" id="inlineCheckbox1"> Marketing </label>
+                                                <label class="checkbox-inline"> <input type="checkbox" value="option1" id="inlineCheckbox1"> Telecom </label>
+                                                <label class="checkbox-inline"> <input type="checkbox" value="option1" id="inlineCheckbox1"> Medicine </label>
+                                                <label class="checkbox-inline"> <input type="checkbox" value="option1" id="inlineCheckbox1"> Accounting </label>
+                                                <label class="checkbox-inline"> <input type="checkbox" value="option1" id="inlineCheckbox1"> Finance </label>
+                                                <label class="checkbox-inline"> <input type="checkbox" value="option1" id="inlineCheckbox1"> Insurance </label>
                                             </div>
                                             <div class="hr-line-dashed"></div>
                                             <h4>Cat tools </h4>
@@ -822,7 +1283,7 @@
                                                                 <a href="#">Law</a>
                                                             </td>
                                                             <td class="project-title">
-                                                                Test Name
+                                                                Client Name
                                                             </td>
                                                             <td class="project-title">
                                                                 2014.Sep.08 -  2014.Oct.28

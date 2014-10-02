@@ -72,6 +72,17 @@
                             ?>">Change template</a></li>
                     </ul>
                 </li>
+                <li>
+                    <a href="<?php
+                        echo $this->url('admin', array('controller' => 'user'))
+                        ?>"><i class="fa fa-envelope"></i>
+                        <span class="nav-label"><?php echo $this->translate("Freelancer") ?></span></a>
+                    <ul class="nav nav-second-level">
+                        <li><a href="<?php
+                            echo $this->url('admin', array('controller' => 'freelancer', 'action' => 'updateInfo'))
+                            ?>"><?php echo $this->translate("Update info") ?></a></li>
+                    </ul>
+                </li>
             </ul>
 
         </div>

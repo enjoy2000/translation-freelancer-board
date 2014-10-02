@@ -11,10 +11,26 @@ use Zend\View\Model\JsonModel;
 
 use Application\Controller\AbstractRestfulController;
 
-class ResourceController extends AbstractRestfulController
+class FreelancerDataController extends AbstractRestfulController
 {
     public function getList()
     {
+        $data = [
+            'catTools' => [],
+            'operatingSystems' => [],
+            'resources' => [],
+            'specialisms' => [],
+        ];
+
+        $data['catTools'] = $this->getAllData('\User\Entity\CatTool');
+        $data['operatingSystems'] = $this->getAllData('\User\Entity\OperatingSystem');
+        $data['resources'] = $this->getGroupResources();
+        $data['specialisms'] = $this->getAllData('\User\Entity\Specialism');
+
+        return new JsonModel($data);
+    }
+
+    public function getGroupResources(){
         $resources = $this->getEntityManager()->getRepository('\User\Entity\Resource')->findAll();
         $resourceGroups = $this->getEntityManager()->getRepository('\User\Entity\ResourceGroup')->findAll();
 
@@ -33,40 +49,6 @@ class ResourceController extends AbstractRestfulController
             }
             $resourcesData[] = $resourceData;
         }
-
-        return new JsonModel(
-            array(
-                'resources' => $resourcesData,
-            )
-        );
-    }
-
-    /**
-     * @param mixed $id
-     * @param mixed $data
-     * @return void|JsonModel
-     *
-     * $data['resources'] must be array of resource id
-     */
-    public function update($id, $data){
-        $entityManager = $this->getEntityManager();
-        $resourceIds = $data['resources'];
-
-
-        $resources = $entityManager->getRepository('\User\Entity\Resource')->findBy(array(
-            'id' => $resourceIds
-        ));
-
-        $user = $this->getCurrentUser();
-        $user->getResources()->clear();
-
-        foreach($resources as $resource){
-            $user->getResources()->add($resource);
-        }
-
-        $entityManager->persist($user);
-        $entityManager->flush();
-
-        return new JsonModel(array());
+        return $resourceData;
     }
 }

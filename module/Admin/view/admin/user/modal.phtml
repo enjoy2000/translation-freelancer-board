@@ -1,5 +1,5 @@
 
-<!-- add language pair and price -->
+<! add language pair and price >
 <div id="modal-translation" class="modal fade" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -15,19 +15,15 @@
                             <div class="form-group">
                                 <label>Source Language *</label>
                                 <select class="form-control required" name="sourceLanguage"
-                                        ng-model="translationPrice.sourceLanguage">
-                                    <option value="">--</option>
-                                    <option ng-repeat="language in languages"
-                                            value="{{language.id}}">{{language.name}}</option>
+                                        ng-model="translationPrice.sourceLanguage"
+                                        ng-options="language.name for language in languages">
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label>Target Language *</label>
                                 <select class="form-control required" name="targetLanguage"
-                                        ng-model="translationPrice.targetLanguage">
-                                    <option value="">--</option>
-                                    <option ng-repeat="language in languages"
-                                            value="{{language.id}}">{{language.name}}</option>
+                                        ng-model="translationPrice.targetLanguage"
+                                        ng-options="language.name for language in languages">
                                 </select>
                             </div>
                             <div class="form-group">
@@ -42,7 +38,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-w-m btn-white" data-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-w-m btn-primary"
-                    ng-click="submitTo('#modal-translation','#UpdateInfoController', 'saveTranslationPrice',
+                    ng-click="submitTo('#modal-translation','#TranslationPriceListController', 'saveTranslationPrice',
                                        translationPrice)"
                     >Save changes</button>
             </div>
@@ -50,7 +46,7 @@
     </div>
 </div>
 
-<!-- add DTP price -->
+<! add DTP price >
 <div id="modal-dtp" class="modal fade" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -66,10 +62,8 @@
                             <div class="form-group">
                                 <label>Languages *</label>
                                 <select class="form-control required" name="language"
-                                        ng-model="desktopPrice.language">
-                                    <option value="">--</option>
-                                    <option ng-repeat="language in languages"
-                                            value="{{language.id}}">{{language.name}}</option>
+                                        ng-model="desktopPrice.language"
+                                        ng-options="language.name for language in languages">
                                 </select>
                             </div>
                             <div class="form-group">
@@ -106,14 +100,14 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-w-m btn-white" data-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-w-m btn-primary"
-                        ng-click="submitTo('#modal-dtp','#UpdateInfoController', 'saveDesktopPrice',
+                        ng-click="submitTo('#modal-dtp','#DesktopPriceListController', 'saveDesktopPrice',
                                            desktopPrice)">Save changes</button>
             </div>
         </div>
     </div>
 </div>
 
-<!-- add interpreting price -->
+<! add interpreting price >
 <div id="modal-interpreting" class="modal fade" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -129,10 +123,8 @@
                             <div class="form-group">
                                 <label>Source Language *</label>
                                 <select class="form-control required" name="sourceLanguage"
-                                        ng-model="interpretingPrice.sourceLanguage">
-                                    <option value="">--</option>
-                                    <option ng-repeat="language in languages"
-                                            value="{{language.id}}">{{language.name}}</option>
+                                        ng-model="interpretingPrice.sourceLanguage"
+                                        ng-options="language.name for language in languages">
                                 </select>
                             </div>
                             <div class="form-group">
@@ -166,8 +158,8 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-w-m btn-white" data-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-w-m btn-primary"
-                        ng-click="submitTo('#modal-interpreting','#UpdateInfoController', 'saveInterpretingPrice',
-                                           interpretingPrice)">Save changes</button>
+                        ng-click="submitTo('#modal-interpreting','#InterpretingPriceListController',
+                                           'saveInterpretingPrice', interpretingPrice)">Save changes</button>
             </div>
         </div>
     </div>

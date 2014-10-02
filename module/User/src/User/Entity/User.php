@@ -17,9 +17,10 @@ use Zend\Session\Container;
 use User\Model\Password;
 use Common\Mail;
 use Common\Func;
+use Common\Entity;
 
 /** @ORM\Entity */
-class User implements InputFilterAwareInterface{
+class User extends Entity implements InputFilterAwareInterface{
 
     /**
      * @ORM\id
@@ -73,49 +74,21 @@ class User implements InputFilterAwareInterface{
     /** @ORM\Column(type="boolean") */
     protected $gender = 0;
 
-    /**
-     * @var \Doctrine\ORM\PersistentCollection
-     * @ORM\ManyToMany(targetEntity="Resource")
-     */
-    protected $resources = null;
-
     /** @ORM\Column(type="string") */
     protected $currency = 'cny';
 
     /**
-     * @var \Doctrine\ORM\PersistentCollection
-     * @ORM\ManyToMany(targetEntity="CatTool")
-     * @ORM\JoinTable(name="UserDesktopCatTools")
+     * @var \User\Entity\Freelancer
+     * @ORM\OneToOne(targetEntity="Freelancer")
      */
-    protected $DesktopCatTools = null;
+    protected $freelancer;
 
     /**
-     * @var \Doctrine\ORM\PersistentCollection
-     * @ORM\ManyToMany(targetEntity="OperatingSystem")
-     * @ORM\JoinTable(name="UserOperatingSystem")
+     * @var \User\Entity\Employer
+     * @ORM\OneToOne(targetEntity="Employer")
      */
-    protected $DesktopOperatingSystems = null;
+    protected $employer;
 
-    /**
-     * @var \Doctrine\ORM\PersistentCollection
-     * @ORM\ManyToMany(targetEntity="Specialism")
-     * @ORM\JoinTable(name="UserInterpretingSpecialisms")
-     */
-    protected $InterpretingSpecialisms = null;
-
-    /**
-     * @var \Doctrine\ORM\PersistentCollection
-     * @ORM\ManyToMany(targetEntity="CatTool")
-     * @ORM\JoinTable(name="UserTranslationCatTools")
-     */
-    protected $TranslationCatTools = null;
-
-    /**
-     * @var \Doctrine\ORM\PersistentCollection
-     * @ORM\ManyToMany(targetEntity="Specialism")
-     * @ORM\JoinTable(name="UserTranslationSpecialisms")
-     */
-    protected $TranslationSpecialisms = null;
 
     // class variables
 
@@ -180,6 +153,7 @@ class User implements InputFilterAwareInterface{
             'gender',
             'lastName',
             'phone',
+            'profileUpdated',
         );
         foreach($keys as $key){
             if(isset($arr[$key])){
@@ -306,6 +280,13 @@ class User implements InputFilterAwareInterface{
     }
 
     /**
+     * @return UserGroup
+     */
+    function getGroup(){
+        return $this->group;
+    }
+
+    /**
      * @param $token
      * @return bool
      */
@@ -423,117 +404,63 @@ class User implements InputFilterAwareInterface{
             "email" => $this->email,
             "firstName" => $this->firstName,
             'gender' => $this->gender,
-            "group" => $this->group->getData(),
+            "group" => $this->group ? $this->group->getData() : null,
             "id" => $this->id,
             "isActive" => $this->isActive,
             "lastLogin" => $this->lastLogin,
             "lastName" => $this->lastName,
             "phone" => $this->phone,
             "profileUpdated" => $this->profileUpdated,
-            'resources' => Func::getReferenceIds($this->resources),
-            'DesktopCatTools' => Func::getReferenceIds($this->DesktopCatTools),
-            'DesktopOperatingSystems' => Func::getReferenceIds($this->DesktopOperatingSystems),
-            'InterpretingSpecialisms' => Func::getReferenceIds($this->InterpretingSpecialisms),
-            'TranslationCatTools' => Func::getReferenceIds($this->TranslationCatTools),
-            'TranslationSpecialisms' => Func::getReferenceIds($this->TranslationSpecialisms),
         );
     }
 
-    public function getResources(){
-        return $this->resources;
+    /**
+     * @return Freelancer
+     */
+    public function getFreelancer(){
+        return $this->freelancer;
     }
 
     /**
-     * @param \Doctrine\ORM\EntityManager $entityManager
-     * @param array $userTranslationCatTools
+     * @return Employer
      */
-    public function updateTranslationCatTools($entityManager, $userTranslationCatTools){
+    public function getEmployer(){
+        return $this->employer;
+    }
 
-        $values = $entityManager->getRepository('\User\Entity\CatTool')->findBy([
-            'id' => $userTranslationCatTools
-        ]);
+    /**
+     * @return bool
+     */
+    public function isEmployer(){
+        return $this->getGroup()->isEmployer();
+    }
 
-        $this->TranslationCatTools->clear();
+    /**
+     * @return bool
+     */
+    public function isFreelancer(){
+        return $this->getGroup()->isFreelancer();
+    }
 
-        foreach($values as $value){
-            $this->TranslationCatTools->add($value);
+    /**
+     * @return bool
+     */
+    public function isAdmin(){
+        return $this->getGroup()->isAdmin();
+    }
+
+    public function setGroupByName($name, $entityManager){
+        if($name == 'freelancer'){
+            $this->setGroup($entityManager->getReference('\User\Entity\UserGroup', UserGroup::FREELANCER_GROUP_ID));
+            $freelancer = new Freelancer();
+            $freelancer->save($entityManager);
+            $this->freelancer = $freelancer;
+        }else if($name == 'employer'){
+            $this->setGroup($entityManager->getReference('\User\Entity\UserGroup', UserGroup::EMPLOYER_GROUP_ID));
+            $employer = new Employer();
+            $employer->save($entityManager);
+            $this->employer = $employer;
         }
-    }
-
-    /**
-     * @param \Doctrine\ORM\EntityManager $entityManager
-     * @param array $userTranslationSpecialisms
-     */
-    public function updateTranslationSpecialisms($entityManager, $userTranslationSpecialisms){
-
-        $values = $entityManager->getRepository('\User\Entity\Specialism')->findBy([
-            'id' => $userTranslationSpecialisms
-        ]);
-
-        $this->TranslationSpecialisms->clear();
-
-        foreach($values as $value){
-            $this->TranslationSpecialisms->add($value);
-        }
-    }
-
-    /**
-     * @param \Doctrine\ORM\EntityManager $entityManager
-     * @param array $userDesktopCatTools
-     */
-    public function updateDesktopCatTools($entityManager, $userDesktopCatTools){
-
-        $values = $entityManager->getRepository('\User\Entity\CatTool')->findBy([
-            'id' => $userDesktopCatTools
-        ]);
-
-        $this->DesktopCatTools->clear();
-
-        foreach($values as $value){
-            $this->DesktopCatTools->add($value);
-        }
-    }
-
-    /**
-     * @param \Doctrine\ORM\EntityManager $entityManager
-     * @param array $userDesktopOperatingSystems
-     */
-    public function updateDesktopOperatingSystems($entityManager, $userDesktopOperatingSystems){
-
-        $values = $entityManager->getRepository('\User\Entity\OperatingSystem')->findBy([
-            'id' => $userDesktopOperatingSystems
-        ]);
-
-        $this->DesktopOperatingSystems->clear();
-
-        foreach($values as $value){
-            $this->DesktopOperatingSystems->add($value);
-        }
-    }
-
-    /**
-     * @param \Doctrine\ORM\EntityManager $entityManager
-     * @param array $userInterpretingSpecialisms
-     */
-    public function updateInterpretingSpecialisms($entityManager, $userInterpretingSpecialisms){
-
-        $values = $entityManager->getRepository('\User\Entity\Specialism')->findBy([
-            'id' => $userInterpretingSpecialisms
-        ]);
-
-        $this->InterpretingSpecialisms->clear();
-
-        foreach($values as $value){
-            $this->InterpretingSpecialisms->add($value);
-        }
-    }
-
-    /**
-     * @param \Doctrine\ORM\EntityManager $entityManager
-     */
-    public function save($entityManager){
-        $entityManager->persist($this);
-        $entityManager->flush();
     }
 }
 

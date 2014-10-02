@@ -68,31 +68,29 @@ class UserForm extends Form
         ));
     }
 
-    public function save($entityManager, $userType){
+    /**
+     * @param \Application\Controller\AbstractActionController $controller
+     * @param $userType
+     */
+    public function save($controller, $userType){
         /**
          * @var $user \User\Entity\User
          */
         $user = $this->getObject();
+        $entityManager = $controller->getEntityManager();
         $data = array();
 
         $data['createdTime'] = new \DateTime('now');
         $data['lastLogin'] = new \DateTime('now');
 
         $user->setData($data);
-
-        if($userType == 'freelancer'){
-            $user->setGroup($entityManager->getReference('\User\Entity\UserGroup', 1));
-        }else if($userType == 'employer'){
-            $user->setGroup($entityManager->getReference('\User\Entity\UserGroup', 2));
-        }
+        $user->setGroupByName($userType, $entityManager);
 
         // Create password hash
         $user->encodePassword();
         $user->generateToken();
+        $user->save($entityManager);
 
-        $entityManager->persist($user);
-        $entityManager->flush();
-
-        $user->sendConfirmationEmail($entityManager);
+        $user->sendConfirmationEmail($controller);
     }
 }

@@ -10,8 +10,10 @@ namespace User\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+use Common\Entity;
+
 /** @ORM\Entity */
-class UserDesktopPrice{
+class UserDesktopPrice extends Entity{
 
     /**
      * @ORM\id
@@ -19,6 +21,12 @@ class UserDesktopPrice{
      * @ORM\Column(type="integer")
      */
     protected $id;
+
+    /**
+     * @var \User\Entity\User
+     * @ORM\ManyToOne(targetEntity="User")
+     */
+    protected $user;
 
     /**
      * @var \User\Entity\Language
@@ -60,10 +68,10 @@ class UserDesktopPrice{
         return array(
             'id' => $this->id,
             'language' => $this->language->getData(),
-            'priceHourMac' => $this->priceHourMac,
-            'priceHourPc' => $this->priceHourPc,
-            'priceMac' => $this->priceMac,
-            'pricePc' => $this->pricePc,
+            'priceHourMac' => $this->formatPrice($this->priceHourMac),
+            'priceHourPc' => $this->formatPrice($this->priceHourPc),
+            'priceMac' => $this->formatPrice($this->priceMac),
+            'pricePc' => $this->formatPrice($this->pricePc),
             'software' => $this->software->getData(),
         );
     }

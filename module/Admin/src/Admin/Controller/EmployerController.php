@@ -13,13 +13,15 @@ use Zend\View\Model\ViewModel;
 
 use Application\Controller\AbstractActionController;
 
-class UserController extends AbstractActionController
+class EmployerController extends AbstractActionController
 {
     protected $requiredLogin = true;
 
-    public function updateInfoAction()
+    public function finishRegistrationAction()
     {
-        return new ViewModel(array());
+        return new ViewModel(array(
+            "user" => $this->getCurrentUser(),
+        ));
     }
 
 }

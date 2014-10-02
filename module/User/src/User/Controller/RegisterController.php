@@ -52,7 +52,7 @@ class RegisterController extends AbstractActionController
                 if($userExist){
                     $this->flashMessenger()->addErrorMessage($translator->translate('This email has been registered already.'));
                 } else {
-                    $form->save($entityManager, $userType);
+                    $form->save($this, $userType);
                     return $this->redirect()->toUrl('/user/register/confirm?email=' . $request->getPost('email'));
                 }
 
@@ -86,7 +86,7 @@ class RegisterController extends AbstractActionController
             if($user && $user->activate($token, $entityManager)){
                 $user->authenticate();
                 $user->sendWelcomeEmail($this);
-                return $this->redirect()->toUrl("/admin/user/updateInfo");
+                return $this->redirect()->toUrl("/admin/dashboard");
             }
         }
 
