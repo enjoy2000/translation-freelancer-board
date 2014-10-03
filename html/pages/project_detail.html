@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PaperTask | Project Details</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" media="screen" />
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="css/plugins/summernote/summernote.css" rel="stylesheet">
+    <link href="css/plugins/summernote/summernote-bs3.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <style type="text/css">
+        .note-editor {
+            height: 150px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li class="nav-header">
+
+                        <div class="dropdown profile-element"> <span>
+                            <img alt="image" class="img-circle" src="img/profile_small.jpg">
+                             </span>
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">Amelia Smith</strong>
+                             </span> <span class="text-muted text-xs block">Art Director <b class="caret"></b></span> </span> </a>
+                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                                <li><a href="profile.html">Profile</a></li>
+                                <li><a href="contacts.html">Contacts</a></li>
+                                <li><a href="mailbox.html">Mailbox</a></li>
+                                <li class="divider"></li>
+                                <li><a href="login.html">Logout</a></li>
+                            </ul>
+                        </div>
+                        <div class="logo-element">
+                            IN+
+                        </div>
+
+                    </li>
+                    <li>
+                        <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span> <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="index.html">Dashboard v.1</a></li>
+                            <li><a href="dashboard_2.html">Dashboard v.2</a></li>
+                            <li><a href="dashboard_3.html">Dashboard v.3</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Graphs</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="graph_flot.html">Flot Charts</a></li>
+                            <li><a href="graph_morris.html">Morris.js Charts</a></li>
+                            <li><a href="graph_rickshaw.html">Rickshaw Charts</a></li>
+                            <li><a href="graph_chartjs.html">Chart.js</a></li>
+                            <li><a href="graph_peity.html">Peity Charts</a></li>
+                            <li><a href="graph_sparkline.html">Sparkline Charts</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="mailbox.html"><i class="fa fa-envelope"></i> <span class="nav-label">Mailbox </span><span class="label label-warning pull-right">16/24</span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="mailbox.html">Inbox</a></li>
+                            <li><a href="mail_detail.html">Email view</a></li>
+                            <li><a href="mail_compose.html">Compose email</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="widgets.html"><i class="fa fa-flask"></i> <span class="nav-label">Widgets</span> <span class="label label-info pull-right">NEW</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Forms</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="form_basic.html">Basic form</a></li>
+                            <li><a href="form_advanced.html">Advanced Plugins</a></li>
+                            <li><a href="form_wizard.html">Wizard</a></li>
+                            <li><a href="form_file_upload.html">File Upload</a></li>
+                            <li><a href="form_editors.html">Text Editor</a></li>
+                        </ul>
+                    </li>
+                    <li class="active">
+                        <a href="#"><i class="fa fa-desktop"></i> <span class="nav-label">App Views</span>  <span class="pull-right label label-primary">SPECIAL</span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="contacts.html">Contacts</a></li>
+                            <li><a href="profile.html">Profile</a></li>
+                            <li><a href="projects.html">Projects</a></li>
+                            <li class="active"><a href="project_detail.html">Project detail</a></li>
+                            <li><a href="file_manager.html">File manager</a></li>
+                            <li><a href="calendar.html">Calendar</a></li>
+                            <li><a href="faq.html">FAQ</a></li>
+                            <li><a href="timeline.html">Timeline</a></li>
+                            <li><a href="pin_board.html">Pin board</a></li>
+                            <li><a href="invoice.html">Invoice</a></li>
+                            <li><a href="login.html">Login</a></li>
+                            <li><a href="register.html">Register</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Other Pages</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="search_results.html">Search results</a></li>
+                            <li><a href="lockscreen.html">Lockscreen</a></li>
+                            <li><a href="404.html">404 Page</a></li>
+                            <li><a href="500.html">500 Page</a></li>
+                            <li><a href="empty_page.html">Empty page</a></li>
+                        </ul>
+                    </li>
+
+                    <li >
+                        <a href="#"><i class="fa fa-flask"></i> <span class="nav-label">UI Elements</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="typography.html">Typography</a></li>
+                            <li><a href="icons.html">Icons</a></li>
+                            <li><a href="draggable_panels.html">Draggable Panels</a></li>
+                            <li><a href="buttons.html">Buttons</a></li>
+                            <li><a href="video.html">Video</a></li>
+                            <li><a href="tabs_panels.html">Tabs & Panels</a></li>
+                            <li><a href="notifications.html">Notifications & Tooltips</a></li>
+                            <li><a href="badges_labels.html">Badges, Labels, Progress</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="grid_options.html"><i class="fa fa-laptop"></i> <span class="nav-label">Grid options</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-table"></i> <span class="nav-label">Tables</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="table_basic.html">Static Tables</a></li>
+                            <li><a href="table_data_tables.html">Data Tables</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-picture-o"></i> <span class="nav-label">Gallery</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="basic_gallery.html">Basic Gallery</a></li>
+                            <li><a href="carousel.html">Bootstrap Carusela</a></li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-sitemap"></i> <span class="nav-label">Menu Levels </span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="#">Third Level <span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a href="#">Third Level Item</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Third Level Item</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Third Level Item</a>
+                                    </li>
+
+                                </ul>
+                            </li>
+                            <li><a href="#">Second Level Item</a></li>
+                            <li>
+                                <a href="#">Second Level Item</a></li>
+                            <li>
+                                <a href="#">Second Level Item</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="css_animation.html"><i class="fa fa-magic"></i> <span class="nav-label">CSS Animations </span><span class="label label-info pull-right">62</span></a>
+                    </li>
+                    <li class="special_link">
+                        <a href="angularjs.html"><i class="fa fa-google"></i> <span class="nav-label">AngularJS</span><span class="label pull-right">NEW</span></a>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="gray-bg">
+        <div class="row border-bottom">
+        <nav class="navbar navbar-static-top  " role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+            <form role="search" class="navbar-form-custom" method="post" action="search_results.html">
+                <div class="form-group">
+                    <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search">
+                </div>
+            </form>
+        </div>
+            <ul class="nav navbar-top-links navbar-right">
+                <li>
+                    <span class="m-r-sm text-muted welcome-message">Welcome to INSPINIA+ Admin Theme.</span>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                        <i class="fa fa-envelope"></i>  <span class="label label-warning">16</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-messages">
+                        <li>
+                            <div class="dropdown-messages-box">
+                                <a href="profile.html" class="pull-left">
+                                    <img alt="image" class="img-circle" src="img/a7.jpg">
+                                </a>
+                                <div class="media-body">
+                                    <small class="pull-right">46h ago</small>
+                                    <strong>Mike Loreipsum</strong> started following <strong>Monica Smith</strong>. <br>
+                                    <small class="text-muted">3 days ago at 7:58 pm - 10.06.2014</small>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <div class="dropdown-messages-box">
+                                <a href="profile.html" class="pull-left">
+                                    <img alt="image" class="img-circle" src="img/a4.jpg">
+                                </a>
+                                <div class="media-body ">
+                                    <small class="pull-right text-navy">5h ago</small>
+                                    <strong>Chris Johnatan Overtunk</strong> started following <strong>Monica Smith</strong>. <br>
+                                    <small class="text-muted">Yesterday 1:21 pm - 11.06.2014</small>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <div class="dropdown-messages-box">
+                                <a href="profile.html" class="pull-left">
+                                    <img alt="image" class="img-circle" src="img/profile.jpg">
+                                </a>
+                                <div class="media-body ">
+                                    <small class="pull-right">23h ago</small>
+                                    <strong>Monica Smith</strong> love <strong>Kim Smith</strong>. <br>
+                                    <small class="text-muted">2 days ago at 2:30 am - 11.06.2014</small>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <div class="text-center link-block">
+                                <a href="mailbox.html">
+                                    <i class="fa fa-envelope"></i> <strong>Read All Messages</strong>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                        <i class="fa fa-bell"></i>  <span class="label label-primary">8</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-alerts">
+                        <li>
+                            <a href="mailbox.html">
+                                <div>
+                                    <i class="fa fa-envelope fa-fw"></i> You have 16 messages
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="profile.html">
+                                <div>
+                                    <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+                                    <span class="pull-right text-muted small">12 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="grid_options.html">
+                                <div>
+                                    <i class="fa fa-upload fa-fw"></i> Server Rebooted
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <div class="text-center link-block">
+                                <a href="notifications.html">
+                                    <strong>See All Alerts</strong>
+                                    <i class="fa fa-angle-right"></i>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+
+
+                <li>
+                    <a href="login.html">
+                        <i class="fa fa-sign-out"></i> Log out
+                    </a>
+                </li>
+            </ul>
+
+        </nav>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="wrapper wrapper-content fadeInUp">
+                    <div class="ibox">
+                        <div class="ibox-content">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="m-b-md">
+                                        <a data-toggle="collapse" href="#edit_project" class="btn btn-danger btn-xs pull-right"><i class="fa fa-edit"></i> Edit Project</a>
+                                        <h2><span class="text-info">88888888</span> - Project Reference xxds;dkasdkasdka</h2>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-5">
+                                    <dl class="dl-horizontal">
+                                        <dt>Status:</dt> <dd><span class="label label-primary">Ongoing</span> </dd> <!--  <span class="label label-danger">Ordered</span> <span class="label label-primary">Ongoing</span>  <span class="label label-success">Reviewing</span> <span class="label label-default">Completed</span> <span class="label label-white">Rejected</span> -->
+                                        <br>
+                                        <dt>Client Contact:</dt> <dd><a href="#" class="text-navy"> Smith, Alex</a></dd>
+                                        <dt>Client Company:</dt> <dd>Zender Company</dd>
+                                        <br>
+                                        <dt>Start Date:</dt> <dd>2014-Aug-19</dd>
+                                        <dt>Due Date:</dt> <dd>2014-Aug-20</dd>
+                                        <br>
+                                        <dt>Source Language:</dt> <dd><code>English</code></dd>
+                                        <br>
+                                    </dl>
+                                </div>
+                                <div class="col-lg-7">
+                                    <dl class="dl-horizontal" >
+                                        <dt>Priority:</dt> <dd><span class="label label-primary">Normal</span> </dd> <!-- <span class="label label-danger">High</span> -->
+                                        <br>
+                                        <dt>Sales:</dt> <dd>Jiang, Kevin</dd>
+                                        <dt>Project Manager:</dt> <dd>Yang, Michael</dd>
+                                        <br>
+                                        <dt>Field:</dt> <dd>Accounting</dd>
+                                        <dt>Type:</dt> 
+                                        <dd>
+                                            <div class="tooltip-demo">
+                                                <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Translation with Translation Memory">TM</code> 
+                                                <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Translation without Translation Memory">No-TM</code> 
+                                                <code>Proofreading</code> 
+                                                <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Desktop Publishing">DTP</code> 
+                                                <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Engineering">ENG</code>
+                                            </div>
+                                        </dd>
+                                        <br>
+                                        <dt>Target Languages:</dt> <dd><code>Chinese</code> <code>Japanese</code> <code>Koran</code> <code>Taglog</code> <code>English</code> <code>English</code> <code>English</code> <code>English</code><code>English</code> <code>English</code></dd>
+                                    </dl>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div id="edit_project" class="panel-collapse collapse faq-answer">
+                                        <form method="" class="form-horizontal">
+                                            <div class="row form-horizontal">
+
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Reference *</label>
+                                                        <div class="col-sm-9">
+                                                            <input id="" name="" value="Project reference" type="text" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group" id="ordered_date">
+                                                        <label class="col-sm-3 control-label">Start Date *</label>
+                                                        <div class="col-sm-9">
+                                                            <div class="input-group date">
+                                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="03/04/2014">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Field *</label>
+                                                        <div class="col-sm-9">
+                                                            <select class="form-control required valid" id="" name="" value="" aria-required="true">
+                                                                <option>option 1</option>
+                                                                <option>option 2</option>
+                                                                <option>option 3</option>
+                                                                <option>option 4</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Sales </label>
+                                                        <div class="col-sm-9">
+                                                            <select class="form-control required valid" id="country" name="country" value="" aria-required="true">
+                                                                <option>option 1</option>
+                                                                <option>option 2</option>
+                                                                <option>option 3</option>
+                                                                <option>option 4</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Priority *</label>
+                                                        <div class="col-sm-9">
+                                                            <div data-toggle="buttons">
+                                                                <label class="btn btn-outline btn-primary btn-sm">
+                                                                    <input type="radio" name="gender" value="male"> Normal
+                                                                </label>
+                                                                &nbsp;
+                                                                <label class="btn btn-outline btn-danger btn-sm">
+                                                                    <input type="radio" name="gender" value="female"> High
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group" id="due_date">
+                                                        <label class="col-sm-3 control-label">Due Date *</label>
+                                                        <div class="col-sm-9">
+                                                            <div class="input-group date">
+                                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="03/04/2014">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Client *</label>
+                                                        <div class="col-sm-9">
+                                                            <select class="form-control required valid" id="" name="" value="" aria-required="true">
+                                                                <option>option 1</option>
+                                                                <option>option 2</option>
+                                                                <option>option 3</option>
+                                                                <option>option 4</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">PM *</label>
+                                                        <div class="col-sm-9">
+                                                            <select class="form-control required valid" id="" name="" value="" aria-required="true">
+                                                                <option>option 1</option>
+                                                                <option>option 2</option>
+                                                                <option>option 3</option>
+                                                                <option>option 4</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="text-right tooltip-demo">
+                                                <a href="#" class="btn btn-sm btn-primary"><i class="fa fa-save"></i> Update</a>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+                            <div class="row">
+                                <div class="col-lg-5">
+                                    <dl class="dl-horizontal">
+                                        <dt>Project Files:</dt> 
+                                        <dd>
+                                            <ul class="list-unstyled project-files tooltip-demo">
+                                                <li><a href="" data-toggle="tooltip" data-placement="left" title="" data-original-title="46.13 K | 2014-07-21 10:04:59"><i class="fa fa-file"></i> Project_document.docx</a> <a href=""><i class="fa fa-trash"></i></a></li>
+                                                <li><a href="" data-toggle="tooltip" data-placement="left" title="" data-original-title="46.13 K | 2014-07-21 10:04:59"><i class="fa fa-file"></i> Contract_20_11_2014.docx</a> <a href=""><i class="fa fa-trash"></i></a></li>
+                                            </ul>
+                                            <div class="text-center m-t-md">
+                                                <a href="#" class="btn btn-xs btn-primary"><i class="fa fa-cloud-upload"></i> Upload Source files</a>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                </div>
+                                <div class="col-lg-7">
+                                    <dl class="dl-horizontal">
+                                        <dt>Final Files:</dt> 
+                                        <dd>
+                                            <ul class="list-unstyled project-files tooltip-demo">
+                                                <li><a href="" data-toggle="tooltip" data-placement="left" title="" data-original-title="46.13 K | 2014-07-21 10:04:59"><i class="fa fa-file"></i> Project_document.docx</a> <a href=""><i class="fa fa-trash"></i></a></li>
+                                                <li><a href="" data-toggle="tooltip" data-placement="left" title="" data-original-title="46.13 K | 2014-07-21 10:04:59"><i class="fa fa-file"></i> Contract_20_11_2014.docx</a> <a href=""><i class="fa fa-trash"></i></a></li>
+                                            </ul>
+                                            <div class="text-center m-t-md">
+                                                <a href="#" class="btn btn-xs btn-primary"><i class="fa fa-cloud-upload"></i> Upload Final files</a>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="row m-t-sm">
+                                <div class="col-lg-12">
+                                <div class="panel blank-panel">
+                                <div class="panel-heading">
+                                    <div class="panel-options">
+                                        <ul class="nav nav-tabs">
+                                            <li class="active"><a href="#tasks" data-toggle="tab"><span class="label label-warning">8</span> Tasks</a></li>
+                                            <li class=""><a href="#message" data-toggle="tab"><span class="label label-warning">6</span> Messages & Activities</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="panel-body">
+
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="tasks">
+
+                                            <form class="form-horizontal">
+                                                <div class="form-group">
+                                                    <div class="col-sm-12">
+                                                        <div class="row">
+                                                            <div class="col-md-4">
+                                                                <select class="form-control" name="account">
+                                                                    <option>Select Task Type</option>
+                                                                    <option>Translation (Use TM)</option>
+                                                                    <option>DTP</option>
+                                                                    <option>Proofreading</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-md-4">
+                                                                <select class="form-control" name="account">
+                                                                    <option>Select Language Pair</option>
+                                                                    <option>English to Chinese</option>
+                                                                    <option>English to Japanese</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-md-4"><button class="btn btn-primary" type="submit">Create New Task</button></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+
+                                            <div class="hr-line-dashed"></div>
+                                            <div class="project-list">
+                                                <table class="table table-hover">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="project-status">
+                                                                <span class="label label-default">Completed</span> <i class="fa fa-usd"></i>
+                                                            </td>
+                                                            <td class="project-title">
+                                                                <strong>project referencereferencereference </strong>
+                                                                <br>
+                                                                <strong class="text-info">88888888-01</strong>  |  <code>English</code> <i class="fa fa-arrow-right"></i> <code>Japanese</code> <i class="fa fa-paperclip"></i> <!-- paperclip means freelancer uploaded the translated file -->
+                                                            </td>
+
+                                                            </td>
+                                                            <td class="project-title">
+                                                                <a href=""><strong>freelancer, Name</strong></a>
+                                                                <div class="tooltip-demo">
+                                                                    <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Translation with Translation Memory">TM</code>  |  2014.Sep.08 -  2014.Oct.28
+                                                                </div>
+                                                            </td>
+                                                            <td class="project-actions">
+                                                                <div class="tooltip-demo">
+                                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="View Task Details" class="btn btn-white btn-xs"><i class="fa fa-folder"></i> </a>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="project-status">
+                                                                <span class="label label-default">Completed</span> 
+                                                            </td>
+                                                            <td class="project-title">
+                                                                <strong>project referencereferencereference </strong>
+                                                                <br>
+                                                                <strong class="text-info">88888888-02</strong>  |  <code>English</code> <i class="fa fa-arrow-right"></i> <code>Japanese</code> <i class="fa fa-paperclip"></i> <!-- paperclip means freelancer uploaded the translated file -->
+                                                            </td>
+
+                                                            </td>
+                                                            <td class="project-title">
+                                                                <a href=""><strong>freelancer, Name</strong></a>
+                                                                <div class="tooltip-demo">
+                                                                    <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Translation with Translation Memory">TM</code>  |  2014.Sep.08 -  2014.Oct.28
+                                                                </div>
+                                                            </td>
+                                                            <td class="project-actions">
+                                                                <div class="tooltip-demo">
+                                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="View Task Details" class="btn btn-white btn-xs"><i class="fa fa-folder"></i> </a>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="project-status">
+                                                                <span class="label label-warning">5</span> <span class="label label-primary">Ongoing</span>
+                                                            </td>
+                                                            <td class="project-title">
+                                                                <strong>project referencereferencereference </strong>
+                                                                <br>
+                                                                <strong class="text-info">88888888-03</strong>  |  <code>English</code> <i class="fa fa-arrow-right"></i> <code>Chinese</code>
+                                                            </td>
+
+                                                            </td>
+                                                            <td class="project-title">
+                                                                <a href=""><strong>freelancer, Name</strong></a>
+                                                                <div class="tooltip-demo">
+                                                                    <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Translation without Translation Memory">No-TM</code>  |  2014.Sep.08 -  2014.Oct.28
+                                                                </div>
+                                                            </td>
+                                                            <td class="project-actions">
+                                                                <div class="tooltip-demo">
+                                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="View Task Details" class="btn btn-white btn-xs"><i class="fa fa-folder"></i> </a>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="project-status">
+                                                                <span class="label label-danger">Unassigned</span>
+                                                            </td>
+                                                            <td class="project-title">
+                                                                <strong>project referencereferencereference </strong>
+                                                                <br>
+                                                                <strong class="text-info">88888888-04</strong>  |  <code>English</code> <i class="fa fa-arrow-right"></i> <code>Japanese</code>
+                                                            </td>
+
+                                                            </td>
+                                                            <td class="project-title">
+                                                                <span class="text-danger"><strong>Un-Assigned</strong></span>
+                                                                <div class="tooltip-demo">
+                                                                    <code>Proofreading</code>  |  2014.Sep.08 -  2014.Oct.28
+                                                                </div>
+                                                            </td>
+                                                            <td class="project-actions">
+                                                                <div class="tooltip-demo">
+                                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Send to Specialism Pool" class="btn btn-success btn-xs"><i class="fa fa-users"></i> S</a>
+                                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Send to Client's Resource Pool" class="btn btn-info btn-xs"><i class="fa fa-users"></i> C</a>
+                                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="View Task Details" class="btn btn-white btn-xs"><i class="fa fa-folder"></i> </a>
+                                                                    <a href="#" class="btn btn-white btn-xs"><i class="fa fa-trash-o"></i> </a>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="project-status">
+                                                                <span class="label label-warning">Pooling</span>
+                                                            </td>
+                                                            <td class="project-title">
+                                                                <strong>project referencereferencereference </strong>
+                                                                <br>
+                                                                <strong class="text-info">88888888-05</strong>  |  <code>English</code> <i class="fa fa-arrow-right"></i> <code>Japanese</code>
+                                                            </td>
+
+                                                            </td>
+                                                            <td class="project-title">
+                                                                <span class="text-warning"><strong>Assigned to Specialism Pool</strong></span>
+                                                                <div class="tooltip-demo">
+                                                                    <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Desktop Publishing">DTP <i class="fa fa-apple"></i></code>  |  2014.Sep.08 -  2014.Oct.28
+                                                                </div>
+                                                            </td>
+                                                            <td class="project-actions">
+                                                                <div class="tooltip-demo">
+                                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Send to Specialism Pool" class="btn btn-success btn-xs"><i class="fa fa-users"></i> S</a>
+                                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Send to Client's Resource Pool" class="btn btn-info btn-xs"><i class="fa fa-users"></i> C</a>
+                                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="View Task Details" class="btn btn-white btn-xs"><i class="fa fa-folder"></i> </a>
+                                                                    <a href="#" class="btn btn-white btn-xs"><i class="fa fa-trash-o"></i> </a>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="project-status">
+                                                                <span class="label label-info">Evaluating</span>
+                                                            </td>
+                                                            <td class="project-title">
+                                                                <strong>project referencereferencereference </strong>
+                                                                <br>
+                                                                <strong class="text-info">88888888-06</strong>  |  <code>English</code> <i class="fa fa-arrow-right"></i> <code>Japanese</code> <i class="fa fa-paperclip"></i> <!-- paperclip means freelancer uploaded the translated file -->
+                                                            </td>
+
+                                                            </td>
+                                                            <td class="project-title">
+                                                                <span class="text-warning"><strong>Assigned to Specialism Pool</strong></span>
+                                                                <div class="tooltip-demo">
+                                                                    <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Engineering">ENG</code>  |  2014.Sep.08 -  2014.Oct.28
+                                                                </div>
+                                                            </td>
+                                                            <td class="project-actions">
+                                                                <div class="tooltip-demo">
+                                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Send to Specialism Pool" class="btn btn-success btn-xs"><i class="fa fa-users"></i> S</a>
+                                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Send to Client's Resource Pool" class="btn btn-info btn-xs"><i class="fa fa-users"></i> C</a>
+                                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="View Task Details" class="btn btn-white btn-xs"><i class="fa fa-folder"></i> </a>
+                                                                    <a href="#" class="btn btn-white btn-xs"><i class="fa fa-trash-o"></i> </a>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="project-status">
+                                                                <span class="label label-warning">Pooling</span>
+                                                            </td>
+                                                            <td class="project-title">
+                                                                <strong>project referencereferencereference </strong>
+                                                                <br>
+                                                                <strong class="text-info">88888888-07</strong>  |  <code>English</code> <i class="fa fa-arrow-right"></i> <code>Japanese</code>
+                                                            </td>
+
+                                                            </td>
+                                                            <td class="project-title">
+                                                                <span class="text-warning"><strong>Assigned to Specialism Pool</strong></span>
+                                                                <div class="tooltip-demo">
+                                                                    <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Consecutive Interpreting">Consecutive</code>  |  2014.Sep.08 -  2014.Oct.28
+                                                                </div>
+                                                            </td>
+                                                            <td class="project-actions">
+                                                                <div class="tooltip-demo">
+                                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Send to Specialism Pool" class="btn btn-success btn-xs"><i class="fa fa-users"></i> S</a>
+                                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Send to Client's Resource Pool" class="btn btn-info btn-xs"><i class="fa fa-users"></i> C</a>
+                                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="View Task Details" class="btn btn-white btn-xs"><i class="fa fa-folder"></i> </a>
+                                                                    <a href="#" class="btn btn-white btn-xs"><i class="fa fa-trash-o"></i> </a>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                        </div>
+                                        <div class="tab-pane" id="message">
+                                            <div class="feed-activity-list">
+                                                <div class="feed-element">
+                                                    <div class="media-body ">
+                                                        <small class="pull-right">2014-Aug-20, 14:36</small>
+                                                        <strong>Yang, Michael</strong> create quote. <br>
+                                                        <div class="well">
+                                                            Project log or Description, if no log or description, then dont show div class=well
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="feed-element">
+                                                    <div class="media-body ">
+                                                        <small class="pull-right">2014-Aug-20, 15:36</small>
+                                                        <strong>Smith, Alex</strong> accept the quote. <br>
+                                                    </div>
+                                                </div>
+                                                <div class="feed-element">
+                                                    <div class="media-body ">
+                                                        <small class="pull-right">2014-Aug-20, 14:36</small>
+                                                        <strong><a href="#" class="text-navy">freelancer_name1</a></strong> pick up task <a href="#" class="text-navy">#8888888-01</a>. <br>
+                                                    </div>
+                                                </div>
+                                                <div class="feed-element">
+                                                    <div class="media-body ">
+                                                        <small class="pull-right">2014-Aug-20, 14:36</small>
+                                                        <strong><a href="#" class="text-navy">freelancer_name2</a></strong> pick up task <a href="#" class="text-navy">#8888888-02</a>. <br>
+                                                    </div>
+                                                </div>
+                                                <div class="feed-element">
+                                                    <div class="media-body ">
+                                                        <small class="pull-right">2014-Aug-20, 14:36</small>
+                                                        <strong><a href="#" class="text-navy">freelancer_name2</a></strong> post message. <br>
+                                                        <div class="well">
+                                                            Project log or Description, if no log or description, then dont show div class=well
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="feed-element">
+                                                    <div class="media-body ">
+                                                        <small class="pull-right">2014-Aug-20, 14:36</small>
+                                                        <strong>Yang, Michael</strong> create task <a href="#" class="text-navy">#8888888-03</a>. <br>
+                                                    </div>
+                                                </div>
+                                                <div class="feed-element">
+                                                    <div class="media-body ">
+                                                        <small class="pull-right">2014-Aug-20, 14:36</small>
+                                                        <strong>Smith, Alex</strong> post message. <br>
+                                                        <div class="well">
+                                                            requirements
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="feed-element">
+                                                    <div class="media-body ">
+                                                        <small class="pull-right">2014-Aug-20, 14:36</small>
+                                                        <strong>Yang, Michael</strong> post message. <br>
+                                                        <div class="well">
+                                                            answer
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="feed-element">
+                                                    <div class="media-body ">
+                                                        <small class="pull-right">2014-Aug-20, 14:36</small>
+                                                        <strong>Yang, Michael</strong> post message. <br>
+                                                        <div class="well">
+                                                            answer
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="feed-element">
+                                                    <div class="media-body ">
+                                                        <small class="pull-right">2014-Aug-20, 14:36</small>
+                                                        <strong>Smith, Alex</strong> request re-do the project, project rejected. <br>
+                                                    </div>
+                                                </div>
+                                                <div class="feed-element">
+                                                    <div class="media-body ">
+                                                        <small class="pull-right">2014-Aug-20, 14:36</small>
+                                                        <strong>Smith, Alex</strong> accept the delivery, project closed. <br>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <br>
+                                            <div class="form-group">
+                                                <div class="summernote">
+
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+                                            <div class="form-group" align="right">
+                                                <div class="col-sm-12">
+                                                    <button class="btn btn-primary" type="submit">Send</button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="pull-right">
+                10GB of <strong>250GB</strong> Free.
+            </div>
+            <div>
+                <strong>Copyright</strong> Example Company &copy; 2014-2015
+            </div>
+        </div>
+
+        </div>
+        </div>
+    </div>
+
+    <!-- Mainly scripts -->
+    <script src="js/jquery-1.10.2.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="js/inspinia.js"></script>
+    <script src="js/plugins/pace/pace.min.js"></script>
+
+    <!-- SUMMERNOTE -->
+    <script src="js/plugins/summernote/summernote.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $('.summernote').summernote();
+        });
+        var edit = function() {
+            $('.click2edit').summernote({focus: true});
+        };
+        var save = function() {
+            var aHTML = $('.click2edit').code(); //save HTML If you need(aHTML: array).
+            $('.click2edit').destroy();
+        };
+
+    </script>
+
+    <script>
+        $(document).ready(function(){
+
+            $('#loading-example-btn').click(function () {
+                btn = $(this);
+                simpleLoad(btn, true)
+
+                // Ajax example
+//                $.ajax().always(function () {
+//                    simpleLoad($(this), false)
+//                });
+
+                simpleLoad(btn, false)
+            });
+        });
+
+        function simpleLoad(btn, state) {
+            if (state) {
+                btn.children().addClass('fa-spin');
+                btn.contents().last().replaceWith(" Loading");
+            } else {
+                setTimeout(function () {
+                    btn.children().removeClass('fa-spin');
+                    btn.contents().last().replaceWith(" Refresh");
+                }, 2000);
+            }
+        }
+    </script>
+</body>
+
+</html>
