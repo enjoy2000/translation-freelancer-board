@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PaperTask | Task Details</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" media="screen" />
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="css/plugins/summernote/summernote.css" rel="stylesheet">
+    <link href="css/plugins/summernote/summernote-bs3.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <style type="text/css">
+        .note-editor {
+            height: 150px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li class="nav-header">
+
+                        <div class="dropdown profile-element"> <span>
+                            <img alt="image" class="img-circle" src="img/profile_small.jpg">
+                             </span>
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">Amelia Smith</strong>
+                             </span> <span class="text-muted text-xs block">Art Director <b class="caret"></b></span> </span> </a>
+                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                                <li><a href="profile.html">Profile</a></li>
+                                <li><a href="contacts.html">Contacts</a></li>
+                                <li><a href="mailbox.html">Mailbox</a></li>
+                                <li class="divider"></li>
+                                <li><a href="login.html">Logout</a></li>
+                            </ul>
+                        </div>
+                        <div class="logo-element">
+                            IN+
+                        </div>
+
+                    </li>
+                    <li>
+                        <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span> <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="index.html">Dashboard v.1</a></li>
+                            <li><a href="dashboard_2.html">Dashboard v.2</a></li>
+                            <li><a href="dashboard_3.html">Dashboard v.3</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Graphs</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="graph_flot.html">Flot Charts</a></li>
+                            <li><a href="graph_morris.html">Morris.js Charts</a></li>
+                            <li><a href="graph_rickshaw.html">Rickshaw Charts</a></li>
+                            <li><a href="graph_chartjs.html">Chart.js</a></li>
+                            <li><a href="graph_peity.html">Peity Charts</a></li>
+                            <li><a href="graph_sparkline.html">Sparkline Charts</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="mailbox.html"><i class="fa fa-envelope"></i> <span class="nav-label">Mailbox </span><span class="label label-warning pull-right">16/24</span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="mailbox.html">Inbox</a></li>
+                            <li><a href="mail_detail.html">Email view</a></li>
+                            <li><a href="mail_compose.html">Compose email</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="widgets.html"><i class="fa fa-flask"></i> <span class="nav-label">Widgets</span> <span class="label label-info pull-right">NEW</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Forms</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="form_basic.html">Basic form</a></li>
+                            <li><a href="form_advanced.html">Advanced Plugins</a></li>
+                            <li><a href="form_wizard.html">Wizard</a></li>
+                            <li><a href="form_file_upload.html">File Upload</a></li>
+                            <li><a href="form_editors.html">Text Editor</a></li>
+                        </ul>
+                    </li>
+                    <li class="active">
+                        <a href="#"><i class="fa fa-desktop"></i> <span class="nav-label">App Views</span>  <span class="pull-right label label-primary">SPECIAL</span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="contacts.html">Contacts</a></li>
+                            <li><a href="profile.html">Profile</a></li>
+                            <li><a href="projects.html">Projects</a></li>
+                            <li class="active"><a href="project_detail.html">Project detail</a></li>
+                            <li><a href="file_manager.html">File manager</a></li>
+                            <li><a href="calendar.html">Calendar</a></li>
+                            <li><a href="faq.html">FAQ</a></li>
+                            <li><a href="timeline.html">Timeline</a></li>
+                            <li><a href="pin_board.html">Pin board</a></li>
+                            <li><a href="invoice.html">Invoice</a></li>
+                            <li><a href="login.html">Login</a></li>
+                            <li><a href="register.html">Register</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Other Pages</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="search_results.html">Search results</a></li>
+                            <li><a href="lockscreen.html">Lockscreen</a></li>
+                            <li><a href="404.html">404 Page</a></li>
+                            <li><a href="500.html">500 Page</a></li>
+                            <li><a href="empty_page.html">Empty page</a></li>
+                        </ul>
+                    </li>
+
+                    <li >
+                        <a href="#"><i class="fa fa-flask"></i> <span class="nav-label">UI Elements</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="typography.html">Typography</a></li>
+                            <li><a href="icons.html">Icons</a></li>
+                            <li><a href="draggable_panels.html">Draggable Panels</a></li>
+                            <li><a href="buttons.html">Buttons</a></li>
+                            <li><a href="video.html">Video</a></li>
+                            <li><a href="tabs_panels.html">Tabs & Panels</a></li>
+                            <li><a href="notifications.html">Notifications & Tooltips</a></li>
+                            <li><a href="badges_labels.html">Badges, Labels, Progress</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="grid_options.html"><i class="fa fa-laptop"></i> <span class="nav-label">Grid options</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-table"></i> <span class="nav-label">Tables</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="table_basic.html">Static Tables</a></li>
+                            <li><a href="table_data_tables.html">Data Tables</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-picture-o"></i> <span class="nav-label">Gallery</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="basic_gallery.html">Basic Gallery</a></li>
+                            <li><a href="carousel.html">Bootstrap Carusela</a></li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-sitemap"></i> <span class="nav-label">Menu Levels </span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="#">Third Level <span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a href="#">Third Level Item</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Third Level Item</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Third Level Item</a>
+                                    </li>
+
+                                </ul>
+                            </li>
+                            <li><a href="#">Second Level Item</a></li>
+                            <li>
+                                <a href="#">Second Level Item</a></li>
+                            <li>
+                                <a href="#">Second Level Item</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="css_animation.html"><i class="fa fa-magic"></i> <span class="nav-label">CSS Animations </span><span class="label label-info pull-right">62</span></a>
+                    </li>
+                    <li class="special_link">
+                        <a href="angularjs.html"><i class="fa fa-google"></i> <span class="nav-label">AngularJS</span><span class="label pull-right">NEW</span></a>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="gray-bg">
+        <div class="row border-bottom">
+        <nav class="navbar navbar-static-top  " role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+            <form role="search" class="navbar-form-custom" method="post" action="search_results.html">
+                <div class="form-group">
+                    <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search">
+                </div>
+            </form>
+        </div>
+            <ul class="nav navbar-top-links navbar-right">
+                <li>
+                    <span class="m-r-sm text-muted welcome-message">Welcome to INSPINIA+ Admin Theme.</span>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                        <i class="fa fa-envelope"></i>  <span class="label label-warning">16</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-messages">
+                        <li>
+                            <div class="dropdown-messages-box">
+                                <a href="profile.html" class="pull-left">
+                                    <img alt="image" class="img-circle" src="img/a7.jpg">
+                                </a>
+                                <div class="media-body">
+                                    <small class="pull-right">46h ago</small>
+                                    <strong>Mike Loreipsum</strong> started following <strong>Monica Smith</strong>. <br>
+                                    <small class="text-muted">3 days ago at 7:58 pm - 10.06.2014</small>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <div class="dropdown-messages-box">
+                                <a href="profile.html" class="pull-left">
+                                    <img alt="image" class="img-circle" src="img/a4.jpg">
+                                </a>
+                                <div class="media-body ">
+                                    <small class="pull-right text-navy">5h ago</small>
+                                    <strong>Chris Johnatan Overtunk</strong> started following <strong>Monica Smith</strong>. <br>
+                                    <small class="text-muted">Yesterday 1:21 pm - 11.06.2014</small>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <div class="dropdown-messages-box">
+                                <a href="profile.html" class="pull-left">
+                                    <img alt="image" class="img-circle" src="img/profile.jpg">
+                                </a>
+                                <div class="media-body ">
+                                    <small class="pull-right">23h ago</small>
+                                    <strong>Monica Smith</strong> love <strong>Kim Smith</strong>. <br>
+                                    <small class="text-muted">2 days ago at 2:30 am - 11.06.2014</small>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <div class="text-center link-block">
+                                <a href="mailbox.html">
+                                    <i class="fa fa-envelope"></i> <strong>Read All Messages</strong>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                        <i class="fa fa-bell"></i>  <span class="label label-primary">8</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-alerts">
+                        <li>
+                            <a href="mailbox.html">
+                                <div>
+                                    <i class="fa fa-envelope fa-fw"></i> You have 16 messages
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="profile.html">
+                                <div>
+                                    <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+                                    <span class="pull-right text-muted small">12 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="grid_options.html">
+                                <div>
+                                    <i class="fa fa-upload fa-fw"></i> Server Rebooted
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <div class="text-center link-block">
+                                <a href="notifications.html">
+                                    <strong>See All Alerts</strong>
+                                    <i class="fa fa-angle-right"></i>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+
+
+                <li>
+                    <a href="login.html">
+                        <i class="fa fa-sign-out"></i> Log out
+                    </a>
+                </li>
+            </ul>
+
+        </nav>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="wrapper wrapper-content fadeInUp">
+                    <div class="ibox">
+                        <div class="ibox-content">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="m-b-md">
+                                        <a data-toggle="collapse" href="#edit_project" class="btn btn-danger btn-xs pull-right"><i class="fa fa-edit"></i> Edit Project</a>
+                                        <h2><span class="text-info">88888888-01</span> Task Reference xxds;dkasdkasdka</h2>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-5">
+                                    <dl class="dl-horizontal" style="margin-bottom: 0px;">
+                                        <dt>Status:</dt> <dd><span class="label label-primary">Ongoing</span> </dd> <!--  <span class="label label-danger">Ordered</span> <span class="label label-primary">Ongoing</span>  <span class="label label-success">Reviewing</span> <span class="label label-default">Completed</span> <span class="label label-white">Rejected</span> -->
+                                        <br>
+                                        <dt>Client Contact:</dt> <dd><a href="#" class="text-navy"> Smith, Alex</a></dd>
+                                        <dt>Client Company:</dt> <dd>Zender Company</dd>
+                                        <br>
+                                        <dt>Start Date:</dt> <dd>2014-Aug-19</dd>
+                                        <dt>Due Date:</dt> <dd>2014-Aug-20</dd>
+                                        <br>
+                                        <dt>Source Language:</dt> <dd><code>English</code></dd>
+                                        <br>
+                                    </dl>
+                                </div>
+                                <div class="col-lg-7">
+                                    <dl class="dl-horizontal" style="margin-bottom: 0px;">
+                                        <dt>Priority:</dt> <dd><span class="label label-primary">Normal</span> </dd> <!-- <span class="label label-danger">High</span> -->
+                                        <br>
+                                        <dt>Sales:</dt> <dd>Jiang, Kevin</dd>
+                                        <dt>Project Manager:</dt> <dd>Yang, Michael</dd>
+                                        <br>
+                                        <dt>Field:</dt> <dd>Accounting</dd>
+                                        <dt>Type:</dt> 
+                                        <dd>
+                                            <div class="tooltip-demo">
+                                                <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Translation with Translation Memory">TM</code>
+                                            </div>
+                                        </dd>
+                                        <br>
+                                        <dt>Target Languages:</dt> <dd><code>Chinese</code></dd>
+                                    </dl>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div id="edit_project" class="panel-collapse collapse faq-answer">
+                                        <form method="" class="form-horizontal">
+                                            <div class="row form-horizontal">
+
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Reference *</label>
+                                                        <div class="col-sm-9">
+                                                            <input id="" name="" value="Project reference" type="text" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group" id="ordered_date">
+                                                        <label class="col-sm-3 control-label">Start Date *</label>
+                                                        <div class="col-sm-9">
+                                                            <div class="input-group date">
+                                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="03/04/2014">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Field *</label>
+                                                        <div class="col-sm-9">
+                                                            <select class="form-control required valid" id="" name="" value="" aria-required="true">
+                                                                <option>option 1</option>
+                                                                <option>option 2</option>
+                                                                <option>option 3</option>
+                                                                <option>option 4</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Sales </label>
+                                                        <div class="col-sm-9">
+                                                            <select class="form-control required valid" id="country" name="country" value="" aria-required="true">
+                                                                <option>option 1</option>
+                                                                <option>option 2</option>
+                                                                <option>option 3</option>
+                                                                <option>option 4</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Priority *</label>
+                                                        <div class="col-sm-9">
+                                                            <div data-toggle="buttons">
+                                                                <label class="btn btn-outline btn-primary btn-sm">
+                                                                    <input type="radio" name="gender" value="male"> Normal
+                                                                </label>
+                                                                &nbsp;
+                                                                <label class="btn btn-outline btn-danger btn-sm">
+                                                                    <input type="radio" name="gender" value="female"> High
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group" id="due_date">
+                                                        <label class="col-sm-3 control-label">Due Date *</label>
+                                                        <div class="col-sm-9">
+                                                            <div class="input-group date">
+                                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="03/04/2014">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Client *</label>
+                                                        <div class="col-sm-9">
+                                                            <select class="form-control required valid" id="" name="" value="" aria-required="true">
+                                                                <option>option 1</option>
+                                                                <option>option 2</option>
+                                                                <option>option 3</option>
+                                                                <option>option 4</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">PM *</label>
+                                                        <div class="col-sm-9">
+                                                            <select class="form-control required valid" id="" name="" value="" aria-required="true">
+                                                                <option>option 1</option>
+                                                                <option>option 2</option>
+                                                                <option>option 3</option>
+                                                                <option>option 4</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="text-right tooltip-demo">
+                                                <a href="#" class="btn btn-sm btn-primary"><i class="fa fa-save"></i> Update</a>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+                            <div class="row">
+                                <div class="col-lg-5">
+                                    <dl class="dl-horizontal">
+                                        <dt>Project Files:</dt> 
+                                        <dd>
+                                            <ul class="list-unstyled project-files tooltip-demo">
+                                                <li><a href="" data-toggle="tooltip" data-placement="left" title="" data-original-title="46.13 K | 2014-07-21 10:04:59"><i class="fa fa-file"></i> Project_document.docx</a> <a href=""><i class="fa fa-trash"></i></a></li>
+                                                <li><a href="" data-toggle="tooltip" data-placement="left" title="" data-original-title="46.13 K | 2014-07-21 10:04:59"><i class="fa fa-file"></i> Contract_20_11_2014.docx</a> <a href=""><i class="fa fa-trash"></i></a></li>
+                                            </ul>
+                                            <div class="text-center m-t-md">
+                                                <a href="#" class="btn btn-xs btn-primary"><i class="fa fa-cloud-upload"></i> Upload Source files</a>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                </div>
+                                <div class="col-lg-7">
+                                    <dl class="dl-horizontal">
+                                        <dt>Final Files:</dt> 
+                                        <dd>
+                                            <ul class="list-unstyled project-files tooltip-demo">
+                                                <li><a href="" data-toggle="tooltip" data-placement="left" title="" data-original-title="46.13 K | 2014-07-21 10:04:59"><i class="fa fa-file"></i> Project_document.docx</a> <a href=""><i class="fa fa-trash"></i></a></li>
+                                                <li><a href="" data-toggle="tooltip" data-placement="left" title="" data-original-title="46.13 K | 2014-07-21 10:04:59"><i class="fa fa-file"></i> Contract_20_11_2014.docx</a> <a href=""><i class="fa fa-trash"></i></a></li>
+                                            </ul>
+                                            <div class="text-center m-t-md">
+                                                <a href="#" class="btn btn-xs btn-primary"><i class="fa fa-cloud-upload"></i> Upload Final files</a>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="row m-t-sm">
+                                <div class="col-lg-12">
+                                <div class="panel blank-panel">
+                                <div class="panel-heading">
+                                    <div class="panel-options">
+                                        <ul class="nav nav-tabs">
+                                            <li class="active"><a href="#tasks" data-toggle="tab"> Task Allocation</a></li>
+                                            <li class=""><a href="#message" data-toggle="tab"><span class="label label-warning">6</span> Messages & Activities</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="panel-body">
+
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="tasks">
+                                            <div class="table-responsive">
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>#</th>
+                                                            <th>Iterms - <span class="text-info">Translation (No TM)</span></th>
+                                                            <th>Unit </th>
+                                                            <th>Unit Price</th>
+                                                            <th>Quantity</th>
+                                                            <th>Total</th>
+                                                            <th>Action</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>1</td>
+                                                                <td>uploaded file name 1 / or Task Name</td>
+                                                                <td>Source Word</td>
+                                                                <td>CNY 0.12</td>
+                                                                <td>2000</td>
+                                                                <td>CNY 240.00</td>
+                                                                <td>
+                                                                    <a data-toggle="modal" href="#modal-translation-noTM"><i class="fa fa-edit"></i></a> &nbsp;&nbsp;
+                                                                    <a href="#"><i class="fa fa-trash-o text-danger"></i></a>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>2</td>
+                                                                <td>uploaded file name 2 / or Task Name</td>
+                                                                <td>Source Word</td>
+                                                                <td>CNY 0.12</td>
+                                                                <td>1000</td>
+                                                                <td>CNY 120.00</td>
+                                                                <td>
+                                                                    <a data-toggle="modal" href="#modal-translation-noTM"><i class="fa fa-edit"></i></a> &nbsp;&nbsp;
+                                                                    <a href="#"><i class="fa fa-trash-o text-danger"></i></a>
+                                                                </td>
+                                                            </tr>
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="text-center">
+                                                <a data-toggle="modal" class="btn btn-outline btn-primary" href="#modal-translation-noTM">Add Iterm</a>
+                                            </div>
+
+                                            <div class="table-responsive">
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>#</th>
+                                                            <th>Iterms - <span class="text-info">Translation (Use TM)</span></th>
+                                                            <th>Unit </th>
+                                                            <th>Unit Price</th>
+                                                            <th>Quantity</th>
+                                                            <th>Total</th>
+                                                            <th>Action</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>2</td>
+                                                                <td>Translation with TM</td>
+                                                                <td>Source Word</td>
+                                                                <td>CNY 0.12</td>
+                                                                <td>1000</td>
+                                                                <td>CNY 120.00</td>
+                                                                <td>
+                                                                    <a data-toggle="modal" href="#modal-translation-TM"><i class="fa fa-edit"></i></a> &nbsp;&nbsp;
+                                                                    
+                                                                    <a data-toggle="collapse" href="#use_tm"><i class="fa fa-eye"></i></a>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="7">
+                                                                    <div id="use_tm" class="panel-collapse collapse">
+                                                                        <div class="table-responsive">
+                                                                            <table class="table table-bordered">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>TM Template</th>
+                                                                                        <th>Rate (%)</th>
+                                                                                        <th>Unit Price</th>
+                                                                                        <th>Quantity (Word)</th>
+                                                                                        <th>Quantity</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <td>Repetitions</td>
+                                                                                        <td>10%</td>
+                                                                                        <td>CNY 0.012</td>
+                                                                                        <td>100</td>
+                                                                                        <td>CNY 1.20</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>100%</td>
+                                                                                        <td>10%</td>
+                                                                                        <td>CNY 0.012</td>
+                                                                                        <td>200</td>
+                                                                                        <td>CNY 2.40</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>95%-99%</td>
+                                                                                        <td>10%</td>
+                                                                                        <td>CNY 0.012</td>
+                                                                                        <td>200</td>
+                                                                                        <td>CNY 2.40</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>85%-94%</td>
+                                                                                        <td>50%</td>
+                                                                                        <td>CNY 0.06</td>
+                                                                                        <td>300</td>
+                                                                                        <td>CNY 18.00</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>75%-84%</td>
+                                                                                        <td>50%</td>
+                                                                                        <td>CNY 0.06</td>
+                                                                                        <td>200</td>
+                                                                                        <td>CNY 12.00</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>50%-74%</td>
+                                                                                        <td>100%</td>
+                                                                                        <td>CNY 0.12</td>
+                                                                                        <td>1000</td>
+                                                                                        <td>CNY 120.00</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>No Match</td>
+                                                                                        <td>100%</td>
+                                                                                        <td>CNY 0.12</td>
+                                                                                        <td>1000</td>
+                                                                                        <td>CNY 120.00</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td colspan="4" align="right"><strong>Total</strong></td>
+                                                                                        <td class="text-info">CNY xxxx.xx</td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                            <div class="table-responsive">
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>#</th>
+                                                            <th>Iterms - <span class="text-info">DTP <i class="fa fa-apple"></i></span></th>
+                                                            <th>Unit </th>
+                                                            <th>Unit Price</th>
+                                                            <th>Quantity</th>
+                                                            <th>Total</th>
+                                                            <th>Action</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>1</td>
+                                                                <td>uploaded file name 1 / or Task Name</td>
+                                                                <td>Page</td>
+                                                                <td>CNY 10.00</td>
+                                                                <td>10</td>
+                                                                <td>CNY 100.00</td>
+                                                                <td>
+                                                                    <a data-toggle="modal" href="#modal-dtp-mac"><i class="fa fa-edit"></i></a> &nbsp;&nbsp;
+                                                                    <a href="#"><i class="fa fa-trash-o text-danger"></i></a>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>2</td>
+                                                                <td>uploaded file name 2 / or Task Name</td>
+                                                                <td>Hour</td>
+                                                                <td>CNY 50.00</td>
+                                                                <td>2</td>
+                                                                <td>CNY 100.00</td>
+                                                                <td>
+                                                                    <a data-toggle="modal" href="#modal-dtp-mac"><i class="fa fa-edit"></i></a> &nbsp;&nbsp;
+                                                                    <a href="#"><i class="fa fa-trash-o text-danger"></i></a>
+                                                                </td>
+                                                            </tr>
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="text-center">
+                                                <a data-toggle="modal" class="btn btn-outline btn-primary" href="#modal-dtp-mac">Add Iterm</a>
+                                            </div>
+
+                                            <div class="table-responsive">
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>#</th>
+                                                            <th>Iterms - <span class="text-info">DTP <i class="fa fa-windows"></i></span></th>
+                                                            <th>Unit </th>
+                                                            <th>Unit Price</th>
+                                                            <th>Quantity</th>
+                                                            <th>Total</th>
+                                                            <th>Action</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>1</td>
+                                                                <td>uploaded file name 1 / or Task Name</td>
+                                                                <td>Page</td>
+                                                                <td>CNY 10.00</td>
+                                                                <td>10</td>
+                                                                <td>CNY 100.00</td>
+                                                                <td>
+                                                                    <a data-toggle="modal" href="#modal-dtp-pc"><i class="fa fa-edit"></i></a> &nbsp;&nbsp;
+                                                                    <a href="#"><i class="fa fa-trash-o text-danger"></i></a>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>2</td>
+                                                                <td>uploaded file name 2 / or Task Name</td>
+                                                                <td>Hour</td>
+                                                                <td>CNY 50.00</td>
+                                                                <td>5</td>
+                                                                <td>CNY 250.00</td>
+                                                                <td>
+                                                                    <a data-toggle="modal" href="#modal-dtp-pc"><i class="fa fa-edit"></i></a> &nbsp;&nbsp;
+                                                                    <a href="#"><i class="fa fa-trash-o text-danger"></i></a>
+                                                                </td>
+                                                            </tr>
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="text-center">
+                                                <a data-toggle="modal" class="btn btn-outline btn-primary" href="#modal-dtp-pc">Add Iterm</a>
+                                            </div>
+
+                                            <div class="table-responsive">
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>#</th>
+                                                            <th>Iterms - <span class="text-info"> ENG</span></th>
+                                                            <th>Unit </th>
+                                                            <th>Unit Price</th>
+                                                            <th>Quantity</th>
+                                                            <th>Total</th>
+                                                            <th>Action</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>1</td>
+                                                                <td>uploaded file name 1 / or Task Name</td>
+                                                                <td>Graphic</td>
+                                                                <td>CNY 10.00</td>
+                                                                <td>10</td>
+                                                                <td>CNY 100.00</td>
+                                                                <td>
+                                                                    <a data-toggle="modal" href="#modal-eng"><i class="fa fa-edit"></i></a> &nbsp;&nbsp;
+                                                                    <a href="#"><i class="fa fa-trash-o text-danger"></i></a>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>2</td>
+                                                                <td>uploaded file name 2 / or Task Name</td>
+                                                                <td>Hour</td>
+                                                                <td>CNY 50.00</td>
+                                                                <td>2</td>
+                                                                <td>CNY 100.00</td>
+                                                                <td>
+                                                                    <a data-toggle="modal" href="#modal-eng"><i class="fa fa-edit"></i></a> &nbsp;&nbsp;
+                                                                    <a href="#"><i class="fa fa-trash-o text-danger"></i></a>
+                                                                </td>
+                                                            </tr>
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="text-center">
+                                                <a data-toggle="modal" class="btn btn-outline btn-primary" href="#modal-eng">Add Iterm</a>
+                                            </div>
+
+                                            <div class="table-responsive">
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>#</th>
+                                                            <th>Iterms</th>
+                                                            <th>Unit </th>
+                                                            <th>Unit Price</th>
+                                                            <th>Quantity</th>
+                                                            <th>Total</th>
+                                                            <th>Action</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>1</td>
+                                                                <td>Interpreter 1</td>
+                                                                <td>Day</td>
+                                                                <td>CNY 5000.00</td>
+                                                                <td>1</td>
+                                                                <td>CNY 5000.00</td>
+                                                                <td>
+                                                                    <a data-toggle="modal" href="#modal-interpreting"><i class="fa fa-edit"></i></a> &nbsp;&nbsp;
+                                                                    <a href="#"><i class="fa fa-trash-o text-danger"></i></a>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>2</td>
+                                                                <td>Interpreter 2</td>
+                                                                <td>Half Day</td>
+                                                                <td>CNY 4000.00</td>
+                                                                <td>1</td>
+                                                                <td>CNY 4000.00</td>
+                                                                <td>
+                                                                    <a data-toggle="modal" href="#modal-interpreting"><i class="fa fa-edit"></i></a> &nbsp;&nbsp;
+                                                                    <a href="#"><i class="fa fa-trash-o text-danger"></i></a>
+                                                                </td>
+                                                            </tr>
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="text-center">
+                                                <a data-toggle="modal" class="btn btn-outline btn-primary" href="#modal-interpreting">Add Iterm</a>
+                                            </div>
+
+                                            <div class="hr-line-dashed"></div>
+
+                                            <form class="form-horizontal">
+                                                <div class="form-group">
+                                                    <div class="col-sm-12">
+                                                        <div class="row">
+                                                            <div class="col-md-4">
+                                                                <select class="form-control" name="account">
+                                                                    <option>Select Client Resource</option>
+                                                                    <option>Translator 1</option>
+                                                                    <option>Translator 2</option>
+                                                                    <option>Translator 3</option>
+                                                                    <option>...</option>
+                                                                </select>
+                                                            </div>
+                                                            
+                                                            <div class="col-md-2"><button class="btn btn-primary" type="submit">Assign Task</button></div> <!-- this button never disabled -->
+                                                            <div class="col-md-3" align="center"><a href="" disabled class="btn btn-success" type="submit">Send to Specialism Pool</a></div> 
+                                                            <div class="col-md-3" ><a href="" class="btn btn-info" type="submit">Send to Client's Resource Pool</a></div>
+                                                            <!-- if the task has been send to any pool, then the button need to be disabled then the task status should be pooling-->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+
+                                        </div>
+                                        <div class="tab-pane" id="message">
+                                            <div class="feed-activity-list">
+                                                <div class="feed-element">
+                                                    <div class="media-body ">
+                                                        <small class="pull-right">2014-Aug-20, 14:36</small>
+                                                        <strong>Yang, Michael</strong> create quote. <br>
+                                                        <div class="well">
+                                                            Project log or Description, if no log or description, then dont show div class=well
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="feed-element">
+                                                    <div class="media-body ">
+                                                        <small class="pull-right">2014-Aug-20, 15:36</small>
+                                                        <strong>Smith, Alex</strong> accept the quote. <br>
+                                                    </div>
+                                                </div>
+                                                <div class="feed-element">
+                                                    <div class="media-body ">
+                                                        <small class="pull-right">2014-Aug-20, 14:36</small>
+                                                        <strong><a href="#" class="text-navy">freelancer_name1</a></strong> pick up task <a href="#" class="text-navy">#8888888-01</a>. <br>
+                                                    </div>
+                                                </div>
+                                                <div class="feed-element">
+                                                    <div class="media-body ">
+                                                        <small class="pull-right">2014-Aug-20, 14:36</small>
+                                                        <strong><a href="#" class="text-navy">freelancer_name2</a></strong> pick up task <a href="#" class="text-navy">#8888888-02</a>. <br>
+                                                    </div>
+                                                </div>
+                                                <div class="feed-element">
+                                                    <div class="media-body ">
+                                                        <small class="pull-right">2014-Aug-20, 14:36</small>
+                                                        <strong><a href="#" class="text-navy">freelancer_name2</a></strong> post message. <br>
+                                                        <div class="well">
+                                                            Project log or Description, if no log or description, then dont show div class=well
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="feed-element">
+                                                    <div class="media-body ">
+                                                        <small class="pull-right">2014-Aug-20, 14:36</small>
+                                                        <strong>Yang, Michael</strong> create task <a href="#" class="text-navy">#8888888-03</a>. <br>
+                                                    </div>
+                                                </div>
+                                                <div class="feed-element">
+                                                    <div class="media-body ">
+                                                        <small class="pull-right">2014-Aug-20, 14:36</small>
+                                                        <strong>Smith, Alex</strong> post message. <br>
+                                                        <div class="well">
+                                                            requirements
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="feed-element">
+                                                    <div class="media-body ">
+                                                        <small class="pull-right">2014-Aug-20, 14:36</small>
+                                                        <strong>Yang, Michael</strong> post message. <br>
+                                                        <div class="well">
+                                                            answer
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="feed-element">
+                                                    <div class="media-body ">
+                                                        <small class="pull-right">2014-Aug-20, 14:36</small>
+                                                        <strong>Yang, Michael</strong> post message. <br>
+                                                        <div class="well">
+                                                            answer
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="feed-element">
+                                                    <div class="media-body ">
+                                                        <small class="pull-right">2014-Aug-20, 14:36</small>
+                                                        <strong>Smith, Alex</strong> request re-do the project, project rejected. <br>
+                                                    </div>
+                                                </div>
+                                                <div class="feed-element">
+                                                    <div class="media-body ">
+                                                        <small class="pull-right">2014-Aug-20, 14:36</small>
+                                                        <strong>Smith, Alex</strong> accept the delivery, project closed. <br>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <div class="form-group">
+                                                <div class="summernote">
+
+                                                </div>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+                                            <div class="form-group" align="right">
+                                                <div class="col-sm-12">
+                                                    <button class="btn btn-primary" type="submit">Send</button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Translation no TM -->
+        <div id="modal-translation-noTM" class="modal fade" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Input/Edit Word Count</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label>File Name / Task Name *</label>
+                                        <input id="phone" name="phone" type="phone" value="here load uploaded source file name" class="form-control required">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Rate *</label>
+                                        <input id="phone" name="phone" type="phone" value="here load client price depends on level" class="form-control required">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Quantity *</label>
+                                        <input id="phone" name="phone" type="phone" value="" class="form-control required">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-w-m btn-white" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-w-m btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Translation TM -->
+        <div id="modal-translation-TM" class="modal fade" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Input/Edit Word count</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Iterm's Name</label>
+                                        <div class="col-sm-9">
+                                            <input id="phone" name="phone" type="phone" value="Translation with TM" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Rate</label>
+                                        <div class="col-sm-9">
+                                            <input id="phone" name="phone" type="phone" value="0.12" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Repetitions</label> <!-- word counts -->
+                                        <div class="col-sm-9">
+                                            <input id="phone" name="phone" type="phone" value="100" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">100% </label>
+                                        <div class="col-sm-9">
+                                            <input id="phone" name="phone" type="phone" value="200" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">95%-99% </label>
+                                        <div class="col-sm-9">
+                                            <input id="phone" name="phone" type="phone" value="200" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">85%-94% </label>
+                                        <div class="col-sm-9">
+                                            <input id="phone" name="phone" type="phone" value="300" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">75%-84% </label>
+                                        <div class="col-sm-9">
+                                            <input id="phone" name="phone" type="phone" value="200" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">50%-74% </label>
+                                        <div class="col-sm-9">
+                                            <input id="phone" name="phone" type="phone" value="1000" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">No Match </label>
+                                        <div class="col-sm-9">
+                                            <input id="phone" name="phone" type="phone" value="1000" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-w-m btn-white" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-w-m btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DTP MAC -->
+        <div id="modal-dtp-mac" class="modal fade" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Input/Edit Quantity and Price</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">File Name / Task Name *</label>
+                                        <div class="col-sm-9">
+                                            <input id="phone" name="phone" type="phone" value="here load uploaded source file name" class="form-control required">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Unit *</label>
+                                        <div class="col-sm-9">
+                                            <select class="form-control required valid" id="" name="" value="" aria-required="true">
+                                                <option>Page</option>
+                                                <option>Hour</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Rate *</label>
+                                        <div class="col-sm-9">
+                                            <input id="phone" name="phone" type="phone" value="" class="form-control required">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Quantity *</label>
+                                        <div class="col-sm-9">
+                                            <input id="phone" name="phone" type="phone" value="" class="form-control required">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-w-m btn-white" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-w-m btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DTP Windows -->
+        <div id="modal-dtp-pc" class="modal fade" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Input/Edit Quantity and Price</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">File Name / Task Name *</label>
+                                        <div class="col-sm-9">
+                                            <input id="phone" name="phone" type="phone" value="here load uploaded source file name" class="form-control required">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Unit *</label>
+                                        <div class="col-sm-9">
+                                            <select class="form-control required valid" id="" name="" value="" aria-required="true">
+                                                <option>Page</option>
+                                                <option>Hour</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Rate *</label>
+                                        <div class="col-sm-9">
+                                            <input id="phone" name="phone" type="phone" value="" class="form-control required">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Quantity *</label>
+                                        <div class="col-sm-9">
+                                            <input id="phone" name="phone" type="phone" value="" class="form-control required">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-w-m btn-white" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-w-m btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ENG -->
+        <div id="modal-eng" class="modal fade" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Input/Edit Quantity and Price</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">File Name / Task Name *</label>
+                                        <div class="col-sm-9">
+                                            <input id="phone" name="phone" type="phone" value="here load uploaded source file name" class="form-control required">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Unit *</label>
+                                        <div class="col-sm-9">
+                                            <select class="form-control required valid" id="" name="" value="" aria-required="true">
+                                                <option>Page</option>
+                                                <option>Graphic</option>
+                                                <option>Hour</option>
+                                                <option>Day</option>
+                                                <option>Month</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Rate *</label>
+                                        <div class="col-sm-9">
+                                            <input id="phone" name="phone" type="phone" value="" class="form-control required">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Quantity *</label>
+                                        <div class="col-sm-9">
+                                            <input id="phone" name="phone" type="phone" value="" class="form-control required">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-w-m btn-white" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-w-m btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interpreting -->
+        <div id="modal-interpreting" class="modal fade" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Input/Edit Quantity and Price</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">File Name / Task Name *</label>
+                                        <div class="col-sm-9">
+                                            <input id="phone" name="phone" type="phone" value="here load uploaded source file name" class="form-control required">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Unit *</label>
+                                        <div class="col-sm-9">
+                                            <select class="form-control required valid" id="" name="" value="" aria-required="true">
+                                                <option>Day</option>
+                                                <option>Half Day</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Rate *</label>
+                                        <div class="col-sm-9">
+                                            <input id="phone" name="phone" type="phone" value="" class="form-control required">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Quantity *</label>
+                                        <div class="col-sm-9">
+                                            <input id="phone" name="phone" type="phone" value="" class="form-control required">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-w-m btn-white" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-w-m btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="footer">
+            <div class="pull-right">
+                10GB of <strong>250GB</strong> Free.
+            </div>
+            <div>
+                <strong>Copyright</strong> Example Company &copy; 2014-2015
+            </div>
+        </div>
+
+        </div>
+        </div>
+    </div>
+
+    <!-- Mainly scripts -->
+    <script src="js/jquery-1.10.2.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="js/inspinia.js"></script>
+    <script src="js/plugins/pace/pace.min.js"></script>
+
+    <!-- SUMMERNOTE -->
+    <script src="js/plugins/summernote/summernote.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $('.summernote').summernote();
+        });
+        var edit = function() {
+            $('.click2edit').summernote({focus: true});
+        };
+        var save = function() {
+            var aHTML = $('.click2edit').code(); //save HTML If you need(aHTML: array).
+            $('.click2edit').destroy();
+        };
+
+    </script>
+
+    <script>
+        $(document).ready(function(){
+
+            $('#loading-example-btn').click(function () {
+                btn = $(this);
+                simpleLoad(btn, true)
+
+                // Ajax example
+//                $.ajax().always(function () {
+//                    simpleLoad($(this), false)
+//                });
+
+                simpleLoad(btn, false)
+            });
+        });
+
+        function simpleLoad(btn, state) {
+            if (state) {
+                btn.children().addClass('fa-spin');
+                btn.contents().last().replaceWith(" Loading");
+            } else {
+                setTimeout(function () {
+                    btn.children().removeClass('fa-spin');
+                    btn.contents().last().replaceWith(" Refresh");
+                }, 2000);
+            }
+        }
+    </script>
+</body>
+
+</html>
