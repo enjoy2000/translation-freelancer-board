@@ -56,6 +56,7 @@ return array(
             'Admin\Controller\Email' => 'Admin\Controller\EmailController',
             'Admin\Controller\Freelancer' => 'Admin\Controller\FreelancerController',
             'Admin\Controller\Employer' => 'Admin\Controller\EmployerController',
+            'Admin\Controller\Project' => 'Admin\Controller\ProjectController',
         ),
     ),
     'view_manager' => array(
@@ -71,6 +72,8 @@ return array(
             'admin/email/new' => __DIR__ . '/../view/admin/email/new.phtml',
             'admin/freelancer/finish-registration' => __DIR__ . '/../view/admin/freelancer/finish-registration.phtml',
             'admin/freelancer/update-info' => __DIR__ . '/../view/admin/freelancer/finish-registration.phtml',
+            'admin/project/index' => __DIR__ . '/../view/admin/project/index.phtml',
+            'admin/project/new' => __DIR__ . '/../view/admin/project/new.phtml',
         ),
         'layout' => 'layout/admin',
         'template_path_stack' => array(

@@ -9,6 +9,7 @@
 <!-- Scripts -->
 <?php $this->headScript()
     ->prependFile($this->basePath() . '/js/admin/freelancer/finish-registration.js')
+    ->prependFile($this->basePath() . '/js/admin/angular-steps.js')
     ->prependFile($this->basePath() . '/js/admin/bootstrap-modal.js')
     ->prependScript("angularApp = angular.module('project', []);")
     ->prependFile($this->basePath() . '/js/plugins/summernote/summernote.min.js')
@@ -46,7 +47,7 @@
     USER_ID = "<?php echo $this->user->getId() ?>";
 </script>
 
-<div class="row" id="UpdateInfoController" ng-controller="UpdateInfoController">
+<div class="row" id="mainController" ng-controller="UpdateInfoController">
 <div class="col-lg-12">
 <div class="ibox float-e-margins">
 <div class="ibox-title">
