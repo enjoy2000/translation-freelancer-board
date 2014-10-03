@@ -20,7 +20,7 @@ class DashboardController extends AbstractActionController
     public function indexAction()
     {
         $user = $this->getCurrentUser();
-        if(!$user->isProfileUpdated()){
+        if($user->isFreelancer() && !$user->isProfileUpdated()){
             $this->redirect()->toUrl($user->getGroup()->getFirstLoginUrl());
         }
         return new ViewModel(array());
