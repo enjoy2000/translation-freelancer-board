@@ -23,7 +23,7 @@ use Common\Entity;
 class User extends Entity implements InputFilterAwareInterface{
 
     /**
-     * @ORM\id
+     * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(type="integer")
      */

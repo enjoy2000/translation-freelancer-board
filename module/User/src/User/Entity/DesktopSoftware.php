@@ -14,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
 class DesktopSoftware{
 
     /**
-     * @ORM\id
+     * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(type="integer")
      */

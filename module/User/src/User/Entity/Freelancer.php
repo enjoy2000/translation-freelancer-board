@@ -17,7 +17,7 @@ use Common\Func;
 class Freelancer extends Entity{
 
     /**
-     * @ORM\id
+     * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(type="integer")
      */

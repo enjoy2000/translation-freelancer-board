@@ -17,7 +17,7 @@ use Zend\Mime\Part as MimePart;
 class EmailTemplates{
 
     /**
-     * @ORM\id
+     * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(type="integer")
      */
