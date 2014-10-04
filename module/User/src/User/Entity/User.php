@@ -359,8 +359,12 @@ class User extends Entity implements InputFilterAwareInterface{
      * @param \Application\Controller\AbstractActionController $controller
      */
     public function sendConfirmationEmail($controller){
-        $data = array();
-        // TODO: initial data for email template
+        $confirmLink = $controller->getBaseUrl() . '/user/register/confirm?token=' . $this->token;
+        $data = array(
+            'firstName' => $this->firstName,
+            'lastName' => $this->lastName,
+            'link' => $confirmLink,
+        );
         Mail::sendMail($controller, "register-confirmation", $this->email, $data);
     }
 
