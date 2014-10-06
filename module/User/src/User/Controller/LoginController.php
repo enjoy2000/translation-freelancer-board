@@ -65,7 +65,6 @@ class LoginController extends AbstractActionController
         if (! $container->offsetExists('authenticated')) {
             echo 'No user logged in';
         }
-        var_dump($container);die;
         /** @var OrgHeiglHybridAuth\UserInterface $user */
         $user = $container->offsetGet('user');
         echo $user->getName(); // The name of the logged in user
