@@ -15,6 +15,7 @@ data/cache/
 data/sessions/
 data/tmp/
 temp/
+data/DoctrineORMModule/Proxy/
 
 # Legacy ZF1
 demos/

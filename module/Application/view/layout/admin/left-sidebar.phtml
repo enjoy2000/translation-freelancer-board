@@ -1,0 +1,67 @@
+<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav" id="side-menu">
+            <li class="nav-header">
+
+                <div class="dropdown profile-element"> <span>
+                            <img alt="image" class="img-circle" src="/img/profile_small.jpg">
+                             </span>
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">Amelia Smith</strong>
+                             </span> <span class="text-muted text-xs block">Art Director <b class="caret"></b></span> </span> </a>
+                    <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                        <li><a href="profile.html">Profile</a></li>
+                        <li><a href="contacts.html">Contacts</a></li>
+                        <li><a href="mailbox.html">Mailbox</a></li>
+                        <li class="divider"></li>
+                        <li><a href="login.html">Logout</a></li>
+                    </ul>
+                </div>
+                <div class="logo-element">
+                    IN+
+                </div>
+
+            </li>
+            <li>
+                <a href="<?php echo $this->url('admin', array('controller' => 'email'));?>">
+                    <i class="fa fa-envelope"></i>
+                    <span class="nav-label">Email Templates </span>
+                    <span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level">
+                    <li><a href="<?php
+                        echo $this->url('admin', array('controller' => 'email', 'action' => 'new'))
+                        ?>">Create new type</a></li>
+                    <li><a href="<?php
+                        echo $this->url('admin', array('controller' => 'email', 'action' => 'edit'))
+                        ?>">Change template</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="<?php echo $this->url('admin', array('controller' => 'user'));?>">
+                    <i class="fa fa-envelope"></i>
+                    <span class="nav-label"><?php echo $this->translate("Freelancer") ?></span>
+                    <span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level">
+                    <li><a href="<?php
+                        echo $this->url('admin', array('controller' => 'freelancer', 'action' => 'updateInfo'))
+                        ?>"><?php echo $this->translate("Update info") ?></a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="<?php echo $this->url('admin', array('controller' => 'project')); ?>">
+                    <i class="fa fa-envelope"></i>
+                    <span class="nav-label"><?php echo $this->translate("Projects") ?></span>
+                    <span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level">
+                    <li><a href="<?php
+                        echo $this->url('admin', array('controller' => 'project', 'action' => 'new'))
+                        ?>"><?php echo $this->translate("Create project") ?></a></li>
+                </ul>
+            </li>
+        </ul>
+
+    </div>
+</nav>

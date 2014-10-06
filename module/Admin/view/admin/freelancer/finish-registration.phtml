@@ -8,6 +8,7 @@
 <!-- Scripts -->
 <?php $this->headScript()
     ->prependFile($this->basePath() . '/js/admin/freelancer/finish-registration.js')
+    ->prependFile($this->basePath() . '/js/admin/angular-steps.js')
     ->prependFile($this->basePath() . '/js/admin/bootstrap-modal.js')
     ->prependScript("angularApp = angular.module('project', []);")
     ->prependFile($this->basePath() . '/js/plugins/multiselect/bootstrap-multiselect.js')
@@ -49,7 +50,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
-                <div class="ibox-content" id="UpdateInfoController" ng-controller="UpdateInfoController">
+                <div class="ibox-content" id="mainController" ng-controller="UpdateInfoController">
                     <h2 ng-show="!userInfo.profileUpdated">
                         Please finish your account information
                     </h2>

@@ -14,7 +14,7 @@ use Admin\Model\Helper;
 /** @ORM\Entity */
 class TemplateType {
     /**
-     * @ORM\id
+     * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(type="integer")
      */

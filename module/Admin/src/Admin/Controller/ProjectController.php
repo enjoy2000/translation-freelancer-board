@@ -13,16 +13,17 @@ use Zend\View\Model\ViewModel;
 
 use Application\Controller\AbstractActionController;
 
-class DashboardController extends AbstractActionController
+class ProjectController extends AbstractActionController
 {
     protected $requiredLogin = true;
 
     public function indexAction()
     {
-        $user = $this->getCurrentUser();
-        if($user->isFreelancer() && !$user->isProfileUpdated()){
-            $this->redirect()->toUrl($user->getGroup()->getFirstLoginUrl());
-        }
+        return new ViewModel(array());
+    }
+
+    public function newAction()
+    {
         return new ViewModel(array());
     }
 

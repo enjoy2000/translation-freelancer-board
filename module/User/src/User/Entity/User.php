@@ -373,12 +373,9 @@ class User extends Entity implements InputFilterAwareInterface{
      * @param \Application\Controller\AbstractActionController $controller
      */
     public function sendWelcomeEmail($controller){
-        // initial data for email template
-        $data = array(
-            'firstName' => $this->firstName,
-            'lastName' => $this->lastName,
-        );
-        Mail::sendMail($controller, "USER_WELCOME", $this->email, $data);
+        $data = array();
+        // TODO: initial data for email template
+        Mail::sendMail($controller, "register-welcome", $this->email, $data);
     }
 
     /**

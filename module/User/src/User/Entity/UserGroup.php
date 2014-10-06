@@ -17,7 +17,7 @@ class UserGroup{
     const ADMIN_GROUP_ID = 3;
 
     /**
-     * @ORM\id
+     * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(type="integer")
      */

@@ -16,7 +16,7 @@ use Common\Entity;
 class UserTranslationPrice extends Entity{
 
     /**
-     * @ORM\id
+     * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\Column(type="integer")
      */

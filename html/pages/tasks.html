@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>PaperTask | Projects List</title>
+    <title>PaperTask | Task List</title>
 
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" media="screen" />
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -310,9 +310,6 @@
                     <div class="ibox">
                         <div class="ibox-title">
                             <h5> Projects List</h5>
-                            <div class="ibox-tools">
-                                <a href="" class="btn btn-primary btn-xs">Create new project</a>
-                            </div>
                         </div>
                         <div class="ibox-content">
                             <div class="row m-b-sm m-t-sm">
@@ -365,7 +362,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Order</label>
+                                                        <label class="col-sm-3 control-label">Start</label>
                                                         <div class="col-sm-9">
             												<div class="input-group date">
             				                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
@@ -373,11 +370,7 @@
             				                                </div>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label"> Client ID</label>
-                                                        <div class="col-sm-9"><input type="text" class="form-control"></div>
-                                                    </div>
-                                                    <div class="form-group">
+                                                    <div class="form-group"> <!-- if PM login, this dont show -->
                                                         <label class="col-sm-3 control-label">PM</label>
                                                         <div class="col-sm-9">
                                                             <select class="form-control" name="">
@@ -402,7 +395,7 @@
                                                 </div>
                                                 <div class="col-lg-4">
                                                     <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Reference</label>
+                                                        <label class="col-sm-3 control-label"> Reference</label>
                                                         <div class="col-sm-9"><input type="text" class="form-control"></div>
                                                     </div>
                                                     <div class="form-group">
@@ -436,32 +429,6 @@
 							                                </div>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label"> Company</label>
-                                                        <div class="col-sm-9"><input type="text" class="form-control"></div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Sales</label>
-                                                        <div class="col-sm-9">
-                                                            <select class="form-control" name="">
-                                                              <option></option>
-                                                              <option value="">Admin</option>
-                                                              <option value="">General Manager</option>
-                                                              <option value=""></option>
-                                                              <option value="">Financial Manager</option>
-                                                              <option value=""></option>
-                                                              <option value="">Sales Director</option>
-                                                              <option value="">Sales</option>
-                                                              <option value=""></option>
-                                                              <option value="">Operation Manager</option>
-                                                              <option value="">Project Manager</option>
-                                                              <option value="">In-house Translator</option>
-                                                              <option value="">In-house Editor/Proofreader</option>
-                                                              <option value="">In-house DTP</option>
-                                                              <option value="">In-house Engineering</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
                                                 </div>
                                                 <div class="col-lg-4">
                                                     <div class="form-group">
@@ -491,11 +458,11 @@
                                                         <div class="col-sm-9">
                                                             <select class="form-control" name="">
                                                               <option></option>
-                                                              <option value="">Ordered</option>
+                                                              <option value="">Unassigned</option>
+                                                              <option value="">Pooling</option>
                                                               <option value="">Ongoing</option>
-                                                              <option value="">Reviewing</option>
+                                                              <option value="">Evaluating</option>
                                                               <option value="">Completed</option>
-                                                              <option value="">Rejected</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -522,167 +489,252 @@
                             <div class="hr-line-dashed"></div>
 
                             <div class="project-list">
-
                                 <table class="table table-hover">
                                     <tbody>
-	                                    <tr>
-	                                        <td class="project-status">
-	                                            <span class="label label-warning">8</span> <span class="label label-danger">Ordered</span>
-	                                        </td>
-	                                        <td class="project-title">
-	                                            <strong>Contract with Zender Company</strong>
-	                                            <br/>
-	                                            <div class="tooltip-demo">
-	                                            <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Translation with Translation Memory">TM</code> 
-	                                            <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Translation without Translation Memory">No-TM</code> 
-	                                            <code>Proofreading</code> 
-	                                            <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Desktop Publishing">DTP</code> 
-	                                            <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Engineering">ENG</code>
-	                                            </div>
-	                                        </td>
-	                                        <td class="project-title">
-	                                            <span class="">88888888</span>
-	                                            <br/>
-	                                            <small>2014.Sep.09 - 2014.Oct.18</small>
-	                                        </td>
-	                                        <td class="project-title">
-	                                            Client's name
-	                                            <br/>
-	                                            Client's Company
-	                                        </td>
-	                                        <td class="project-actions">
-	                                            <a href="#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
-	                                            <a href="#" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Edit </a>
-                                                <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete </a> <!-- only admin has right to show the delete button -->
-	                                        </td>
-	                                    </tr>
-	                                    <tr>
-	                                        <td class="project-status">
-	                                            <!-- this is messages/activity --><span class="label label-warning">2</span> <span class="label label-primary">Ongoing</span>
-	                                        </td>
-	                                        <td class="project-title">
-	                                            <strong>Contract with Zender Company</strong>
-	                                            <br/>
-	                                            <div class="tooltip-demo">
-	                                            <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Translation with Translation Memory">TM</code> 
-	                                            <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Translation without Translation Memory">No-TM</code> 
-	                                            <code>Proofreading</code> 
-	                                            <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Desktop Publishing">DTP</code> 
-	                                            <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Engineering">ENG</code>
-	                                            </div>
-	                                        </td>
-	                                        <td class="project-title">
-	                                            <span class="">88888888</span>
-	                                            <br/>
-	                                            <small>2014.Sep.09 - 2014.Oct.18</small>
-	                                        </td>
-	                                        <td class="project-title">
-	                                            Client's name
-	                                            <br/>
-	                                            Client's Company
-	                                        </td>
-	                                        <td class="project-actions">
-	                                            <a href="#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
-	                                            <a href="#" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Edit </a>
-                                                <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete </a> <!-- only admin has right to show the delete button -->
-	                                        </td>
-	                                    </tr>
-	                                    <tr>
-	                                        <td class="project-status">
-	                                            <span class="label label-success">Reviewing</span>
-	                                        </td>
-	                                        <td class="project-title">
-	                                            <strong>Contract with Zender Company</strong>
-	                                            <br/>
-	                                            <div class="tooltip-demo">
-	                                            <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Translation with Translation Memory">TM</code> 
-	                                            <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Translation without Translation Memory">No-TM</code> 
-	                                            <code>Proofreading</code> 
-	                                            <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Desktop Publishing">DTP</code> 
-	                                            <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Engineering">ENG</code>
-	                                            </div>
-	                                        </td>
-	                                        <td class="project-title">
-	                                            <span class="">88888888</span>
-	                                            <br/>
-	                                            <small>2014.Sep.09 - 2014.Oct.18</small>
-	                                        </td>
-	                                        <td class="project-title">
-	                                            Client's name
-	                                            <br/>
-	                                            Client's Company
-	                                        </td>
-	                                        <td class="project-actions">
-	                                            <a href="#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
-	                                            <a href="#" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Edit </a>
-                                                <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete </a> <!-- only admin has right to show the delete button -->
-	                                        </td>
-	                                    </tr>
-	                                    <tr>
-	                                        <td class="project-status">
-	                                            <span class="label label-default">Completed</span> <i class="fa fa-usd"></i> <!--with dollor sign means paid -->
-	                                        </td>
-	                                        <td class="project-title">
-	                                            <strong>Contract with Zender Company</strong>
-	                                            <br/>
-	                                            <div class="tooltip-demo">
-	                                            <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Translation with Translation Memory">TM</code> 
-	                                            <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Translation without Translation Memory">No-TM</code> 
-	                                            <code>Proofreading</code> 
-	                                            <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Desktop Publishing">DTP</code> 
-	                                            <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Engineering">ENG</code>
-	                                            </div>
-	                                        </td>
-	                                        <td class="project-title">
-	                                            <span class="">88888888</span>
-	                                            <br/>
-	                                            <small>2014.Sep.09 - 2014.Oct.18</small>
-	                                        </td>
-	                                        <td class="project-title">
-	                                            Client's name
-	                                            <br/>
-	                                            Client's Company
-	                                        </td>
-	                                        <td class="project-actions">
-	                                            <a href="#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
-	                                            <a href="#" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Edit </a>
-                                                <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete </a> <!-- only admin has right to show the delete button -->
-	                                        </td>
-	                                    </tr>
-	                                    <tr>
-	                                        <td class="project-status">
-	                                            <span class="label label-white">Rejected</span>
-	                                        </td>
-	                                        <td class="project-title">
-	                                            <strong>Contract with Zender Company</strong>
-	                                            <br/>
-	                                            <div class="tooltip-demo">
-	                                            <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Translation with Translation Memory">TM</code> 
-	                                            <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Translation without Translation Memory">No-TM</code> 
-	                                            <code>Proofreading</code> 
-	                                            <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Desktop Publishing">DTP</code> 
-	                                            <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Engineering">ENG</code>
-	                                            </div>
-	                                        </td>
-	                                        <td class="project-title">
-	                                            <span class="">88888888</span>
-	                                            <br/>
-	                                            <small>2014.Sep.09 - 2014.Oct.18</small>
-	                                        </td>
-	                                        <td class="project-title">
-	                                            Client's name
-	                                            <br/>
-	                                            Client's Company
-	                                        </td>
-	                                        <td class="project-actions">
-	                                            <a href="#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
-	                                            <a href="#" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Edit </a>
-                                                <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete </a> <!-- only admin has right to show the delete button -->
-	                                        </td>
-	                                    </tr>
+                                        <tr>
+                                            <td class="project-status">
+                                                <span class="label label-default">Completed</span> <i class="fa fa-usd"></i>
+                                            </td>
+                                            <td class="project-title">
+                                                <strong>project referencereferencereference </strong>
+                                                <br>
+                                                <strong class="text-info">88888888-01</strong>  |  <code>English</code> <i class="fa fa-arrow-right"></i> <code>Japanese</code> <i class="fa fa-paperclip"></i> <!-- paperclip means freelancer uploaded the translated file -->
+                                            </td>
+
+                                            </td>
+                                            <td class="project-title">
+                                                <a href=""><strong>freelancer, Name</strong></a>
+                                                <div class="tooltip-demo">
+                                                    <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Translation with Translation Memory">TM</code>  |  Due: 2014.Oct.28
+                                                </div>
+                                            </td>
+                                            <td class="project-title">
+                                                Client's name
+                                                <br/>
+                                                <small>北京文易达信息技术有限公司</small>
+                                            </td>
+                                            <td class="project-actions">
+                                                <div class="tooltip-demo">
+                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="View Task Details" class="btn btn-white btn-xs"><i class="fa fa-folder"></i> </a>
+                                                    <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> </a> <!-- only admin can see this button -->
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="project-status">
+                                                <span class="label label-default">Completed</span> 
+                                            </td>
+                                            <td class="project-title">
+                                                <strong>project referencereferencereference </strong>
+                                                <br>
+                                                <strong class="text-info">88888888-02</strong>  |  <code>English</code> <i class="fa fa-arrow-right"></i> <code>Japanese</code> <i class="fa fa-paperclip"></i> <!-- paperclip means freelancer uploaded the translated file -->
+                                            </td>
+
+                                            </td>
+                                            <td class="project-title">
+                                                <a href=""><strong>freelancer, Name</strong></a>
+                                                <div class="tooltip-demo">
+                                                    <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Translation with Translation Memory">TM</code>  |  Due: 2014.Oct.28
+                                                </div>
+                                            </td>
+                                            <td class="project-title">
+                                                Client's name
+                                                <br/>
+                                                <small>Client's Company</small>
+                                            </td>
+                                            <td class="project-actions">
+                                                <div class="tooltip-demo">
+                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="View Task Details" class="btn btn-white btn-xs"><i class="fa fa-folder"></i> </a>
+                                                    <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> </a> <!-- only admin can see this button -->
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="project-status">
+                                                <span class="label label-success">Evaluating</span>
+                                            </td>
+                                            <td class="project-title">
+                                                <strong>project referencereferencereference </strong>
+                                                <br>
+                                                <strong class="text-info">88888888-03</strong>  |  <code>English</code> <i class="fa fa-arrow-right"></i> <code>Japanese</code> <i class="fa fa-paperclip"></i> <!-- paperclip means freelancer uploaded the translated file -->
+                                            </td>
+
+                                            </td>
+                                            <td class="project-title">
+                                                <a href=""><strong>freelancer, Name</strong></a>
+                                                <div class="tooltip-demo">
+                                                    <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Translation with Translation Memory">TM</code>  |  Due: 2014.Oct.28
+                                                </div>
+                                            </td>
+                                            <td class="project-title">
+                                                Client's name
+                                                <br/>
+                                                <small>Client's Company</small>
+                                            </td>
+                                            <td class="project-actions">
+                                                <div class="tooltip-demo">
+                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="View Task Details" class="btn btn-white btn-xs"><i class="fa fa-folder"></i> </a>
+                                                    <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> </a> <!-- only admin can see this button -->
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="project-status">
+                                                <span class="label label-info">5</span> <span class="label label-primary">Ongoing</span>
+                                            </td>
+                                            <td class="project-title">
+                                                <strong>project referencereferencereference </strong>
+                                                <br>
+                                                <strong class="text-info">88888888-04</strong>  |  <code>English</code> <i class="fa fa-arrow-right"></i> <code>Chinese</code>
+                                            </td>
+
+                                            </td>
+                                            <td class="project-title">
+                                                <a href=""><strong>freelancer, Name</strong></a>
+                                                <div class="tooltip-demo">
+                                                    <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Translation without Translation Memory">No-TM</code>  |  Due: 2014.Oct.28
+                                                </div>
+                                            </td>
+                                            <td class="project-title">
+                                                Client's name
+                                                <br/>
+                                                <small>Client's Company</small>
+                                            </td>
+                                            <td class="project-actions">
+                                                <div class="tooltip-demo">
+                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="View Task Details" class="btn btn-white btn-xs"><i class="fa fa-folder"></i> </a>
+                                                    <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> </a> <!-- only admin can see this button -->
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="project-status">
+                                                <span class="label label-danger">Unassigned</span>
+                                            </td>
+                                            <td class="project-title">
+                                                <strong>project referencereferencereferencereferencereferencereference </strong>
+                                                <br>
+                                                <strong class="text-info">88888888-05</strong>  |  <code>English</code> <i class="fa fa-arrow-right"></i> <code>Japanese</code>
+                                            </td>
+
+                                            </td>
+                                            <td class="project-title">
+                                                <span class="text-danger"><strong>Un-Assigned</strong></span>
+                                                <div class="tooltip-demo">
+                                                    <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Engineering">ENG</code>  |  Due: 2014.Oct.28
+                                                </div>
+                                            </td>
+                                            <td class="project-title">
+                                                Client's name
+                                                <br/>
+                                                <small>Client's Company</small>
+                                            </td>
+                                            <td class="project-actions">
+                                                <div class="tooltip-demo">
+                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Send to Specialism Pool" class="btn btn-success btn-xs"><i class="fa fa-users"></i> S</a>
+                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Send to Client's Resource Pool" class="btn btn-info btn-xs"><i class="fa fa-users"></i> C</a>
+                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="View Task Details" class="btn btn-white btn-xs"><i class="fa fa-folder"></i> </a>
+                                                    <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="project-status">
+                                                <span class="label label-warning">Pooling</span>
+                                            </td>
+                                            <td class="project-title">
+                                                <strong>project referencereferencereference </strong>
+                                                <br>
+                                                <strong class="text-info">88888888-06</strong>  |  <code>English</code> <i class="fa fa-arrow-right"></i> <code>Japanese</code>
+                                            </td>
+
+                                            </td>
+                                            <td class="project-title">
+                                                <span class="text-warning"><strong>Assigned to Specialism Pool</strong></span>
+                                                <div class="tooltip-demo">
+                                                    <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Desktop Publishing">DTP <i class="fa fa-apple"></i></code></code>  |  Due: 2014.Oct.28
+                                                </div>
+                                            </td>
+                                            <td class="project-title">
+                                                Client's name
+                                                <br/>
+                                                <small>Client's Companykjffja...</small>
+                                            </td>
+                                            <td class="project-actions">
+                                                <div class="tooltip-demo">
+                                                    <a href="#" disabled data-toggle="tooltip" data-placement="top" title="" data-original-title="Send to Specialism Pool" class="btn btn-success btn-xs"><i class="fa fa-users"></i> S</a>
+                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Send to Client's Resource Pool" class="btn btn-info btn-xs"><i class="fa fa-users"></i> C</a>
+                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="View Task Details" class="btn btn-white btn-xs"><i class="fa fa-folder"></i> </a>
+                                                    <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="project-status">
+                                                <span class="label label-warning">Pooling</span>
+                                            </td>
+                                            <td class="project-title">
+                                                <strong>project referencereferencereference </strong>
+                                                <br>
+                                                <strong class="text-info">88888888-07</strong>  |  <code>English</code> <i class="fa fa-arrow-right"></i> <code>Japanese</code>
+                                            </td>
+
+                                            </td>
+                                            <td class="project-title">
+                                                <span class="text-warning"><strong>Assigned to Resource Pool</strong></span>
+                                                <div class="tooltip-demo">
+                                                    <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Consecutive Interpreting">Consecutive</code>  |  Due: 2014.Oct.28
+                                                </div>
+                                            </td>
+                                            <td class="project-title">
+                                                Client's name
+                                                <br/>
+                                                <small>Client's Company</small>
+                                            </td>
+                                            <td class="project-actions">
+                                                <div class="tooltip-demo">
+                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Send to Specialism Pool" class="btn btn-success btn-xs"><i class="fa fa-users"></i> S</a>
+                                                    <a href="#" disabled data-toggle="tooltip" data-placement="top" title="" data-original-title="Send to Client's Resource Pool" class="btn btn-info btn-xs"><i class="fa fa-users"></i> C</a>
+                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="View Task Details" class="btn btn-white btn-xs"><i class="fa fa-folder"></i> </a>
+                                                    <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="project-status">
+                                                <span class="label label-warning">Assigning</span>
+                                            </td>
+                                            <td class="project-title">
+                                                <strong>project referencereferencereference </strong>
+                                                <br>
+                                                <strong class="text-info">88888888-07</strong>  |  <code>English</code> <i class="fa fa-arrow-right"></i> <code>Japanese</code>
+                                            </td>
+
+                                            </td>
+                                            <td class="project-title">
+                                                <span class="text-warning"><strong>Waiting for <a href="#">Doe,John</a> accept</strong></span>
+                                                <div class="tooltip-demo">
+                                                    <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Consecutive Interpreting">Consecutive</code>  |  Due: 2014.Oct.28
+                                                </div>
+                                            </td>
+                                            <td class="project-title">
+                                                Client's name
+                                                <br/>
+                                                <small>Client's Company</small>
+                                            </td>
+                                            <td class="project-actions">
+                                                <div class="tooltip-demo">
+                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Send to Specialism Pool" class="btn btn-success btn-xs"><i class="fa fa-users"></i> S</a>
+                                                    <a href="#" disabled data-toggle="tooltip" data-placement="top" title="" data-original-title="Send to Client's Resource Pool" class="btn btn-info btn-xs"><i class="fa fa-users"></i> C</a>
+                                                    <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="View Task Details" class="btn btn-white btn-xs"><i class="fa fa-folder"></i> </a>
+                                                    <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> </a>
+                                                </div>
+                                            </td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
+
                         </div>
                     </div>
                 </div>
