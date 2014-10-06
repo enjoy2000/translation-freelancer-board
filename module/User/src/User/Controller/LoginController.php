@@ -65,7 +65,7 @@ class LoginController extends AbstractActionController
         if (! $container->offsetExists('authenticated')) {
             echo 'No user logged in';
         }
-        /** @var OrgHeiglHybridAuth\UserInterface $user */
+        /** @var \OrgHeiglHybridAuth\UserInterface $user */
         $user = $container->offsetGet('user');
         echo $user->getName(); // The name of the logged in user
         echo $user->getUID();  // The internal UID of the used service
