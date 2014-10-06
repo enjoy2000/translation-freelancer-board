@@ -13,7 +13,6 @@
         "zendframework/zend-developer-tools": "dev-master",
         "doctrine/doctrine-module": "dev-master",
         "doctrine/doctrine-orm-module": "dev-master",
-        "hybridauth/hybridauth": "3.0.0.*@dev",
-        "org_heigl/hybridauth": "dev-master"
+        "hybridauth/hybridauth": "3.0.0.*@dev"
     }
 }

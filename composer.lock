@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "723c3ace170652fa280a86778f0cdcbc",
+    "hash": "74a429ca7e3dd0f9065073c65c19c0bd",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -758,60 +758,6 @@
             "time": "2014-08-01 14:19:08"
         },
         {
-            "name": "org_heigl/hybridauth",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/heiglandreas/HybridAuth.git",
-                "reference": "fb9594373bfaf7cb6395f50eb00aa0d3daf35730"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/heiglandreas/HybridAuth/zipball/fb9594373bfaf7cb6395f50eb00aa0d3daf35730",
-                "reference": "fb9594373bfaf7cb6395f50eb00aa0d3daf35730",
-                "shasum": ""
-            },
-            "require": {
-                "hybridauth/hybridauth": "3.0.0.*@dev",
-                "php": ">=5.3.0",
-                "zendframework/zendframework": ">=2.1,<2.3.x-dev"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "OrgHeiglHybridAuth": "src"
-                },
-                "classmap": [
-                    "./"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Andreas Heigl",
-                    "email": "andreas@heigl.org",
-                    "homepage": "http://andreas.heigl.org",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Lightweight Authentication Module for Zend-Framework 2 using the hybridauth-library",
-            "homepage": "http://github.com/heiglandreas/HybridAuth",
-            "keywords": [
-                "facebook",
-                "github",
-                "login",
-                "module",
-                "social network",
-                "twitter",
-                "user",
-                "zf2"
-            ],
-            "time": "2014-08-13 07:58:18"
-        },
-        {
             "name": "symfony/console",
             "version": "v2.5.5",
             "target-dir": "Symfony/Component/Console",
@@ -1098,8 +1044,7 @@
         "zendframework/zend-developer-tools": 20,
         "doctrine/doctrine-module": 20,
         "doctrine/doctrine-orm-module": 20,
-        "hybridauth/hybridauth": 20,
-        "org_heigl/hybridauth": 20
+        "hybridauth/hybridauth": 20
     },
     "prefer-stable": false,
     "platform": {

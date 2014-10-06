@@ -6,7 +6,6 @@ return array(
         'DoctrineModule',
         'DoctrineORMModule',
         //'Hybridauth',
-        'OrgHeiglHybridAuth',
         'Application',
         'Common',
         'User',

@@ -47,7 +47,7 @@ class User extends Entity implements InputFilterAwareInterface{
     /** @ORM\Column(type="string") */
     protected $password;
 
-    /** @ORM\Column(type="string") */
+    /** @ORM\Column(type="string", nullable=true) */
     protected $phone;
 
     /** @ORM\Column(type="datetime") */
@@ -461,6 +461,32 @@ class User extends Entity implements InputFilterAwareInterface{
             $employer->save($entityManager);
             $this->employer = $employer;
         }
+    }
+
+    protected function generateRandomString($length = 10) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, strlen($characters) - 1)];
+        }
+        return $randomString;
+    }
+
+    public function createUserBySocialProfile($controller, $profile, $group){
+        $entityManager = $controller->getEntityManager();
+        $data = array(
+            'email' => $profile->getEmail(),
+            'lastName' => $profile->getLastName(),
+            'firstName' => $profile->getFirstName(),
+            'lastLogin' => new \DateTime('now'),
+            'createdTime' => new \DateTime('now'),
+        );
+        $this->setData($data);
+        $this->encodePassword($this->generateRandomString());
+        $this->setGroupByName($group, $entityManager);
+        $entityManager->persist($this);
+        $entityManager->flush();
+        $controller->redirect()->toUrl('/user/dashboard');
     }
 }
 

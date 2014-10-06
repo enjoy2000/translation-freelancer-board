@@ -12,7 +12,9 @@ use Zend\View\Model\ViewModel;
 
 use Application\Controller\AbstractActionController;
 use User\Form\LoginForm;
+use User\Entity\User;
 use Hybridauth\Hybridauth;
+use Hybridauth\Endpoint;
 
 class LoginController extends AbstractActionController
 {
@@ -40,38 +42,49 @@ class LoginController extends AbstractActionController
     }
 
     public function socialAction(){
-        $request = $this->getRequest();
-        $provider = $request->getQuery('provider');
-        //var_dump($provider);die;
         $config = $this->getServiceLocator()->get('Config');
-        $config = $config['OrgHeiglHybridAuth'];
-        $ha = new Hybridauth($config['hybrid_auth']);
-        $t = $ha->authenticate('Facebook');
-        if($t->isUserConnected()){
-            $profile = $t->getUserProfile();
-            var_dump($profile);die;
-        }else{
-            die('nc');
-        }
-    }
+        if($provider = $this->getRequest()->getQuery('provider')){
+            try{
+                // create an instance for Hybridauth with the configuration file path as parameter
+                $hybridauth = new Hybridauth($config['hybrid_auth']);
 
-    public function testAction(){
-        $config = $this->getServiceLocator()->get('Config');
-        $config = $config['OrgHeiglHybridAuth'];
-        $hybridAuth = new Hybridauth($config['hybrid_auth']);
+                // try to authenticate the user with twitter,
+                // user will be redirected to Twitter for authentication,
+                // if he already did, then Hybridauth will ignore this step and return an instance of the adapter
+                $auth = $hybridauth->authenticate($provider);
 
-        // The name of the session-container can be changed in the config file!
-        $container = new \Zend\Session\Container('orgheiglhybridauth');
-        if (! $container->offsetExists('authenticated')) {
-            echo 'No user logged in';
+                // get the user profile
+                $profile = $auth->getUserProfile();
+
+
+                // Create new user by social profile
+                $translator = $this->getTranslator();
+                $entityManager = $this->getEntityManager();
+                $user = $entityManager->getRepository('User\Entity\User')->findOneBy(
+                    array('email'=>$profile->getEmail()));
+                if($user){
+                    $auth->logout();
+                    $user->authenticate();
+                    $this->redirect()->toUrl('/user/dashboard');
+                }else{
+                    // TODO: redirect to register social action
+                    $this->flashMessenger()->addInfoMessage(
+                        $translator->translate('You have to register by your social account first.'));
+                    $this->redirect()->toUrl('/user/register');
+                }
+            }
+            catch( Exception $e ){
+                // Display the recived error,
+                // to know more please refer to Exceptions handling section on the userguide
+                $translator = $this->getTranslator();
+                $this->flashMessenger()->addErrorMessage($translator->translate('Cannot login by social account.'));
+            }
         }
-        /** @var \OrgHeiglHybridAuth\UserInterface $user */
-        $user = $container->offsetGet('user');
-        echo $user->getName(); // The name of the logged in user
-        echo $user->getUID();  // The internal UID of the used service
-        echo $user->getMail(); // The mail-address the service provides
-        echo $user->getLanguage(); // The language the service provides for the user
-        $service = $container->offsetGet('backend');
-        echo $service->id; // Should print out the Name of the service provider.
+        if (isset($_REQUEST['hauth_start']) || isset($_REQUEST['hauth_done']))
+        {
+            (new Endpoint())->process();
+
+        }
+        return new ViewModel();
     }
 }
