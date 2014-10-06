@@ -85,7 +85,8 @@ class TemplateType {
     }
 
     public function getTouchTime(){
-        return $this->updateTime ? Helper::formatDate($this->updateTime) : Helper::formatDate($this->createdTime);
+        $helper = new Helper();
+        return $this->updateTime ? $helper->formatDate($this->updateTime) : $helper->formatDate($this->createdTime);
     }
 
     public function getEditUrl(){
