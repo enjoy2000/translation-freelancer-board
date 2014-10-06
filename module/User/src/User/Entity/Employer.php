@@ -11,7 +11,7 @@ namespace User\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 use Common\Entity;
-use Common\Func;
+
 
 /** @ORM\Entity */
 class Employer extends Entity{
