@@ -37,4 +37,11 @@ class LoginController extends AbstractActionController
         }
         return new ViewModel(array('form' => $form));
     }
+
+    public function socialAction(){
+        $request = $this->getRequest();
+        if(isset($request->getQuery('provider'))){
+            $provider = $request->getQuery('provider');
+        }
+    }
 }

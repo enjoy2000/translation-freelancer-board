@@ -5,6 +5,8 @@ return array(
         'ZendDeveloperTools',
         'DoctrineModule',
         'DoctrineORMModule',
+        'Hybridauth',
+        'OrgHeiglHybridAuth',
         'Application',
         'Common',
         'User',

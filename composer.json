@@ -13,6 +13,7 @@
         "zendframework/zend-developer-tools": "dev-master",
         "doctrine/doctrine-module": "dev-master",
         "doctrine/doctrine-orm-module": "dev-master",
-        "socalnick/scn-social-auth": "1.*"
+        "hybridauth/hybridauth": "3.0.0.*@dev",
+        "org_heigl/hybridauth": "dev-master"
     }
 }
