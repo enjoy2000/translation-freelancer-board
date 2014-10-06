@@ -1,0 +1,16 @@
+<h1>User Dashboard</h1>
+<fieldset>
+    <legend>User Info</legend>
+    <dl>
+        <dt>Email:</dt>
+        <dh><?php echo $this->user['email'] ?></dh>
+    </dl>
+    <dl>
+        <dt>Full Name:</dt>
+        <dh><?php echo $this->user['firstName'] . ' ' . $this->user['lastName'] ?></dh>
+    </dl>
+    <dl>
+        <dt>&nbsp;</dt>
+        <dh><a href="<?php echo $this->url('user') ?>/logout/">Logout</a></dh>
+    </dl>
+</fieldset>
