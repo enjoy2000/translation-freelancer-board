@@ -41,9 +41,17 @@ class LoginController extends AbstractActionController
 
     public function socialAction(){
         $request = $this->getRequest();
-        if($request->getQuery('provider')){
-            $provider = $request->getQuery('provider');
-            echo $this->hybridauthinfo($provider);
+        $provider = $request->getQuery('provider');
+        //var_dump($provider);die;
+        $config = $this->getServiceLocator()->get('Config');
+        $config = $config['OrgHeiglHybridAuth'];
+        $ha = new Hybridauth($config['hybrid_auth']);
+        $t = $ha->authenticate('Facebook');
+        if($t->isUserConnected()){
+            $profile = $t->getUserProfile();
+            var_dump($profile);die;
+        }else{
+            die('nc');
         }
     }
 
@@ -57,6 +65,7 @@ class LoginController extends AbstractActionController
         if (! $container->offsetExists('authenticated')) {
             echo 'No user logged in';
         }
+        var_dump($container);die;
         /** @var OrgHeiglHybridAuth\UserInterface $user */
         $user = $container->offsetGet('user');
         echo $user->getName(); // The name of the logged in user
