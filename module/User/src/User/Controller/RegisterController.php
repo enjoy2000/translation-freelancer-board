@@ -13,6 +13,7 @@ use Zend\View\Model\ViewModel;
 use Application\Controller\AbstractActionController;
 use User\Form\UserForm;
 use User\Entity\User;
+use Hybridauth\Hybridauth;
 
 class RegisterController extends AbstractActionController
 {
@@ -94,5 +95,54 @@ class RegisterController extends AbstractActionController
             'email' => $email
             )
         );
+    }
+
+    public function socialAction(){
+        $request = $this->getRequest();
+        $userType = $request->getQuery('type');
+        $provider = $request->getQuery('provider');
+        $config = $this->getServiceLocator()->get('Config');
+        if($provider){
+            try{
+                // create an instance for Hybridauth with the configuration file path as parameter
+                $hybridauth = new Hybridauth($config['hybrid_auth']);
+
+                // try to authenticate the user with twitter,
+                // user will be redirected to Twitter for authentication,
+                // if he already did, then Hybridauth will ignore this step and return an instance of the adapter
+                $auth = $hybridauth->authenticate($provider);
+
+                // get the user profile
+                $profile = $auth->getUserProfile();
+
+
+                // Create new user by social profile
+                $translator = $this->getTranslator();
+                $entityManager = $this->getEntityManager();
+                $user = $entityManager->getRepository('User\Entity\User')->findOneBy(
+                    array('email'=>$profile->getEmail()));
+                if($user){
+                    $auth->logout();
+                    $user->authenticate();
+                }else{
+                    $auth->logout();
+                    $newUser = new User();
+                    $newUser->createUserBySocialProfile($this, $profile, $userType);
+                }
+                $this->redirect()->toUrl('/user/dashboard');
+            }
+            catch( Exception $e ){
+                // Display the recived error,
+                // to know more please refer to Exceptions handling section on the userguide
+                $translator = $this->getTranslator();
+                $this->flashMessenger()->addErrorMessage($translator->translate('Cannot login by social account.'));
+            }
+        }
+        if (isset($_REQUEST['hauth_start']) || isset($_REQUEST['hauth_done']))
+        {
+            (new Endpoint())->process();
+
+        }
+        return new ViewModel();
     }
 }
