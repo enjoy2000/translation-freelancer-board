@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PaperTask | Test Details</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" media="screen" />
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="css/plugins/summernote/summernote.css" rel="stylesheet">
+    <link href="css/plugins/summernote/summernote-bs3.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <style type="text/css">
+        .note-editor {
+            height: 150px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li class="nav-header">
+
+                        <div class="dropdown profile-element"> <span>
+                            <img alt="image" class="img-circle" src="img/profile_small.jpg">
+                             </span>
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">Amelia Smith</strong>
+                             </span> <span class="text-muted text-xs block">Art Director <b class="caret"></b></span> </span> </a>
+                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                                <li><a href="profile.html">Profile</a></li>
+                                <li><a href="contacts.html">Contacts</a></li>
+                                <li><a href="mailbox.html">Mailbox</a></li>
+                                <li class="divider"></li>
+                                <li><a href="login.html">Logout</a></li>
+                            </ul>
+                        </div>
+                        <div class="logo-element">
+                            IN+
+                        </div>
+
+                    </li>
+                    <li>
+                        <a href="index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span> <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="index.html">Dashboard v.1</a></li>
+                            <li><a href="dashboard_2.html">Dashboard v.2</a></li>
+                            <li><a href="dashboard_3.html">Dashboard v.3</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Graphs</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="graph_flot.html">Flot Charts</a></li>
+                            <li><a href="graph_morris.html">Morris.js Charts</a></li>
+                            <li><a href="graph_rickshaw.html">Rickshaw Charts</a></li>
+                            <li><a href="graph_chartjs.html">Chart.js</a></li>
+                            <li><a href="graph_peity.html">Peity Charts</a></li>
+                            <li><a href="graph_sparkline.html">Sparkline Charts</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="mailbox.html"><i class="fa fa-envelope"></i> <span class="nav-label">Mailbox </span><span class="label label-warning pull-right">16/24</span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="mailbox.html">Inbox</a></li>
+                            <li><a href="mail_detail.html">Email view</a></li>
+                            <li><a href="mail_compose.html">Compose email</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="widgets.html"><i class="fa fa-flask"></i> <span class="nav-label">Widgets</span> <span class="label label-info pull-right">NEW</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Forms</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="form_basic.html">Basic form</a></li>
+                            <li><a href="form_advanced.html">Advanced Plugins</a></li>
+                            <li><a href="form_wizard.html">Wizard</a></li>
+                            <li><a href="form_file_upload.html">File Upload</a></li>
+                            <li><a href="form_editors.html">Text Editor</a></li>
+                        </ul>
+                    </li>
+                    <li class="active">
+                        <a href="#"><i class="fa fa-desktop"></i> <span class="nav-label">App Views</span>  <span class="pull-right label label-primary">SPECIAL</span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="contacts.html">Contacts</a></li>
+                            <li><a href="profile.html">Profile</a></li>
+                            <li><a href="projects.html">Projects</a></li>
+                            <li class="active"><a href="project_detail.html">Project detail</a></li>
+                            <li><a href="file_manager.html">File manager</a></li>
+                            <li><a href="calendar.html">Calendar</a></li>
+                            <li><a href="faq.html">FAQ</a></li>
+                            <li><a href="timeline.html">Timeline</a></li>
+                            <li><a href="pin_board.html">Pin board</a></li>
+                            <li><a href="invoice.html">Invoice</a></li>
+                            <li><a href="login.html">Login</a></li>
+                            <li><a href="register.html">Register</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Other Pages</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="search_results.html">Search results</a></li>
+                            <li><a href="lockscreen.html">Lockscreen</a></li>
+                            <li><a href="404.html">404 Page</a></li>
+                            <li><a href="500.html">500 Page</a></li>
+                            <li><a href="empty_page.html">Empty page</a></li>
+                        </ul>
+                    </li>
+
+                    <li >
+                        <a href="#"><i class="fa fa-flask"></i> <span class="nav-label">UI Elements</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="typography.html">Typography</a></li>
+                            <li><a href="icons.html">Icons</a></li>
+                            <li><a href="draggable_panels.html">Draggable Panels</a></li>
+                            <li><a href="buttons.html">Buttons</a></li>
+                            <li><a href="video.html">Video</a></li>
+                            <li><a href="tabs_panels.html">Tabs & Panels</a></li>
+                            <li><a href="notifications.html">Notifications & Tooltips</a></li>
+                            <li><a href="badges_labels.html">Badges, Labels, Progress</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="grid_options.html"><i class="fa fa-laptop"></i> <span class="nav-label">Grid options</span></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-table"></i> <span class="nav-label">Tables</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="table_basic.html">Static Tables</a></li>
+                            <li><a href="table_data_tables.html">Data Tables</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-picture-o"></i> <span class="nav-label">Gallery</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="basic_gallery.html">Basic Gallery</a></li>
+                            <li><a href="carousel.html">Bootstrap Carusela</a></li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-sitemap"></i> <span class="nav-label">Menu Levels </span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="#">Third Level <span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a href="#">Third Level Item</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Third Level Item</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Third Level Item</a>
+                                    </li>
+
+                                </ul>
+                            </li>
+                            <li><a href="#">Second Level Item</a></li>
+                            <li>
+                                <a href="#">Second Level Item</a></li>
+                            <li>
+                                <a href="#">Second Level Item</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="css_animation.html"><i class="fa fa-magic"></i> <span class="nav-label">CSS Animations </span><span class="label label-info pull-right">62</span></a>
+                    </li>
+                    <li class="special_link">
+                        <a href="angularjs.html"><i class="fa fa-google"></i> <span class="nav-label">AngularJS</span><span class="label pull-right">NEW</span></a>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="gray-bg">
+        <div class="row border-bottom">
+        <nav class="navbar navbar-static-top  " role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+            <form role="search" class="navbar-form-custom" method="post" action="search_results.html">
+                <div class="form-group">
+                    <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search">
+                </div>
+            </form>
+        </div>
+            <ul class="nav navbar-top-links navbar-right">
+                <li>
+                    <span class="m-r-sm text-muted welcome-message">Welcome to INSPINIA+ Admin Theme.</span>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                        <i class="fa fa-envelope"></i>  <span class="label label-warning">16</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-messages">
+                        <li>
+                            <div class="dropdown-messages-box">
+                                <a href="profile.html" class="pull-left">
+                                    <img alt="image" class="img-circle" src="img/a7.jpg">
+                                </a>
+                                <div class="media-body">
+                                    <small class="pull-right">46h ago</small>
+                                    <strong>Mike Loreipsum</strong> started following <strong>Monica Smith</strong>. <br>
+                                    <small class="text-muted">3 days ago at 7:58 pm - 10.06.2014</small>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <div class="dropdown-messages-box">
+                                <a href="profile.html" class="pull-left">
+                                    <img alt="image" class="img-circle" src="img/a4.jpg">
+                                </a>
+                                <div class="media-body ">
+                                    <small class="pull-right text-navy">5h ago</small>
+                                    <strong>Chris Johnatan Overtunk</strong> started following <strong>Monica Smith</strong>. <br>
+                                    <small class="text-muted">Yesterday 1:21 pm - 11.06.2014</small>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <div class="dropdown-messages-box">
+                                <a href="profile.html" class="pull-left">
+                                    <img alt="image" class="img-circle" src="img/profile.jpg">
+                                </a>
+                                <div class="media-body ">
+                                    <small class="pull-right">23h ago</small>
+                                    <strong>Monica Smith</strong> love <strong>Kim Smith</strong>. <br>
+                                    <small class="text-muted">2 days ago at 2:30 am - 11.06.2014</small>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <div class="text-center link-block">
+                                <a href="mailbox.html">
+                                    <i class="fa fa-envelope"></i> <strong>Read All Messages</strong>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                        <i class="fa fa-bell"></i>  <span class="label label-primary">8</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-alerts">
+                        <li>
+                            <a href="mailbox.html">
+                                <div>
+                                    <i class="fa fa-envelope fa-fw"></i> You have 16 messages
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="profile.html">
+                                <div>
+                                    <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+                                    <span class="pull-right text-muted small">12 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="grid_options.html">
+                                <div>
+                                    <i class="fa fa-upload fa-fw"></i> Server Rebooted
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <div class="text-center link-block">
+                                <a href="notifications.html">
+                                    <strong>See All Alerts</strong>
+                                    <i class="fa fa-angle-right"></i>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+
+
+                <li>
+                    <a href="login.html">
+                        <i class="fa fa-sign-out"></i> Log out
+                    </a>
+                </li>
+            </ul>
+
+        </nav>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="wrapper wrapper-content fadeInUp">
+                    <div class="ibox">
+                        <div class="ibox-content">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="m-b-md">
+                                        <div class="pull-right"><span class="label label-warning">Pooling</span></div>
+                                        
+                                        <h2><span class="text-info">T88888888</span></h2>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-5">
+                                    <dl class="dl-horizontal" style="margin-bottom: 0px;">
+                                        <dt>Freelancer:</dt> <dd><a href="#" class="text-navy"> Smith, Alex</a></dd>
+                                        <br>
+                                        <dt>Start Date:</dt> <dd>2014-Aug-19</dd>
+                                        <dt>Due Date:</dt> <dd>2014-Aug-20</dd>
+                                        <br>
+                                        <dt>Source Language:</dt> <dd><code>English</code></dd>
+                                        <br>
+                                    </dl>
+                                </div>
+                                <div class="col-lg-7">
+                                    <dl class="dl-horizontal" style="margin-bottom: 0px;">
+                                        <dt>Senior Freelancer:</dt> <dd><a href="#" class="text-navy">Yang, Michael</a></dd><!-- if status is pooling, then here put nothing -->
+                                        <br>
+                                        <dt>Field:</dt> <dd>Accounting</dd>
+                                        <dt>Type:</dt> 
+                                        <dd>
+                                            <div class="tooltip-demo">
+                                                <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Translation with Translation Memory">TM</code>
+                                            </div>
+                                        </dd>
+                                        <br>
+                                        <dt>Target Languages:</dt> <dd><code>Chinese</code></dd>
+                                    </dl>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-5">
+                                    <dl class="dl-horizontal">
+                                        <dt>Test Files:</dt> 
+                                        <dd>
+                                            <ul class="list-unstyled project-files tooltip-demo">
+                                                <li><a href="" data-toggle="tooltip" data-placement="left" title="" data-original-title="46.13 K | 2014-07-21 10:04:59"><i class="fa fa-file"></i> test_document.docx</a> <a href=""><i class="fa fa-trash"></i></a></li>
+                                            </ul>
+                                            <div class="text-center m-t-md">
+                                                <a href="#" class="btn btn-xs btn-primary"><i class="fa fa-cloud-upload"></i> Upload Test files</a>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                </div>
+                                <div class="col-lg-7">
+                                    <dl class="dl-horizontal">
+                                        <dt>Final Files:</dt> 
+                                        <dd>
+                                            <ul class="list-unstyled project-files tooltip-demo">
+                                                <li><a href="" data-toggle="tooltip" data-placement="left" title="" data-original-title="46.13 K | 2014-07-21 10:04:59"><i class="fa fa-file"></i> Test_document.docx</a> <a href=""><i class="fa fa-trash"></i></a></li>
+                                            </ul>
+                                            <div class="text-center m-t-md">
+                                                <a href="#" class="btn btn-xs btn-primary"><i class="fa fa-cloud-upload"></i> Upload Final files</a>
+                                            </div>
+                                        </dd>
+                                    </dl>
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <form class="form-horizontal">
+                                        <div class="form-group">
+                                            <div class="col-sm-12">
+                                                <div class="row">
+                                                    <div class="col-md-1">
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <select class="form-control" name="account">
+                                                            <option>Select Senior Resource</option>
+                                                            <option>Translator 1</option>
+                                                            <option>Translator 2</option>
+                                                            <option>Translator 3</option>
+                                                            <option>...</option>
+                                                        </select>
+                                                    </div>
+                                                    
+                                                    <div class="col-md-2"><button class="btn btn-primary" type="submit">Assign Test</button></div> <!-- this button never disabled -->
+                                                    <div class="col-md-5" ><a href="" disabled class="btn btn-success" type="submit">Send to Senior Freelancer Pool</a></div>
+                                                    <!-- if the test has been send to senior pool, then the button need to be disabled then the test status should be pooling-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="row m-t-sm">
+                                <div class="col-lg-12">
+                                    <div class="panel blank-panel">
+                                        <div class="panel-heading">
+                                            <div class="panel-options">
+                                                <ul class="nav nav-tabs">
+                                                    <li class="active"><a href="#summary" data-toggle="tab"><i class="fa fa-th"></i> QA Summary</a></li>
+                                                    <li class=""><a href="#log" data-toggle="tab"><i class="fa fa-bug"></i> Error Log</a></li>
+                                                    <li class=""><a href="#instructions" data-toggle="tab"> <i class="fa fa-info-circle"></i> Instructions</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <div class="panel-body">
+
+                                            <div class="tab-content">
+                                                <div class="tab-pane active" id="summary">
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <form method="" class="form-horizontal">
+                                                                <div class="row">
+                                                                    <div class="col-lg-4">
+                                                                        <div class="well">
+                                                                            <h4>Critical</h4>
+                                                                            <ul>
+                                                                                <li>Error in particular visible part of documentation or software </li>
+                                                                                <li>Major error repeated in several locations</li>
+                                                                                <li>localisation error causing application to crash or negatively modifies/misrepresents functionality of the software </li>
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-4">
+                                                                        <div class="well">
+                                                                            <h4>Major</h4>
+                                                                            <ul>
+                                                                                <li>Error in highly visible part of doc or software, i.e. header, TOC, menu command, help/CBT topic </li>
+                                                                                <li>Error resulting in a misleading statement</li>
+                                                                                <li>Minor error repeated in several locations </li>
+                                                                                <li>Previous QA feedback not applied </li>
+                                                                                <li>Error resulting in potentially offensive statement</li>
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-4">
+                                                                        <div class="well">
+                                                                            <h4>Minor</h4>
+                                                                            <ul>
+                                                                                <li>Any error of a lesser severity than major</li>
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="hr-line-dashed"></div>
+                                                                <div class="row form-horizontal">
+                                                                    <div class="col-lg-6">
+                                                                        <div class="form-group">
+                                                                            <label class="col-sm-6 control-label">Number of Words *</label>
+                                                                            <div class="col-sm-4">
+                                                                                <input id="" name="" value="" type="number" class="form-control">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-6">
+                                                                        <div class="form-group">
+                                                                            <label class="col-sm-5 control-label">Max error points allowed *</label>
+                                                                            <div class="col-sm-4">
+                                                                                <p class="form-control text-info">8</p> <!-- this number get from "Number of Words" x 0.008 -->
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="table-responsive">
+                                                                    <table class="table">
+                                                                        <thead>
+                                                                        <tr>
+                                                                            <th width="15%">Error Category</th>
+                                                                            <th>Minor</th>
+                                                                            <th>Major</th>
+                                                                            <th>Critical</th>
+                                                                            <th>Total</th>
+                                                                            <th>max. allowed</th>
+                                                                        </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                        <tr>
+                                                                            <td class="tooltip-demo">Mistranslation <span data-toggle="tooltip" data-placement="top" title="" data-original-title="Source text incorrectly rendered when no authorization has been given to justify alterations."><i class="fa fa-question-circle"></i></span></td>
+                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
+                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
+                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
+                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
+                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="tooltip-demo">Accuracy <span data-toggle="tooltip" data-placement="top" title="" data-original-title="Unauthorized omissions/additions, headers/footers incorrectly translated, text accidentally left in the source language, project instructions not followed, query feedback not implemented, undertranslation/overtranslation."><i class="fa fa-question-circle"></i></span></td>
+                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
+                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
+                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
+                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
+                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="tooltip-demo">Terminology <span data-toggle="tooltip" data-placement="top" title="" data-original-title="Glossary adherence"><i class="fa fa-question-circle"></i></span></td>
+                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
+                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
+                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
+                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
+                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="tooltip-demo">Language <span data-toggle="tooltip" data-placement="top" title="" data-original-title="Grammar, Semantics, Spelling, Punctuation"><i class="fa fa-question-circle"></i></span></td>
+                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
+                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
+                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
+                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
+                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="tooltip-demo">Language <span data-toggle="tooltip" data-placement="top" title="" data-original-title="Adherence to Style Guidelines"><i class="fa fa-question-circle"></i></span></td>
+                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
+                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
+                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
+                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
+                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="tooltip-demo">Language <span data-toggle="tooltip" data-placement="top" title="" data-original-title="Country standard, local suitability"><i class="fa fa-question-circle"></i></span></td>
+                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
+                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
+                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
+                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
+                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td class="tooltip-demo">Language <span data-toggle="tooltip" data-placement="top" title="" data-original-title="Gui-terminology, Cross-project terminology, Abbreviation"><i class="fa fa-question-circle"></i></span></td>
+                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
+                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
+                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
+                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
+                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td colspan="3"></td>
+                                                                            <td><strong>Total</strong></td>
+                                                                            <td><p class="form-control text-info">8</p></td> <!-- this number should automaticly caculated -->
+                                                                            <td><p class="form-control text-danger">22</p></td><!-- this number should automaticly caculated -->
+                                                                        </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                                <div class="hr-line-dashed"></div>
+                                                                <div class="row">
+                                                                    <div class="col-lg-12">
+                                                                        <h4><i class="fa fa-file-text"></i> Comments </h4>  
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-lg-12">
+                                                                        <div class="summernote"></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="hr-line-dashed"></div>
+                                                                <div class="text-right">
+                                                                    <a href="#" class="btn btn-sm btn-primary"><i class="fa fa-save"></i> Update</a>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane" id="log">
+                                                    <div class="table-responsive">
+                                                        <table class="table table-striped">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Location</th>
+                                                                    <th>Error Category</th>
+                                                                    <th>Error Severity </th>
+                                                                    <th>Repeat Error</th>
+                                                                    <th>Source text</th>
+                                                                    <th>Translation used</th>
+                                                                    <th>Correction/Suggestion</th>
+                                                                    <th>Comments</th>
+                                                                    <th>Translator's feedback</th>
+                                                                    <th></th>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td>Page2 Line 59</td>
+                                                                        <td>Accuracy</td>
+                                                                        <td>Major</td>
+                                                                        <td>dsdfasfdfdas fadsfasdfadsfads</td>
+                                                                        <td>kjf;asdfjd;askfsad; fkjasd;fa;dsjfasd;kfj</td>
+                                                                        <td>dfkj sfljd lsdfjsld dsfkjsdf dslfj</td>
+                                                                        <td>dfkj sfljd lsdfjsld dsfkjsdf dslfj</td>
+                                                                        <td>dfkj sfljd lsdfjsld dsfkjsdf dslfj</td>
+                                                                        <td>dfkj sfljd lsdfjsld dsfkjsdf dslfj dklfsdfjlsdf  sdlkfjdsf sdflkj sd</td>
+                                                                        <td>
+                                                                            <a data-toggle="modal" href="#modal-log"><i class="fa fa-edit"></i></a>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Page2 Line 59</td>
+                                                                        <td>Accuracy</td>
+                                                                        <td>Major</td>
+                                                                        <td>dsdfasfdfdas fadsfasdfadsfads</td>
+                                                                        <td>kjf;asdfjd;askfsad; fkjasd;fa;dsjfasd;kfj</td>
+                                                                        <td>dfkj sfljd lsdfjsld dsfkjsdf dslfj</td>
+                                                                        <td>dfkj sfljd lsdfjsld dsfkjsdf dslfj</td>
+                                                                        <td>dfkj sfljd lsdfjsld dsfkjsdf dslfj</td>
+                                                                        <td>dfkj sfljd lsdfjsld dsfkjsdf dslfj dklfsdfjlsdf  sdlkfjdsf sdflkj sd</td>
+                                                                        <td>
+                                                                            <a data-toggle="modal" href="#modal-log"><i class="fa fa-edit"></i></a>
+                                                                        </td>
+                                                                    </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="text-center">
+                                                        <a data-toggle="modal" class="btn btn-outline btn-primary" href="#modal-log">Add Error Log</a>
+                                                    </div>
+
+                                                </div>
+                                                <div class="tab-pane" id="instructions">
+
+                                                    <div class="list-group">
+                                                        <a href="" class="list-group-item">
+                                                            <h3 class="list-group-item-heading">Performing the review</h3>
+
+                                                            <p class="list-group-item-text">
+                                                                Go to the Error Log tab.<br>
+                                                                If you have entered your language and the date, these will show on the relevant cells.<br>
+                                                                For each error identified, proceed as follows: 
+                                                                <ol>
+                                                                    <li>Enter the location (file name, page number, etc) where the error was found. </li>
+                                                                    <li>Select an error category from the dropdown list. See below for definitions of available error categories.</li>
+                                                                    <li>Select the severity from the dropdown list. See below for definitions of severity levels. </li>
+                                                                    <li>Enter the source term or sentence, the translation used, and your suggested correction. </li>
+                                                                    <li>Please add further comments in English to clarify the reason for your correction. This should be done in a professional tone, with no confrontational or personal comments and in a way so that a non-native speaker would be able to understand. </li>
+                                                                    <li>Please make sure to report only errors, rather than subjective preferences. If you think that a personal choice would be more suitable, please mark this accordingly and do not count it in the final results. </li>
+                                                                    <li>Please change the name of the file to include the language two-letter identifier, as per ISO 639 standard. </li>
+                                                                </ol>
+                                                                <strong>NOTE: if your suggestions are desirable but do not highlight an issue, please list them in the Error Log anyway and add a comment to elaborate on your suggestion. No severity will be necessary but it may be useful to list the error category.                                                       
+                                                        </strong>
+                                                            </p>
+                                                        </a>
+                                                        <a href="" class="list-group-item">
+                                                            <h3 class="list-group-item-heading">Updating the QA Summary tab</h3>
+                                                            <p class="list-group-item-text">
+                                                                Go to the QA Summary tab. <br> 
+                                                                For each error category, the error points score is automatically calculated (1 point for each minor error, 5 points for each major error, maximum amount of points plus one for each critical error). <br>
+                                                                A PASS is achieved if the total number of error points is below or equivalent to the maximum number of error points allowed. <br>
+                                                                If the number of total errors is above the allowed quota, the form will automatically show a FAIL score. <br><br>
+                                                                <strong>NOTE:</strong> If the number of error points allowed for a category is exceeded but the overall result is still within the allowed threshold, the formula will still calculate a PASS. The language lead/the PM may override this depending on client requirements and manually default the result to a FAIL.                                                        
+                                                            </p>
+                                                        </a>
+                                                        <a href="" class="list-group-item">
+                                                            <h3 class="list-group-item-heading">Error categories:</h3>
+
+                                                            <p class="list-group-item-text">
+                                                                <dl class="dl-horizontal">
+                                                                  <dt><em>Category</em></dt>
+                                                                  <dd><em>Examples</em></dd>
+                                                                  <br>
+                                                                  <dt>Mistranslation</dt>
+                                                                  <dd><ul class="list-unstyled">Source text incorrectly rendered when no authorization has been given to justify alterations.</ul></dd>
+                                                                  <dt>Accuracy</dt>
+                                                                  <dd>
+                                                                    <ul class="list-unstyled">
+                                                                        <li>Unauthorized omissions.</li>
+                                                                        <li>Unauthorized additions.</li>
+                                                                        <li>Headers/Footers incorrectly translated.</li>
+                                                                        <li>Text accidentally left in the source language.</li>
+                                                                        <li>Project instructions not followed.</li>
+                                                                        <li>Query feedback not implemented.</li>
+                                                                        <li>Undertranslation/Overtranslation.</li>
+                                                                    </ul>
+                                                                  </dd>
+                                                                  <dt>Terminology</dt>
+                                                                  <dd>
+                                                                    <ul class="list-unstyled">
+                                                                        <li>Project or client glossary not followed.</li>
+                                                                        <li>OS terminology not followed</li>
+                                                                        <li>Incorrect UI references (validated UI mismatch).</li>
+                                                                        <li>Industry-standard terminology not followed.</li>
+                                                                        <li class="text-danger">Inconsistent use of terminology.</li>
+                                                                        <li>Shortcut keys not correctly localized.</li>
+                                                                    </ul>
+                                                                  </dd>
+                                                                  <dt>Language</dt>
+                                                                  <dd>
+                                                                    <ul class="list-unstyled">
+                                                                        <li>Grammatical errors</li>
+                                                                        <li>Semantics (ambiguous meaning)</li>
+                                                                        <li>Syntactical errors</li>
+                                                                        <li>Spelling errors</li>
+                                                                        <li>Punctuation errors</li>
+                                                                        <li>Typos</li>
+                                                                    </ul>
+                                                                  </dd>
+                                                                  <dt>Style</dt>
+                                                                  <dd>
+                                                                    <ul class="list-unstyled">
+                                                                        <li>Style conventions not adhered to.</li>
+                                                                        <li>Unidiomatic use of target language</li>
+                                                                        <li>Target text follows source text too closely.</li>
+                                                                        <li>Register/tone not appropriate for target audience.</li>
+                                                                        <li><strong>Note:</strong> it is often difficult to capture bad style in terms of individual errors. The reviewer may generic log a comment in the Comments space under the QA Summary tab, providing as many examples as possible.</li>
+                                                                    </ul>
+                                                                  </dd>
+                                                                  <dt>Country</dt>
+                                                                  <dd>
+                                                                    <ul class="list-unstyled">
+                                                                        <li>Date/time format not adapted to local standards.</li>
+                                                                        <li>Currency symbol not adapted to local standard, amounts not converted.</li>
+                                                                        <li>Examples not relevant to target culture (examples, Italian students sitting a spelling test in a standard Italian school).</li>
+                                                                        <li>Imperial measurements not converted to metric system.</li>
+                                                                        <li>Local contact information not implemented although instructions were provided in this respect.</li>
+                                                                        <li>Source part numbers not amended with target ones although as per instructions.</li>
+                                                                    </ul>
+                                                                  </dd>
+                                                                  <dt>Consistency</dt>
+                                                                  <dd>
+                                                                    <ul class="list-unstyled">
+                                                                        <li>Cross-references</li>
+                                                                        <li>TOC/Index</li>
+                                                                        <li>Help contents file inconsistent with topic titles.</li>
+                                                                        <li>Headers structure</li>
+                                                                        <li>Note: For issues with inconsistent terminology, please refer to the Terminology section</li>
+                                                                    </ul>
+                                                                  </dd>
+                                                                </dl>
+                                                            </p>
+                                                        </a>
+                                                        <a href="" class="list-group-item">
+                                                            <h3 class="list-group-item-heading">Severity levels:</h3>
+
+                                                            <p class="list-group-item-text">
+                                                                <dl class="dl-horizontal">
+                                                                  <dt><em>Severity</em></dt>
+                                                                  <dd><em>Examples</em></dd>
+                                                                  <br>
+                                                                  <dt>Critical</dt>
+                                                                  <dd>
+                                                                    <ul class="list-unstyled">
+                                                                        <li>Error in particularly visible part of documentation or software</li>
+                                                                        <li>Major error repeated in several locations</li>
+                                                                        <li>Error causing the application to crash or negatively modifying/misrepresenting functionality of the software</li>
+                                                                        <li>Error resulting in potentially offensive statement</li>
+                                                                    </ul>
+                                                                  </dd>
+                                                                  <dt>Major</dt>
+                                                                  <dd>
+                                                                    <ul class="list-unstyled">
+                                                                        <li>Error in highly visible part of documentation or software (header, TOC, menu command, help/CBT topic)</li>
+                                                                        <li>Error resulting in a misleading statement</li>
+                                                                        <li>Minor error repeated in several locations</li>
+                                                                        <li>Query answers or QA feedback not applied</li>
+                                                                        <li>Generic error to indicate generally inadequate style</li>
+                                                                    </ul>
+                                                                  </dd>
+                                                                  <dt>Minor</dt>
+                                                                  <dd>
+                                                                    <ul class="list-unstyled">
+                                                                        <li>Any error of a lesser severity than major</li>
+                                                                        <li><strong>Note: </strong>repeated minor errors may be counted as one major error</li>
+                                                                    </ul>
+                                                                  </dd>
+                                                                </dl>
+                                                            </p>
+                                                        </a>
+                                                        <a href="" class="list-group-item">
+                                                            <h3 class="list-group-item-heading">Repeat errors:</h3>
+
+                                                            <p class="list-group-item-text">If an error occurs three times or more, do not list the separate occurrences. Log only one occurrence and choose Yes in this column. </p>
+                                                        </a>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- add error log -->
+        <div id="modal-log" class="modal fade" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Input/Edit Quantity and Price</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Location </label>
+                                        <div class="col-sm-9">
+                                            <input id="" name="" type="text" value="Please add file name/page number/string ID/etc." class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Error Category </label>
+                                        <div class="col-sm-9">
+                                            <select class="form-control" id="" name="" value="" aria-required="true">
+                                                <option></option>
+                                                <option>Mistranslation</option>
+                                                <option>Accuracy</option>
+                                                <option>Terminology</option>
+                                                <option>Language</option>
+                                                <option>Style</option>
+                                                <option>Country</option>
+                                                <option>Consistency</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Error Severity </label>
+                                        <div class="col-sm-9">
+                                            <select class="form-control" id="" name="" value="" aria-required="true">
+                                                <option></option>
+                                                <option>Minor</option>
+                                                <option>Major</option>
+                                                <option>Critical</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Repeat Error </label>
+                                        <div class="col-sm-9">
+                                            <select class="form-control" id="" name="" value="" aria-required="true">
+                                                <option></option>
+                                                <option>Yes</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Source text </label>
+                                        <div class="col-sm-9">
+                                            <input id="" name="" type="text" value="" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Translation used </label>
+                                        <div class="col-sm-9">
+                                            <input id="" name="" type="text" value="" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Correction/Suggestion </label>
+                                        <div class="col-sm-9">
+                                            <input id="" name="" type="text" value="" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Comments </label>
+                                        <div class="col-sm-9">
+                                            <input id="" name="" type="text" value="" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Translator's feedback </label>
+                                        <div class="col-sm-9">
+                                            <input id="" name="" type="text" value="" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-w-m btn-white" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-w-m btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="pull-right">
+                10GB of <strong>250GB</strong> Free.
+            </div>
+            <div>
+                <strong>Copyright</strong> Example Company &copy; 2014-2015
+            </div>
+        </div>
+
+        </div>
+        </div>
+    </div>
+
+    <!-- Mainly scripts -->
+    <script src="js/jquery-1.10.2.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="js/inspinia.js"></script>
+    <script src="js/plugins/pace/pace.min.js"></script>
+
+    <!-- SUMMERNOTE -->
+    <script src="js/plugins/summernote/summernote.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $('.summernote').summernote();
+        });
+        var edit = function() {
+            $('.click2edit').summernote({focus: true});
+        };
+        var save = function() {
+            var aHTML = $('.click2edit').code(); //save HTML If you need(aHTML: array).
+            $('.click2edit').destroy();
+        };
+
+    </script>
+
+    <script>
+        $(document).ready(function(){
+
+            $('#loading-example-btn').click(function () {
+                btn = $(this);
+                simpleLoad(btn, true)
+
+                // Ajax example
+//                $.ajax().always(function () {
+//                    simpleLoad($(this), false)
+//                });
+
+                simpleLoad(btn, false)
+            });
+        });
+
+        function simpleLoad(btn, state) {
+            if (state) {
+                btn.children().addClass('fa-spin');
+                btn.contents().last().replaceWith(" Loading");
+            } else {
+                setTimeout(function () {
+                    btn.children().removeClass('fa-spin');
+                    btn.contents().last().replaceWith(" Refresh");
+                }, 2000);
+            }
+        }
+    </script>
+</body>
+
+</html>
