@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>PaperTask | Client Profile</title>
+    <title>PaperTask | My Profile</title>
 
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" media="screen" />
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -308,20 +308,19 @@
                     <div class="ibox">
                         <div class="ibox-title">
                             <h5>Doe, John</h5>
-                            <div class="ibox-tools">
-                                <span class="label label-primary">Active</span> <span class="label label-default">Unactive</span>
-                            </div>
                         </div>
 
                         <div class="ibox-content profile-content">
                             <p><i class="fa fa-user"></i> &nbsp; johndoe &nbsp; <i class="fa fa-male"></i> <i class="fa fa-female"></i></p>
                             <p><i class="fa fa-envelope"></i> &nbsp; johndoe@yahoo.com</p>
-                            <p><i class="fa fa-tag"></i> &nbsp; CL8881212 (Alias or resource No.)</p> <!-- Freelancer Alias generate by system automaticly -->
+                            <p><i class="fa fa-tag"></i> &nbsp; FR8881212 (Alias or resource No.)</p> <!-- Freelancer Alias generate by system automaticly -->
                             <p><i class="fa fa-phone"></i> &nbsp; 001 878888888</p>
-                            <p><i class="fa fa-briefcase"></i> &nbsp; Marketing Manager</p>
-                            <p><i class="fa fa-building"></i> &nbsp; IBM China</p>
                             <p><i class="fa fa-map-marker"></i> &nbsp; City, United States</p>
-                            <p><i class="fa fa-link"></i> &nbsp; www.ibm.com.cn</p>
+                            <p class="small font-bold">
+                                <span><i class="fa fa-circle text-danger"></i> &nbsp; Senior Freelancer</span>
+                            </p>
+
+                            <p><i class="fa fa-file-text"></i><a href="" class="text-info"> &nbsp; John.docx</a></p>
                             <form role="form" class="form-inline">
                                 <div class="form-group">
                                     <input type="password" placeholder="Reset password" id="" class="form-control">
@@ -329,26 +328,28 @@
                                 <button class="btn btn-danger" type="submit">Reset</button>
                             </form>
                             <div class="hr-line-dashed"></div>
-                            <p><span class="label label-info">PM</span> Yang, Michael &nbsp;<span class="label label-info">Sales</span> Jiang, Kevin</p>
-                            <div class="hr-line-dashed"></div>
-                            <h4>Client Type </h4>
+                            <h4>Freelancer Type </h4>
                             <div class="row file-manager">
                                 <ul class="tag-list" style="padding: 0">
-                                    <li><a>Contracted</a></li>
+                                    <li><a href=""><i class="fa fa-coffee"></i> Translation</a></li>
+                                    <li><a href=""><i class="fa fa-desktop"></i> Desktop Publishing</a></li>
+                                    <li><a href=""><i class="fa fa-comments-o"></i> Interpreting</a></li>
                                 </ul>
                             </div>
                             <div class="hr-line-dashed"></div>
-                            <h4>Default Service Level </h4>
-                            <div class="row file-manager">
-                                <ul class="tag-list" style="padding: 0">
-                                    <li><a>Professional</a></li>
-                                </ul>
-                            </div>
-                            <div class="hr-line-dashed"></div>
-                            <h4>Comments of PaperTask</h4>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitat.
-                            </p>
+                            <h4>Payment information</h4>
+                            <p><strong>Paypal</strong>: johndoe@yahoo.com</p>
+                            <p><strong>Alipay</strong>: johndoe@yahoo.com</p>
+                            <p><strong>Bank Info</strong>: </p>
+                            <address class="well">
+                                <strong>Bank Name</strong><br>
+                                address1<br>
+                                City, country<br>
+                                <strong>Beneficiary Name</strong>: John Doe<br>
+                                <strong>Account No./IBAN</strong>: 9988888888<br>
+                                <strong>Swift Code</strong>: 9988888888<br>
+                                <strong>ABA Routing Number</strong>: 9988888888
+                            </address>
 
                             <button class="btn btn-primary btn-block" type="button"><i class="fa fa-paste"></i> Edit</button>
                         </div>
@@ -359,9 +360,11 @@
                         <div class="panel-heading">
                             <div class="panel-options">
                                 <ul class="nav nav-tabs">
-                                    <li class="active"><a data-toggle="tab" href="#tab-1">Service Prices</a></li>
-                                    <li class=""><a data-toggle="tab" href="#tab-2">Resource Pool</a></li>
-                                    <li class=""><a data-toggle="tab" href="#tab-3">Projects</a></li>
+                                    <li class="active"><a data-toggle="tab" href="#tab-1">Skills and Price (PaperTask)</a></li>
+                                    <li class=""><a data-toggle="tab" href="#tab-2">Skills and Price (Personal)</a></li>
+                                    <li class=""><a data-toggle="tab" href="#tab-3">Tasks</a></li>
+                                    <li class=""><a data-toggle="tab" href="#tab-4">Tests</a></li>
+                                    <li class=""><a data-toggle="tab" href="#tab-5">Resume</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -371,9 +374,56 @@
                                 <div id="tab-1" class="tab-pane active">
                                     <div class="ibox float-e-margins">
                                         <div class="ibox-title">
-                                            <h3><i class="fa fa-coffee"></i> Translation</h3>
+                                            <h5><i class="fa fa-coffee"></i> Translation</h5>
                                         </div>
                                         <div class="ibox-content">
+                                            <h4>Clients <small>- means freelancer can do tasks for these clients.</small></h4>
+                                            <table class="table">
+                                                <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Client's Alias</th>
+                                                    <th>Task Done</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>CL8881212</td> <!-- this is alias is clients alias -->
+                                                    <td>88</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>CL8881213</td>
+                                                    <td>68</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+
+                                            <div class="hr-line-dashed"></div>
+                                            <h4>Specialism <small>- with <i class="fa fa-check"></i> means field tested and pass.</small></h4>
+                                            <div class="row file-manager">
+                                                <ul class="tag-list" style="padding: 0">
+                                                    <li><a href=""><i class="fa fa-check"></i> Family</a></li>
+                                                    <li><a href=""><i class="fa fa-check"></i> Work</a></li>
+                                                    <li><a href=""><i class="fa fa-check"></i> Home</a></li>
+                                                    <li><a href="">Children</a></li>
+                                                    <li><a href="">Holidays</a></li>
+                                                    <li><a href="">Music</a></li>
+                                                    <li><a href="">Photography</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+                                            <h4>Cat tools </h4>
+                                            <div class="row file-manager">
+                                                <ul class="tag-list" style="padding: 0">
+                                                    <li><a href="">Children</a></li>
+                                                    <li><a href="">Holidays</a></li>
+                                                    <li><a href="">Music</a></li>
+                                                    <li><a href="">Photography</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
                                             <h4>Languages and Price </h4>
                                             <div class="table-responsive">
                                                 <table class="table table-striped">
@@ -428,9 +478,49 @@
                                     </div>
                                     <div class="ibox float-e-margins">
                                         <div class="ibox-title">
-                                            <h3><i class="fa fa-desktop"></i> Desktop Publishing</h3>
+                                            <h5><i class="fa fa-desktop"></i> Desktop Publishing</h5>
                                         </div>
                                         <div class="ibox-content">
+                                            <h4>Clients <small>- means freelancer can do tasks for these clients.</small></h4>
+                                            <table class="table">
+                                                <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Client's Alias</th>
+                                                    <th>Task Done</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>CL8881212</td> <!-- this is alias is clients alias -->
+                                                    <td>88</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>CL8881213</td>
+                                                    <td>68</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                            <h4>Operating System </h4>
+                                            <div class="row file-manager">
+                                                <ul class="tag-list" style="padding: 0">
+                                                    <li><a href=""><i class="fa fa-apple"></i> MAC</a></li>
+                                                    <li><a href=""><i class="fa fa-windows"></i> Windows</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+                                            <h4>Cat tools </h4>
+                                            <div class="row file-manager">
+                                                <ul class="tag-list" style="padding: 0">
+                                                    <li><a href="">Children</a></li>
+                                                    <li><a href="">Holidays</a></li>
+                                                    <li><a href="">Music</a></li>
+                                                    <li><a href="">Photography</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
                                             <h4>Softwares and Price </h4>
                                             <div class="table-responsive">
                                                 <table class="table table-striped">
@@ -462,37 +552,55 @@
                                     </div>
                                     <div class="ibox float-e-margins">
                                         <div class="ibox-title">
-                                            <h3><i class="fa fa-gears"></i> Engineering</h3>
+                                            <h5><i class="fa fa-comments-o"></i> Interpreting</h5>
                                         </div>
                                         <div class="ibox-content">
-                                            <h4>Categories and Price </h4>
-                                            <div class="table-responsive">
-                                                <table class="table table-striped">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>#</th>
-                                                            <th>Category </th>
-                                                            <th>Unit </th>
-                                                            <th>Price </th>
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                        <tr>
-                                                            <td>1</td>
-                                                            <td>Engineering</td>
-                                                            <td>Hour</td>
-                                                            <td class="text-info"><strong>CNY 100.00</strong></td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
+                                            <table class="table">
+                                                <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Client's Alias</th>
+                                                    <th>Task Done</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>CL8881212</td> <!-- this is alias is clients alias -->
+                                                    <td>88</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>CL8881213</td>
+                                                    <td>68</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+
+                                            <div class="hr-line-dashed"></div>
+                                            <h4>Specialism <small>- with <i class="fa fa-check"></i> means field tested and pass.</small></h4>
+                                            <div class="row file-manager">
+                                                <ul class="tag-list" style="padding: 0">
+                                                    <li><a href=""><i class="fa fa-check"></i> Family</a></li>
+                                                    <li><a href=""><i class="fa fa-check"></i> Work</a></li>
+                                                    <li><a href=""><i class="fa fa-check"></i> Home</a></li>
+                                                    <li><a href="">Children</a></li>
+                                                    <li><a href="">Holidays</a></li>
+                                                    <li><a href="">Music</a></li>
+                                                    <li><a href="">Photography</a></li>
+                                                </ul>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="ibox float-e-margins">
-                                        <div class="ibox-title">
-                                            <h3><i class="fa fa-comments-o"></i> Interpreting</h3>
-                                        </div>
-                                        <div class="ibox-content">
+                                            <div class="hr-line-dashed"></div>
+                                            <h4>Cat tools </h4>
+                                            <div class="row file-manager">
+                                                <ul class="tag-list" style="padding: 0">
+                                                    <li><a href="">Children</a></li>
+                                                    <li><a href="">Holidays</a></li>
+                                                    <li><a href="">Music</a></li>
+                                                    <li><a href="">Photography</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
                                             <h4>Languages and Price </h4>
 
                                             <div class="table-responsive">
@@ -522,46 +630,165 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 <div id="tab-2" class="tab-pane">
-                                    <div class="ibox">
+                                    <div class="ibox float-e-margins">
                                         <div class="ibox-title">
-                                            <h5>Translators Pool</h5>
+                                            <h3><i class="fa fa-coffee"></i> Translation</h3>
                                         </div>
                                         <div class="ibox-content">
-                                            <table class="table">
-                                                <thead>
-                                                <tr>
-                                                    <th>#</th>
-                                                    <th>Name</th>
-                                                    <th>Type</th>
-                                                    <th>Task Done</th>
-                                                    <th></th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td><a href="">Doe, John</a></td>
-                                                    <td><i class="fa fa-coffee"> Translation</i></td>
-                                                    <td>88</td>
-                                                    <td><a href=""><i class="fa fa-trash-o text-danger"></i></a></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td><a href="">Leo, Jacob</a></td>
-                                                    <td><i class="fa fa-desktop"> Desktop Publishing</i></td>
-                                                    <td>68</td>
-                                                    <td><a href=""><i class="fa fa-trash-o text-danger"></i></a></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>2</td>
-                                                    <td><a href="">Leo, Jacob</a></td>
-                                                    <td><i class="fa fa-comments-o"> Interpreting</i></td>
-                                                    <td>68</td>
-                                                    <td><a href=""><i class="fa fa-trash-o text-danger"></i></a></td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
+                                            <h4>Specialism <small>- with <i class="fa fa-check"></i> means field tested and pass.</small></h4>
+                                            <div class="row file-manager">
+                                                <ul class="tag-list" style="padding: 0">
+                                                    <li><a href=""><i class="fa fa-check"></i> Family</a></li>
+                                                    <li><a href=""><i class="fa fa-check"></i> Work</a></li>
+                                                    <li><a href=""><i class="fa fa-check"></i> Home</a></li>
+                                                    <li><a href="">Children</a></li>
+                                                    <li><a href="">Holidays</a></li>
+                                                    <li><a href="">Music</a></li>
+                                                    <li><a href="">Photography</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+                                            <h4>Cat tools </h4>
+                                            <div class="row file-manager">
+                                                <ul class="tag-list" style="padding: 0">
+                                                    <li><a href="">Children</a></li>
+                                                    <li><a href="">Holidays</a></li>
+                                                    <li><a href="">Music</a></li>
+                                                    <li><a href="">Photography</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+                                            <h4>Languages and Price </h4>
+                                            <div class="table-responsive">
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>#</th>
+                                                            <th>Source Language </th>
+                                                            <th>Target Language </th>
+                                                            <th>Translation Price</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr >
+                                                            <td>1</td>
+                                                            <td>English</td>
+                                                            <td>Chinese</td>
+                                                            <td class="text-info"><strong>CNY 0.12</strong></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ibox float-e-margins">
+                                        <div class="ibox-title">
+                                            <h3><i class="fa fa-desktop"></i> Desktop Publishing</h3>
+                                        </div>
+                                        <div class="ibox-content">
+                                            <h4>Operating System </h4>
+                                            <div class="row file-manager">
+                                                <ul class="tag-list" style="padding: 0">
+                                                    <li><a href=""><i class="fa fa-apple"></i> MAC</a></li>
+                                                    <li><a href=""><i class="fa fa-windows"></i> Windows</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+                                            <h4>Cat tools </h4>
+                                            <div class="row file-manager">
+                                                <ul class="tag-list" style="padding: 0">
+                                                    <li><a href="">Children</a></li>
+                                                    <li><a href="">Holidays</a></li>
+                                                    <li><a href="">Music</a></li>
+                                                    <li><a href="">Photography</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+                                            <h4>Softwares and Price </h4>
+                                            <div class="table-responsive">
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>#</th>
+                                                            <th>Languages </th>
+                                                            <th>Software </th>
+                                                            <th>Page <i class="fa fa-apple"></th>
+                                                            <th>Page <i class="fa fa-windows"></i></th>
+                                                            <th>Hour <i class="fa fa-apple"></th>
+                                                            <th>Hour <i class="fa fa-windows"></i></th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr>
+                                                            <td>1</td>
+                                                            <td>European/CE/Greek/Russian</td>
+                                                            <td>Indesign</td>
+                                                            <td class="text-info"><strong>CNY 12.00</strong></td>
+                                                            <td class="text-info"><strong>CNY 12.00</strong></td>
+                                                            <td class="text-info"><strong>CNY 50.00</strong></td>
+                                                            <td class="text-info"><strong>CNY 60.00</strong></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ibox float-e-margins">
+                                        <div class="ibox-title">
+                                            <h3><i class="fa fa-comments-o"></i> Interpreting</h3>
+                                        </div>
+                                        <div class="ibox-content">
+                                            <h4>Specialism </h4>
+                                            <div class="row file-manager">
+                                                <ul class="tag-list" style="padding: 0">
+                                                    <li><a href=""><i class="fa fa-check"></i> Family</a></li>
+                                                    <li><a href=""><i class="fa fa-check"></i> Work</a></li>
+                                                    <li><a href=""><i class="fa fa-check"></i> Home</a></li>
+                                                    <li><a href="">Children</a></li>
+                                                    <li><a href="">Holidays</a></li>
+                                                    <li><a href="">Music</a></li>
+                                                    <li><a href="">Photography</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+                                            <h4>Cat tools </h4>
+                                            <div class="row file-manager">
+                                                <ul class="tag-list" style="padding: 0">
+                                                    <li><a href="">Children</a></li>
+                                                    <li><a href="">Holidays</a></li>
+                                                    <li><a href="">Music</a></li>
+                                                    <li><a href="">Photography</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+                                            <h4>Languages and Price </h4>
+
+                                            <div class="table-responsive">
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>#</th>
+                                                            <th>Source Language </th>
+                                                            <th>Target Language </th>
+                                                            <th>Interpreting Service</th>
+                                                            <th>Price/Day</th>
+                                                            <th>Price/half-Day</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr>
+                                                            <td>1</td>
+                                                            <td>English</td>
+                                                            <td>Chinese</td>
+                                                            <td>Consecutive</td>
+                                                            <td class="text-info"><strong>CNY 5000.00</strong></td>
+                                                            <td class="text-info"><strong>CNY 4000.00</strong></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -576,17 +803,15 @@
                                                                 <span class="label label-default">Completed</span>
                                                             </td>
                                                             <td class="project-title">
-                                                                <a href="#">88888888</a>
+                                                                <a href="#">88888888-01</a>
                                                             </td>
 
                                                             </td>
                                                             <td class="project-title">
-                                                                <strong>Project Name dfadsfja;kfja;dkfja;dfadsfja;kfja;dkfja;</strong>
-                                                                <br />
-                                                                <small>2014.Sep.08 -  2014.Oct.28</small>
+                                                                Task Name dfadsfja;kfja;dkfja;
                                                             </td>
-                                                            <td class="project-title text-info">
-                                                                <strong>CNY 868.88</strong>
+                                                            <td class="project-title">
+                                                                2014.Sep.08 -  2014.Oct.28
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -594,15 +819,13 @@
                                                                 <span class="label label-primary">Ongoing</span>
                                                             </td>
                                                             <td class="project-title">
-                                                                <a href="#">88887366</a>
+                                                                <a href="#">88887366-02</a>
                                                             </td>
                                                             <td class="project-title">
-                                                                <strong>Project Name</strong>
-                                                                <br />
-                                                                <small>2014.Sep.08 -  2014.Oct.28</small>
+                                                                Task Name
                                                             </td>
-                                                            <td class="project-title text-info">
-                                                                <strong>CNY 1868.88</strong>
+                                                            <td class="project-title">
+                                                                2014.Sep.08 -  2014.Oct.28
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -619,6 +842,86 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div id="tab-4" class="tab-pane">
+                                    <div class="ibox">
+                                        <div class="ibox-content">
+                                            <div class="project-list">
+                                                <table class="table table-hover">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="project-status" width="1%">
+                                                                <span class="label label-primary">Passed</span>
+                                                            </td>
+                                                            <td class="project-title">
+                                                                <a href="#">Information technology</a>
+                                                            </td>
+
+                                                            </td>
+                                                            <td class="project-title">
+                                                                Test Name dfadsfja;kfja;dkfja;
+                                                            </td>
+                                                            <td class="project-title">
+                                                                2014.Sep.08 -  2014.Oct.28
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="project-status" width="1%">
+                                                                <span class="label label-danger">Failed</span>
+                                                            </td>
+                                                            <td class="project-title">
+                                                                <a href="#">Law</a>
+                                                            </td>
+                                                            <td class="project-title">
+                                                                Client Name
+                                                            </td>
+                                                            <td class="project-title">
+                                                                2014.Sep.08 -  2014.Oct.28
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="btn-group text-right">
+                                                <button type="button" class="btn btn-white"><i class="fa fa-chevron-left"></i></button>
+                                                <button class="btn btn-white">1</button>
+                                                <button class="btn btn-white  active">2</button>
+                                                <button class="btn btn-white">3</button>
+                                                <button class="btn btn-white">4</button>
+                                                <button type="button" class="btn btn-white"><i class="fa fa-chevron-right"></i> </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="tab-5" class="tab-pane">
+
+                                    <div class="ibox float-e-margins">
+                                        <div class="ibox-title">
+                                            <h3><i class="fa fa-cog"></i> Working Experiences</h3>
+                                        </div>
+                                        <div class="ibox-content">
+                                            <p> details of working experience</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="ibox float-e-margins">
+                                        <div class="ibox-title">
+                                            <h3><i class="fa fa-graduation-cap"></i> Education</h3>
+                                        </div>
+                                        <div class="ibox-content">
+                                            <p> details of education</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="ibox float-e-margins">
+                                        <div class="ibox-title">
+                                            <h3><i class="fa fa-comment-o"></i> Recommended</h3>
+                                        </div>
+                                        <div class="ibox-content">
+                                            <p> Kevin<br />kevin@yahoo.com<br />01086765252</p>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
 

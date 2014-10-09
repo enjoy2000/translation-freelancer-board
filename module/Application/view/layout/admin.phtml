@@ -22,7 +22,7 @@
         ->prependFile($this->basePath() . '/js/common.js')
         ->prependFile($this->basePath() . '/js/plugins/slimscroll/jquery.slimscroll.min.js')
         ->prependFile($this->basePath() . '/js/plugins/metisMenu/jquery.metisMenu.js')
-        //->prependFile($this->basePath() . '/js/angular.min.js')
+        ->prependFile($this->basePath() . '/js/angular.min.js')
         ->prependFile($this->basePath() . '/js/bootstrap.min.js')
         ->prependFile($this->basePath() . '/js/jquery-1.10.2.js')
         ->prependFile($this->basePath() . '/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
@@ -160,7 +160,7 @@
             </nav>
         </div>
 
-        <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="wrapper wrapper-content">
             <div class="row">
                 <div class="col-lg-12">
                     <!-- Flash Messenger -->
@@ -197,6 +197,8 @@
 </div>
 
 <?php echo $this->inlineScript() ?>
-<script>var angularApp = angularApp || angular.module('project', []);</script>
+<script>if(typeof(angular) != 'undefined' && typeof(angularApp) == 'undefined'){
+        var angularApp = angularApp || angular.module('project', []);
+    }</script>
 </body>
 </html>

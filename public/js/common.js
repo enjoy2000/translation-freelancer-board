@@ -56,6 +56,9 @@ function callOnce(){
 }
 (function(){
     modalData = {};
+    if(typeof(angular) == 'undefined'){
+        return;
+    }
     var $scope = angular.element("#modalContainer").scope();
 
     function isModalControllerReady(){
