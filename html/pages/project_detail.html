@@ -13,6 +13,7 @@
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
     <link href="css/plugins/summernote/summernote.css" rel="stylesheet">
     <link href="css/plugins/summernote/summernote-bs3.css" rel="stylesheet">
+    <link href="css/plugins/datapicker/datepicker3.css" rel="stylesheet">
     <link href="css/animate.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
@@ -464,38 +465,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="hr-line-dashed"></div>
-                            <div class="row">
-                                <div class="col-lg-5">
-                                    <dl class="dl-horizontal">
-                                        <dt>Project Files:</dt> 
-                                        <dd>
-                                            <ul class="list-unstyled project-files tooltip-demo">
-                                                <li><a href="" data-toggle="tooltip" data-placement="left" title="" data-original-title="46.13 K | 2014-07-21 10:04:59"><i class="fa fa-file"></i> Project_document.docx</a> <a href=""><i class="fa fa-trash"></i></a></li>
-                                                <li><a href="" data-toggle="tooltip" data-placement="left" title="" data-original-title="46.13 K | 2014-07-21 10:04:59"><i class="fa fa-file"></i> Contract_20_11_2014.docx</a> <a href=""><i class="fa fa-trash"></i></a></li>
-                                            </ul>
-                                            <div class="text-center m-t-md">
-                                                <a href="#" class="btn btn-xs btn-primary"><i class="fa fa-cloud-upload"></i> Upload Source files</a>
-                                            </div>
-                                        </dd>
-                                    </dl>
-                                </div>
-                                <div class="col-lg-7">
-                                    <dl class="dl-horizontal">
-                                        <dt>Final Files:</dt> 
-                                        <dd>
-                                            <ul class="list-unstyled project-files tooltip-demo">
-                                                <li><a href="" data-toggle="tooltip" data-placement="left" title="" data-original-title="46.13 K | 2014-07-21 10:04:59"><i class="fa fa-file"></i> Project_document.docx</a> <a href=""><i class="fa fa-trash"></i></a></li>
-                                                <li><a href="" data-toggle="tooltip" data-placement="left" title="" data-original-title="46.13 K | 2014-07-21 10:04:59"><i class="fa fa-file"></i> Contract_20_11_2014.docx</a> <a href=""><i class="fa fa-trash"></i></a></li>
-                                            </ul>
-                                            <div class="text-center m-t-md">
-                                                <a href="#" class="btn btn-xs btn-primary"><i class="fa fa-cloud-upload"></i> Upload Final files</a>
-                                            </div>
-                                        </dd>
-                                    </dl>
-                                </div>
-                            </div>
-                            <div class="hr-line-dashed"></div>
+
 
                             <div class="row m-t-sm">
                                 <div class="col-lg-12">
@@ -505,6 +475,10 @@
                                         <ul class="nav nav-tabs">
                                             <li class="active"><a href="#tasks" data-toggle="tab"><span class="label label-warning">8</span> Tasks</a></li>
                                             <li class=""><a href="#message" data-toggle="tab"><span class="label label-warning">6</span> Messages & Activities</a></li>
+                                            <li class=""><a href="#files" data-toggle="tab"><span class="label label-danger">2</span> Project Files</a></li>
+                                            <li class=""><a href="#feedback" data-toggle="tab"> Feedbacks</a></li>
+                                            <li class=""><a href="#quote" data-toggle="tab"> Quote</a></li> <!-- if the project status is quote, then show quote, other wise hide quote -->
+                                            <li class=""><a href="#invoice" data-toggle="tab"> Invoice</a></li> <!-- if the status is not quote, then show invoice -->
                                         </ul>
                                     </div>
                                 </div>
@@ -513,7 +487,6 @@
 
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="tasks">
-
                                             <form class="form-horizontal">
                                                 <div class="form-group">
                                                     <div class="col-sm-12">
@@ -821,6 +794,909 @@
                                             </div>
                                         </div>
 
+                                        <div class="tab-pane" id="files">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Source File Name</th>
+                                                    <th>Size</th>
+                                                    <th>Time Stamp</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td><a href=""><i class="fa fa-file"></i> Project_document_SC.docx <i class="fa fa-cloud-download"></i></a> </td>
+                                                    <td>46.88 KB</td>
+                                                    <td>2014-Oct-09 16:30</td>
+                                                    <td><i class="fa fa-trash"></i></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                            <div class="text-right m-t-md">
+                                                <a href="#" class="btn btn-xs btn-primary"><i class="fa fa-cloud-upload"></i> Upload Source files</a>
+                                            </div>
+                                            <div class="hr-line-dashed"></div>
+                                            <h4>Files For Client Review</h4>
+                                            <div class="panel-body">
+                                                <div class="panel-group" id="accordion_files">
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-heading" style="padding-bottom: 10px;">
+                                                            <h5 class="panel-title">
+                                                                <a data-toggle="collapse" data-parent="#accordion_files" href="#lang1_files"><i class="fa fa-exclamation-triangle text-danger"></i> English <i class="fa fa-arrow-right"></i> Simplify Chinese <i class="fa fa-paperclip"></i></a> <!-- with paperclip means file for this language has been uploaded -->
+                                                            </h5>
+                                                        </div>
+                                                        <div id="lang1_files" class="panel-collapse collapse in">
+                                                            <div class="panel-body">
+                                                                <table class="table">
+                                                                    <thead>
+                                                                    <tr>
+                                                                        <th>#</th>
+                                                                        <th>Languages</th>
+                                                                        <th>File Name</th>
+                                                                        <th>Size</th>
+                                                                        <th>Time Stamp</th>
+                                                                        <th>Action</th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    <tr>
+                                                                        <td>1</td>
+                                                                        <td>English <i class="fa fa-arrow-right"></i> Simplify Chinese</td>
+                                                                        <td><a href=""><i class="fa fa-file"></i> Project_document_SC.docx <i class="fa fa-cloud-download"></i></a> </td>
+                                                                        <td>46.88 KB</td>
+                                                                        <td>2014-Oct-09 16:30</td>
+                                                                        <td><i class="fa fa-trash"></i></td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                                <div class="text-center m-t-md">
+                                                                    <a href="#" class="btn btn-sm btn-primary"><i class="fa fa-cloud-upload"></i> Upload files</a>
+                                                                </div>
+                                                                <div class="hr-line-dashed"></div>
+                                                                <div class="panel-body">
+                                                                    <div class="form-group">
+                                                                        <label class="control-label">What's wrong with the translation?</label>
+                                                                        <div class="checkbox"><label> <input type="checkbox" checked disabled value=""> It is incomplete </label></div>
+                                                                        <div class="checkbox"><label> <input type="checkbox" checked disabled value=""> It contains spelling or grammatical errors </label></div>
+                                                                        <div class="checkbox"><label> <input type="checkbox" disabled value=""> It misses key meaning or details from the original </label></div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="control-label">Comments</label>
+                                                                        <p>sdasdkjasdkas;dasdasjdlksjdlskdjasldj</p>
+                                                                    </div><!-- /form-group -->  
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-heading" style="padding-bottom: 10px;">
+                                                            <h4 class="panel-title">
+                                                                <a data-toggle="collapse" data-parent="#accordion_files" href="#lang2_files">English <i class="fa fa-arrow-right"></i> Traditional Chinese</a>
+                                                            </h4>
+                                                        </div>
+                                                        <div id="lang2_files" class="panel-collapse collapse">
+                                                            <div class="panel-body">
+                                                                <table class="table">
+                                                                    <thead>
+                                                                    <tr>
+                                                                        <th>#</th>
+                                                                        <th>Languages</th>
+                                                                        <th>File Name</th>
+                                                                        <th>Size</th>
+                                                                        <th>Time Stamp</th>
+                                                                        <th>Action</th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    <tr>
+                                                                        <td>1</td>
+                                                                        <td>English <i class="fa fa-arrow-right"></i> Simplify Chinese</td>
+                                                                        <td></td>
+                                                                        <td></td>
+                                                                        <td></td>
+                                                                        <td><i class="fa fa-trash"></i></td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                                <div class="text-center m-t-md">
+                                                                    <a href="#" class="btn btn-sm btn-primary"><i class="fa fa-cloud-upload"></i> Upload files</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-heading" style="padding-bottom: 10px;">
+                                                            <h4 class="panel-title">
+                                                                <a data-toggle="collapse" data-parent="#accordion_files" href="#lang3_files">English <i class="fa fa-arrow-right"></i> German <i class="fa fa-paperclip"></i></a></a>
+                                                            </h4>
+                                                        </div>
+                                                        <div id="lang3_files" class="panel-collapse collapse">
+                                                            <div class="panel-body">
+                                                                <table class="table">
+                                                                    <thead>
+                                                                    <tr>
+                                                                        <th>#</th>
+                                                                        <th>Languages</th>
+                                                                        <th>File Name</th>
+                                                                        <th>Size</th>
+                                                                        <th>Time Stamp</th>
+                                                                        <th>Action</th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                    <tr>
+                                                                        <td>1</td>
+                                                                        <td>English <i class="fa fa-arrow-right"></i> German</td>
+                                                                        <td><a href=""><i class="fa fa-file"></i> Project_document_JP.docx <i class="fa fa-cloud-download"></i></a> </td>
+                                                                        <td>46.88 KB</td>
+                                                                        <td>2014-Oct-09 16:30</td>
+                                                                        <td></td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                                <div class="text-center m-t-md">
+                                                                    <a href="#" class="btn btn-sm btn-primary"><i class="fa fa-cloud-upload"></i> Upload files</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="tab-pane" id="feedback">
+                                            <div class="panel-body">
+                                                <div class="panel-group" id="accordion_feedback">
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-heading" style="padding-bottom: 10px;">
+                                                            <h5 class="panel-title">
+                                                                <a data-toggle="collapse" data-parent="#accordion_feedback" href="#feedback_lang1"><i class="fa fa-exclamation-triangle text-danger"></i> English <i class="fa fa-arrow-right"></i> Simplify Chinese </a>
+                                                            </h5>
+                                                        </div>
+                                                        <div id="feedback_lang1" class="panel-collapse collapse in">
+                                                            <br>
+                                                            <div class="row form-horizontal">
+                                                                <div class="col-lg-4"> 
+                                                                    <div class="form-group">
+                                                                        <label class="col-lg-4 control-label">Quality: </label>
+                                                                        <div class="col-lg-6"><p class="form-control-static"><span class="label label-primary">Satisfactory</span></p></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-6">
+                                                                    <div class="form-group">
+                                                                        <label class="col-lg-4 control-label">Turn Around Time</label>
+                                                                        <div class="col-lg-8"><p class="form-control-static"><span class="label label-primary">Faster</span></p></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="panel-body">
+                                                                <div class="form-group">
+                                                                    <label class="control-label">Feed back to Translator and Project Manager</label>
+                                                                    <p>dfadlkfjadfjad;fjadsfjlfksdlf;sf;</p>
+                                                                </div><!-- /form-group -->  
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-heading" style="padding-bottom: 10px;">
+                                                            <h4 class="panel-title">
+                                                                <a data-toggle="collapse" data-parent="#accordion_feedback" href="#feedback_lang2">English <i class="fa fa-arrow-right"></i> Traditional Chinese</a>
+                                                            </h4>
+                                                        </div>
+                                                        <div id="feedback_lang2" class="panel-collapse collapse">
+                                                            <br>
+                                                            <div class="row form-horizontal">
+                                                                <div class="col-lg-4"> 
+                                                                    <div class="form-group">
+                                                                        <label class="col-lg-4 control-label">Quality: </label>
+                                                                        <div class="col-lg-6"><p class="form-control-static"><span class="label label-primary">Satisfactory</span></p></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-6">
+                                                                    <div class="form-group">
+                                                                        <label class="col-lg-4 control-label">Turn Around Time</label>
+                                                                        <div class="col-lg-8"><p class="form-control-static"><span class="label label-primary">Faster</span></p></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="panel-body">
+                                                                <div class="form-group">
+                                                                    <label class="control-label">Feed back to Translator and Project Manager</label>
+                                                                    <p>dfadlkfjadfjad;fjadsfjlfksdlf;sf;</p>
+                                                                </div><!-- /form-group -->  
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="panel panel-default">
+                                                        <div class="panel-heading" style="padding-bottom: 10px;">
+                                                            <h4 class="panel-title">
+                                                                <a data-toggle="collapse" data-parent="#accordion_feedback" href="#feedback_lang3">English <i class="fa fa-arrow-right"></i> German </a>
+                                                            </h4>
+                                                        </div>
+                                                        <div id="feedback_lang3" class="panel-collapse collapse">
+                                                            <br>
+                                                            <div class="row form-horizontal">
+                                                                <div class="col-lg-4"> 
+                                                                    <div class="form-group">
+                                                                        <label class="col-lg-4 control-label">Quality: </label>
+                                                                        <div class="col-lg-6"><p class="form-control-static"><span class="label label-primary">Satisfactory</span></p></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-6">
+                                                                    <div class="form-group">
+                                                                        <label class="col-lg-4 control-label">Turn Around Time</label>
+                                                                        <div class="col-lg-8"><p class="form-control-static"><span class="label label-primary">Faster</span></p></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="panel-body">
+                                                                <div class="form-group">
+                                                                    <label class="control-label">Feed back to Translator and Project Manager</label>
+                                                                    <p>dfadlkfjadfjad;fjadsfjlfksdlf;sf;</p>
+                                                                </div><!-- /form-group -->  
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="tab-pane" id="quote">
+                                            <div class="row">
+                                                <div class="row">
+                                                    <div class="col-lg-12" align="right">
+                                                            <a href="#" class="btn btn-white"><i class="fa fa-file-pdf-o "></i> Download </a>
+                                                            <a href="quote_print.html" target="_blank" class="btn btn-primary"><i class="fa fa-print"></i> Print Quote </a>
+                                                    </div>
+                                                </div>
+                                                <div class="hr-line-dashed"></div>
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <h4>Quote No.</h4>
+                                                        <h4 class="text-navy">QUO-000567F7-00</h4>
+
+                                                        <h5>From:</h5>
+                                                        <strong>Jiang, Kevin</strong><br>
+                                                        <strong>Project Manager</strong><br>
+                                                        <address>
+                                                            <strong>PaperTask Ltd.</strong><br>
+                                                            106 Jorg Avenu, 600/10<br>
+                                                            Chicago, VT 32456<br>
+                                                            <abbr title="Phone">P:</abbr> (0086) 10-85916568
+                                                        </address>
+                                                    </div>
+
+                                                    <div class="col-sm-6 text-right">
+                                                        <p>
+                                                            <span><strong>Quote Date:</strong> Marh 18, 2014</span><br/>
+                                                            <span><strong>Due Date:</strong> April 17, 2014</span>
+                                                        </p>
+                                                        <h5>To:</span></h5>
+                                                        <strong>Doe, John</strong><br>
+                                                        <strong>Marketing Manager</strong><br>
+                                                        <address>
+                                                            <strong>Corporate, Inc.</strong><br>
+                                                            112 Street Avenu, 1080<br>
+                                                            Miami, CT 445611<br>
+                                                            <abbr title="Phone">P:</abbr> (120) 9000-4321
+                                                        </address>
+
+                                                    </div>
+                                                </div>
+                                                <div class="hr-line-dashed"></div>
+                                                <h4>Dear John,</h4><br>
+                                                <h4>RE: project reference/file name</h4><br>
+                                                <p>Further to receipt of your enquiry, I now have pleasure in providing you with the cost for the above requirement.</p>
+                                                <p><strong>Service Level: <span class="text-navy">Business</span></strong></p>
+                                                <p><strong>Approximate duration: <span class="text-navy">3 Working days</span></strong></p>
+                                                <div class="hr-line-dashed"></div>
+                                                <div class="table-responsive m-t">
+                                                    <table class="table table-bordered invoice-table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>English to Chinese - Tasks</th>
+                                                                <th>Unit</th>
+                                                                <th>Unit Price</th>
+                                                                <th>Quantity</th>
+                                                                <th>Total Price</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td><div><a data-toggle="collapse" href="#use_tm1"><i class="fa fa-eye"></i> <strong>uploaded file name 1 / or Task Name</strong></a> - <span class="text-navy"> Translation (Use TM)</span></div></td>
+                                                                <td>Word</td>
+                                                                <td>CNY 0.120</td>
+                                                                <td>1000</td>
+                                                                <td>CNY 120.00</td>
+                                                            </tr>
+                                                            <tr> <!-- this is only for translation use TM -->
+                                                                <td colspan="5">
+                                                                    <div id="use_tm1" class="panel-collapse collapse">
+                                                                        <div class="table-responsive">
+                                                                            <table class="table table-bordered">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>TM Template</th>
+                                                                                        <th>Rate (%)</th>
+                                                                                        <th>Unit Price</th>
+                                                                                        <th>Quantity (Word)</th>
+                                                                                        <th>Quantity</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <td>Repetitions</td>
+                                                                                        <td>10%</td>
+                                                                                        <td>CNY 0.012</td>
+                                                                                        <td>100</td>
+                                                                                        <td>CNY 1.20</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>100%</td>
+                                                                                        <td>10%</td>
+                                                                                        <td>CNY 0.012</td>
+                                                                                        <td>200</td>
+                                                                                        <td>CNY 2.40</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>95%-99%</td>
+                                                                                        <td>10%</td>
+                                                                                        <td>CNY 0.012</td>
+                                                                                        <td>200</td>
+                                                                                        <td>CNY 2.40</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>85%-94%</td>
+                                                                                        <td>50%</td>
+                                                                                        <td>CNY 0.06</td>
+                                                                                        <td>300</td>
+                                                                                        <td>CNY 18.00</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>75%-84%</td>
+                                                                                        <td>50%</td>
+                                                                                        <td>CNY 0.06</td>
+                                                                                        <td>200</td>
+                                                                                        <td>CNY 12.00</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>50%-74%</td>
+                                                                                        <td>100%</td>
+                                                                                        <td>CNY 0.12</td>
+                                                                                        <td>1000</td>
+                                                                                        <td>CNY 120.00</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>No Match</td>
+                                                                                        <td>100%</td>
+                                                                                        <td>CNY 0.12</td>
+                                                                                        <td>1000</td>
+                                                                                        <td>CNY 120.00</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td colspan="4" align="right"><strong>Total</strong></td>
+                                                                                        <td class="text-info">CNY xxxx.xx</td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><div><strong>uploaded file name 2 / or Task Name</strong> - <span class="text-navy"> Translation (No TM)</span></div></td>
+                                                                <td>Word</td>
+                                                                <td>CNY 0.12</td>
+                                                                <td>2000</td>
+                                                                <td>CNY 240.00</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><div><strong>uploaded file name 1 / or Task Name</strong> - <span class="text-info">DTP <i class="fa fa-apple"></i></span></div></td>
+                                                                <td>Page</td>
+                                                                <td>CNY 10.00</td>
+                                                                <td>20</td>
+                                                                <td>CNY 200.00</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div><!-- /table-responsive -->
+                                                <div class="table-responsive m-t">
+                                                    <table class="table table-bordered invoice-table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>English to Japanese - Tasks</th>
+                                                                <th>Unit</th>
+                                                                <th>Unit Price</th>
+                                                                <th>Quantity</th>
+                                                                <th>Total Price</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td><div><a data-toggle="collapse" href="#use_tm2"><i class="fa fa-eye"></i> <strong>uploaded file name 1 / or Task Name</strong></a> - <span class="text-navy"> Translation (Use TM)</span></div></td>
+                                                                <td>Word</td>
+                                                                <td>CNY 0.120</td>
+                                                                <td>1000</td>
+                                                                <td>CNY 120.00</td>
+                                                            </tr>
+                                                            <tr> <!-- this is only for translation use TM -->
+                                                                <td colspan="5">
+                                                                    <div id="use_tm2" class="panel-collapse collapse">
+                                                                        <div class="table-responsive">
+                                                                            <table class="table table-bordered">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>TM Template</th>
+                                                                                        <th>Rate (%)</th>
+                                                                                        <th>Unit Price</th>
+                                                                                        <th>Quantity (Word)</th>
+                                                                                        <th>Quantity</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <td>Repetitions</td>
+                                                                                        <td>10%</td>
+                                                                                        <td>CNY 0.012</td>
+                                                                                        <td>100</td>
+                                                                                        <td>CNY 1.20</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>100%</td>
+                                                                                        <td>10%</td>
+                                                                                        <td>CNY 0.012</td>
+                                                                                        <td>200</td>
+                                                                                        <td>CNY 2.40</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>95%-99%</td>
+                                                                                        <td>10%</td>
+                                                                                        <td>CNY 0.012</td>
+                                                                                        <td>200</td>
+                                                                                        <td>CNY 2.40</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>85%-94%</td>
+                                                                                        <td>50%</td>
+                                                                                        <td>CNY 0.06</td>
+                                                                                        <td>300</td>
+                                                                                        <td>CNY 18.00</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>75%-84%</td>
+                                                                                        <td>50%</td>
+                                                                                        <td>CNY 0.06</td>
+                                                                                        <td>200</td>
+                                                                                        <td>CNY 12.00</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>50%-74%</td>
+                                                                                        <td>100%</td>
+                                                                                        <td>CNY 0.12</td>
+                                                                                        <td>1000</td>
+                                                                                        <td>CNY 120.00</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>No Match</td>
+                                                                                        <td>100%</td>
+                                                                                        <td>CNY 0.12</td>
+                                                                                        <td>1000</td>
+                                                                                        <td>CNY 120.00</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td colspan="4" align="right"><strong>Total</strong></td>
+                                                                                        <td class="text-info">CNY xxxx.xx</td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><div><strong>uploaded file name 2 / or Task Name</strong> - <span class="text-navy"> Translation (No TM)</span></div></td>
+                                                                <td>Word</td>
+                                                                <td>CNY 0.12</td>
+                                                                <td>2000</td>
+                                                                <td>CNY 240.00</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><div><strong>uploaded file name 1 / or Task Name</strong> - <span class="text-info">DTP <i class="fa fa-windows"></i></span></div></td>
+                                                                <td>Page</td>
+                                                                <td>CNY 10.00</td>
+                                                                <td>20</td>
+                                                                <td>CNY 200.00</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div><!-- /table-responsive -->
+                                                <table class="table invoice-total">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><strong>Sub Total :</strong></td>
+                                                            <td>CNY 1026.00</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><strong>(-) Discount :</strong></td>
+                                                            <td><span class="text-danger"><strong>-</strong></span> CNY 100.00</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><strong>TAX (6%):</strong></td>
+                                                            <td>CNY 235.98</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><strong>TOTAL :</strong></td>
+                                                            <td>CNY 1261.98</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <!-- if the client is uncontracted, then "make a payment" will show, if client type is "contracted", then dont show "make a payment" instead of "accept the quote" after accept, the project status changed from quoted to ordered -->
+                                                <div class="text-right">
+                                                    <button class="btn btn-primary"><i class="fa fa-dollar"></i> Accept The Quote</button> <button class="btn btn-primary"><i class="fa fa-dollar"></i> Make A Payment</button>
+                                                </div>
+                                                <div class="hr-line-dashed"></div>
+                                                <div class="m-t">
+                                                    The above costs include supplying the translations as electronic files in formats per your requirements.
+                                                    <br><br>
+                                                    Should any amendments or changes to the source text be required after the project has commenced, they will be incorporated at the standard rate which can be provided upon request.
+                                                    <br><br>
+                                                    <strong>Turnaround Time</strong>
+                                                    <br>
+                                                    It would take approximately <span class="text-navy">3 working days</span> from your accept the quote order to complete the translation work.
+                                                    <br><br>
+                                                    We strongly recommend that any text be reviewed prior to going to print. We would be happy to liase with any reviewers in country should you require it.
+                                                    <br><br>
+                                                    <strong>Terms of Service</strong>
+                                                    <br>
+                                                    Work will be invoiced on completion of each stage of the client order. The Company cannot accept a delay in payment due to translated documents awaiting approval of agents abroad, unless by prior agreement at the commencement of the project.
+                                                    <br><br>
+                                                    Prices quoted are valid for 30 days after this letter.
+                                                    <br><br>
+                                                    If you should require any further information please do not hesitate to contact me.
+                                                    <br><br>
+                                                    Assuring you of our best attention at all times.
+                                                    <br><br>
+                                                    Yours sincerely,
+                                                    <br><br>
+                                                    Michael Yang<br>
+                                                    Project Manager/Sales Manager<br>
+                                                    <strong>PaperTask</strong>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="tab-pane" id="invoice">
+                                            <div class="row">
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <form class="form-horizontal">
+                                                            <div class="form-group" id="inv_data">
+                                                                <label class="col-sm-3 control-label">Invoice Date *</label>
+
+                                                                <div class="col-sm-6 input-group date">
+                                                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="03/04/2014">
+                                                                    <span class="input-group-btn">
+                                                                        <button type="button" class="btn btn-primary">Set</button> 
+                                                                    </span>
+                                                                </div>
+
+                                                            </div>
+                                                    </div>
+                                                    <div class="col-lg-6" align="right">
+                                                        <a href="#" class="btn btn-white"><i class="fa fa-file-pdf-o "></i> Download </a>
+                                                        <a href="invoice_print.html" target="_blank" class="btn btn-primary"><i class="fa fa-print"></i> Print Invoice </a>
+                                                    </div>
+                                                </div>
+                                                <div class="hr-line-dashed"></div>
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <h4>Invoice No.</h4>
+                                                        <h4 class="text-navy">INV-000567F7-00</h4>
+
+                                                        <h5>From:</h5>
+                                                        <strong>Jiang, Kevin</strong><br>
+                                                        <strong>Project Manager</strong><br>
+                                                        <address>
+                                                            <strong>PaperTask Ltd.</strong><br>
+                                                            106 Jorg Avenu, 600/10<br>
+                                                            Chicago, VT 32456<br>
+                                                            <abbr title="Phone">P:</abbr> (0086) 10-85916568
+                                                        </address>
+                                                    </div>
+
+                                                    <div class="col-sm-6 text-right">
+                                                        <p>
+                                                            <span><strong>Invoice Date:</strong> Marh 18, 2014</span><br/>
+                                                            <span><strong>Due Date:</strong> April 17, 2014</span>
+                                                        </p>
+                                                        <h5>To:</span></h5>
+                                                        <strong>Doe, John</strong><br>
+                                                        <strong>Marketing Manager</strong><br>
+                                                        <address>
+                                                            <strong>Corporate, Inc.</strong><br>
+                                                            112 Street Avenu, 1080<br>
+                                                            Miami, CT 445611<br>
+                                                            <abbr title="Phone">P:</abbr> (120) 9000-4321
+                                                        </address>
+
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="table-responsive m-t">
+                                                    <table class="table table-bordered invoice-table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>English to Chinese - Tasks</th>
+                                                                <th>Unit</th>
+                                                                <th>Unit Price</th>
+                                                                <th>Quantity</th>
+                                                                <th>Total Price</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td><div><a data-toggle="collapse" href="#use_tm1"><i class="fa fa-eye"></i> <strong>uploaded file name 1 / or Task Name</strong></a> - <span class="text-navy"> Translation (Use TM)</span></div></td>
+                                                                <td>Word</td>
+                                                                <td>CNY 0.120</td>
+                                                                <td>1000</td>
+                                                                <td>CNY 120.00</td>
+                                                            </tr>
+                                                            <tr> <!-- this is only for translation use TM -->
+                                                                <td colspan="5">
+                                                                    <div id="use_tm1" class="panel-collapse collapse">
+                                                                        <div class="table-responsive">
+                                                                            <table class="table table-bordered">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>TM Template</th>
+                                                                                        <th>Rate (%)</th>
+                                                                                        <th>Unit Price</th>
+                                                                                        <th>Quantity (Word)</th>
+                                                                                        <th>Quantity</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <td>Repetitions</td>
+                                                                                        <td>10%</td>
+                                                                                        <td>CNY 0.012</td>
+                                                                                        <td>100</td>
+                                                                                        <td>CNY 1.20</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>100%</td>
+                                                                                        <td>10%</td>
+                                                                                        <td>CNY 0.012</td>
+                                                                                        <td>200</td>
+                                                                                        <td>CNY 2.40</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>95%-99%</td>
+                                                                                        <td>10%</td>
+                                                                                        <td>CNY 0.012</td>
+                                                                                        <td>200</td>
+                                                                                        <td>CNY 2.40</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>85%-94%</td>
+                                                                                        <td>50%</td>
+                                                                                        <td>CNY 0.06</td>
+                                                                                        <td>300</td>
+                                                                                        <td>CNY 18.00</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>75%-84%</td>
+                                                                                        <td>50%</td>
+                                                                                        <td>CNY 0.06</td>
+                                                                                        <td>200</td>
+                                                                                        <td>CNY 12.00</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>50%-74%</td>
+                                                                                        <td>100%</td>
+                                                                                        <td>CNY 0.12</td>
+                                                                                        <td>1000</td>
+                                                                                        <td>CNY 120.00</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>No Match</td>
+                                                                                        <td>100%</td>
+                                                                                        <td>CNY 0.12</td>
+                                                                                        <td>1000</td>
+                                                                                        <td>CNY 120.00</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td colspan="4" align="right"><strong>Total</strong></td>
+                                                                                        <td class="text-info">CNY xxxx.xx</td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><div><strong>uploaded file name 2 / or Task Name</strong> - <span class="text-navy"> Translation (No TM)</span></div></td>
+                                                                <td>Word</td>
+                                                                <td>CNY 0.12</td>
+                                                                <td>2000</td>
+                                                                <td>CNY 240.00</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><div><strong>uploaded file name 1 / or Task Name</strong> - <span class="text-info">DTP <i class="fa fa-apple"></i></span></div></td>
+                                                                <td>Page</td>
+                                                                <td>CNY 10.00</td>
+                                                                <td>20</td>
+                                                                <td>CNY 200.00</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div><!-- /table-responsive -->
+                                                <div class="table-responsive m-t">
+                                                    <table class="table table-bordered invoice-table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>English to Japanese - Tasks</th>
+                                                                <th>Unit</th>
+                                                                <th>Unit Price</th>
+                                                                <th>Quantity</th>
+                                                                <th>Total Price</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td><div><a data-toggle="collapse" href="#use_tm2"><i class="fa fa-eye"></i> <strong>uploaded file name 1 / or Task Name</strong></a> - <span class="text-navy"> Translation (Use TM)</span></div></td>
+                                                                <td>Word</td>
+                                                                <td>CNY 0.120</td>
+                                                                <td>1000</td>
+                                                                <td>CNY 120.00</td>
+                                                            </tr>
+                                                            <tr> <!-- this is only for translation use TM -->
+                                                                <td colspan="5">
+                                                                    <div id="use_tm2" class="panel-collapse collapse">
+                                                                        <div class="table-responsive">
+                                                                            <table class="table table-bordered">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>TM Template</th>
+                                                                                        <th>Rate (%)</th>
+                                                                                        <th>Unit Price</th>
+                                                                                        <th>Quantity (Word)</th>
+                                                                                        <th>Quantity</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <td>Repetitions</td>
+                                                                                        <td>10%</td>
+                                                                                        <td>CNY 0.012</td>
+                                                                                        <td>100</td>
+                                                                                        <td>CNY 1.20</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>100%</td>
+                                                                                        <td>10%</td>
+                                                                                        <td>CNY 0.012</td>
+                                                                                        <td>200</td>
+                                                                                        <td>CNY 2.40</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>95%-99%</td>
+                                                                                        <td>10%</td>
+                                                                                        <td>CNY 0.012</td>
+                                                                                        <td>200</td>
+                                                                                        <td>CNY 2.40</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>85%-94%</td>
+                                                                                        <td>50%</td>
+                                                                                        <td>CNY 0.06</td>
+                                                                                        <td>300</td>
+                                                                                        <td>CNY 18.00</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>75%-84%</td>
+                                                                                        <td>50%</td>
+                                                                                        <td>CNY 0.06</td>
+                                                                                        <td>200</td>
+                                                                                        <td>CNY 12.00</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>50%-74%</td>
+                                                                                        <td>100%</td>
+                                                                                        <td>CNY 0.12</td>
+                                                                                        <td>1000</td>
+                                                                                        <td>CNY 120.00</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>No Match</td>
+                                                                                        <td>100%</td>
+                                                                                        <td>CNY 0.12</td>
+                                                                                        <td>1000</td>
+                                                                                        <td>CNY 120.00</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td colspan="4" align="right"><strong>Total</strong></td>
+                                                                                        <td class="text-info">CNY xxxx.xx</td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><div><strong>uploaded file name 2 / or Task Name</strong> - <span class="text-navy"> Translation (No TM)</span></div></td>
+                                                                <td>Word</td>
+                                                                <td>CNY 0.12</td>
+                                                                <td>2000</td>
+                                                                <td>CNY 240.00</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><div><strong>uploaded file name 1 / or Task Name</strong> - <span class="text-info">DTP <i class="fa fa-windows"></i></span></div></td>
+                                                                <td>Page</td>
+                                                                <td>CNY 10.00</td>
+                                                                <td>20</td>
+                                                                <td>CNY 200.00</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div><!-- /table-responsive -->
+                                                <table class="table invoice-total">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><strong>Sub Total :</strong></td>
+                                                            <td>CNY 1026.00</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><strong>(-) Discount :</strong></td>
+                                                            <td><span class="text-danger"><strong>-</strong></span> CNY 100.00</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><strong>TAX (6%):</strong></td>
+                                                            <td>CNY 235.98</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><strong>TOTAL :</strong></td>
+                                                            <td>CNY 1261.98</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <div class="hr-line-dashed"></div>
+                                                <div class="m-t">
+                                                    <h2 class="text-center text-danger">Due Date: October 23rd, 2014</h2>
+                                                    <br>
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <dl class="dl-horizontal">
+                                                                <dt><h4>Bank Details</h4></dt><dd></dd>
+                                                                <dt>Company Name:</dt> <dd>AccessPath Limited</dd>
+                                                                <dt>Bank Name:</dt> <dd>HSBC Hong Kong</dd>
+                                                                <dt>Bank Address:</dt> <dd>Shops 110-120, 1/F Emperor Group Centre, 288 Hennessy Road, Wanchai, Hong Kong</dd>
+                                                                <dt>Account Number:</dt> <dd>640 037941 838</dd>
+                                                                <dt>Swift Code:</dt> <dd>HSBCHKHHHKH</dd>
+                                                            </dl>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <dl class="dl-horizontal">
+                                                                <dt><h4>Other Payment Methods</h4></dt><dd></dd>
+                                                                <dt>Paypal:</dt> <dd>payments@papertask.com</dd>
+                                                                <dt>Alipay:</dt> <dd>payments@papertask.com</dd>
+                                                            </dl>
+                                                        </div>
+                                                    </div>
+                                                    <br><br>
+                                                    <h2 class="text-center"><em>Thank you for your business!</em></h2>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </div>
 
                                 </div>
@@ -859,6 +1735,9 @@
     <!-- SUMMERNOTE -->
     <script src="js/plugins/summernote/summernote.min.js"></script>
 
+   <!-- Data picker -->
+   <script src="js/plugins/datapicker/bootstrap-datepicker.js"></script>
+
     <script>
         $(document).ready(function(){
             $('.summernote').summernote();
@@ -875,6 +1754,14 @@
 
     <script>
         $(document).ready(function(){
+
+            $('#inv_data .input-group.date').datepicker({
+                todayBtn: "linked",
+                keyboardNavigation: false,
+                forceParse: false,
+                calendarWeeks: true,
+                autoclose: true
+            });
 
             $('#loading-example-btn').click(function () {
                 btn = $(this);
