@@ -11,7 +11,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" media="screen" />
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
-
+    <link href="css/plugins/datapicker/datepicker3.css" rel="stylesheet">
     <link href="css/animate.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
@@ -404,7 +404,7 @@
                                                             </select>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group">
+                                                    <div class="form-group" id="data_1">
                                                         <label class="col-sm-3 control-label">Order</label>
                                                         <div class="col-sm-9">
             												<div class="input-group date">
@@ -439,7 +439,7 @@
                                                             </select>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group">
+                                                    <div class="form-group" id="data_1">
                                                         <label class="col-sm-3 control-label">Report Start</label>
                                                         <div class="col-sm-9">
                                                             <div class="input-group date">
@@ -476,7 +476,7 @@
                                                             </select>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group">
+                                                    <div class="form-group" id="data_1">
                                                         <label class="col-sm-3 control-label">Completed</label>
                                                         <div class="col-sm-9">
 															<div class="input-group date">
@@ -511,7 +511,7 @@
                                                             </select>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group">
+                                                    <div class="form-group" id="data_1">
                                                         <label class="col-sm-3 control-label">Report End</label>
                                                         <div class="col-sm-9">
                                                             <div class="input-group date">
@@ -567,12 +567,21 @@
                                                             </select>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group">
+                                                    <div class="form-group" id="data_1">
                                                         <label class="col-sm-3 control-label">Invoice Date</label>
                                                         <div class="col-sm-9">
                                                             <div class="input-group date">
                                                                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                                                 <input type="text" class="form-control" value="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group" id="data_4">
+                                                        <label class="col-sm-3 control-labe">Month select</label>
+                                                        <div class="col-sm-9">
+                                                            <div class="input-group date">
+                                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="07/01/2014">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -860,8 +869,49 @@
     <script src="js/inspinia.js"></script>
     <script src="js/plugins/pace/pace.min.js"></script>
 
+   <!-- Data picker -->
+   <script src="js/plugins/datapicker/bootstrap-datepicker.js"></script>
+
     <script>
         $(document).ready(function(){
+
+            $('#data_1 .input-group.date').datepicker({
+                todayBtn: "linked",
+                keyboardNavigation: false,
+                forceParse: false,
+                calendarWeeks: true,
+                autoclose: true
+            });
+
+            $('#data_2 .input-group.date').datepicker({
+                startView: 1,
+                todayBtn: "linked",
+                keyboardNavigation: false,
+                forceParse: false,
+                autoclose: true
+            });
+
+            $('#data_3 .input-group.date').datepicker({
+                startView: 2,
+                todayBtn: "linked",
+                keyboardNavigation: false,
+                forceParse: false,
+                autoclose: true
+            });
+
+            $('#data_4 .input-group.date').datepicker({
+                minViewMode: 1,
+                keyboardNavigation: false,
+                forceParse: false,
+                autoclose: true,
+                todayHighlight: true
+            });
+
+            $('#data_5 .input-daterange').datepicker({
+                keyboardNavigation: false,
+                forceParse: false,
+                autoclose: true
+            });
 
             $('#loading-example-btn').click(function () {
                 btn = $(this);

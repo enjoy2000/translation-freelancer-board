@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>PaperTask | Quote List</title>
+    <title>PaperTask | Test List</title>
 
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" media="screen" />
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -309,9 +309,9 @@
 
                     <div class="ibox">
                         <div class="ibox-title">
-                            <h5> Projects List</h5>
+                            <h5> Test List</h5>
                             <div class="ibox-tools">
-                                <a href="" class="btn btn-primary btn-xs">Create new quote</a>
+                                <a href="" class="btn btn-primary btn-xs">Create New Test</a>
                             </div>
                         </div>
                         <div class="ibox-content">
@@ -339,7 +339,7 @@
                                             <div class="row">
                                                 <div class="col-lg-4">
                                                     <div class="form-group">
-                                                        <label class="col-sm-3 control-label"> QUO No.</label>
+                                                        <label class="col-sm-3 control-label">Test ID</label>
                                                         <div class="col-sm-9"><input type="text" class="form-control"></div>
                                                     </div>
                                                     <div class="form-group">
@@ -365,7 +365,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Quote Date</label>
+                                                        <label class="col-sm-3 control-label">Start</label>
                                                         <div class="col-sm-9">
             												<div class="input-group date">
             				                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
@@ -373,32 +373,10 @@
             				                                </div>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">PM</label>
-                                                        <div class="col-sm-9">
-                                                            <select class="form-control" name="">
-                                                              <option></option>
-                                                              <option value="">Admin</option>
-                                                              <option value="">General Manager</option>
-                                                              <option value=""></option>
-                                                              <option value="">Financial Manager</option>
-                                                              <option value=""></option>
-                                                              <option value="">Sales Director</option>
-                                                              <option value="">Sales</option>
-                                                              <option value=""></option>
-                                                              <option value="">Operation Manager</option>
-                                                              <option value="">Project Manager</option>
-                                                              <option value="">In-house Translator</option>
-                                                              <option value="">In-house Editor/Proofreader</option>
-                                                              <option value="">In-house DTP</option>
-                                                              <option value="">In-house Engineering</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
                                                 </div>
                                                 <div class="col-lg-4">
                                                     <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Reference</label>
+                                                        <label class="col-sm-3 control-label">Freelancer</label>
                                                         <div class="col-sm-9"><input type="text" class="form-control"></div>
                                                     </div>
                                                     <div class="form-group">
@@ -424,29 +402,12 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label class="col-sm-3 control-label"> Client ID</label>
-                                                        <div class="col-sm-9"><input type="text" class="form-control"></div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Sales</label>
+                                                        <label class="col-sm-3 control-label">Completed</label>
                                                         <div class="col-sm-9">
-                                                            <select class="form-control" name="">
-                                                              <option></option>
-                                                              <option value="">Admin</option>
-                                                              <option value="">General Manager</option>
-                                                              <option value=""></option>
-                                                              <option value="">Financial Manager</option>
-                                                              <option value=""></option>
-                                                              <option value="">Sales Director</option>
-                                                              <option value="">Sales</option>
-                                                              <option value=""></option>
-                                                              <option value="">Operation Manager</option>
-                                                              <option value="">Project Manager</option>
-                                                              <option value="">In-house Translator</option>
-                                                              <option value="">In-house Editor/Proofreader</option>
-                                                              <option value="">In-house DTP</option>
-                                                              <option value="">In-house Engineering</option>
-                                                            </select>
+															<div class="input-group date">
+							                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+							                                    <input type="text" class="form-control" value="">
+							                                </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -474,18 +435,28 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Status</label>
+                                                        <label class="col-sm-3 control-label">Type</label>
                                                         <div class="col-sm-9">
                                                             <select class="form-control" name="">
                                                               <option></option>
-                                                              <option value="">Quoting</option>
-                                                              <option value="">Quoted</option>
+                                                              <option value="">Translation (No TM)</option>
+                                                              <option value="">Translation (Use TM)</option>
+                                                              <option value="">Proofreading</option>
+                                                              <option value="">DTP(Mac)</option>
+                                                              <option value="">DTP(Windows)</option>
+                                                              <option value="">Engineering</option>
                                                             </select>
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label class="col-sm-3 control-label"> Company</label>
-                                                        <div class="col-sm-9"><input type="text" class="form-control"></div>
+                                                        <label class="col-sm-3 control-label">Result</label>
+                                                        <div class="col-sm-9">
+                                                            <select class="form-control" name="">
+                                                              <option></option>
+                                                              <option value="">Past</option>
+                                                              <option value="">Failed</option>
+                                                            </select>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -505,64 +476,130 @@
                                     <tbody>
 	                                    <tr>
 	                                        <td class="project-status">
-	                                            <span class="label label-warning">Quoting</span>
+	                                            <span class="label label-danger">Failed</span>
 	                                        </td>
 	                                        <td class="project-title">
-	                                            <strong>Contract with Zender Company</strong>
+	                                            <span class=""><strong>T88888888</strong></span>
 	                                            <br/>
-	                                            <div class="tooltip-demo">
-	                                            <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Translation with Translation Memory">TM</code> 
-	                                            <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Translation without Translation Memory">No-TM</code> 
-	                                            <code>Proofreading</code> 
-	                                            <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Desktop Publishing">DTP</code> 
-	                                            <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Engineering">ENG</code>
-	                                            </div>
+	                                            <small>2014.Sep.09 - 2014.Oct.18</small>
 	                                        </td>
+                                            <td class="project-title">
+                                                <strong>(Field) like Infromation Technology</strong>
+                                                <br/>
+                                                <div class="tooltip-demo">
+                                                <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Translation with Translation Memory">TM</code>  |  <code>English</code> <i class="fa fa-arrow-right"></i> <code>Japanese</code> <i class="fa fa-paperclip"></i> <!-- paperclip means freelancer uploaded the translated file -->
+                                                </div>
+                                            </td>
 	                                        <td class="project-title">
-	                                            <span class="">QUO-000567F7-00</span>
-	                                            <br/>
-	                                            <small>Quote Date: 2014.Oct.18</small>
-	                                        </td>
-	                                        <td class="project-title">
-	                                            Client's name
-	                                            <br/>
-	                                            Client's Company
+	                                            Freelancer's name
+                                                <br/>
+                                                Reviewer's name(senior freelancer)
 	                                        </td>
 	                                        <td class="project-actions">
 	                                            <a href="#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
-	                                            <a href="#" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Edit </a>
+                                                <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete </a> <!-- only admin has right to show the delete button -->
 	                                        </td>
 	                                    </tr>
 	                                    <tr>
 	                                        <td class="project-status">
-	                                            <span class="label label-info">Quoted</span>
+	                                            <span class="label label-primary">Past</span>
 	                                        </td>
+                                            <td class="project-title">
+                                                <span class="">T88888886</span>
+                                                <br/>
+                                                <small>2014.Sep.09 - 2014.Oct.18</small>
+                                            </td>
 	                                        <td class="project-title">
-	                                            <strong>Contract with Zender Company</strong>
-	                                            <br/>
 	                                            <div class="tooltip-demo">
-	                                            <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Translation with Translation Memory">TM</code> 
-	                                            <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Translation without Translation Memory">No-TM</code> 
-	                                            <code>Proofreading</code> 
-	                                            <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Desktop Publishing">DTP</code> 
-	                                            <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Engineering">ENG</code>
+	                                            <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Desktop Publishing">DTP</code>  |  <code>English</code> <i class="fa fa-arrow-right"></i> <code>Japanese</code> <i class="fa fa-paperclip"></i> <!-- paperclip means freelancer uploaded the translated file -->
 	                                            </div>
 	                                        </td>
 	                                        <td class="project-title">
-	                                            <span class="">QUO-000567F7-02</span>
-	                                            <br/>
-	                                            <small>Quote Date: 2014.Oct.18</small>
-	                                        </td>
-	                                        <td class="project-title">
-	                                            Client's name
-	                                            <br/>
-	                                            Client's Company
+	                                            freelancer's name
+                                                <br/>
+                                                Reviewer's name(senior freelancer)
 	                                        </td>
 	                                        <td class="project-actions">
 	                                            <a href="#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
-	                                            <a href="#" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Edit </a>
+                                                <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete </a> <!-- only admin has right to show the delete button -->
 	                                        </td>
 	                                    </tr>
+                                        <tr>
+                                            <td class="project-status">
+                                                <span class="label label-info">Ongoing</span>
+                                            </td>
+                                            <td class="project-title">
+                                                <span class="">T88888665</span>
+                                                <br/>
+                                                <small>2014.Sep.09 - 2014.Oct.18</small>
+                                            </td>
+                                            <td class="project-title">
+                                                <div class="tooltip-demo">
+                                                <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Engineering">ENG</code>  |  <code>English</code> <i class="fa fa-arrow-right"></i> <code>Japanese</code> <i class="fa fa-paperclip"></i> <!-- paperclip means freelancer uploaded the translated file -->
+                                                </div>
+                                            </td>
+                                            <td class="project-title">
+                                                Freelancer's name
+                                                <br/>
+                                                Reviewer's name(senior freelancer)
+                                            </td>
+                                            <td class="project-actions">
+                                                <a href="#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
+                                                <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete </a> <!-- only admin has right to show the delete button -->
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="project-status">
+                                                <span class="label label-success">Evaluating</span>
+                                            </td>
+                                            <td class="project-title">
+                                                <span class="">T88888168</span>
+                                                <br/>
+                                                <small>2014.Sep.09 - 2014.Oct.18</small>
+                                            </td>
+                                            <td class="project-title">
+                                                <strong>(Field) Accounting</strong>
+                                                <br/>
+                                                <div class="tooltip-demo"> 
+                                                <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Translation without Translation Memory">No-TM</code>  |  <code>English</code> <i class="fa fa-arrow-right"></i> <code>Japanese</code> <i class="fa fa-paperclip"></i> <!-- paperclip means freelancer uploaded the translated file -->
+                                                </div>
+                                            </td>
+                                            <td class="project-title">
+                                                Freelancer's name
+                                                <br/>
+                                                Reviewer's name(senior freelancer)
+                                            </td>
+                                            <td class="project-actions">
+                                                <a href="#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
+                                                <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete </a> <!-- only admin has right to show the delete button -->
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="project-status">
+                                                <span class="label label-warning">Pooling</span>
+                                            </td>
+                                            <td class="project-title">
+                                                <span class="">T88888168</span>
+                                                <br/>
+                                                <small>2014.Sep.09 - 2014.Oct.18</small>
+                                            </td>
+                                            <td class="project-title">
+                                                <strong>(Field) Accounting</strong>
+                                                <br/>
+                                                <div class="tooltip-demo"> 
+                                                <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Translation without Translation Memory">No-TM</code>  |  <code>English</code> <i class="fa fa-arrow-right"></i> <code>Japanese</code> <i class="fa fa-paperclip"></i> <!-- paperclip means freelancer uploaded the translated file -->
+                                                </div>
+                                            </td>
+                                            <td class="project-title">
+                                                Freelancer's name
+                                                <br/>
+                                                Pooling <!--if status is "pooling" means this test is taken by freelancer, but it is waitng for a senior freelancer to pick it up.-->
+                                            </td>
+                                            <td class="project-actions">
+                                                <a href="#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
+                                                <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete </a> <!-- only admin has right to show the delete button -->
+                                            </td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
