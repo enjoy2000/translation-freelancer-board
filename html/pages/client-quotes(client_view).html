@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>PaperTask | Projects List</title>
+    <title>PaperTask | Quote List</title>
 
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" media="screen" />
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -310,10 +310,15 @@
                     <div class="ibox">
                         <div class="ibox-title">
                             <h5> Projects List</h5>
+                            <div class="ibox-tools">
+                                <a href="" class="btn btn-primary btn-xs">Create new quote</a>
+                            </div>
                         </div>
                         <div class="ibox-content">
                             <div class="row m-b-sm m-t-sm">
-                                <div class="col-md-1"></div>
+                                <div class="col-md-1">
+                                    <button type="button" id="loading-example-btn" class="btn btn-white btn-sm" ><i class="fa fa-refresh"></i> Refresh</button>
+                                </div>
                                 <div class="col-md-9">
                                     <div class="input-group">
                                     	<input type="text" placeholder="Search" class="input-sm form-control"> 
@@ -334,65 +339,8 @@
                                             <div class="row">
                                                 <div class="col-lg-4">
                                                     <div class="form-group">
-                                                        <label class="col-sm-3 control-label"> ID</label>
+                                                        <label class="col-sm-3 control-label"> QUO No.</label>
                                                         <div class="col-sm-9"><input type="text" class="form-control"></div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Source</label>
-                                                        <div class="col-sm-9">
-                                                            <select class="form-control" name="">
-                                                              <option></option>
-                                                              <option value="">Admin</option>
-                                                              <option value="">General Manager</option>
-                                                              <option value=""></option>
-                                                              <option value="">Financial Manager</option>
-                                                              <option value=""></option>
-                                                              <option value="">Sales Director</option>
-                                                              <option value="">Sales</option>
-                                                              <option value=""></option>
-                                                              <option value="">Operation Manager</option>
-                                                              <option value="">Project Manager</option>
-                                                              <option value="">In-house Translator</option>
-                                                              <option value="">In-house Editor/Proofreader</option>
-                                                              <option value="">In-house DTP</option>
-                                                              <option value="">In-house Engineering</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Order</label>
-                                                        <div class="col-sm-9">
-            												<div class="input-group date">
-            				                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-            				                                    <input type="text" class="form-control" value="">
-            				                                </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label"> Client ID</label>
-                                                        <div class="col-sm-9"><input type="text" class="form-control"></div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">PM</label>
-                                                        <div class="col-sm-9">
-                                                            <select class="form-control" name="">
-                                                              <option></option>
-                                                              <option value="">Admin</option>
-                                                              <option value="">General Manager</option>
-                                                              <option value=""></option>
-                                                              <option value="">Financial Manager</option>
-                                                              <option value=""></option>
-                                                              <option value="">Sales Director</option>
-                                                              <option value="">Sales</option>
-                                                              <option value=""></option>
-                                                              <option value="">Operation Manager</option>
-                                                              <option value="">Project Manager</option>
-                                                              <option value="">In-house Translator</option>
-                                                              <option value="">In-house Editor/Proofreader</option>
-                                                              <option value="">In-house DTP</option>
-                                                              <option value="">In-house Engineering</option>
-                                                            </select>
-                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4">
@@ -400,107 +348,15 @@
                                                         <label class="col-sm-3 control-label">Reference</label>
                                                         <div class="col-sm-9"><input type="text" class="form-control"></div>
                                                     </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Target</label>
-                                                        <div class="col-sm-9">
-                                                            <select class="form-control" name="">
-                                                              <option></option>
-                                                              <option value="">Admin</option>
-                                                              <option value="">General Manager</option>
-                                                              <option value=""></option>
-                                                              <option value="">Financial Manager</option>
-                                                              <option value=""></option>
-                                                              <option value="">Sales Director</option>
-                                                              <option value="">Sales</option>
-                                                              <option value=""></option>
-                                                              <option value="">Operation Manager</option>
-                                                              <option value="">Project Manager</option>
-                                                              <option value="">In-house Translator</option>
-                                                              <option value="">In-house Editor/Proofreader</option>
-                                                              <option value="">In-house DTP</option>
-                                                              <option value="">In-house Engineering</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Completed</label>
-                                                        <div class="col-sm-9">
-															<div class="input-group date">
-							                                    <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-							                                    <input type="text" class="form-control" value="">
-							                                </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label"> Company</label>
-                                                        <div class="col-sm-9"><input type="text" class="form-control"></div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Sales</label>
-                                                        <div class="col-sm-9">
-                                                            <select class="form-control" name="">
-                                                              <option></option>
-                                                              <option value="">Admin</option>
-                                                              <option value="">General Manager</option>
-                                                              <option value=""></option>
-                                                              <option value="">Financial Manager</option>
-                                                              <option value=""></option>
-                                                              <option value="">Sales Director</option>
-                                                              <option value="">Sales</option>
-                                                              <option value=""></option>
-                                                              <option value="">Operation Manager</option>
-                                                              <option value="">Project Manager</option>
-                                                              <option value="">In-house Translator</option>
-                                                              <option value="">In-house Editor/Proofreader</option>
-                                                              <option value="">In-house DTP</option>
-                                                              <option value="">In-house Engineering</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
                                                 </div>
                                                 <div class="col-lg-4">
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Field</label>
-                                                        <div class="col-sm-9">
-                                                            <select class="form-control" name="">
-                                                              <option></option>
-                                                              <option value="">Admin</option>
-                                                              <option value="">General Manager</option>
-                                                              <option value=""></option>
-                                                              <option value="">Financial Manager</option>
-                                                              <option value=""></option>
-                                                              <option value="">Sales Director</option>
-                                                              <option value="">Sales</option>
-                                                              <option value=""></option>
-                                                              <option value="">Operation Manager</option>
-                                                              <option value="">Project Manager</option>
-                                                              <option value="">In-house Translator</option>
-                                                              <option value="">In-house Editor/Proofreader</option>
-                                                              <option value="">In-house DTP</option>
-                                                              <option value="">In-house Engineering</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
                                                     <div class="form-group">
                                                         <label class="col-sm-3 control-label">Status</label>
                                                         <div class="col-sm-9">
                                                             <select class="form-control" name="">
                                                               <option></option>
-                                                              <option value="">Ordered</option>
-                                                              <option value="">Ongoing</option>
-                                                              <option value="">Reviewing</option>
-                                                              <option value="">Completed</option>
-                                                              <option value="">Rejected</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Pay Status</label>
-                                                        <div class="col-sm-9">
-                                                            <select class="form-control" name="">
-                                                              <option></option>
-                                                              <option value="">Paid</option>
-                                                              <option value="">Unpaid</option>
+                                                              <option value="">Quoted</option>
+                                                              <option value="">Quoting</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -522,11 +378,8 @@
                                     <tbody>
 	                                    <tr>
 	                                        <td class="project-status">
-	                                            <span class="label label-danger">Ordered</span>
+	                                            <span class="label label-warning">Quoting</span>
 	                                        </td>
-                                            <td class="project-status">
-                                                <span class="btn btn-outline btn-info btn-sm">Business</span>
-                                            </td>
 	                                        <td class="project-title">
 	                                            <strong>Contract with Zender Company</strong>
 	                                            <br/>
@@ -539,29 +392,22 @@
 	                                            </div>
 	                                        </td>
 	                                        <td class="project-title">
-	                                            <span class="">88888888</span>
+	                                            <span class="">QUO-000567F7-00</span>
 	                                            <br/>
-	                                            <small>2014.Sep.09 - 2014.Oct.18</small>
+	                                            <small>Quote Date: 2014.Oct.18</small>
 	                                        </td>
-	                                        <td class="project-title">
-                                                <div class="tooltip-demo">
-	                                               <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Resource">FR88812</code> 
-                                                   <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Resource">FR88812</code> 
-                                                   <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Resource">FR88812</code> 
-                                                </div>
-	                                            &nbsp;PM: Yang, Michael
-	                                        </td>
+                                            <td class="project-status">
+                                                <strong class="text-danger">CNY 878.88</strong>
+                                            </td>
 	                                        <td class="project-actions">
-	                                            <a href="#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
+	                                            <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-check-square-o"></i> Accept </a>
+                                                <a href="#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
 	                                        </td>
 	                                    </tr>
 	                                    <tr>
 	                                        <td class="project-status">
-	                                            <span class="label label-primary">Ongoing</span>
+	                                            <span class="label label-info">Quoted</span>
 	                                        </td>
-                                            <td class="project-status">
-                                                <span class="btn btn-outline btn-info btn-sm">Business</span>
-                                            </td>
 	                                        <td class="project-title">
 	                                            <strong>Contract with Zender Company</strong>
 	                                            <br/>
@@ -574,123 +420,16 @@
 	                                            </div>
 	                                        </td>
 	                                        <td class="project-title">
-	                                            <span class="">88888888</span>
+	                                            <span class="">QUO-000567F7-02</span>
 	                                            <br/>
-	                                            <small>2014.Sep.09 - 2014.Oct.18</small>
-	                                        </td>
-                                            <td class="project-title">
-                                                <div class="tooltip-demo">
-                                                   <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Resource">FR88812</code> 
-                                                   <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Resource">FR88812</code> 
-                                                </div>
-                                                &nbsp;
-                                            </td>
-	                                        <td class="project-actions">
-	                                            <a href="#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
-	                                        </td>
-	                                    </tr>
-	                                    <tr>
-	                                        <td class="project-status">
-	                                            <span class="label label-success">Need Review</span>
+	                                            <small>Quote Date: 2014.Oct.18</small>
 	                                        </td>
                                             <td class="project-status">
-                                                <span class="btn btn-outline btn-info btn-sm">Business</span>
-                                            </td>
-	                                        <td class="project-title">
-	                                            <strong>Contract with Zender Company</strong>
-	                                            <br/>
-	                                            <div class="tooltip-demo">
-	                                            <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Translation with Translation Memory">TM</code> 
-	                                            <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Translation without Translation Memory">No-TM</code> 
-	                                            <code>Proofreading</code> 
-	                                            <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Desktop Publishing">DTP</code> 
-	                                            <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Engineering">ENG</code>
-	                                            </div>
-	                                        </td>
-	                                        <td class="project-title">
-	                                            <span class="">88888888</span>
-	                                            <br/>
-	                                            <small>2014.Sep.09 - 2014.Oct.18</small>
-	                                        </td>
-                                            <td class="project-title">
-                                                <div class="tooltip-demo">
-                                                   <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Resource">FR88812</code> 
-                                                   <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Resource">FR88812</code> 
-                                                </div>
-                                                &nbsp;PM: Yang, Michael
+                                                <strong class="text-danger">CNY 878.88</strong>
                                             </td>
 	                                        <td class="project-actions">
-	                                            <a href="#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
-	                                        </td>
-	                                    </tr>
-	                                    <tr>
-	                                        <td class="project-status">
-	                                            <span class="label label-default">Completed</span> <i class="fa fa-usd"></i> <!--with dollor sign means paid -->
-	                                        </td>
-                                            <td class="project-status">
-                                                <span class="btn btn-outline btn-info btn-sm">Business</span>
-                                            </td>
-	                                        <td class="project-title">
-	                                            <strong>Contract with Zender Company</strong>
-	                                            <br/>
-	                                            <div class="tooltip-demo">
-	                                            <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Translation with Translation Memory">TM</code> 
-	                                            <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Translation without Translation Memory">No-TM</code> 
-	                                            <code>Proofreading</code> 
-	                                            <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Desktop Publishing">DTP</code> 
-	                                            <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Engineering">ENG</code>
-	                                            </div>
-	                                        </td>
-	                                        <td class="project-title">
-	                                            <span class="">88888888</span>
-	                                            <br/>
-	                                            <small>2014.Sep.09 - 2014.Oct.18</small>
-	                                        </td>
-                                            <td class="project-title">
-                                                <div class="tooltip-demo">
-                                                   <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Resource">FR88812</code> 
-                                                   <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Resource">FR88812</code> 
-                                                   <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Resource">FR88812</code> 
-                                                </div>
-                                                &nbsp;PM: Yang, Michael
-                                            </td>
-	                                        <td class="project-actions">
-	                                            <a href="#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
-	                                        </td>
-	                                    </tr>
-	                                    <tr>
-	                                        <td class="project-status">
-	                                            <span class="label label-white">Rejected</span>
-	                                        </td>
-                                            <td class="project-status">
-                                                <span class="btn btn-outline btn-info btn-sm">Business</span>
-                                            </td>
-	                                        <td class="project-title">
-	                                            <strong>Contract with Zender Company</strong>
-	                                            <br/>
-	                                            <div class="tooltip-demo">
-	                                            <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Translation with Translation Memory">TM</code> 
-	                                            <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Translation without Translation Memory">No-TM</code> 
-	                                            <code>Proofreading</code> 
-	                                            <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Desktop Publishing">DTP</code> 
-	                                            <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Engineering">ENG</code>
-	                                            </div>
-	                                        </td>
-	                                        <td class="project-title">
-	                                            <span class="">88888888</span>
-	                                            <br/>
-	                                            <small>2014.Sep.09 - 2014.Oct.18</small>
-	                                        </td>
-                                            <td class="project-title">
-                                                <div class="tooltip-demo">
-                                                   <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Resource">FR88812</code> 
-                                                   <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Resource">FR88812</code> 
-                                                   <code data-toggle="tooltip" data-placement="top" title="" data-original-title="Resource">FR88812</code> 
-                                                </div>
-                                                &nbsp;PM: Yang, Michael
-                                            </td>
-	                                        <td class="project-actions">
-	                                            <a href="#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
+                                                <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-check-square-o"></i> Accept </a>
+                                                <a href="#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
 	                                        </td>
 	                                    </tr>
                                     </tbody>
