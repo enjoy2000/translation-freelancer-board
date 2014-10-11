@@ -318,7 +318,7 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="m-b-md">
-                                        <div class="pull-right"><span class="label label-warning">Pooling</span></div>
+                                        <div class="pull-right"><span class="label label-primary">Past</span></div>
                                         
                                         <h2><span class="text-info">T88888888</span></h2>
                                     </div>
@@ -339,7 +339,7 @@
                                 </div>
                                 <div class="col-lg-7">
                                     <dl class="dl-horizontal" style="margin-bottom: 0px;">
-                                        <dt>Senior Freelancer:</dt> <dd><a href="#" class="text-navy">Yang, Michael</a> | Fee: CNY 100</dd> <!-- if status is pooling, then here put nothing -->
+                                        <dt>Senior Freelancer:</dt> <dd>FR8881212</dd>
                                         <br>
                                         <dt>Field:</dt> <dd>Accounting</dd>
                                         <dt>Type:</dt> 
@@ -360,11 +360,8 @@
                                         <dt>Test Files:</dt> 
                                         <dd>
                                             <ul class="list-unstyled project-files tooltip-demo">
-                                                <li><a href="" data-toggle="tooltip" data-placement="left" title="" data-original-title="46.13 K | 2014-07-21 10:04:59"><i class="fa fa-file"></i> test_document.docx</a> <a href=""><i class="fa fa-trash"></i></a></li>
+                                                <li><a href="" data-toggle="tooltip" data-placement="left" title="" data-original-title="46.13 K | 2014-07-21 10:04:59"><i class="fa fa-file"></i> test_document.docx</a></li>
                                             </ul>
-                                            <div class="text-center m-t-md">
-                                                <a href="#" class="btn btn-xs btn-primary"><i class="fa fa-cloud-upload"></i> Upload Test files</a>
-                                            </div>
                                         </dd>
                                     </dl>
                                 </div>
@@ -380,34 +377,6 @@
                                             </div>
                                         </dd>
                                     </dl>
-                                </div>
-                            </div>
-                            <div class="hr-line-dashed"></div>
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <form class="form-horizontal">
-                                        <div class="form-group">
-                                            <div class="col-sm-12">
-                                                <div class="row">
-                                                    <div class="col-md-1">
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <select class="form-control" name="account">
-                                                            <option>Select Senior Resource</option>
-                                                            <option>Translator 1</option>
-                                                            <option>Translator 2</option>
-                                                            <option>Translator 3</option>
-                                                            <option>...</option>
-                                                        </select>
-                                                    </div>
-                                                    
-                                                    <div class="col-md-2"><button class="btn btn-primary" type="submit">Assign Test</button></div> <!-- this button never disabled -->
-                                                    <div class="col-md-5" ><a href="" disabled class="btn btn-success" type="submit">Send to Senior Freelancer Pool</a></div>
-                                                    <!-- if the test has been send to senior pool, then the button need to be disabled then the test status should be pooling-->
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
                                 </div>
                             </div>
                             <div class="hr-line-dashed"></div>
@@ -468,21 +437,22 @@
                                                                 <div class="row form-horizontal">
                                                                     <div class="col-lg-6">
                                                                         <div class="form-group">
-                                                                            <label class="col-sm-6 control-label">Number of Words *</label>
+                                                                            <label class="col-sm-6 control-label">Number of Words </label>
                                                                             <div class="col-sm-4">
-                                                                                <input id="" name="" value="" type="number" class="form-control">
+                                                                                <p class="form-control-static">888</p>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-lg-6">
                                                                         <div class="form-group">
-                                                                            <label class="col-sm-5 control-label">Max error points allowed *</label>
+                                                                            <label class="col-sm-5 control-label">Max error points allowed </label>
                                                                             <div class="col-sm-4">
-                                                                                <p class="form-control text-info">8</p> <!-- this number get from "Number of Words" x 0.008 -->
+                                                                                <p class="form-control-static">8</p>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
+                                                                <div class="hr-line-dashed"></div>
 
                                                                 <div class="table-responsive">
                                                                     <table class="table">
@@ -499,65 +469,65 @@
                                                                         <tbody>
                                                                         <tr>
                                                                             <td class="tooltip-demo">Mistranslation <span data-toggle="tooltip" data-placement="top" title="" data-original-title="Source text incorrectly rendered when no authorization has been given to justify alterations."><i class="fa fa-question-circle"></i></span></td>
-                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
-                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
-                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
-                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
-                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
+                                                                            <td>1</td>
+                                                                            <td>1</td>
+                                                                            <td>1</td>
+                                                                            <td>1</td>
+                                                                            <td>1</td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td class="tooltip-demo">Accuracy <span data-toggle="tooltip" data-placement="top" title="" data-original-title="Unauthorized omissions/additions, headers/footers incorrectly translated, text accidentally left in the source language, project instructions not followed, query feedback not implemented, undertranslation/overtranslation."><i class="fa fa-question-circle"></i></span></td>
-                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
-                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
-                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
-                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
-                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td class="tooltip-demo">Terminology <span data-toggle="tooltip" data-placement="top" title="" data-original-title="Glossary adherence"><i class="fa fa-question-circle"></i></span></td>
-                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
-                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
-                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
-                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
-                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td class="tooltip-demo">Language <span data-toggle="tooltip" data-placement="top" title="" data-original-title="Grammar, Semantics, Spelling, Punctuation"><i class="fa fa-question-circle"></i></span></td>
-                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
-                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
-                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
-                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
-                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td class="tooltip-demo">Language <span data-toggle="tooltip" data-placement="top" title="" data-original-title="Adherence to Style Guidelines"><i class="fa fa-question-circle"></i></span></td>
-                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
-                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
-                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
-                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
-                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td class="tooltip-demo">Language <span data-toggle="tooltip" data-placement="top" title="" data-original-title="Country standard, local suitability"><i class="fa fa-question-circle"></i></span></td>
-                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
-                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
-                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
-                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
-                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td class="tooltip-demo">Language <span data-toggle="tooltip" data-placement="top" title="" data-original-title="Gui-terminology, Cross-project terminology, Abbreviation"><i class="fa fa-question-circle"></i></span></td>
-                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
-                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
-                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
-                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
-                                                                            <td><input id="" name="" value="" type="number" class="form-control"></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
+                                                                            <td></td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td colspan="3"></td>
                                                                             <td><strong>Total</strong></td>
-                                                                            <td><p class="form-control text-info">8</p></td> <!-- this number should automaticly caculated -->
-                                                                            <td><p class="form-control text-danger">22</p></td><!-- this number should automaticly caculated -->
+                                                                            <td>8</td>
+                                                                            <td>12</td>
                                                                         </tr>
                                                                         </tbody>
                                                                     </table>
@@ -570,12 +540,8 @@
                                                                 </div>
                                                                 <div class="row">
                                                                     <div class="col-lg-12">
-                                                                        <div class="summernote"></div>
+                                                                        <p>dflljdf;adsf;kadsjf;daksfa;fkj;dkfja;fafa</p>
                                                                     </div>
-                                                                </div>
-                                                                <div class="hr-line-dashed"></div>
-                                                                <div class="text-right">
-                                                                    <a href="#" class="btn btn-sm btn-primary"><i class="fa fa-save"></i> Update</a>
                                                                 </div>
                                                             </form>
                                                         </div>
@@ -609,9 +575,6 @@
                                                                         <td>dfkj sfljd lsdfjsld dsfkjsdf dslfj</td>
                                                                         <td>dfkj sfljd lsdfjsld dsfkjsdf dslfj</td>
                                                                         <td>dfkj sfljd lsdfjsld dsfkjsdf dslfj dklfsdfjlsdf  sdlkfjdsf sdflkj sd</td>
-                                                                        <td>
-                                                                            <a data-toggle="modal" href="#modal-log"><i class="fa fa-edit"></i></a>
-                                                                        </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Page2 Line 59</td>
@@ -623,15 +586,9 @@
                                                                         <td>dfkj sfljd lsdfjsld dsfkjsdf dslfj</td>
                                                                         <td>dfkj sfljd lsdfjsld dsfkjsdf dslfj</td>
                                                                         <td>dfkj sfljd lsdfjsld dsfkjsdf dslfj dklfsdfjlsdf  sdlkfjdsf sdflkj sd</td>
-                                                                        <td>
-                                                                            <a data-toggle="modal" href="#modal-log"><i class="fa fa-edit"></i></a>
-                                                                        </td>
                                                                     </tr>
                                                             </tbody>
                                                         </table>
-                                                    </div>
-                                                    <div class="text-center">
-                                                        <a data-toggle="modal" class="btn btn-outline btn-primary" href="#modal-log">Add Error Log</a>
                                                     </div>
 
                                                 </div>
@@ -803,100 +760,6 @@
             </div>
         </div>
 
-        <!-- add error log -->
-        <div id="modal-log" class="modal fade" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Input/Edit Quantity and Price</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form class="form-horizontal">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">Location </label>
-                                        <div class="col-sm-9">
-                                            <input id="" name="" type="text" value="Please add file name/page number/string ID/etc." class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">Error Category </label>
-                                        <div class="col-sm-9">
-                                            <select class="form-control" id="" name="" value="" aria-required="true">
-                                                <option></option>
-                                                <option>Mistranslation</option>
-                                                <option>Accuracy</option>
-                                                <option>Terminology</option>
-                                                <option>Language</option>
-                                                <option>Style</option>
-                                                <option>Country</option>
-                                                <option>Consistency</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">Error Severity </label>
-                                        <div class="col-sm-9">
-                                            <select class="form-control" id="" name="" value="" aria-required="true">
-                                                <option></option>
-                                                <option>Minor</option>
-                                                <option>Major</option>
-                                                <option>Critical</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">Repeat Error </label>
-                                        <div class="col-sm-9">
-                                            <select class="form-control" id="" name="" value="" aria-required="true">
-                                                <option></option>
-                                                <option>Yes</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">Source text </label>
-                                        <div class="col-sm-9">
-                                            <input id="" name="" type="text" value="" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">Translation used </label>
-                                        <div class="col-sm-9">
-                                            <input id="" name="" type="text" value="" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">Correction/Suggestion </label>
-                                        <div class="col-sm-9">
-                                            <input id="" name="" type="text" value="" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">Comments </label>
-                                        <div class="col-sm-9">
-                                            <input id="" name="" type="text" value="" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-3 control-label">Translator's feedback </label>
-                                        <div class="col-sm-9">
-                                            <input id="" name="" type="text" value="" class="form-control">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-w-m btn-white" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-w-m btn-primary">Save changes</button>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <div class="footer">
             <div class="pull-right">
