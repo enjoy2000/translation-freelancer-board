@@ -452,6 +452,7 @@ fieldset[disabled] .btn-primary:active,
 fieldset[disabled] .btn-primary.active {
   background-color: #1dc5a3;
   border-color: #1dc5a3;
+  color: #FFFFFF;
 }
 .btn-success {
   background-color: #1c84c6;
