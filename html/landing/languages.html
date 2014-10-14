@@ -36,8 +36,9 @@
               <li><a href="languages.html">Languages and Pricing</a></li>
               <li><a href="freelancer.html">Freelancer</a></li>
               <li><a href="contact.html">Contact</a></li>
-              <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </li>
+              <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </li>
               <li><a href="signin.html">SIGN IN</a></li>
+              <li><a href="signin.html"><strong class="text-navy">SIGN UP</strong></a></li>
             </ul>
           </div>
         </div>
@@ -178,7 +179,28 @@
         </div>
       </div>
     </div>
-    <footer class="footer text-center"> 2014 &copy; <a href="index.html">PaperTask.com</a> All Rights Reserved. <a href="../privacy.html">{:L('privacy_policy')}</a> | <a href="../terms.html">{:L('terms_of_use')}</a></footer>
+    <footer class="footer"> 
+      <div class="row">
+        <div class="col-md-4 text-center">
+          <div class="btn-group dropup">
+            <button type="button" class="btn btn-default">English</button>
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+              <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#">English</a></li>
+              <li><a href="#">简体中文</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-8 text-left">
+            <br>
+            2014 &copy; <a href="index.html">PaperTask.com</a> All Rights Reserved. <a href="../privacy.html">{:L('privacy_policy')}</a> | <a href="../terms.html">{:L('terms_of_use')}</a>
+        </div>
+      </div>
+
+    </footer>
     <!--if lt IE 8
     <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     
