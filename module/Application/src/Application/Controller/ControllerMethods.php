@@ -42,7 +42,10 @@ trait ControllerMethods{
             if(!$user){
                 $msg = $this->getTranslator()->translate("You must login in order to process this page.");
                 $this->flashMessenger()->addErrorMessage($msg);
-                return $this->redirect()->toUrl("/user/login");
+                /** @var \Zend\Uri\Http $url */
+                $uri = $request->getUri();
+                $requestUri = $uri->getPath() . ($uri->getQuery() ? "?" . $uri->getQuery() : "");
+                return $this->redirect()->toUrl("/user/login?next=" . $requestUri);
             }
         }
         return parent::dispatch($request, $response);
@@ -95,7 +98,9 @@ trait ControllerMethods{
     public function getCurrentUser(){
         if($this->currentUser === null){
             $userId = User::currentLoginId();
-            $this->currentUser = $this->getUserById($userId);
+            if($userId){
+                $this->currentUser = $this->getUserById($userId);
+            }
         }
         return $this->currentUser;
     }

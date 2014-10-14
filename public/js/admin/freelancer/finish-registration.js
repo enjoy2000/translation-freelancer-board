@@ -17,7 +17,7 @@ angularApp.controller('UpdateInfoController', function($scope, $http, $timeout, 
     $scope.resource_active = {};
     $scope.translationPrices = [];
 
-    $scope.userInfo = {
+    $scope.user = {
         "city": null,
         "country": {
             "select": null
@@ -41,15 +41,15 @@ angularApp.controller('UpdateInfoController', function($scope, $http, $timeout, 
         "TranslationCatTools": null,
         "TranslationSpecialisms": null
     };
-    $scope.freelancerInfo = {};
+    $scope.freelancer = {};
 
     /**
      * Mark resource active params
      */
     function generateActiveResources(){
-        $scope.freelancerInfo.Resources = $scope.freelancerInfo.Resources;
-        for(var i = 0; i < $scope.freelancerInfo.Resources.length; i++){
-            $scope.resource_active[$scope.freelancerInfo.Resources[i]] = 'active';
+        $scope.freelancer.Resources = $scope.freelancer.Resources;
+        for(var i = 0; i < $scope.freelancer.Resources.length; i++){
+            $scope.resource_active[$scope.freelancer.Resources[i]] = 'active';
         }
     }
 
@@ -67,7 +67,7 @@ angularApp.controller('UpdateInfoController', function($scope, $http, $timeout, 
     }
 
     function updateFreelancerSkillData(){
-        var $info = $scope.freelancerInfo;
+        var $info = $scope.freelancer;
         $info.TranslationCatTools = findOptions($scope.catTools, $info.TranslationCatTools);
         $info.TranslationSpecialisms = findOptions($scope.specialisms, $info.TranslationSpecialisms);
         $info.DesktopCatTools = findOptions($scope.catTools, $info.DesktopCatTools);
@@ -94,17 +94,17 @@ angularApp.controller('UpdateInfoController', function($scope, $http, $timeout, 
     function init($userId){
         $http.get("/api/user/" + $userId + "")
             .success(function($data){
-                $scope.userInfo = $data['user'];
+                $scope.user = $data['user'];
                 $scope.translationPrices = $data['translationPrices'];
                 $scope.interpretingPrices = $data['interpretingPrices'];
                 $scope.desktopPrices = $data['desktopPrices'];
                 if($scope.countries.length){
-                    $scope.userInfo.country = findOption($scope.countries, $scope.userInfo.country);
+                    $scope.user.country = findOption($scope.countries, $scope.user.country);
                 }
 
-                if($scope.userInfo.group.isFreelancer){
+                if($scope.user.group.isFreelancer){
                     loadFreelancerData();
-                } else if ($scope.userInfo.group.isEmployer) {
+                } else if ($scope.user.group.isEmployer) {
                     loadEmployerData();
                 } else {
                     loadAdminData();
@@ -124,17 +124,17 @@ angularApp.controller('UpdateInfoController', function($scope, $http, $timeout, 
             .success(function($data){
                 $scope.countries = $data['countries'];
                 setModalControllerData('countries', $scope.countries);
-                if($scope.userInfo.country){
-                    $scope.userInfo.country = findOption($scope.countries, $scope.userInfo.country);
+                if($scope.user.country){
+                    $scope.user.country = findOption($scope.countries, $scope.user.country);
                 }
             });
     };
 
     function loadFreelancerData(){
 
-        $http.get("/api/user/" + $scope.userInfo.id + "/freelancer")
+        $http.get("/api/user/" + $scope.user.id + "/freelancer")
             .success(function($data){
-                $scope.freelancerInfo = $data['freelancer'];
+                $scope.freelancer = $data['freelancer'];
                 generateActiveResources();
 
                 var priceDataRequest = $http.get("/api/user/freelancerData")
@@ -152,7 +152,7 @@ angularApp.controller('UpdateInfoController', function($scope, $http, $timeout, 
 
     function loadEmployerData(){
 
-        $http.get("/api/user/" + $scope.userInfo.id + "/employer")
+        $http.get("/api/user/" + $scope.user.id + "/employer")
             .success(function($data){
                 $scope.employerInfo = $data['employer'];
                 var priceDataRequest = $http.get("/api/user/employerData")
@@ -167,9 +167,9 @@ angularApp.controller('UpdateInfoController', function($scope, $http, $timeout, 
 
     function loadAdminData(){
 
-        $http.get("/api/user/" + $scope.userInfo.id + "/freelancer")
+        $http.get("/api/user/" + $scope.user.id + "/freelancer")
             .success(function($data){
-                $scope.freelancerInfo = $data['freelancer'];
+                $scope.freelancer = $data['freelancer'];
                 generateActiveResources();
 
                 var priceDataRequest = $http.get("/api/user/freelancerData")
@@ -195,24 +195,24 @@ angularApp.controller('UpdateInfoController', function($scope, $http, $timeout, 
     init(USER_ID);
 
     function updateFreelancer(){
-        return $http.put("/api/user/" + $scope.userInfo.id + "/freelancer/" + $scope.freelancerInfo.id, {
-            'DesktopCatTools': getIds($scope.freelancerInfo.DesktopCatTools),
-            'DesktopOperatingSystems': getIds($scope.freelancerInfo.DesktopOperatingSystems),
-            'InterpretingSpecialisms': getIds($scope.freelancerInfo.InterpretingSpecialisms),
-            'Resources': getIds($scope.freelancerInfo.Resources),
-            'TranslationCatTools': getIds($scope.freelancerInfo.TranslationCatTools),
-            'TranslationSpecialisms': getIds($scope.freelancerInfo.TranslationSpecialisms)
+        return $http.put("/api/user/" + $scope.user.id + "/freelancer/" + $scope.freelancer.id, {
+            'DesktopCatTools': getIds($scope.freelancer.DesktopCatTools),
+            'DesktopOperatingSystems': getIds($scope.freelancer.DesktopOperatingSystems),
+            'InterpretingSpecialisms': getIds($scope.freelancer.InterpretingSpecialisms),
+            'Resources': getIds($scope.freelancer.Resources),
+            'TranslationCatTools': getIds($scope.freelancer.TranslationCatTools),
+            'TranslationSpecialisms': getIds($scope.freelancer.TranslationSpecialisms)
         });
     }
 
     function updateEmployer(){
-        return $http.put("/api/user/" + $scope.userInfo.id + "/employer/" + $scope.employerInfo.id, $scope.employerInfo);
+        return $http.put("/api/user/" + $scope.user.id + "/employer/" + $scope.employerInfo.id, $scope.employerInfo);
     }
 
     $scope.submitGroup = function(){
-        if($scope.userInfo.group.isFreelancer){
+        if($scope.user.group.isFreelancer){
             return updateFreelancer();
-        } else if ($scope.userInfo.group.isEmployer){
+        } else if ($scope.user.group.isEmployer){
             return updateEmployer();
         } else {
             return updateAdmin();  // TODO: implement this
@@ -224,7 +224,7 @@ angularApp.controller('UpdateInfoController', function($scope, $http, $timeout, 
      */
     $scope.submit = function(){
 
-        var requestInfo = $http.put("/api/user/" + $scope.userInfo.id, $scope.userInfo);
+        var requestInfo = $http.put("/api/user/" + $scope.user.id, $scope.user);
         var requestGroup = $scope.submitGroup();
 
         // wait all done
@@ -238,14 +238,14 @@ angularApp.controller('UpdateInfoController', function($scope, $http, $timeout, 
      * Toggle resource
      */
     $scope.toggleResource = function($id){
-        console.log($scope.freelancerInfo.Resources);
-        var $index = $scope.freelancerInfo.Resources.indexOf($id);
+        console.log($scope.freelancer.Resources);
+        var $index = $scope.freelancer.Resources.indexOf($id);
         if($index == -1){
-            $scope.freelancerInfo.Resources.push($id);
+            $scope.freelancer.Resources.push($id);
         } else {
-            $scope.freelancerInfo.Resources.splice($index, 1);
+            $scope.freelancer.Resources.splice($index, 1);
         }
-        console.log($scope.freelancerInfo.Resources);
+        console.log($scope.freelancer.Resources);
     };
 
     /**

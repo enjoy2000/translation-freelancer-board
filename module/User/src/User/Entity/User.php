@@ -458,6 +458,7 @@ class User extends Entity implements InputFilterAwareInterface{
         }else if($name == 'employer'){
             $this->setGroup($entityManager->getReference('\User\Entity\UserGroup', UserGroup::EMPLOYER_GROUP_ID));
             $employer = new Employer();
+            $employer->setData(['name' => $this->firstName . ' ' . $this->lastName]);
             $employer->save($entityManager);
             $this->employer = $employer;
         }

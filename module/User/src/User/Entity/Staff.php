@@ -14,6 +14,10 @@ use Common\Entity;
 
 /** @ORM\Entity */
 class Staff extends Entity{
+
+    const STAFF_TYPE_PM = 2;
+    const STAFF_TYPE_SALE = 1;
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
@@ -32,4 +36,12 @@ class Staff extends Entity{
      * @ORM\Column(type="integer")
      */
     protected $type;
+
+    public function getData(){
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'type' => $this->type,
+        ];
+    }
 }
