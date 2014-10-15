@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PaperTask | Need a quote</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" media="screen" />
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/plugins/jquery-fileupload/jquery.fileupload.css">
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <style type="text/css">
+        .wizard > .content {
+            min-height: 1000px;
+        }
+        .note-editor {
+            height: 150px;
+        }
+
+        .nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus {
+            background-color: #19aa8d;
+        }
+
+        .nav > li.active {
+            border-left: 4px solid #19aa8d;
+            background: #19aa8d;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li class="nav-header">
+
+                        <div class="dropdown profile-element"> 
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">Amelia Smith</strong>
+                             </span> <span class="text-muted text-xs block">Company name <b class="caret"></b></span> </span> </a>
+                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                                <li><a href="profile.html">Profile</a></li>
+                                <li><a href="contacts.html">Reset Password</a></li>
+                                <li><a href="mailbox.html">Mailbox</a></li>
+                                <li class="divider"></li>
+                                <li><a href="login.html">Logout</a></li>
+                            </ul>
+                        </div>
+                        <div class="logo-element">
+                            PT
+                        </div>
+
+                    </li>
+                    <li>
+                        <a href="dashboard.html"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span></a>
+                    </li>
+
+                    <li> <!-- client quotes list view client-quotes(client_view).html -->
+                        <a href="quotes.html"><i class="fa fa-files-o"></i> <span class="nav-label">Quotes</span></a>
+                    </li>
+
+                    <li> <!-- client projects list view -->
+                        <a href="#"><i class="fa fa-archive"></i> <span class="nav-label">Projects</span> <span class="fa arrow"></span> <span class="label label-warning">16</span> </a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="projects.html">All Projects</a></li> <!-- client-projects(client_view).html -->
+                            <li><a href="transaction.html">Ongoing Projects </a> </li> <!-- client-projects_ongoing(client_view).html -->
+                            <li><a href="client-unpaid.html">Review <span class="label label-warning">16</span></a> </li>  <!-- client-project_review(client_view).html -->
+                            <li><a href="client-unpaid.html">Completed Projects</a></li>  <!-- client-projects_completed(client_view).html -->
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#"><i class="fa fa-book"></i> <span class="nav-lable">Finance</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="transaction.html">Transactions</a></li> <!-- client-transaction(client_view).html -->
+                            <li><a href="client-unpaid.html">Unpaid Projects</a></li>  <!-- client-unpaid(client view).html -->
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="mailbox.html"><i class="fa fa-envelope"></i> <span class="nav-lable">Mail</span></a>
+                    </li>
+
+                </ul>
+
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="gray-bg">
+        <div class="row border-bottom">
+        <nav class="navbar navbar-static-top  " role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+            <form role="search" class="navbar-form-custom" method="post" action="search_results.html">
+                <div class="form-group">
+                    <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search">
+                </div>
+            </form>
+        </div>
+            <ul class="nav navbar-top-links navbar-right">
+                <li>
+                    <span class="m-r-sm text-muted welcome-message">Welcome to INSPINIA+ Admin Theme.</span>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                        <i class="fa fa-envelope"></i>  <span class="label label-warning">16</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-messages">
+                        <li>
+                            <div class="dropdown-messages-box">
+                                <a href="profile.html" class="pull-left">
+                                    <img alt="image" class="img-circle" src="img/a7.jpg">
+                                </a>
+                                <div class="media-body">
+                                    <small class="pull-right">46h ago</small>
+                                    <strong>Mike Loreipsum</strong> started following <strong>Monica Smith</strong>. <br>
+                                    <small class="text-muted">3 days ago at 7:58 pm - 10.06.2014</small>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <div class="dropdown-messages-box">
+                                <a href="profile.html" class="pull-left">
+                                    <img alt="image" class="img-circle" src="img/a4.jpg">
+                                </a>
+                                <div class="media-body ">
+                                    <small class="pull-right text-navy">5h ago</small>
+                                    <strong>Chris Johnatan Overtunk</strong> started following <strong>Monica Smith</strong>. <br>
+                                    <small class="text-muted">Yesterday 1:21 pm - 11.06.2014</small>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <div class="dropdown-messages-box">
+                                <a href="profile.html" class="pull-left">
+                                    <img alt="image" class="img-circle" src="img/profile.jpg">
+                                </a>
+                                <div class="media-body ">
+                                    <small class="pull-right">23h ago</small>
+                                    <strong>Monica Smith</strong> love <strong>Kim Smith</strong>. <br>
+                                    <small class="text-muted">2 days ago at 2:30 am - 11.06.2014</small>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <div class="text-center link-block">
+                                <a href="mailbox.html">
+                                    <i class="fa fa-envelope"></i> <strong>Read All Messages</strong>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                        <i class="fa fa-bell"></i>  <span class="label label-primary">8</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-alerts">
+                        <li>
+                            <a href="mailbox.html">
+                                <div>
+                                    <i class="fa fa-envelope fa-fw"></i> You have 16 messages
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="profile.html">
+                                <div>
+                                    <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+                                    <span class="pull-right text-muted small">12 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="grid_options.html">
+                                <div>
+                                    <i class="fa fa-upload fa-fw"></i> Server Rebooted
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <div class="text-center link-block">
+                                <a href="notifications.html">
+                                    <strong>See All Alerts</strong>
+                                    <i class="fa fa-angle-right"></i>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+
+
+                <li>
+                    <a href="login.html">
+                        <i class="fa fa-sign-out"></i> Log out
+                    </a>
+                </li>
+            </ul>
+
+        </nav>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="wrapper wrapper-content animated">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5><i class="fa fa-files-o"></i> Order A Translation </h5>
+                        </div>
+                        <div class="ibox-content">
+                        <div class="row">
+                            <div class="col-lg-12">
+                              <form class="form-horizontal" role="form">
+
+                                  <div class=" form-group">
+                                    <div class="col-md-12">
+                                        <ul class="nav nav-pills nav-justified thumbnail setup-panel">
+                                            <li class="active"><a href="#step-1">
+                                                <h4 class="list-group-item-heading">Step 1</h4>
+                                                <p class="list-group-item-text">Upload the file(s)</p>
+                                            </a></li>
+                                            <li class="disabled"><a href="#step-2">
+                                                <h4 class="list-group-item-heading">Step 2</h4>
+                                                <p class="list-group-item-text">Select Languages and Quality</p>
+                                            </a></li>
+                                        </ul>
+                                    </div>
+                                  </div>
+
+                                  <div class=" setup-content" id="step-1">
+
+                                    <div class="col-md-12">
+                                      <h4>We accept the following files, under <span class="text-danger">50MB</span> size:</h4>
+                                      <p>Allowed file types are "txt, zip, rar, html, htm, xml, gif, jpeg, jpg, png, doc, docx, ppt, pptx, pdf, chm, xls, xlsx, txt, zip, rar, html, htm, xml".</p>
+                                      <br>
+                                      <div class="col-md-4">
+                                        <span class="btn btn-primary btn fileinput-button">
+                                          <i class="fa fa-cloud-upload"></i>
+                                          <span>Select files</span>
+                                          <input id="fileupload" type="file" name="files[]" multiple>
+                                        </span>
+                                      </div>
+                                      <div class="col-md-8">
+                                        <p></p>
+                                        <div class="progress progress-bar-default">
+                                          <div style="width: 43%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="43" role="progressbar" class="progress-bar">
+                                            <span class="sr-only">43% Complete (success)</span>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <br><br><br>
+                                        <table class="table table-striped table-bordered">
+                                            <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>File Name</th>
+                                                <th>File Size</th>
+                                                <th>Time Stamp</th>
+                                                <th></th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td><a href="#"> 提高沼气PPTUltimase NRG - Sales Presentation.pdf</a></td>
+                                                <td>46.13 K</td>
+                                                <td> 2014-07-21 10:04:59 </td>
+                                                <td class="text-center">
+                                                    <a href="#"><i class="fa fa-trash-o text-danger"></i></a>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                      <div class="text-center">
+                                            <button id="activate-step-2" class="btn btn-primary btn-lg">Next</button><!-- next button show after at least one file is uploaded -->
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class=" setup-content" id="step-2">
+                                    <div class="col-md-12">
+                                      <div class="row">
+                                        <div class="col-md-3">
+                                          <h4> Need Fapiao</h4>
+                                          <div data-toggle="buttons"> <!-- here do a judgement, if page load in chinese, then defaule currency is CNY, otherwise USD -->
+                                              <label class="btn btn-outline btn-primary">
+                                                  <input type="radio" name="yes" value=""> YES
+                                              </label>
+                                              <label class="btn btn-outline btn-primary">
+                                                  <input type="radio" name="no" checked="" value=""> NO
+                                              </label>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                          <h4> Select Quality Level</h4>
+                                          <div data-toggle="buttons"> <!-- here do a judgement, if page load in chinese, then defaule currency is CNY, otherwise USD -->
+                                              <label class="btn btn-outline btn-primary">
+                                                  <input type="radio" name="prof" value=""> Professional <i class="fa fa-question-circle"></i>
+                                              </label>
+                                              <label class="btn btn-outline btn-primary">
+                                                  <input type="radio" name="business" value=""> Business <i class="fa fa-question-circle"></i>
+                                              </label> 
+                                              <label class="btn btn-outline btn-primary">
+                                                  <input type="radio" name="premium" value=""> Premium <i class="fa fa-question-circle"></i>
+                                              </label>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                          <h4> Translate Graphics</h4>
+                                          <div data-toggle="buttons"> <!-- here put it in default NO -->
+                                              <label class="btn btn-outline btn-primary">
+                                                  <input type="radio" name="cny" value=""> YES
+                                              </label>
+                                              <label class="btn btn-outline btn-primary">
+                                                  <input type="radio" name="usd" checked="" value=""> NO
+                                              </label>
+                                          </div>
+                                        </div>
+                                      </div>
+
+
+                                      <hr>
+                                      <div class="row">
+                                        <div class="col-md-6">
+                                          <h4> Translate From *</h4>
+                                          <select class="form-control" name="">
+                                            <option>Select Source Language</option>
+                                            <option>option 2</option>
+                                            <option>option 3</option>
+                                            <option>option 4</option>
+                                          </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                          <h4> Translate To *</h4>
+                                          <select class="form-control" name="">
+                                            <option>Add Target Languages</option>
+                                            <option>option 2</option>
+                                            <option>option 3</option>
+                                            <option>option 4</option>
+                                          </select>
+                                        </div>
+                                      </div>
+                                      <br>
+                                        <table class="table table-striped table-bordered">
+                                            <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Target Languages</th>
+                                                <th>Rate</th>
+                                                <th></th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td><span class="label label-primary">Japanese</span></td>
+                                                <td>CNY 0.12 / word</td> <!-- here load the price of this client, if there is not private price for this client, then load papertask list price -->
+                                                <td class="text-center">
+                                                    <a href="#"><i class="fa fa-trash-o text-danger"></i></a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td><span class="label label-primary">Chinese</span></td>
+                                                <td>CNY 0.12 / word</td> <!-- here load the price of this client, if there is not private price for this client, then load papertask list price -->
+                                                <td class="text-center">
+                                                    <a href="#"><i class="fa fa-trash-o text-danger"></i></a>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                      <div class="text-center">
+                                        <button id="" class="btn btn-primary btn-lg">Previous</button>
+                                        <button id="activate-step-3" class="btn btn-primary btn-lg">Need a Quote</button> <!-- after click, create project and put project status as quoting -->
+                                      </div>
+                                    </div>
+                                  </div>
+
+
+                              </form>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div class="footer">
+                <div class="pull-right">
+                    10GB of <strong>250GB</strong> Free.
+                </div>
+                <div>
+                    <strong>Copyright</strong> Example Company &copy; 2014-2015
+                </div>
+            </div>
+
+        </div>
+        </div>
+    </div>
+
+    <!-- Mainly scripts -->
+    <script src="js/jquery-1.10.2.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="js/inspinia.js"></script>
+    <script src="js/plugins/pace/pace.min.js"></script>
+
+    <script src="js/plugins/jquery-fileupload/jquery.ui.widget.js"></script>
+    <script src="js/plugins/jquery-fileupload/jquery.iframe-transport.js"></script>
+    <script src="js/plugins/jquery-fileupload/jquery.fileupload.js"></script>  
+    <script src="js/plugins/jquery-fileupload/jquery.fileupload-validate.js"></script>  
+
+    <!-- Jquery Validate -->
+    <script src="js/plugins/validate/jquery.validate.min.js"></script>
+
+    <script>
+      $(document).ready(function() {
+          
+          var navListItems = $('ul.setup-panel li a'),
+              allWells = $('.setup-content');
+
+          allWells.hide();
+
+          navListItems.click(function(e)
+          {
+              e.preventDefault();
+              var $target = $($(this).attr('href')),
+                  $item = $(this).closest('li');
+              
+              if (!$item.hasClass('disabled')) {
+                  navListItems.closest('li').removeClass('active');
+                  $item.addClass('active');
+                  allWells.hide();
+                  $target.show();
+              }
+          });
+          
+          $('ul.setup-panel li.active a').trigger('click');
+          
+          // DEMO ONLY //
+          $('#activate-step-2').on('click', function(e) {
+              $('ul.setup-panel li:eq(1)').removeClass('disabled');
+              $('ul.setup-panel li a[href="#step-2"]').trigger('click');
+              $(this).remove();
+          })    
+          $('#activate-step-3').on('click', function(e) {
+              $('ul.setup-panel li:eq(2)').removeClass('disabled');
+              $('ul.setup-panel li a[href="#step-3"]').trigger('click');
+              $(this).remove();
+          })    
+      });
+    </script>
+</body>
+
+</html>
