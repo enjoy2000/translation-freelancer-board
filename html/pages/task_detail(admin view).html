@@ -12,6 +12,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
     <link href="css/plugins/summernote/summernote.css" rel="stylesheet">
+    <link href="css/plugins/datetimepicker/bootstrap-datetimepicker.css" rel="stylesheet">
     <link href="css/plugins/summernote/summernote-bs3.css" rel="stylesheet">
     <link href="css/animate.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
@@ -332,8 +333,8 @@
                                         <dt>Client Contact:</dt> <dd><a href="#" class="text-navy"> Smith, Alex</a></dd>
                                         <dt>Client Company:</dt> <dd>Zender Company</dd>
                                         <br>
-                                        <dt>Start Date:</dt> <dd>2014-Aug-19</dd>
-                                        <dt>Due Date:</dt> <dd>2014-Aug-20</dd>
+                                        <dt>Start Date:</dt> <dd>15 October 2014 - 11:04 AM</dd>
+                                        <dt>Due Date:</dt> <dd>15 October 2014 - 11:04 AM</dd>
                                         <br>
                                         <dt>Source Language:</dt> <dd><code>English</code></dd>
                                         <br>
@@ -374,8 +375,10 @@
                                                     <div class="form-group" id="ordered_date">
                                                         <label class="col-sm-3 control-label">Start Date *</label>
                                                         <div class="col-sm-9">
-                                                            <div class="input-group date">
-                                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="03/04/2014">
+                                                            <div class="input-append date form_datetime" >
+                                                                <input class="form-control" type="text" value="" readonly>
+                                                                <span class="add-on"><i class="icon-remove"></i></span>
+                                                                <span class="add-on"><i class="icon-th"></i></span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -420,8 +423,10 @@
                                                     <div class="form-group" id="due_date">
                                                         <label class="col-sm-3 control-label">Due Date *</label>
                                                         <div class="col-sm-9">
-                                                            <div class="input-group date">
-                                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span><input type="text" class="form-control" value="03/04/2014">
+                                                            <div class="input-append date form_datetime" >
+                                                                <input class="form-control" type="text" value="" readonly>
+                                                                <span class="add-on"><i class="icon-remove"></i></span>
+                                                                <span class="add-on"><i class="icon-th"></i></span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1328,6 +1333,18 @@
 
     <!-- SUMMERNOTE -->
     <script src="js/plugins/summernote/summernote.min.js"></script>
+
+    <!-- DATATIMEPICKER -->
+    <script src="js/plugins/datetimepicker/bootstrap-datetimepicker.min.js"></script>
+
+    <script type="text/javascript">
+        $(".form_datetime").datetimepicker({
+            format: "dd MM yyyy - HH:ii P",
+            showMeridian: true,
+            autoclose: true,
+            todayBtn: true
+        });
+    </script> 
 
     <script>
         $(document).ready(function(){
