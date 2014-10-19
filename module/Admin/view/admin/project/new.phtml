@@ -11,7 +11,9 @@
     ->prependFile($this->basePath() . '/js/admin/project/create-project.js')
     ->prependFile($this->basePath() . '/js/admin/angular-steps.js')
     ->prependFile($this->basePath() . '/js/admin/bootstrap-modal.js')
-    ->prependScript("angularApp = angular.module('project', []);")
+    ->prependScript("angularApp = angular.module('project', ['summernote']);")
+    ->prependFile($this->basePath() . '/js/plugins/bootstrap-filestyle/bootstrap-filestyle.min.js')
+    ->prependFile($this->basePath() . '/js/plugins/angular-summernote/angular-summernote.js')
     ->prependFile($this->basePath() . '/js/plugins/summernote/summernote.min.js')
     ->prependFile($this->basePath() . '/js/plugins/datapicker/bootstrap-datepicker.js')
     ->prependFile($this->basePath() . '/js/plugins/multiselect/bootstrap-multiselect.js')
@@ -38,8 +40,9 @@
 <fieldset ng-controller="CreateProjectController">
 <button type="button" ng-click="test()">Test</button>
 <div class="ibox">
-    <div class="ibox-title">
+    <div class="ibox-title" id="project-type">
         <h5><i class="fa fa-puzzle-piece"></i> Project Type & Status</h5>
+        <input type="text" class="hidden-required required valid" ng-value="projectType()">
     </div>
     <div class="ibox-content">
         <div class="form-group project-types">
@@ -49,7 +52,7 @@
             <div data-toggle="buttons">
                 <label class="btn btn-outline btn-primary {{translation_active[translation.id]}}"
                        ng-repeat="translation in translations" ng-click="addTranslation(translation)">
-                    <input type="checkbox" name="type" ng-value="translation.id" /> {{translation.name}}
+                    <input type="checkbox" name="type" ng-value="translation.id"/> {{translation.name}}
                 </label>
             </div>
         </div>
@@ -64,7 +67,7 @@
                 </label>
             </div>
         </div>
-        <div class="form-group" ng="project-interpreting">
+        <div class="form-group" id="project-interpreting">
             <label class="col-sm-3 control-label">
                 <h4><i class="fa fa-comments-o"></i> &nbsp; Interpreting</h4>
             </label>
@@ -83,7 +86,8 @@
             <div data-toggle="buttons">
                 <label class="btn btn-outline btn-{{status.decorator}}" ng-repeat="status in statuses"
                        ng-click="project.status=status">
-                    <input type="radio" name="status" ng-value="status.id" /> {{status.name}}
+                    <input type="radio" name="status" ng-value="status.id" class="required valid"
+                           data-errorplace="element.parent().parent().after(error)"/> {{status.name}}
                 </label>
             </div>
         </div>
@@ -93,8 +97,8 @@
 <div class="ibox">
     <div class="ibox-title">
         <h5><i class="fa fa-files-o"></i> Project Files </h5>
-        <div class="ibox-tools">
-            <a href="#" class="btn btn-xs btn-primary">Add files</a>
+        <div class="ibox-tools" id="files">
+            <input type="file" name="files[]"/>
         </div>
     </div>
     <div class="ibox-content">
@@ -110,13 +114,13 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>1</td>
-                    <td><a href="#"> 提高沼气PPTUltimase NRG - Sales Presentation.pdf</a></td>
-                    <td>46.13 K</td>
-                    <td> 2014-07-21 10:04:59 </td>
-                    <td class="text-center">
-                        <a href="#"><i class="fa fa-trash-o text-danger"></i></a>
+                <tr ng-repeat="file in project.files">
+                    <td>{{$index + 1}}</td>
+                    <td><a href="#">{{file.name}}</a></td>
+                    <td class="text-right">{{file.size}}</td>
+                    <td>{{file.time}}</td>
+                    <td class="text-center child-is-link">
+                        <i ng-click="removeFile($index)" class="fa fa-trash-o text-danger"></i>
                     </td>
                 </tr>
                 </tbody>
@@ -145,12 +149,16 @@
             </div>
             <div class="col-lg-6">
                 <div class="form-group">
-                    <label>Target Languages * &nbsp; </label>
-                    <select class="form-control required multiselect" multiple="multiple" data-role="multiselect"
-                            ng-options="language.name for language in languages"
-                            ng-model="project.targetLanguages" ng-multiple="true">
-                        <option value="">--</option>
-                    </select>
+                    <label class="col-sm-5 control-label">Target Languages * &nbsp; </label>
+                    <div class="col-sm-7">
+                        <input type="text" class="hidden-required required valid" name="h1"
+                               ng-value="project.targetLanguages.length > 0 ? '1' : ''">
+                        <select class="form-control required valid multiselect" multiple="multiple" data-role="multiselect"
+                                ng-options="language.name for language in languages"
+                                ng-model="project.targetLanguages" ng-multiple="true">
+                            <option value="">--</option>
+                        </select>
+                    </div>
                 </div>
             </div>
         </div>
@@ -168,7 +176,8 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label">Reference *</label>
                         <div class="col-sm-9">
-                            <input name="reference" ng-model="project.reference" type="text" class="form-control" />
+                            <input name="reference" ng-model="project.reference" type="text"
+                                   aria-required="true" class="form-control required valid"/>
                         </div>
                     </div>
                 </div>
@@ -179,7 +188,9 @@
                             <div data-toggle="buttons">
                                 <label class="btn btn-outline btn-{{priority.decorator}} btn-sm"
                                        ng-click="project.priority=priority" ng-repeat="priority in priorities">
-                                    <input type="radio" name="priority" ng-value="priority" /> {{priority.name}}
+                                    <input type="radio" name="priority" ng-value="priority"
+                                           class="required valid"
+                                           data-errorplace="element.parent().parent().before(error)" /> {{priority.name}}
                                 </label>
                             </div>
                         </div>
@@ -193,7 +204,8 @@
                     <div class="col-sm-9">
                         <div class="input-group date">
                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                            <input type="text" name="startDate" class="form-control" ng-model="project.startDate" />
+                            <input type="text" name="startDate" ng-model="project.startDate"
+                                   class="form-control required valid" data-errorplace="element.parent().before(error)"/>
                         </div>
                     </div>
                 </div>
@@ -222,7 +234,8 @@
                     <div class="col-sm-9">
                         <div class="input-group date">
                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                            <input type="text" name="dueDate" class="form-control" ng-model="project.startDate" />
+                            <input type="text" name="dueDate" ng-model="project.dueDate"
+                                   class="form-control required valid" data-errorplace="element.parent().before(error)"/>
                         </div>
                     </div>
                 </div>
@@ -255,7 +268,8 @@
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Interpreting Info </label>
                     <div class="col-sm-10">
-                        <input id="" name="" value="" type="text" class="form-control" />
+                        <input name="interpretingInfo" type="text" class="form-control"
+                               ng-model="project.interpretingInfo"/>
                         <span class="help-block m-b-none">Interpreting only, put address/city/country information.</span>
                     </div>
                 </div>
@@ -265,9 +279,7 @@
         <div class="hr-line-dashed"></div>
         <div class="form-group">
             <label>Project Description </label>
-            <div class="summernote">
-
-            </div>
+            <summernote ng-model="project.description"></summernote>
         </div>
 
     </div>
@@ -747,9 +759,6 @@ then load PaperTask Price -->
 </div>
 
 <script>
-    $(document).ready(function(){
-        $('.summernote').summernote();
-    });
     var edit = function() {
         $('.click2edit').summernote({focus: true});
     };
