@@ -123,6 +123,11 @@ return array(
             ['id' => 2, 'name' => 'Field 2'],
             ['id' => 3, 'name' => 'Field 3'],
             ['id' => 4, 'name' => 'Field 4'],
+        ],
+        'levels' => [
+            ['id' => 1, 'name' => 'Professional'],
+            ['id' => 2, 'name' => 'Business'],
+            ['id' => 3, 'name' => 'Premium'],
         ]
     ],
 );

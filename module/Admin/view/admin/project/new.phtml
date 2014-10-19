@@ -35,9 +35,9 @@
 </div>
 <div class="ibox-content">
 
-<form id="form" action="#" class="wizard-big">
+<form id="form" action="#" class="wizard-big" ng-controller="CreateProjectController">
 <h1>Project Information</h1>
-<fieldset ng-controller="CreateProjectController">
+<fieldset>
 <button type="button" ng-click="test()">Test</button>
 <div class="ibox">
     <div class="ibox-title" id="project-type">
@@ -299,16 +299,9 @@ then load PaperTask Price -->
         <div class="row">
             <div class="col-lg-6">
                 <div data-toggle="buttons">
-                    <label class="btn btn-outline btn-primary">
-                        <input type="radio" name="professional" value="" /> Professional
-                    </label>
-                    &nbsp;
-                    <label class="btn btn-outline btn-primary">
-                        <input type="radio" name="business" value="" /> Business
-                    </label>
-                    &nbsp;
-                    <label class="btn btn-outline btn-primary">
-                        <input type="radio" name="premium" value="" /> Premium
+                    <label class="btn btn-outline btn-primary" ng-repeat="level in levels"
+                           ng-click="order.level=level">
+                        <input type="radio" name="level" value="{{level.id}}" /> {{level.name}}
                     </label>
                 </div>
             </div>
@@ -316,7 +309,7 @@ then load PaperTask Price -->
                 <div class="form-group">
                     <label class="col-sm-6 control-label">Approximate duration *</label>
                     <div class="col-sm-3">
-                        <input id="" name="" value="" type="text" class="form-control" />
+                        <input ng-model="order.duration" type="text" class="form-control" />
                     </div>
                     <span class="col-sm-3 control-label">Working days</span>
                 </div>
@@ -333,12 +326,13 @@ then load PaperTask Price -->
 <div class="panel blank-panel">
 
 <div class="panel-heading">
-    <div class="panel-title m-b-md"><h4>Source Language - English</h4></div>
+    <div class="panel-title m-b-md"><h4>Source Language - {{project.sourceLanguage.name}}</h4></div>
     <div class="panel-options">
 
         <ul class="nav nav-tabs">
-            <li class="active"><a data-toggle="tab" href="#tab-1">Target Lang1</a></li>
-            <li class=""><a data-toggle="tab" href="#tab-2">Target Lang2</a></li>
+            <li ng-repeat="language in project.targetLanguages" class="{{$index == 0 ? 'active': ''}}">
+                <a data-toggle="tab" href="#tab-{{language.id}}">{{language.name}}</a>
+            </li>
         </ul>
     </div>
 </div>
@@ -346,8 +340,8 @@ then load PaperTask Price -->
 <div class="panel-body">
 
 <div class="tab-content">
-<div id="tab-1" class="tab-pane active">
-
+<div id="tab-{{language.id}}" class="tab-pane {{$index == 0 ? 'active': ''}}"
+     ng-repeat="language in project.targetLanguages">
 <div class="panel panel-default">
     <div class="panel-heading" style="padding-bottom: 10px;">
         Translation - <span class="text-info"><strong>Business</strong></span>
@@ -664,7 +658,7 @@ then load PaperTask Price -->
     </div>
 </div>
 
-<div class="panel panel-default">
+<div class="panel panel-default" ng-show="project.interpreting">
     <div class="panel-heading" style="padding-bottom: 10px;">
         Interpreting
     </div>

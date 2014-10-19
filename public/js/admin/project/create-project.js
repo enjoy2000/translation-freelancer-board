@@ -42,6 +42,9 @@ angularApp.controller('CreateProjectController', function($scope, $http, $timeou
         files: []
     };
 
+    $scope.order = {
+    };
+
     function trustedHtml(){
         var keys = ['dtps'];
         for(var i = 0; i < keys.length; i++){
@@ -137,5 +140,6 @@ angularApp.controller('CreateProjectController', function($scope, $http, $timeou
 
     $scope.test = function(){
         console.log($scope.project);
+        console.log($scope.order);
     };
 });
