@@ -128,6 +128,9 @@ return array(
             ['id' => 1, 'name' => 'Professional'],
             ['id' => 2, 'name' => 'Business'],
             ['id' => 3, 'name' => 'Premium'],
+        ],
+        'order_section' => [
+            "Translation" => "Bus"
         ]
     ],
 );
