@@ -68,12 +68,8 @@ class RegisterController extends AbstractActionController
 
     public function confirmAction(){
         $request = $this->getRequest();
-        $email = $request->getQuery('email');
         $token = $request->getQuery('token');
-
-        if(!$email){
-            return $this->redirect()->toUrl('/user/login');
-        }
+        $email = $request->getQuery('email');
 
         if($token){
             $entityManager = $this->getEntityManager();
@@ -82,8 +78,15 @@ class RegisterController extends AbstractActionController
              */
             $user = $entityManager->getRepository('User\Entity\User')
                                     ->findOneBy(array(
-                                        'email'=>$request->getPost('email'))
+                                        'token'=>$token)
                                     );
+
+            if(!$user){
+                $translator = $this->getTranslator();
+                $this->flashMessenger()->addErrorMessage($translator->translate('Your token has expired.'));
+                return $this->redirect()->toUrl('/user/login');
+            }
+
             if($user && $user->activate($token, $entityManager)){
                 $user->authenticate();
                 $user->sendWelcomeEmail($this);
