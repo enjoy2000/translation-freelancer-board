@@ -78,6 +78,7 @@ return array(
             'User\Controller\Login' => 'User\Controller\LoginController',
             'User\Controller\Logout' => 'User\Controller\LogoutController',
             'User\Controller\ForgotPassword' => 'User\Controller\ForgotPasswordController',
+            'User\Controller\Dashboard' => 'User\Controller\DashboardController',
         ),
     ),
     'view_manager' => array(
@@ -97,6 +98,7 @@ return array(
             'user/login/social' => __DIR__ . '/../view/user/register/index.phtml',
             'user/forgot-password/index' => __DIR__ . '/../view/user/forgotPassword/form.phtml',
             'user/forgot-password/reset' => __DIR__ . '/../view/user/forgotPassword/reset.phtml',
+            'user/dashboard/index' => __DIR__ . '/../view/user/dashboard/index.phtml',
             'error/404'               => __DIR__ . '/../../Application/view/error/404.phtml',
             'error/index'             => __DIR__ . '/../../Application/view/error/index.phtml',
         ),

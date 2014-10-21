@@ -35,7 +35,7 @@ $this->inlineScript()->appendScript("
                     <?php foreach($this->templates as $template): ?>
                         <tr>
                             <td class="project-title">
-                                <a href="project_detail.html"><?php echo $template->getName() ?></a>
+                                <a href="<?php echo $template->getEditUrl() ?>"><?php echo $template->getName() ?></a>
                                 <br/>
                                 <small><?php echo $this->translate('Create/update'). ' ' .$template->getTouchTime() ?></small>
                             </td>
