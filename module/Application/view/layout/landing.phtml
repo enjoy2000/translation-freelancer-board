@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!--if lt IE 8html.no-js.lt-ie8
+-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <?php echo $this->headTitle($this->translate('PaperTask'))->setSeparator(' - ')->setAutoEscape(false) ?>
+
+    <?php echo $this->headMeta()
+        ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+        ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+    ?>
+    <!-- Le styles -->
+    <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/favicon.ico'))
+        ->prependStylesheet($this->basePath() . '/css/main.css')
+        ->prependStylesheet($this->basePath() . '/styles/font-awesome/css/font-awesome.min.css') ?>
+    <!-- if lt IE 9
+    script(src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js")
+    script(src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js")
+
+    -->
+</head>
+<body>
+<header class="header navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="row">
+            <div class="navbar-header">
+                <button type="button" data-toggle="collapse" data-target="#navbar-collapse-1" class="navbar-toggle">
+                    <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                <a href="<?php echo $this->basePath() ?>" class="navbar-brand"><img src="<?php echo $this->basePath() ?>/assets/logo.png" alt="" width="120"></a>
+            </div>
+            <div id="navbar-collapse-1" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="<?php echo $this->basePath() ?>/languages/">Languages and Pricing</a></li>
+                    <li><a href="<?php echo $this->basePath() ?>/freelancer/">Freelancer</a></li>
+                    <li><a href="<?php echo $this->basePath() ?>/contact/">Contact</a></li>
+                    <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </li>
+                    <li><a href="<?php echo $this->basePath() ?>/user/login/">SIGN IN</a></li>
+                    <li><a href="<?php echo $this->basePath() ?>/user/register/"><strong class="text-navy">SIGN UP</strong></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="main-content">
+    <!-- Flash Messenger -->
+    <?php
+    $flash = $this->flashMessenger();
+    $flash->setMessageOpenFormat('<div%s>
+                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                         &times;
+                     </button>
+                     <div>')
+        ->setMessageSeparatorString('</div><div>')
+        ->setMessageCloseString('</div></div>');
+
+    echo $flash->render('error', array('alert', 'alert-dismissable', 'alert-danger'));
+    echo $flash->render('info', array('alert', 'alert-dismissable', 'alert-info'));
+    echo $flash->render('default', array('alert', 'alert-dismissable', 'alert-warning'));
+    echo $flash->render('success', array('alert', 'alert-dismissable', 'alert-success'));
+    ?><!-- End Flash Messenger -->
+
+    <?php echo $this->content ?>
+</div>
+
+<footer class="footer">
+    <div class="row">
+        <div class="col-md-4 text-center">
+            <div class="btn-group dropup">
+                <button type="button" class="btn btn-sm btn-default">English</button>
+                <button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">English</a></li>
+                    <li><a href="#">简体中文</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-8 text-left">
+            <br>
+            2014 &copy; <a href="index.html">PaperTask.com</a> All Rights Reserved. <a href="privacy.html">Privacy
+                Policy</a> | <a href="terms.html">Terms of Use</a>
+        </div>
+    </div>
+
+</footer>
+<!--if lt IE 8
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+
+
+
+-->
+<!-- Scripts-->
+<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
+<script>window.jQuery || document.write('<script src="scripts/jquery.min.js"><\/script>')</script>
+<script src="scripts/bootstrap.min.js"></script>
+<script src="scripts/jquery.smooth-scroll.min.js"></script>
+<script src="scripts/main.js"></script>
+</body>
+</html>
