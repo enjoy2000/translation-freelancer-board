@@ -11,7 +11,7 @@ namespace User\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 use Common\Entity;
-use Common\Func;
+
 
 /** @ORM\Entity */
 class Employer extends Entity{
@@ -33,6 +33,12 @@ class Employer extends Entity{
      * @var string
      * @ORM\Column(type="string")
      */
+    protected $name;
+
+    /**
+     * @var string
+     * @ORM\Column(type="string")
+     */
     protected $position = '';
 
     /**
@@ -48,6 +54,13 @@ class Employer extends Entity{
             'position' => $this->position,
             'defaultServiceLevel' => $this->defaultServiceLevel,
             'company' => $this->company ? $this->company->getData() : null,
+        ];
+    }
+
+    public function getListData(){
+        return [
+            'id' => $this->id,
+            'name' => $this->name
         ];
     }
 

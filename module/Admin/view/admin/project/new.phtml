@@ -1,21 +1,32 @@
 <!-- Le styles -->
 <?php $this->headLink()
+    ->prependStylesheet($this->basePath() . '/css/plugins/summernote/summernote-bs3.css')
+    ->prependStylesheet($this->basePath() . '/css/plugins/summernote/summernote.css')
     ->prependStylesheet($this->basePath() . '/css/plugins/multiselect/bootstrap-multiselect.css')
     ->prependStylesheet($this->basePath() . '/css/plugins/steps/jquery.steps.css')
 ?>
 
 <!-- Scripts -->
 <?php $this->headScript()
+    ->prependFile($this->basePath() . '/js/admin/project/create-project.js')
     ->prependFile($this->basePath() . '/js/admin/angular-steps.js')
     ->prependFile($this->basePath() . '/js/admin/bootstrap-modal.js')
-    ->prependScript("angularApp = angular.module('project', []);")
+    ->prependScript("angularApp = angular.module('project', ['summernote']);")
+    ->prependFile($this->basePath() . '/js/plugins/bootstrap-filestyle/bootstrap-filestyle.min.js')
+    ->prependFile($this->basePath() . '/js/plugins/angular-summernote/angular-summernote.js')
+    ->prependFile($this->basePath() . '/js/plugins/summernote/summernote.min.js')
+    ->prependFile($this->basePath() . '/js/plugins/datapicker/bootstrap-datepicker.js')
     ->prependFile($this->basePath() . '/js/plugins/multiselect/bootstrap-multiselect.js')
     ->prependFile($this->basePath() . '/js/plugins/validate/jquery.validate.min.js')
     ->prependFile($this->basePath() . '/js/plugins/steps/jquery.steps.min.js')
     ->prependFile($this->basePath() . '/js/plugins/pace/pace.min.js')
     ->prependFile($this->basePath() . '/js/inspinia.js')
 ?>
-
+<style>
+    .form-group label.btn-outline {
+        margin-right: 0.3em;
+    }
+</style>
 <div class="row">
 <div class="col-lg-12">
 <div class="ibox">
@@ -24,63 +35,46 @@
 </div>
 <div class="ibox-content">
 
-<form id="form" action="#" class="wizard-big">
+<form id="form" action="#" class="wizard-big" ng-controller="CreateProjectController">
 <h1>Project Information</h1>
 <fieldset>
-
+<button type="button" ng-click="test()">Test</button>
 <div class="ibox">
-    <div class="ibox-title">
+    <div class="ibox-title" id="project-type">
         <h5><i class="fa fa-puzzle-piece"></i> Project Type & Status</h5>
+        <input type="text" class="hidden-required required valid" ng-value="projectType()">
     </div>
     <div class="ibox-content">
-        <div class="form-group">
+        <div class="form-group project-types">
             <label class="col-sm-3 control-label">
                 <h4><i class="fa fa-coffee"></i>&nbsp; Translation</h4>
             </label>
             <div data-toggle="buttons">
-                <label class="btn btn-outline btn-primary">
-                    <input type="checkbox" name="translator" value="" /> Translation (No TM)
-                </label>
-                <label class="btn btn-outline btn-primary">
-                    <input type="checkbox" name="proofreader" value="" /> Translation (Use TM)
-                </label>
-                <label class="btn btn-outline btn-primary">
-                    <input type="checkbox" name="proofreader" value="" /> Proofreading
+                <label class="btn btn-outline btn-primary {{translation_active[translation.id]}}"
+                       ng-repeat="translation in translations" ng-click="addTranslation(translation)">
+                    <input type="checkbox" name="type" ng-value="translation.id"/> {{translation.name}}
                 </label>
             </div>
         </div>
-        <div class="form-group">
+        <div class="form-group project-types">
             <label class="col-sm-3 control-label">
                 <h4><i class="fa fa-desktop"></i> &nbsp;DTP/Engineering</h4>
             </label>
             <div data-toggle="buttons">
-                <label class="btn btn-outline btn-primary">
-                    <input type="checkbox" name="dtp" value="" /> DTP <i class="fa fa-apple"></i>
-                </label>
-                <label class="btn btn-outline btn-primary">
-                    <input type="checkbox" name="dtp" value="" /> DTP <i class="fa fa-windows"></i>
-                </label>
-                <label class="btn btn-outline btn-primary">
-                    <input type="checkbox" name="dtp" value="" /> Engineering</i>
+                <label class="btn btn-outline btn-primary {{dtp_active[dtp.id]}}" ng-repeat="dtp in dtps"
+                       ng-click="addDtp(dtp)">
+                    <input type="checkbox" name="type" ng-value="dtp.id" /> <span ng-bind-html="dtp.name"></span>
                 </label>
             </div>
         </div>
-        <div class="form-group">
+        <div class="form-group" id="project-interpreting">
             <label class="col-sm-3 control-label">
                 <h4><i class="fa fa-comments-o"></i> &nbsp; Interpreting</h4>
             </label>
             <div data-toggle="buttons">
-                <label class="btn btn-outline btn-primary">
-                    <input type="radio" name="simul" value="" /> Simultaneous
-                </label>
-                <label class="btn btn-outline btn-primary">
-                    <input type="radio" name="consec" value="" /> Consecutive
-                </label>
-                <label class="btn btn-outline btn-primary">
-                    <input type="radio" name="bescort" value="" /> Business Escort
-                </label>
-                <label class="btn btn-outline btn-primary">
-                    <input type="radio" name="tescort" value="" /> Tourism Escort
+                <label class="btn btn-outline btn-primary {{interpreting == project.interpreting ? 'active': ''}}"
+                       ng-repeat="interpreting in interpretings" ng-click="setInterpreting(interpreting)">
+                    <input type="radio" name="type" ng-value="intepreting.id" /> {{interpreting.name}}
                 </label>
             </div>
         </div>
@@ -90,29 +84,11 @@
                 <h4><i class="fa fa-cube"></i> &nbsp;Status</h4>
             </label>
             <div data-toggle="buttons">
-                <!--
-                <label class="btn btn-outline btn-warning">
-                    <input type="radio" name="" value="" /> Quoting
+                <label class="btn btn-outline btn-{{status.decorator}}" ng-repeat="status in statuses"
+                       ng-click="project.status=status">
+                    <input type="radio" name="status" ng-value="status.id" class="required valid"
+                           data-errorplace="element.parent().parent().after(error)"/> {{status.name}}
                 </label>
-                -->
-                <label class="btn btn-outline btn-info">
-                    <input type="radio" name="" value="" /> Quote
-                </label>
-                <!-- quote = "quoted" by PM -->
-                <label class="btn btn-outline btn-danger">
-                    <input type="radio" name="" value="" /> Ordered
-                </label>
-                <!--
-                <label class="btn btn-outline btn-primary">
-                    <input type="radio" name="" value="" /> Ongoing
-                </label>
-                <label class="btn btn-outline btn-success">
-                    <input type="radio" name="" value="" /> Reviewing
-                </label>
-                <label class="btn btn-outline btn-default">
-                    <input type="radio" name="" value="" /> Completed
-                </label>
-                -->
             </div>
         </div>
     </div>
@@ -121,8 +97,8 @@
 <div class="ibox">
     <div class="ibox-title">
         <h5><i class="fa fa-files-o"></i> Project Files </h5>
-        <div class="ibox-tools">
-            <a href="#" class="btn btn-xs btn-primary">Add files</a>
+        <div class="ibox-tools" id="files">
+            <input type="file" name="files[]"/>
         </div>
     </div>
     <div class="ibox-content">
@@ -138,13 +114,13 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>1</td>
-                    <td><a href="#"> 提高沼气PPTUltimase NRG - Sales Presentation.pdf</a></td>
-                    <td>46.13 K</td>
-                    <td> 2014-07-21 10:04:59 </td>
-                    <td class="text-center">
-                        <a href="#"><i class="fa fa-trash-o text-danger"></i></a>
+                <tr ng-repeat="file in project.files">
+                    <td>{{$index + 1}}</td>
+                    <td><a href="#">{{file.name}}</a></td>
+                    <td class="text-right">{{file.size}}</td>
+                    <td>{{file.time}}</td>
+                    <td class="text-center child-is-link">
+                        <i ng-click="removeFile($index)" class="fa fa-trash-o text-danger"></i>
                     </td>
                 </tr>
                 </tbody>
@@ -163,32 +139,26 @@
                 <div class="form-group form-horizontal">
                     <label class="col-sm-4 control-label">Source Language *</label>
                     <div class="col-sm-8">
-                        <select class="form-control required valid" id="" name="" value="" aria-required="true">
-                            <option>option 1</option>
-                            <option>option 2</option>
-                            <option>option 3</option>
-                            <option>option 4</option>
+                        <select class="form-control required valid" name="sourceLanguage" aria-required="true"
+                                ng-options="language.name for language in languages"
+                                ng-model="project.sourceLanguage">
+                            <option value="">--</option>
                         </select>
                     </div>
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="form-group">
-                    <label>Target Languages * &nbsp; </label>
-                    <select class="form-control required multiselect" multiple="multiple">
-                        <option value="cheese">Cheese</option>
-                        <option value="tomatoes">Tomatoes</option>
-                        <option value="mozarella">Mozzarella</option>
-                        <option value="mushrooms">Mushrooms</option>
-                        <option value="pepperoni">Pepperoni</option>
-                        <option value="onions">Onions</option>
-                        <option value="cheese">Cheese</option>
-                        <option value="tomatoes">Tomatoes</option>
-                        <option value="mozarella">Mozzarella</option>
-                        <option value="mushrooms">Mushrooms</option>
-                        <option value="pepperoni">Pepperoni</option>
-                        <option value="onions">Onions</option>
-                    </select>
+                    <label class="col-sm-5 control-label">Target Languages * &nbsp; </label>
+                    <div class="col-sm-7">
+                        <input type="text" class="hidden-required required valid" name="h1"
+                               ng-value="project.targetLanguages.length > 0 ? '1' : ''">
+                        <select class="form-control required valid multiselect" multiple="multiple" data-role="multiselect"
+                                ng-options="language.name for language in languages"
+                                ng-model="project.targetLanguages" ng-multiple="true">
+                            <option value="">--</option>
+                        </select>
+                    </div>
                 </div>
             </div>
         </div>
@@ -206,7 +176,8 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label">Reference *</label>
                         <div class="col-sm-9">
-                            <input id="" name="" value="Project reference" type="text" class="form-control" />
+                            <input name="reference" ng-model="project.reference" type="text"
+                                   aria-required="true" class="form-control required valid"/>
                         </div>
                     </div>
                 </div>
@@ -215,12 +186,11 @@
                         <label class="col-sm-4 control-label">Priority *</label>
                         <div class="col-sm-8">
                             <div data-toggle="buttons">
-                                <label class="btn btn-outline btn-primary btn-sm">
-                                    <input type="radio" name="gender" value="male" /> Normal
-                                </label>
-                                &nbsp;
-                                <label class="btn btn-outline btn-danger btn-sm">
-                                    <input type="radio" name="gender" value="female" /> High
+                                <label class="btn btn-outline btn-{{priority.decorator}} btn-sm"
+                                       ng-click="project.priority=priority" ng-repeat="priority in priorities">
+                                    <input type="radio" name="priority" ng-value="priority"
+                                           class="required valid"
+                                           data-errorplace="element.parent().parent().before(error)" /> {{priority.name}}
                                 </label>
                             </div>
                         </div>
@@ -234,30 +204,26 @@
                     <div class="col-sm-9">
                         <div class="input-group date">
                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                            <input type="text" class="form-control" value="03/04/2014" />
+                            <input type="text" name="startDate" ng-model="project.startDate"
+                                   class="form-control required valid" data-errorplace="element.parent().before(error)"/>
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Field *</label>
                     <div class="col-sm-9">
-                        <select class="form-control required valid" id="" name="" value="" aria-required="true">
-                            <option>option 1</option>
-                            <option>option 2</option>
-                            <option>option 3</option>
-                            <option>option 4</option>
+                        <select class="form-control required valid" name="field" aria-required="true"
+                                ng-model="project.field" ng-options="field.name for field in fields">
+                            <option value="">--</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Sales </label>
                     <div class="col-sm-9">
-                        <select class="form-control required valid" id="country" name="country" value=""
-                                aria-required="true">
-                            <option>option 1</option>
-                            <option>option 2</option>
-                            <option>option 3</option>
-                            <option>option 4</option>
+                        <select class="form-control" name="sale" aria-required="true"
+                                ng-model="project.sale" ng-options="sale.name for sale in sales">
+                            <option value="">--</option>
                         </select>
                     </div>
                 </div>
@@ -268,7 +234,8 @@
                     <div class="col-sm-9">
                         <div class="input-group date">
                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                            <input type="text" class="form-control" value="03/04/2014" />
+                            <input type="text" name="dueDate" ng-model="project.dueDate"
+                                   class="form-control required valid" data-errorplace="element.parent().before(error)"/>
                         </div>
                     </div>
                 </div>
@@ -276,11 +243,9 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Client *</label>
                     <div class="col-sm-9">
-                        <select class="form-control required valid" id="" name="" value="" aria-required="true">
-                            <option>option 1</option>
-                            <option>option 2</option>
-                            <option>option 3</option>
-                            <option>option 4</option>
+                        <select class="form-control required valid" name="client" aria-required="true"
+                                ng-model="project.client" ng-options="client.name for client in clients">
+                            <option value="">--</option>
                         </select>
                     </div>
                 </div>
@@ -288,34 +253,33 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label">PM *</label>
                     <div class="col-sm-9">
-                        <select class="form-control required valid" id="" name="" value="" aria-required="true">
-                            <option>option 1</option>
-                            <option>option 2</option>
-                            <option>option 3</option>
-                            <option>option 4</option>
+                        <select class="form-control required valid" name="pm" aria-required="true"
+                                ng-model="project.pm" ng-options="pm.name for pm in pms">
+                            <option value="">--</option>
                         </select>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="hr-line-dashed"></div>
-        <div class="row">
+        <div ng-show="project.interpreting">
+            <div class="hr-line-dashed"></div>
+            <div class="row">
 
-            <div class="form-group">
-                <label class="col-sm-2 control-label">Interpreting Info </label>
-                <div class="col-sm-10">
-                    <input id="" name="" value="" type="text" class="form-control" />
-                    <span class="help-block m-b-none">Interpreting only, put address/city/country information.</span>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Interpreting Info </label>
+                    <div class="col-sm-10">
+                        <input name="interpretingInfo" type="text" class="form-control"
+                               ng-model="project.interpretingInfo"/>
+                        <span class="help-block m-b-none">Interpreting only, put address/city/country information.</span>
+                    </div>
                 </div>
-            </div>
 
+            </div>
         </div>
         <div class="hr-line-dashed"></div>
         <div class="form-group">
             <label>Project Description </label>
-            <div class="summernote">
-
-            </div>
+            <summernote ng-model="project.description"></summernote>
         </div>
 
     </div>
@@ -335,16 +299,9 @@ then load PaperTask Price -->
         <div class="row">
             <div class="col-lg-6">
                 <div data-toggle="buttons">
-                    <label class="btn btn-outline btn-primary">
-                        <input type="radio" name="professional" value="" /> Professional
-                    </label>
-                    &nbsp;
-                    <label class="btn btn-outline btn-primary">
-                        <input type="radio" name="business" value="" /> Business
-                    </label>
-                    &nbsp;
-                    <label class="btn btn-outline btn-primary">
-                        <input type="radio" name="premium" value="" /> Premium
+                    <label class="btn btn-outline btn-primary" ng-repeat="level in levels"
+                           ng-click="order.level=level">
+                        <input type="radio" name="level" value="{{level.id}}" /> {{level.name}}
                     </label>
                 </div>
             </div>
@@ -352,7 +309,7 @@ then load PaperTask Price -->
                 <div class="form-group">
                     <label class="col-sm-6 control-label">Approximate duration *</label>
                     <div class="col-sm-3">
-                        <input id="" name="" value="" type="text" class="form-control" />
+                        <input ng-model="order.duration" type="text" class="form-control" />
                     </div>
                     <span class="col-sm-3 control-label">Working days</span>
                 </div>
@@ -369,12 +326,13 @@ then load PaperTask Price -->
 <div class="panel blank-panel">
 
 <div class="panel-heading">
-    <div class="panel-title m-b-md"><h4>Source Language - English</h4></div>
+    <div class="panel-title m-b-md"><h4>Source Language - {{project.sourceLanguage.name}}</h4></div>
     <div class="panel-options">
 
         <ul class="nav nav-tabs">
-            <li class="active"><a data-toggle="tab" href="#tab-1">Target Lang1</a></li>
-            <li class=""><a data-toggle="tab" href="#tab-2">Target Lang2</a></li>
+            <li ng-repeat="language in project.targetLanguages" class="{{$index == 0 ? 'active': ''}}">
+                <a data-toggle="tab" href="#tab-{{language.id}}">{{language.name}}</a>
+            </li>
         </ul>
     </div>
 </div>
@@ -382,8 +340,8 @@ then load PaperTask Price -->
 <div class="panel-body">
 
 <div class="tab-content">
-<div id="tab-1" class="tab-pane active">
-
+<div id="tab-{{language.id}}" class="tab-pane {{$index == 0 ? 'active': ''}}"
+     ng-repeat="language in project.targetLanguages">
 <div class="panel panel-default">
     <div class="panel-heading" style="padding-bottom: 10px;">
         Translation - <span class="text-info"><strong>Business</strong></span>
@@ -700,7 +658,7 @@ then load PaperTask Price -->
     </div>
 </div>
 
-<div class="panel panel-default">
+<div class="panel panel-default" ng-show="project.interpreting">
     <div class="panel-heading" style="padding-bottom: 10px;">
         Interpreting
     </div>
@@ -793,3 +751,35 @@ then load PaperTask Price -->
 </div>
 
 </div>
+
+<script>
+    var edit = function() {
+        $('.click2edit').summernote({focus: true});
+    };
+    var save = function() {
+        var aHTML = $('.click2edit').code(); //save HTML If you need(aHTML: array).
+        $('.click2edit').destroy();
+    };
+
+</script>
+
+<script>
+    $(document).ready(function(){
+
+        $('#ordered_date .input-group.date').datepicker({
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: false,
+            calendarWeeks: true,
+            autoclose: true
+        });
+
+        $('#due_date .input-group.date').datepicker({
+            startView: 1,
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: false,
+            autoclose: true
+        });
+    });
+</script>

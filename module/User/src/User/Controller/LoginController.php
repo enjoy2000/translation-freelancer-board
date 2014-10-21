@@ -34,7 +34,11 @@ class LoginController extends AbstractActionController
             $form->setData($request->getPost());
             if($form->isValid()){
                 if($form->validate($this)){
-                    return $this->redirect()->toUrl('/admin/dashboard');
+                    $next = '/admin/dashboard';
+                    if($request->getQuery('next')){
+                        $next = $request->getQuery('next');
+                    }
+                    return $this->redirect()->toUrl($next);
                 }
             }
         }

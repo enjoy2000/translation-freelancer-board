@@ -126,4 +126,15 @@ return array(
                     'User\Entity' => 'user_entities'
                 )
             ))),
+
+    'application_config' => [
+        'staff_types' => [
+            [1 => 'Admin', 2 => 'General Manager'],
+            [3 => 'Financial Manager'],
+            [4 => 'Sales Director', 5 => 'Sales'],
+            [6 => 'Operation Manager', 7 => 'Project Manager'],
+            [8 => 'In-house Translator', 9 => 'In-house Editor/proofreader', 10 => 'In-house DTP',
+                11 => 'In-house Engineering'],
+        ],
+    ],
 );

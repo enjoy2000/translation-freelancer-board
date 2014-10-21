@@ -60,7 +60,12 @@ angularApp.run(function($rootScope){
         }
     }).validate({
         errorPlacement: function (error, element) {
-            element.before(error);
+            console.log(element.data("errorPlace"));
+            if(errorPlace = element.data("errorplace")){
+                eval(errorPlace);
+            } else {
+                element.before(error);
+            }
         },
         rules: {
             confirm: {
