@@ -2,7 +2,7 @@
 <html lang="en" ng-app="project">
 <head>
     <meta charset="utf-8">
-    <?php echo $this->headTitle($this->translate('PaperTask'))->setSeparator(' - ')->setAutoEscape(false) ?>
+    <?php echo $this->headTitle()->setSeparator(' | ')->prepend($this->translate('PaperTask'))->setAutoEscape(false) ?>
 
     <?php echo $this->headMeta()
         ->appendName('viewport', 'width=device-width, initial-scale=1.0')
