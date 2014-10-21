@@ -19,8 +19,17 @@
     <!-- if lt IE 9
     script(src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js")
     script(src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js")
-
     -->
+
+    <!-- Scripts -->
+    <?php echo $this->headScript()
+        ->prependFile($this->basePath() . '/scripts/main.js')
+        ->prependFile($this->basePath() . '/scripts/jquery.smooth-scroll.min.js')
+        ->prependFile($this->basePath() . '/scripts/bootstrap.min.js')
+        ->prependFile($this->basePath() . '/scripts/jquery.min.js')
+        ->prependFile($this->basePath() . '/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+        ->prependFile($this->basePath() . '/js/html5shiv.js',   'text/javascript', array('conditional' => 'lt IE 9',))
+    ; ?>
 </head>
 <body>
 <header class="header navbar navbar-default navbar-fixed-top">
@@ -82,8 +91,9 @@
         </div>
         <div class="col-md-8 text-left">
             <br>
-            2014 &copy; <a href="index.html">PaperTask.com</a> All Rights Reserved. <a href="privacy.html">Privacy
-                Policy</a> | <a href="terms.html">Terms of Use</a>
+            2014 &copy; <a href="<?php echo $this->basePath() ?>">PaperTask.com</a> All Rights Reserved.
+            <a href="<?php echo $this->basePath() ?>/privacy/">Privacy Policy</a> |
+            <a href="<?php echo $this->basePath() ?>/terms/">Terms of Use</a>
         </div>
     </div>
 
@@ -94,11 +104,5 @@
 
 
 -->
-<!-- Scripts-->
-<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
-<script>window.jQuery || document.write('<script src="scripts/jquery.min.js"><\/script>')</script>
-<script src="scripts/bootstrap.min.js"></script>
-<script src="scripts/jquery.smooth-scroll.min.js"></script>
-<script src="scripts/main.js"></script>
 </body>
 </html>
