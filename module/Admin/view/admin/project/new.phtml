@@ -1,5 +1,7 @@
+<?php $this->headTitle($this->translate('Add New Project')) ?>
 <!-- Le styles -->
 <?php $this->headLink()
+    ->prependStylesheet($this->basePath() . '/js/plugins/datetimepicker/DateTimePicker.css')
     ->prependStylesheet($this->basePath() . '/css/plugins/summernote/summernote-bs3.css')
     ->prependStylesheet($this->basePath() . '/css/plugins/summernote/summernote.css')
     ->prependStylesheet($this->basePath() . '/css/plugins/multiselect/bootstrap-multiselect.css')
@@ -8,6 +10,7 @@
 
 <!-- Scripts -->
 <?php $this->headScript()
+    ->prependFile($this->basePath() . '/js/plugins/datetimepicker/DateTimePicker.js')
     ->prependFile($this->basePath() . '/js/admin/project/create-project.js')
     ->prependFile($this->basePath() . '/js/admin/angular-steps.js')
     ->prependFile($this->basePath() . '/js/admin/bootstrap-modal.js')
@@ -15,7 +18,7 @@
     ->prependFile($this->basePath() . '/js/plugins/bootstrap-filestyle/bootstrap-filestyle.min.js')
     ->prependFile($this->basePath() . '/js/plugins/angular-summernote/angular-summernote.js')
     ->prependFile($this->basePath() . '/js/plugins/summernote/summernote.min.js')
-    ->prependFile($this->basePath() . '/js/plugins/datapicker/bootstrap-datepicker.js')
+    //->prependFile($this->basePath() . '/js/plugins/datapicker/bootstrap-datepicker.js')
     ->prependFile($this->basePath() . '/js/plugins/multiselect/bootstrap-multiselect.js')
     ->prependFile($this->basePath() . '/js/plugins/validate/jquery.validate.min.js')
     ->prependFile($this->basePath() . '/js/plugins/steps/jquery.steps.min.js')
@@ -25,6 +28,13 @@
 <style>
     .form-group label.btn-outline {
         margin-right: 0.3em;
+    }
+    input[readonly][data-field=datetime]{
+        background-color: #fff;
+    }
+    input[readonly][data-field=datetime]:hover,
+    i.fa.fa-calendar:hover{
+        cursor: pointer;
     }
 </style>
 <div class="row">
@@ -204,9 +214,10 @@
                     <div class="col-sm-9">
                         <div class="input-group date">
                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                            <input type="text" name="startDate" ng-model="project.startDate"
+                            <input data-field="datetime" readonly type="text" name="startDate" ng-model="project.startDate"
                                    class="form-control required valid" data-errorplace="element.parent().before(error)"/>
                         </div>
+                        <div class="dtbox"></div>
                     </div>
                 </div>
                 <div class="form-group">
@@ -234,9 +245,10 @@
                     <div class="col-sm-9">
                         <div class="input-group date">
                             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                            <input type="text" name="dueDate" ng-model="project.dueDate"
+                            <input data-field="datetime" readonly type="text" name="dueDate" ng-model="project.dueDate"
                                    class="form-control required valid" data-errorplace="element.parent().before(error)"/>
                         </div>
+                        <div class="dtbox"></div>
                     </div>
                 </div>
 
@@ -765,21 +777,15 @@ then load PaperTask Price -->
 
 <script>
     $(document).ready(function(){
+        $('.dtbox').DateTimePicker();
 
-        $('#ordered_date .input-group.date').datepicker({
-            todayBtn: "linked",
-            keyboardNavigation: false,
-            forceParse: false,
-            calendarWeeks: true,
-            autoclose: true
-        });
+        // trigger datetime picker when click to calendar icon
+        // TODO: this is not working
+        $('i.fa.fa-calendar').on('click', function(e){
+            console.log('clicked');
+            e.preventDefault();
 
-        $('#due_date .input-group.date').datepicker({
-            startView: 1,
-            todayBtn: "linked",
-            keyboardNavigation: false,
-            forceParse: false,
-            autoclose: true
+            $(this).parents('.input-group').find('input[readonly]').click();
         });
     });
 </script>
