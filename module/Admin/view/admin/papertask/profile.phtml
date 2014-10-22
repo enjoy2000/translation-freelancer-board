@@ -1,0 +1,831 @@
+
+<?php
+$this->headScript()
+    ->prependFile($this->basePath() . '/js/demo/peity-demo.js')
+    ->prependFile($this->basePath() . '/js/plugins/peity/jquery.peity.min.js')
+?>
+<div class="panel blank-panel">
+<div class="panel-heading">
+    <div class="panel-options">
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#tab-1">Service Prices</a></li>
+            <li class=""><a data-toggle="tab" href="#tab-2">Branch Offices</a></li>
+            <li class=""><a data-toggle="tab" href="#tab-3">Bank Information</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="panel-body">
+<div class="tab-content">
+<div id="tab-1" class="tab-pane active">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h3><i class="fa fa-coffee"></i> Translation</h3>
+        </div>
+        <div class="ibox-content">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>TM Template</th>
+                        <th>Repetitions</th>
+                        <th>100%</th>
+                        <th>95% - 99%</th>
+                        <th>85% - 94%</th>
+                        <th>75% - 84%</th>
+                        <th>50% - 74%</th>
+                        <th>No Match</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>TM Rate</td>
+                        <td>10%</td>
+                        <td>10%</td>
+                        <td>10%</td>
+                        <td>50%</td>
+                        <td>50%</td>
+                        <td>100%</td>
+                        <td>100%</td>
+                        <td><a data-toggle="modal" href="#modal-matchs"><i class="fa fa-edit"></i></a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Source Language</th>
+                        <th>Target Language</th>
+                        <th>Professional /word</th>
+                        <th>Business /word</th>
+                        <th>Premium /word</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>English</td>
+                        <td>Chinese</td>
+                        <td class="text-info"><strong>CNY 0.10</strong></td>
+                        <td class="text-info"><strong>CNY 0.18</strong></td>
+                        <td class="text-info"><strong>CNY 0.30</strong></td>
+                        <td><a data-toggle="modal" href="#modal-translation"><i class="fa fa-edit"></i></a> &nbsp;<a
+                                href="#"><i class="fa fa-trash-o text-danger"></i></a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="text-center">
+                <a data-toggle="modal" class="btn btn-outline btn-primary" href="#modal-translation">Add Language pairs
+                    and prices</a>
+            </div>
+        </div>
+    </div>
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h3><i class="fa fa-desktop"></i> Desktop Publishing</h3>
+        </div>
+        <div class="ibox-content">
+            <h4>Softwares and Price </h4>
+
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Languages</th>
+                        <th>DTP software</th>
+                        <th>Price/Page <i class="fa fa-apple"></th>
+                        <th>Price/Page <i class="fa fa-windows"></i></th>
+                        <th>Price/Hour <i class="fa fa-apple"></th>
+                        <th>Price/Hour <i class="fa fa-windows"></i></th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>European/CE/Greek/Russian</td>
+                        <td>Indesign</td>
+                        <td class="text-info"><strong>CNY 10.00</strong></td>
+                        <td class="text-info"><strong>CNY 10.00</strong></td>
+                        <td class="text-info"><strong>CNY 40.00</strong></td>
+                        <td class="text-info"><strong>CNY 30.00</strong></td>
+                        <td><a data-toggle="modal" href="#modal-dtp"><i class="fa fa-edit"></i></a> &nbsp;<a href="#"><i
+                                    class="fa fa-trash-o text-danger"></i></a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="text-center">
+                <a data-toggle="modal" class="btn btn-outline btn-info" href="#modal-dtp">Add DTP prices</a>
+            </div>
+        </div>
+    </div>
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h3><i class="fa fa-gears"></i> Engineering</h3>
+        </div>
+        <div class="ibox-content">
+            <h4>Categories and Price </h4>
+
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Category</th>
+                        <th>Unit</th>
+                        <th>Price</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Engineering</td>
+                        <td>Hour</td>
+                        <td>CNY 100.00</td>
+                        <td>
+                            <a data-toggle="modal" href="#modal-eng"><i class="fa fa-edit"></i></a>
+                            <a href="#"><i class="fa fa-trash-o text-danger"></i></a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="text-center">
+                <a data-toggle="modal" class="btn btn-outline btn-info" href="#modal-eng">Add ENG prices</a>
+            </div>
+        </div>
+    </div>
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h3><i class="fa fa-comments-o"></i> Interpreting</h3>
+        </div>
+        <div class="ibox-content">
+            <h4>Languages and Price </h4>
+
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Source Language</th>
+                        <th>Target Language</th>
+                        <th>Interpreting Service</th>
+                        <th>Price/Day</th>
+                        <th>Price/half-Day</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>English</td>
+                        <td>Chinese</td>
+                        <td>Consecutive</td>
+                        <td class="text-info"><strong>CNY 3000.00</strong></td>
+                        <td class="text-info"><strong>CNY 2000.00</strong></td>
+                        <td><a data-toggle="modal" href="#modal-interpreting"><i class="fa fa-edit"></i></a> &nbsp;<a
+                                href="#"><i class="fa fa-trash-o text-danger"></i></a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="text-center">
+                <a data-toggle="modal" class="btn btn-outline btn-success" href="#modal-interpreting">Add Interpreting
+                    prices</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="tab-2" class="tab-pane">
+    <div class="ibox">
+        <div class="ibox-title">
+            <h5>Office Information</h5>
+        </div>
+        <div class="ibox-content">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th># 1</th>
+                    <td><a data-toggle="modal" href="#modal-company" type="button"
+                           class="btn btn-primary btn-xs">Edit</a></td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th>Company Name</th>
+                    <td>PaperTask Limited</td>
+                </tr>
+                <tr>
+                    <th>Phone</th>
+                    <td>0086 10 85916569</td>
+                </tr>
+                <tr>
+                    <th>Fax</th>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <th>Address</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>City</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>Country</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>Note</th>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th># 2</th>
+                    <td><a data-toggle="modal" href="#modal-company" type="button"
+                           class="btn btn-primary btn-xs">Edit</a></td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th>Company Name</th>
+                    <td>PaperTask Limited</td>
+                </tr>
+                <tr>
+                    <th>Phone</th>
+                    <td>0086 10 85916569</td>
+                </tr>
+                <tr>
+                    <th>Fax</th>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <th>Address</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>City</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>Country</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>Note</th>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="text-center">
+                <a data-toggle="modal" class="btn btn-outline btn-primary" href="#modal-company">Add Office
+                    Information</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div id="tab-3" class="tab-pane">
+    <div class="ibox">
+        <div class="ibox-title">
+            <h5>Bank Information</h5>
+        </div>
+        <div class="ibox-content">
+            <div class="row form-horizontal">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">Paypal</label>
+
+                        <div class="col-lg-8"><p class="form-control-static">payment@papertask.com</p></div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">Static control</label>
+
+                        <div class="col-lg-8"><p class="form-control-static">payment@papertask.com</p></div>
+                    </div>
+                </div>
+            </div>
+            <div class="hr-line-dashed"></div>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th># 1</th>
+                    <td><a data-toggle="modal" href="#modal-bank" type="button" class="btn btn-primary btn-xs">Edit</a>
+                    </td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th>Bank Name</th>
+                    <td>ICBC Beijing</td>
+                </tr>
+                <tr>
+                    <th>Beneficiar Name</th>
+                    <td>0086 10 85916569</td>
+                </tr>
+                <tr>
+                    <th>Account No./IBAN</th>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <th>Swift Code</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>ABA Routing Number</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>Bank Address</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>Bank City</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>Bank Country</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>Note</th>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th># 2</th>
+                    <td><a data-toggle="modal" href="#modal-bank" type="button" class="btn btn-primary btn-xs">Edit</a>
+                    </td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th>Bank Name</th>
+                    <td>ICBC Beijing</td>
+                </tr>
+                <tr>
+                    <th>Beneficiar Name</th>
+                    <td>0086 10 85916569</td>
+                </tr>
+                <tr>
+                    <th>Account No./IBAN</th>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <th>Swift Code</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>ABA Routing Number</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>Bank Address</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>Bank City</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>Bank Country</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>Note</th>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
+
+            <div class="text-center">
+                <a data-toggle="modal" class="btn btn-outline btn-primary" href="#modal-bank">Add Bank Account</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+</div>
+
+<!-- edit TM template -->
+<div id="modal-matchs" class="modal fade" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Edit Translation Memory Template</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label>Repetitions</label>
+                                <input name="" type="number" value="0.1" class="form-control required">
+                            </div>
+                            <div class="form-group">
+                                <label>100%</label>
+                                <input name="" type="number" value="0.1" class="form-control required">
+                            </div>
+                            <div class="form-group">
+                                <label>95% - 99%</label>
+                                <input name="" type="number" value="0.1" class="form-control required">
+                            </div>
+                            <div class="form-group">
+                                <label>85% - 94%</label>
+                                <input name="" type="number" value="0.5" class="form-control required">
+                            </div>
+                            <div class="form-group">
+                                <label>75% - 84% </label>
+                                <input name="" type="number" value="0.5" class="form-control required">
+                            </div>
+                            <div class="form-group">
+                                <label>50% - 74%</label>
+                                <input name="" type="number" value="1" class="form-control required">
+                            </div>
+                            <div class="form-group">
+                                <label>No Match</label>
+                                <input name="" type="number" value="1" class="form-control required">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-w-m btn-white" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-w-m btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- add language pair and price -->
+<div id="modal-translation" class="modal fade" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Add Language pairs and prices</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label>Source Language *</label>
+                                <select class="form-control required" id="country" name="country" value="">
+                                    <option>option 1</option>
+                                    <option>option 2</option>
+                                    <option>option 3</option>
+                                    <option>option 4</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Target Language *</label>
+                                <select class="form-control required" id="country" name="country" value="">
+                                    <option>option 1</option>
+                                    <option>option 2</option>
+                                    <option>option 3</option>
+                                    <option>option 4</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Professional/word *</label>
+                                <input id="phone" name="phone" type="phone" value="" class="form-control required">
+                            </div>
+                            <div class="form-group">
+                                <label>Business/word *</label>
+                                <input id="phone" name="phone" type="phone" value="" class="form-control required">
+                            </div>
+                            <div class="form-group">
+                                <label>Premium/word *</label>
+                                <input id="phone" name="phone" type="phone" value="" class="form-control required">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-w-m btn-white" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-w-m btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- add DTP price -->
+<div id="modal-dtp" class="modal fade" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Add DTP prices</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label>Languages *</label>
+                                <select class="form-control required" id="country" name="country" value="">
+                                    <option>European/CE/Greek/Russian</option>
+                                    <option>SC/TC/JP/KO</option>
+                                    <option>TH/VN</option>
+                                    <option>Others</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>DTP software *</label>
+                                <select class="form-control required" id="country" name="country" value="">
+                                    <option>option 1</option>
+                                    <option>option 2</option>
+                                    <option>option 3</option>
+                                    <option>option 4</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Price/Page (MAC) *</label>
+                                <input id="phone" name="phone" type="phone" value="" class="form-control required">
+                            </div>
+                            <div class="form-group">
+                                <label>Price/Page (PC) *</label>
+                                <input id="phone" name="phone" type="phone" value="" class="form-control required">
+                            </div>
+                            <div class="form-group">
+                                <label>Price/Hour (MAC) *</label>
+                                <input id="phone" name="phone" type="phone" value="" class="form-control required">
+                            </div>
+                            <div class="form-group">
+                                <label>Price/Hour (PC) *</label>
+                                <input id="phone" name="phone" type="phone" value="" class="form-control required">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-w-m btn-white" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-w-m btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- add ENG price -->
+<div id="modal-eng" class="modal fade" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Add ENG prices</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label>Category *</label>
+                                <select class="form-control required" id="country" name="country" value="">
+                                    <option>Engineering</option>
+                                    <option>Testing</option>
+                                    <option>Graphic</option>
+                                    <option>Typing</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Unit *</label>
+                                <select class="form-control required" id="country" name="country" value="">
+                                    <option>Hour</option>
+                                    <option>Day</option>
+                                    <option>Month</option>
+                                    <option>Word</option>
+                                    <option>Graphic</option>
+                                    <option>Page</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Rate *</label>
+                                <input id="phone" name="phone" type="phone" value="" class="form-control required">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-w-m btn-white" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-w-m btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- add interpreting price -->
+<div id="modal-interpreting" class="modal fade" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Add Interpreting prices</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label>Source Language *</label>
+                                <select class="form-control required" id="country" name="country" value="">
+                                    <option>option 1</option>
+                                    <option>option 2</option>
+                                    <option>option 3</option>
+                                    <option>option 4</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Target Language *</label>
+                                <select class="form-control required" id="country" name="country" value="">
+                                    <option>option 1</option>
+                                    <option>option 2</option>
+                                    <option>option 3</option>
+                                    <option>option 4</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Interpreting Service *</label>
+                                <select class="form-control required" id="country" name="country" value="">
+                                    <option></option>
+                                    <option>Simultaneous</option>
+                                    <option>Consecutive</option>
+                                    <option>Business</option>
+                                    <option>Tourist</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Price/Day *</label>
+                                <input id="phone" name="phone" type="phone" value="" class="form-control required">
+                            </div>
+                            <div class="form-group">
+                                <label>Price/Half-day *</label>
+                                <input id="phone" name="phone" type="phone" value="" class="form-control required">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-w-m btn-white" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-w-m btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- add office info of Papertask -->
+<div id="modal-company" class="modal fade" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Add Company</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label>Company Name *</label>
+                                <input id="c-name" name="c-name" type="text" class="form-control required">
+                            </div>
+                            <div class="form-group">
+                                <label>Telephone </label>
+                                <input id="c-tel" name="c-tel" type="text" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Fax </label>
+                                <input id="c-fax" name="c-fax" type="text" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Address *</label>
+                                <input id="c-address" name="c-address" type="text" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>City *</label>
+                                <input id="c-city" name="c-city" type="text" class="form-control required">
+                            </div>
+                            <div class="form-group">
+                                <label>Country *</label>
+                                <select class="form-control required" id="country" name="country" value="">
+                                    <option>option 1</option>
+                                    <option>option 2</option>
+                                    <option>option 3</option>
+                                    <option>option 4</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Note </label>
+                                <textarea class="form-control"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-w-m btn-white" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-w-m btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- add Bank account of Papertask -->
+<div id="modal-bank" class="modal fade" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Add Bank Account</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label>Bank Name *</label>
+                                <input id="c-name" name="c-name" type="text" class="form-control required">
+                            </div>
+                            <div class="form-group">
+                                <label>Beneficiar Name </label>
+                                <input id="c-tel" name="c-tel" type="text" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Account No./IBAN </label>
+                                <input id="c-fax" name="c-fax" type="text" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Swift Code </label>
+                                <input id="c-address" name="c-address" type="text" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>ABA Routing Number </label>
+                                <input id="c-address" name="c-address" type="text" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Bank Address </label>
+                                <input id="c-address" name="c-address" type="text" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>City *</label>
+                                <input id="c-city" name="c-city" type="text" class="form-control required">
+                            </div>
+                            <div class="form-group">
+                                <label>Country *</label>
+                                <select class="form-control required" id="country" name="country" value="">
+                                    <option>option 1</option>
+                                    <option>option 2</option>
+                                    <option>option 3</option>
+                                    <option>option 4</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Note </label>
+                                <textarea class="form-control"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-w-m btn-white" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-w-m btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -20,6 +20,8 @@
     <!-- Scripts -->
     <?php echo $this->headScript()
         ->prependFile($this->basePath() . '/js/common.js')
+        ->prependFile($this->basePath() . '/js/plugins/pace/pace.min.js')
+        ->prependFile($this->basePath() . '/js/inspinia.js')
         ->prependFile($this->basePath() . '/js/plugins/slimscroll/jquery.slimscroll.min.js')
         ->prependFile($this->basePath() . '/js/plugins/metisMenu/jquery.metisMenu.js')
         ->prependFile($this->basePath() . '/js/angular.min.js')

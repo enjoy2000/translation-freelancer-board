@@ -10,7 +10,8 @@ namespace Admin\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-class ProfileServiceDesktopPublishing {
+/** @ORM\Entity */
+class ProfileServiceTranslationTM {
     /**
      * @var integer
      *
@@ -28,5 +29,34 @@ class ProfileServiceDesktopPublishing {
     /**
      * @ORM\Column(type="decimal", precision=2, scale=2)
      */
-    protected $premiumPrice;
+    protected $rate;
+
+    /**
+     * @return array
+     */
+    public function getData(){
+        return array(
+            'id' => $this->id,
+            'template' => $this->template,
+            'rate' => $this->rate
+        );
+    }
+
+    /**
+     * Set data
+     * @param array $arr
+     * @return $this
+     */
+    public function setData(array $arr){
+        $keys = array(
+            'template',
+            'rate',
+        );
+        foreach($keys as $key){
+            if(isset($arr[$key])){
+                $this->$key = $arr[$key];
+            }
+        }
+        return $this;
+    }
 } 

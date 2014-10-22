@@ -10,6 +10,7 @@ namespace Admin\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+/** @ORM\Entity */
 class ProfileServiceEngineering {
     /**
      * @var integer
@@ -21,32 +22,17 @@ class ProfileServiceEngineering {
     protected $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="LanguageGroup")
+     * @ORM\ManyToOne(targetEntity="\Common\Entity\EngineeringCategory")
      */
-    protected $languageGroup;
+    protected $engineeringCategory;
 
     /**
-     * @ORM\ManyToOne(targetEntity="DesktopSoftware")
+     * @ORM\ManyToOne(targetEntity="\Common\Entity\Unit")
      */
-    protected $desktopSoftware;
-
-    /**
-     * @ORM\Column(type="decimal", precision=19, scale=4)
-     */
-    protected $priceApplePerPage;
+    protected $unit;
 
     /**
      * @ORM\Column(type="decimal", precision=19, scale=4)
      */
-    protected $priceWindowPerPage;
-
-    /**
-     * @ORM\Column(type="decimal", precision=19, scale=4)
-     */
-    protected $priceApplePerHour;
-
-    /**
-     * @ORM\Column(type="decimal", precision=19, scale=4)
-     */
-    protected $priceWindowPerHour;
+    protected $price;
 } 

@@ -23,6 +23,18 @@
 
             </li>
             <li>
+                <a href="#">
+                    <i class="fa fa-envelope"></i>
+                    <span class="nav-label">Papertask </span>
+                    <span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level">
+                    <li><a href="<?php
+                        echo $this->url('admin', array('controller' => 'papertask', 'action' => 'profile'))
+                        ?>">Profile</a></li>
+                </ul>
+            </li>
+            <li>
                 <a href="<?php echo $this->url('admin', array('controller' => 'email'));?>">
                     <i class="fa fa-envelope"></i>
                     <span class="nav-label">Email Templates </span>

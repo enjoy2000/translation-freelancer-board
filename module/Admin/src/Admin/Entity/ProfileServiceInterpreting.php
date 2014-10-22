@@ -11,7 +11,7 @@ namespace Admin\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /** @ORM\Entity */
-class ProfileServiceDesktopPublishing {
+class ProfileServiceInterpreting {
     /**
      * @var integer
      *
@@ -22,32 +22,27 @@ class ProfileServiceDesktopPublishing {
     protected $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="\User\Entity\LanguageGroup")
+     * @ORM\ManyToOne(targetEntity="\User\Entity\Language")
      */
-    protected $languageGroup;
+    protected $sourceLanguage;
 
     /**
-     * @ORM\ManyToOne(targetEntity="\User\Entity\DesktopSoftware")
+     * @ORM\ManyToOne(targetEntity="\User\Entity\Language")
      */
-    protected $desktopSoftware;
+    protected $targetLanguage;
 
     /**
-     * @ORM\Column(type="decimal", precision=19, scale=4)
+     * @ORM\ManyToOne(targetEntity="\User\Entity\InterpretingService")
      */
-    protected $priceApplePerPage;
-
-    /**
-     * @ORM\Column(type="decimal", precision=19, scale=4)
-     */
-    protected $priceWindowPerPage;
+    protected $interpretingService;
 
     /**
      * @ORM\Column(type="decimal", precision=19, scale=4)
      */
-    protected $priceApplePerHour;
+    protected $pricePerDay;
 
     /**
      * @ORM\Column(type="decimal", precision=19, scale=4)
      */
-    protected $priceWindowPerHour;
+    protected $pricePerHalfDay;
 } 
