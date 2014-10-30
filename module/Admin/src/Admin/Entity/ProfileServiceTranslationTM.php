@@ -27,7 +27,7 @@ class ProfileServiceTranslationTM {
     protected $template;
 
     /**
-     * @ORM\Column(type="decimal", precision=2, scale=2)
+     * @ORM\Column(type="decimal", precision=4, scale=2)
      */
     protected $rate;
 

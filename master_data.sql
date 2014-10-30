@@ -28,3 +28,12 @@ INSERT INTO `papertask`.`OperatingSystem`(`name`) VALUES ('MAC'), ('PC');
 INSERT INTO `papertask`.`TemplateType` (`id`, `name`, `description`, `code`, `updateTime`, `createdTime`) VALUES ('1', 'register-confirmation', 'register-confirmation', 'register-confirmation', '2014-09-30 01:01:01', '2014-09-30 01:01:01');
 INSERT INTO `papertask`.`InterpretingService` (`name`) VALUES ('Service 1');
 INSERT INTO `papertask`.`InterpretingService` (`name`) VALUES ('Service 2');
+
+INSERT INTO `papertask`.`profileservicetranslationtm` (`template`, `rate`) VALUES ('Repetitions', '0.1');
+INSERT INTO `papertask`.`profileservicetranslationtm` (`template`, `rate`) VALUES ('100%', '0.1');
+INSERT INTO `papertask`.`profileservicetranslationtm` (`template`, `rate`) VALUES ('95%-99%', '0.1');
+INSERT INTO `papertask`.`profileservicetranslationtm` (`template`, `rate`) VALUES ('85%-94%', '0.5');
+INSERT INTO `papertask`.`profileservicetranslationtm` (`template`, `rate`) VALUES ('75%-84%', '0.5');
+INSERT INTO `papertask`.`profileservicetranslationtm` (`template`, `rate`) VALUES ('50%-74%', '1');
+INSERT INTO `papertask`.`profileservicetranslationtm` (`template`, `rate`) VALUES ('No Match', '1');
+

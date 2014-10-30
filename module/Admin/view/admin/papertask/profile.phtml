@@ -1,9 +1,14 @@
 
 <?php
 $this->headScript()
+    ->prependFile($this->basePath() . '/js/admin/papertask/profile.js')
+    ->prependFile($this->basePath() . '/js/admin/bootstrap-modal.js')
+    ->prependScript("angularApp = angular.module('project', []);")
+    ->prependFile($this->basePath() . '/js/plugins/validate/jquery.validate.min.js')
     ->prependFile($this->basePath() . '/js/demo/peity-demo.js')
     ->prependFile($this->basePath() . '/js/plugins/peity/jquery.peity.min.js')
 ?>
+<div data-ng-controller="PapertaskProfileController" class="fadeInRight">
 <div class="panel blank-panel">
 <div class="panel-heading">
     <div class="panel-options">
@@ -28,26 +33,18 @@ $this->headScript()
                     <thead>
                     <tr>
                         <th>TM Template</th>
-                        <th>Repetitions</th>
-                        <th>100%</th>
-                        <th>95% - 99%</th>
-                        <th>85% - 94%</th>
-                        <th>75% - 84%</th>
-                        <th>50% - 74%</th>
-                        <th>No Match</th>
+                        <th ng-repeat="template in translationTM">
+                            {{template.template}}
+                        </th>
                         <th></th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
                         <td>TM Rate</td>
-                        <td>10%</td>
-                        <td>10%</td>
-                        <td>10%</td>
-                        <td>50%</td>
-                        <td>50%</td>
-                        <td>100%</td>
-                        <td>100%</td>
+                        <td ng-repeat="template in translationTM">
+                            {{template.rate*100}}%
+                        </td>
                         <td><a data-toggle="modal" href="#modal-matchs"><i class="fa fa-edit"></i></a></td>
                     </tr>
                     </tbody>
@@ -430,6 +427,7 @@ $this->headScript()
 
 <!-- edit TM template -->
 <div id="modal-matchs" class="modal fade" aria-hidden="true">
+    <form name="templateForm">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -441,33 +439,11 @@ $this->headScript()
                 <form>
                     <div class="row">
                         <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>Repetitions</label>
-                                <input name="" type="number" value="0.1" class="form-control required">
-                            </div>
-                            <div class="form-group">
-                                <label>100%</label>
-                                <input name="" type="number" value="0.1" class="form-control required">
-                            </div>
-                            <div class="form-group">
-                                <label>95% - 99%</label>
-                                <input name="" type="number" value="0.1" class="form-control required">
-                            </div>
-                            <div class="form-group">
-                                <label>85% - 94%</label>
-                                <input name="" type="number" value="0.5" class="form-control required">
-                            </div>
-                            <div class="form-group">
-                                <label>75% - 84% </label>
-                                <input name="" type="number" value="0.5" class="form-control required">
-                            </div>
-                            <div class="form-group">
-                                <label>50% - 74%</label>
-                                <input name="" type="number" value="1" class="form-control required">
-                            </div>
-                            <div class="form-group">
-                                <label>No Match</label>
-                                <input name="" type="number" value="1" class="form-control required">
+                            <div ng-repeat="template in translationTM" class="form-group">
+                                <label>{{template.template}}</label>
+                                <input id="rate" ng-model="template.rate" name="rate" class="form-control required" required />
+                                <span ng-show="templateForm.rate.$dirty" class="help-inline">
+                                    <?php echo $this->translate('This field is required.') ?></span>
                             </div>
                         </div>
                     </div>
@@ -475,10 +451,12 @@ $this->headScript()
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-w-m btn-white" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-w-m btn-primary">Save changes</button>
+                <button type="submit" class="btn btn-w-m btn-primary" data-dismiss="modal"
+                    ng-click="updateTranslationTM()">Save changes</button>
             </div>
         </div>
     </div>
+    </form>
 </div>
 
 <!-- add language pair and price -->
@@ -828,4 +806,4 @@ $this->headScript()
         </div>
     </div>
 </div>
-
+</div>

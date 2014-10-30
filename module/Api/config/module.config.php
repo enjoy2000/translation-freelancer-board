@@ -52,6 +52,18 @@ return array(
                             ),
                         ),
                     ),
+                    'papertask' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/papertask/[:controller[/]]',
+                            'constraints' => array(
+                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
+                            'defaults' => array(
+                                '__NAMESPACE__' => 'Api\Controller\Papertask',
+                            ),
+                        ),
+                    ),
                     'user_child' => array(
                         'type'    => 'Segment',
                         'options' => array(
@@ -86,6 +98,8 @@ return array(
             'Api\Controller\User\PriceData' => 'Api\Controller\User\PriceDataController',
             'Api\Controller\User\Resource' => 'Api\Controller\User\ResourceController',
             'Api\Controller\User\TranslationPrice' => 'Api\Controller\User\TranslationPriceController',
+            'Api\Controller\Papertask\Translation' => 'Api\Controller\Papertask\TranslationController',
+            'Api\Controller\Papertask\Translationtm' => 'Api\Controller\Papertask\TranslationtmController',
         ),
     ),
     'view_manager' => array(

@@ -6,7 +6,7 @@
  * Time: 9:55 AM
  */
 
-namespace Api\Controller\Data;
+namespace Api\Controller\Papertask;
 
 use Admin\Entity\ProfileServiceTranslation;
 use Zend\View\Model\JsonModel;

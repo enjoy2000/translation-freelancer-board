@@ -11,7 +11,6 @@ namespace Api\Controller\Papertask;
 use Zend\View\Model\JsonModel;
 
 use Application\Controller\AbstractRestfulController;
-use Admin\Entity\ProfileServiceTranslationTM;
 
 class TranslationtmController extends AbstractRestfulController{
     public function getList(){
@@ -23,6 +22,14 @@ class TranslationtmController extends AbstractRestfulController{
     }
 
     public function update($id, $data){
+        $entityManager = $this->getEntityManager();
+        $translationTM = $entityManager->find('\Admin\Entity\ProfileServiceTranslationTM', (int)$id);
 
+        $translationTM->setData($data);
+
+        $entityManager->merge($translationTM);
+        $entityManager->flush();
+
+        return new JsonModel([]);
     }
 } 
