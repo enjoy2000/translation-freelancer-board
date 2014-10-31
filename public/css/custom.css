@@ -1,0 +1,8 @@
+.wizard > .content > .body input.hidden-required{
+    width: 1px;
+    height: 1px;
+    border: none;
+    margin: 0;
+    background: transparent;
+    display: inline;
+}

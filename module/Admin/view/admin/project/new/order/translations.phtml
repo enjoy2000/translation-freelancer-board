@@ -1,0 +1,167 @@
+<div class="panel panel-default" ng-show="hasTypeTranslationShow()">
+    <div class="panel-heading" style="padding-bottom: 10px;">
+        Translation - <span class="text-info"><strong>Business</strong></span>
+    </div>
+    <div class="panel-body">
+        <div ng-show="hasTypeTranslationNoTM()">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Iterms - <span class="text-info">Translation (No TM)</span></th>
+                        <th>Unit </th>
+                        <th>Unit Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>uploaded file name 1 / or Task Name</td>
+                        <td>Source Word</td>
+                        <td>CNY 0.12</td>
+                        <td>2000</td>
+                        <td>CNY 240.00</td>
+                        <td>
+                            <a data-toggle="modal" href="#modal-translation-noTM"><i class="fa fa-edit"></i></a>
+                            &nbsp;&nbsp;
+                            <a href="#"><i class="fa fa-trash-o text-danger"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>uploaded file name 2 / or Task Name</td>
+                        <td>Source Word</td>
+                        <td>CNY 0.12</td>
+                        <td>1000</td>
+                        <td>CNY 120.00</td>
+                        <td>
+                            <a data-toggle="modal" href="#modal-translation-noTM"><i class="fa fa-edit"></i></a>
+                            &nbsp;&nbsp;
+                            <a href="#"><i class="fa fa-trash-o text-danger"></i></a>
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="text-center">
+                <a data-toggle="modal" class="btn btn-outline btn-primary" href="#modal-translation-noTM">Add Iterm</a>
+            </div>
+            <div class="hr-line-dashed"></div>
+        </div>
+        <div ng-show="hasTypeTranslationUseTM()">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Iterms - <span class="text-info">Translation (Use TM)</span></th>
+                        <th>Unit </th>
+                        <th>Unit Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>2</td>
+                        <td>Translation with TM</td>
+                        <td>Source Word</td>
+                        <td>CNY 0.12</td>
+                        <td>1000</td>
+                        <td>CNY 120.00</td>
+                        <td>
+                            <a data-toggle="modal" href="#modal-translation-TM"><i class="fa fa-edit"></i></a> &nbsp;&nbsp;
+
+                            <a data-toggle="collapse" href="#use_tm"><i class="fa fa-eye"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="7">
+                            <div id="use_tm" class="panel-collapse collapse">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>TM Template</th>
+                                            <th>Rate (%)</th>
+                                            <th>Unit Price</th>
+                                            <th>Quantity (Word)</th>
+                                            <th>Quantity</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>Repetitions</td>
+                                            <td>10%</td>
+                                            <td>CNY 0.012</td>
+                                            <td>100</td>
+                                            <td>CNY 1.20</td>
+                                        </tr>
+                                        <tr>
+                                            <td>100%</td>
+                                            <td>10%</td>
+                                            <td>CNY 0.012</td>
+                                            <td>200</td>
+                                            <td>CNY 2.40</td>
+                                        </tr>
+                                        <tr>
+                                            <td>95%-99%</td>
+                                            <td>10%</td>
+                                            <td>CNY 0.012</td>
+                                            <td>200</td>
+                                            <td>CNY 2.40</td>
+                                        </tr>
+                                        <tr>
+                                            <td>85%-94%</td>
+                                            <td>50%</td>
+                                            <td>CNY 0.06</td>
+                                            <td>300</td>
+                                            <td>CNY 18.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>75%-84%</td>
+                                            <td>50%</td>
+                                            <td>CNY 0.06</td>
+                                            <td>200</td>
+                                            <td>CNY 12.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>50%-74%</td>
+                                            <td>100%</td>
+                                            <td>CNY 0.12</td>
+                                            <td>1000</td>
+                                            <td>CNY 120.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>No Match</td>
+                                            <td>100%</td>
+                                            <td>CNY 0.12</td>
+                                            <td>1000</td>
+                                            <td>CNY 120.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="4" align="right"><strong>Total</strong></td>
+                                            <td class="text-info">CNY xxxx.xx</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="text-center">
+                <a data-toggle="modal" class="btn btn-outline btn-primary" href="#modal-translation-noTM">Add Iterm</a>
+            </div>
+        </div>
+    </div>
+</div>

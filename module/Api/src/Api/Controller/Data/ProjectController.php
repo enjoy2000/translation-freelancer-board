@@ -25,6 +25,7 @@ class ProjectController extends AbstractRestfulController
             'group' => $this->getEntityManager()->getReference('\User\Entity\Resource', 3)
         ]);
         $data['clients'] = $this->getAllData('\User\Entity\Employer');
+        $data['fields'] = $this->getAllData('\User\Entity\Field');
         $data['pms'] = $this->getAllDataBy('\User\Entity\Staff', ['type' => Staff::STAFF_TYPE_PM]);
         $data['sales'] = $this->getAllDataBy('\User\Entity\Staff', ['type' => Staff::STAFF_TYPE_SALE]);
         $data = array_merge($data, $projectTypes);

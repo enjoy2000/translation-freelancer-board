@@ -1,0 +1,121 @@
+<div class="ibox">
+    <div class="ibox-title">
+        <h5><i class="fa fa-info-circle"></i> Project Information</h5>
+    </div>
+    <div class="ibox-content">
+        <div class="row form-horizontal">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Reference *</label>
+                        <div class="col-sm-9">
+                            <input name="reference" ng-model="project.reference" type="text"
+                                   aria-required="true" class="form-control required valid"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Priority *</label>
+                        <div class="col-sm-8">
+                            <div data-toggle="buttons">
+                                <label class="btn btn-outline btn-{{priority.decorator}} btn-sm"
+                                       ng-click="project.priority=priority" ng-repeat="priority in priorities">
+                                    <input type="radio" name="priority" ng-value="priority"
+                                           class="required valid"
+                                           data-errorplace="element.parent().parent().before(error)" /> {{priority.name}}
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="form-group" id="ordered_date">
+                    <label class="col-sm-3 control-label">Start Date *</label>
+                    <div class="col-sm-9">
+                        <div class="input-group date">
+                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                            <input data-field="datetime" readonly type="text" name="startDate" ng-model="project.startDate"
+                                   class="form-control required valid" data-errorplace="element.parent().before(error)"/>
+                        </div>
+                        <div class="dtbox"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Field *</label>
+                    <div class="col-sm-9">
+                        <select class="form-control required valid" name="field" aria-required="true"
+                                ng-model="project.field" ng-options="field.name for field in fields">
+                            <option value="">--</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Sales </label>
+                    <div class="col-sm-9">
+                        <select class="form-control" name="sale" aria-required="true"
+                                ng-model="project.sale" ng-options="sale.name for sale in sales">
+                            <option value="">--</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group" id="due_date">
+                    <label class="col-sm-3 control-label">Due Date *</label>
+                    <div class="col-sm-9">
+                        <div class="input-group date">
+                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                            <input data-field="datetime" readonly type="text" name="dueDate" ng-model="project.dueDate"
+                                   class="form-control required valid" data-errorplace="element.parent().before(error)"/>
+                        </div>
+                        <div class="dtbox"></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Client *</label>
+                    <div class="col-sm-9">
+                        <select class="form-control required valid" name="client" aria-required="true"
+                                ng-model="project.client" ng-options="client.name for client in clients">
+                            <option value="">--</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">PM *</label>
+                    <div class="col-sm-9">
+                        <select class="form-control required valid" name="pm" aria-required="true"
+                                ng-model="project.pm" ng-options="pm.name for pm in pms">
+                            <option value="">--</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-show="project.interpreting">
+            <div class="hr-line-dashed"></div>
+            <div class="row">
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Interpreting Info </label>
+                    <div class="col-sm-10">
+                        <input name="interpretingInfo" type="text" class="form-control"
+                               ng-model="project.interpretingInfo"/>
+                        <span class="help-block m-b-none">Interpreting only, put address/city/country information.</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="hr-line-dashed"></div>
+        <div class="form-group">
+            <label>Project Description </label>
+            <summernote ng-model="project.description"></summernote>
+        </div>
+
+    </div>
+</div>

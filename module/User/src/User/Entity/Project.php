@@ -26,25 +26,19 @@ class Project extends Entity{
      * @var integer
      * @ORM\Column(type="integer")
      */
-    protected $type;
-
-    /**
-     * @var integer
-     * @ORM\Column(type="integer")
-     */
     protected $status;
 
     /**
      * @var \User\Entity\Language
      * @ORM\ManyToOne(targetEntity="Language")
      */
-    protected $translationSourceLanguage = null;
+    protected $sourceLanguage;
 
     /**
      * @var \User\Entity\Language
      * @ORM\ManyToMany(targetEntity="Language")
      */
-    protected $translationTargetLanguages = null;
+    protected $targetLanguages;
 
     /**
      * @var string
@@ -80,7 +74,7 @@ class Project extends Entity{
      * @var \User\Entity\Employer
      * @ORM\ManyToOne(targetEntity="Employer")
      */
-    protected $employer;
+    protected $client;
 
     /**
      * @var \User\Entity\Staff
@@ -97,7 +91,25 @@ class Project extends Entity{
     protected $pm;
     /**
      * @var string
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=True)
      */
     protected $interpretingInfo;
+
+    /**
+     * @var int
+     * @ORM\Column(type="integer")
+     */
+    protected $serviceLevel = 0;
+
+    /**
+     * @var int
+     * @ORM\Column(type="integer")
+     */
+    protected $duration = 0;
+
+    public function getData(){
+        return [
+            'id' => $this->id,
+        ];
+    }
 }

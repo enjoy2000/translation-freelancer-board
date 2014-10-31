@@ -28,3 +28,8 @@ INSERT INTO `papertask`.`OperatingSystem`(`name`) VALUES ('MAC'), ('PC');
 INSERT INTO `papertask`.`TemplateType` (`id`, `name`, `description`, `code`, `updateTime`, `createdTime`) VALUES ('1', 'register-confirmation', 'register-confirmation', 'register-confirmation', '2014-09-30 01:01:01', '2014-09-30 01:01:01');
 INSERT INTO `papertask`.`InterpretingService` (`name`) VALUES ('Service 1');
 INSERT INTO `papertask`.`InterpretingService` (`name`) VALUES ('Service 2');
+
+INSERT INTO `papertask`.`Field` (`id`, `name`) VALUES ('1', 'Field 1');
+INSERT INTO `papertask`.`Field` (`id`, `name`) VALUES ('2', 'Field 2');
+INSERT INTO `papertask`.`Field` (`id`, `name`) VALUES ('3', 'Field 3');
+INSERT INTO `papertask`.`Field` (`id`, `name`) VALUES ('4', 'Field 4');
