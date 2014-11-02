@@ -12,15 +12,15 @@ use Zend\View\Model\JsonModel;
 use Application\Controller\AbstractRestfulController;
 use User\Entity\Language;
 
-class LanguageController extends AbstractRestfulController
+class LanguageGroupController extends AbstractRestfulController
 {
     public function getList()
     {
-        $languages = $this->getAllData('\User\Entity\Language');
+        $languageGroups = $this->getAllData('\User\Entity\LanguageGroup');
         //var_dump($languages);die;
         $json = [];
-        foreach($languages as $lang){
-            $json[$lang['id']] = $lang['name'];
+        foreach($languageGroups as $group){
+            $json[$group['id']] = $group['name'];
         }
 
         return new JsonModel($json);

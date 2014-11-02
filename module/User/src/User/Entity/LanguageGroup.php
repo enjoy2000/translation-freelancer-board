@@ -22,4 +22,8 @@ class LanguageGroup{
 
     /** @ORM\Column(type="string") */
     protected $name;
+
+    public function getData(){
+        return ['name' => $this->name];
+    }
 }

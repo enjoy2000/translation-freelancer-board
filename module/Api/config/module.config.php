@@ -55,9 +55,10 @@ return array(
                     'papertask' => array(
                         'type'    => 'Segment',
                         'options' => array(
-                            'route'    => '/papertask/[:controller[/]]',
+                            'route'    => '/papertask/[:controller[[/][:id[/]]]]',
                             'constraints' => array(
                                 'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'id' => '[0-9]*',
                             ),
                             'defaults' => array(
                                 '__NAMESPACE__' => 'Api\Controller\Papertask',
@@ -86,6 +87,8 @@ return array(
         'invokables' => array(
             'Api\Controller\Common\Company' => 'Api\Controller\Common\CompanyController',
             'Api\Controller\Common\Country' => 'Api\Controller\Common\CountryController',
+            'Api\Controller\Common\Language' => 'Api\Controller\Common\LanguageController',
+            'Api\Controller\Common\LanguageGroup' => 'Api\Controller\Common\LanguageGroupController',
             'Api\Controller\Data\Project' => 'Api\Controller\Data\ProjectController',
             'Api\Controller\Index' => 'Api\Controller\IndexController',
             'Api\Controller\User\DesktopPrice' => 'Api\Controller\User\DesktopPriceController',
@@ -100,6 +103,7 @@ return array(
             'Api\Controller\User\TranslationPrice' => 'Api\Controller\User\TranslationPriceController',
             'Api\Controller\Papertask\Translation' => 'Api\Controller\Papertask\TranslationController',
             'Api\Controller\Papertask\Translationtm' => 'Api\Controller\Papertask\TranslationtmController',
+            'Api\Controller\Papertask\DesktopPublishing' => 'Api\Controller\Papertask\DesktopPublishingController',
         ),
     ),
     'view_manager' => array(

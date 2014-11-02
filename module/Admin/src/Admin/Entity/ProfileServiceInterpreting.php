@@ -37,12 +37,12 @@ class ProfileServiceInterpreting {
     protected $interpretingService;
 
     /**
-     * @ORM\Column(type="decimal", precision=19, scale=4)
+     * @ORM\Column(type="decimal", precision=19, scale=2)
      */
     protected $pricePerDay;
 
     /**
-     * @ORM\Column(type="decimal", precision=19, scale=4)
+     * @ORM\Column(type="decimal", precision=19, scale=2)
      */
     protected $pricePerHalfDay;
 } 

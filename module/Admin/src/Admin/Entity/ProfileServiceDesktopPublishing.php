@@ -8,10 +8,11 @@
 
 namespace Admin\Entity;
 
+use Common\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /** @ORM\Entity */
-class ProfileServiceDesktopPublishing {
+class ProfileServiceDesktopPublishing extends Entity {
     /**
      * @var integer
      *
@@ -32,22 +33,58 @@ class ProfileServiceDesktopPublishing {
     protected $desktopSoftware;
 
     /**
-     * @ORM\Column(type="decimal", precision=19, scale=4)
+     * @ORM\Column(type="decimal", precision=19, scale=2)
      */
     protected $priceApplePerPage;
 
     /**
-     * @ORM\Column(type="decimal", precision=19, scale=4)
+     * @ORM\Column(type="decimal", precision=19, scale=2)
      */
     protected $priceWindowPerPage;
 
     /**
-     * @ORM\Column(type="decimal", precision=19, scale=4)
+     * @ORM\Column(type="decimal", precision=19, scale=2)
      */
     protected $priceApplePerHour;
 
     /**
-     * @ORM\Column(type="decimal", precision=19, scale=4)
+     * @ORM\Column(type="decimal", precision=19, scale=2)
      */
     protected $priceWindowPerHour;
+
+
+    /**
+     * Set data
+     * @param array $arr
+     * @return $this
+     */
+    public function setData(array $arr){
+        $keys = array(
+            'languageGroup',
+            'desktopSoftware',
+            'priceApplePerPage',
+            'priceApplePerHour',
+            'priceWindowPerHour',
+        );
+        foreach($keys as $key){
+            if(isset($arr[$key])){
+                $this->$key = $arr[$key];
+            }
+        }
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getData(){
+        return array(
+            'id' => $this->id,
+            'languageGroup' => $this->languageGroup,
+            'desktopSoftware' => $this->desktopSoftware,
+            'priceApplePerPage' => $this->priceApplePerPage,
+            'priceApplePerHour' => $this->priceApplePerHour,
+            'priceWindowPerHour' => $this->priceWindowPerHour,
+        );
+    }
 } 
