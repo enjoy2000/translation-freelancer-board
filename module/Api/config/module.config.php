@@ -89,6 +89,7 @@ return array(
             'Api\Controller\Data\Project' => 'Api\Controller\Data\ProjectController',
             'Api\Controller\Index' => 'Api\Controller\IndexController',
             'Api\Controller\Admin\Project' => 'Api\Controller\Admin\ProjectController',
+            'Api\Controller\User\Current' => 'Api\Controller\User\CurrentController',
             'Api\Controller\User\DesktopPrice' => 'Api\Controller\User\DesktopPriceController',
             'Api\Controller\User\Employer' => 'Api\Controller\User\EmployerController',
             'Api\Controller\User\EmployerData' => 'Api\Controller\User\EmployerDataController',
@@ -136,8 +137,20 @@ return array(
             ['id' => 2, 'name' => 'Business'],
             ['id' => 3, 'name' => 'Premium'],
         ],
-        'order_section' => [
-            "Translation" => "Bus"
-        ]
+        'interpretingUnits' => [
+            ['id' => 1, 'name' => 'Day'],
+            ['id' => 2, 'name' => 'Half Day'],
+        ],
+        'engineeringUnits' => [
+            ['id' => 1, 'name' => 'Page'],
+            ['id' => 2, 'name' => 'Graphic'],
+            ['id' => 3, 'name' => 'Hour'],
+            ['id' => 4, 'name' => 'Day'],
+            ['id' => 5, 'name' => 'Month'],
+        ],
+        'dtpUnits' => [
+            ['id' => 1, 'name' => 'Hour'],
+            ['id' => 2, 'name' => 'Page'],
+        ],
     ],
 );

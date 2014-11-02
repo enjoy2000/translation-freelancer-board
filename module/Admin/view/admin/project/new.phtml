@@ -12,11 +12,11 @@
 <?php $this->headScript()
     ->prependFile($this->basePath() . '/js/plugins/datetimepicker/DateTimePicker.js')
     ->prependFile($this->basePath() . '/js/admin/project/create-project.js')
+    ->prependFile($this->basePath() . '/js/admin/common/angular/CurrentUser.js')
     ->prependFile($this->basePath() . '/js/admin/angular-steps.js')
     ->prependFile($this->basePath() . '/js/admin/bootstrap-modal.js')
     ->prependScript("angularApp = angular.module('project', ['summernote']);")
     ->prependFile($this->basePath() . '/js/plugins/bootstrap-filestyle/bootstrap-filestyle.min.js')
-    ->prependFile($this->basePath() . '/js/plugins/angular-bootstrap/ui-bootstrap-0.11.2.min.js')
     ->prependFile($this->basePath() . '/js/plugins/angular-summernote/angular-summernote.js')
     ->prependFile($this->basePath() . '/js/plugins/summernote/summernote.min.js')
     //->prependFile($this->basePath() . '/js/plugins/datapicker/bootstrap-datepicker.js')
@@ -66,7 +66,12 @@
         </div>
     </div>
 </div>
-
+<div ng-controller="ModalController" id="modalContainer">
+    <?php include "new/modal/interpreting_modal.phtml" ?>
+    <?php include "new/modal/engineering_modal.phtml" ?>
+    <?php include "new/modal/desktop_publishing_modal.phtml" ?>
+    <?php include "new/modal/translation_modal.phtml" ?>
+</div>
 <script>
     var edit = function() {
         $('.click2edit').summernote({focus: true});

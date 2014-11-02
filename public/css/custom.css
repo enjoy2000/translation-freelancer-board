@@ -6,3 +6,9 @@
     background: transparent;
     display: inline;
 }
+.wizard > .content > .body ul{
+    list-style: none;
+}
+.child-is-link > *{
+    cursor: pointer !important;
+}

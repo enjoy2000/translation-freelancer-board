@@ -1,4 +1,5 @@
-<div class="panel panel-default" ng-show="project.interpreting">
+<div class="panel panel-default" ng-show="project.interpreting"
+     ng-controller="TableItemController">{{ setModalId('#modal-item') }}
     <div class="panel-heading" style="padding-bottom: 10px;">
         Interpreting
     </div>
@@ -18,36 +19,15 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Interpreter 1</td>
-                    <td>Day</td>
-                    <td>CNY 5000.00</td>
-                    <td>1</td>
-                    <td>CNY 5000.00</td>
-                    <td>
-                        <a data-toggle="modal" href="#modal-interpreting"><i class="fa fa-edit"></i></a> &nbsp;&nbsp;
-                        <a href="#"><i class="fa fa-trash-o text-danger"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Interpreter 2</td>
-                    <td>Half Day</td>
-                    <td>CNY 4000.00</td>
-                    <td>1</td>
-                    <td>CNY 4000.00</td>
-                    <td>
-                        <a data-toggle="modal" href="#modal-interpreting"><i class="fa fa-edit"></i></a> &nbsp;&nbsp;
-                        <a href="#"><i class="fa fa-trash-o text-danger"></i></a>
-                    </td>
-                </tr>
-
+                    <?php include "table/row.phtml" ?>
                 </tbody>
             </table>
         </div>
         <div class="text-center">
-            <a data-toggle="modal" class="btn btn-outline btn-primary" href="#modal-interpreting">Add Iterm</a>
+            <a data-toggle="modal" class="btn btn-outline btn-primary"
+               ng-click="showModal(false)">
+                Add Iterm
+            </a>
         </div>
     </div>
 </div>

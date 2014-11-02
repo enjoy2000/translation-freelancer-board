@@ -3,7 +3,8 @@
         Desktop Publishing
     </div>
     <div class="panel-body">
-        <div ng-show="hasTypeDesktopPublishingMac()">
+        <div ng-show="hasTypeDesktopPublishingMac()"
+             ng-controller="TableItemController">{{ setModalId('#modal-dtp-mac') }}
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
@@ -18,40 +19,20 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>uploaded file name 1 / or Task Name</td>
-                        <td>Page</td>
-                        <td>CNY 10.00</td>
-                        <td>10</td>
-                        <td>CNY 100.00</td>
-                        <td>
-                            <a data-toggle="modal" href="#modal-dtp-mac"><i class="fa fa-edit"></i></a> &nbsp;&nbsp;
-                            <a href="#"><i class="fa fa-trash-o text-danger"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>uploaded file name 2 / or Task Name</td>
-                        <td>Source Word</td>
-                        <td>CNY 50.00</td>
-                        <td>2</td>
-                        <td>CNY 100.00</td>
-                        <td>
-                            <a data-toggle="modal" href="#modal-dtp-mac"><i class="fa fa-edit"></i></a> &nbsp;&nbsp;
-                            <a href="#"><i class="fa fa-trash-o text-danger"></i></a>
-                        </td>
-                    </tr>
-
+                        <?php include "table/row.phtml" ?>
                     </tbody>
                 </table>
             </div>
             <div class="text-center">
-                <a data-toggle="modal" class="btn btn-outline btn-primary" href="#modal-dtp-mac">Add Iterm</a>
+                <a data-toggle="modal" class="btn btn-outline btn-primary"
+                   ng-click="showModal(false)">
+                    Add Iterm
+                </a>
             </div>
             <div class="hr-line-dashed"></div>
         </div>
-        <div ng-show="hasTypeDesktopPublishingWin()">
+        <div ng-show="hasTypeDesktopPublishingWin()"
+             ng-controller="TableItemController">{{ setModalId('#modal-dtp-pc') }}
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
@@ -66,36 +47,15 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>uploaded file name 1 / or Task Name</td>
-                        <td>Page</td>
-                        <td>CNY 10.00</td>
-                        <td>10</td>
-                        <td>CNY 100.00</td>
-                        <td>
-                            <a data-toggle="modal" href="#modal-dtp-pc"><i class="fa fa-edit"></i></a> &nbsp;&nbsp;
-                            <a href="#"><i class="fa fa-trash-o text-danger"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>uploaded file name 2 / or Task Name</td>
-                        <td>Hour</td>
-                        <td>CNY 50.00</td>
-                        <td>5</td>
-                        <td>CNY 250.00</td>
-                        <td>
-                            <a data-toggle="modal" href="#modal-dtp-pc"><i class="fa fa-edit"></i></a> &nbsp;&nbsp;
-                            <a href="#"><i class="fa fa-trash-o text-danger"></i></a>
-                        </td>
-                    </tr>
-
+                        <?php include "table/row.phtml" ?>
                     </tbody>
                 </table>
             </div>
             <div class="text-center">
-                <a data-toggle="modal" class="btn btn-outline btn-primary" href="#modal-dtp-pc">Add Iterm</a>
+                <a data-toggle="modal" class="btn btn-outline btn-primary"
+                   ng-click="showModal(false)">
+                    Add Iterm
+                </a>
             </div>
         </div>
     </div>

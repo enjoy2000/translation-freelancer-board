@@ -3,7 +3,8 @@
         Translation - <span class="text-info"><strong>Business</strong></span>
     </div>
     <div class="panel-body">
-        <div ng-show="hasTypeTranslationNoTM()">
+        <div ng-show="hasTypeTranslationNoTM()"
+             ng-controller="TableItemController">{{ setModalId('#modal-translation-noTM') }}
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
@@ -18,42 +19,19 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>uploaded file name 1 / or Task Name</td>
-                        <td>Source Word</td>
-                        <td>CNY 0.12</td>
-                        <td>2000</td>
-                        <td>CNY 240.00</td>
-                        <td>
-                            <a data-toggle="modal" href="#modal-translation-noTM"><i class="fa fa-edit"></i></a>
-                            &nbsp;&nbsp;
-                            <a href="#"><i class="fa fa-trash-o text-danger"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>uploaded file name 2 / or Task Name</td>
-                        <td>Source Word</td>
-                        <td>CNY 0.12</td>
-                        <td>1000</td>
-                        <td>CNY 120.00</td>
-                        <td>
-                            <a data-toggle="modal" href="#modal-translation-noTM"><i class="fa fa-edit"></i></a>
-                            &nbsp;&nbsp;
-                            <a href="#"><i class="fa fa-trash-o text-danger"></i></a>
-                        </td>
-                    </tr>
-
+                    <tbody>
+                    <?php include "table/row.phtml" ?>
                     </tbody>
                 </table>
             </div>
             <div class="text-center">
-                <a data-toggle="modal" class="btn btn-outline btn-primary" href="#modal-translation-noTM">Add Iterm</a>
+                <a class="btn btn-outline btn-primary"
+                   ng-click="showModal(false)">Add Iterm</a>
             </div>
             <div class="hr-line-dashed"></div>
         </div>
-        <div ng-show="hasTypeTranslationUseTM()">
+        <div ng-show="hasTypeTranslationUseTM()"
+             ng-controller="TableItemController">{{ setModalId('#modal-translation-TM') }}
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
@@ -155,12 +133,8 @@
                             </div>
                         </td>
                     </tr>
-
                     </tbody>
                 </table>
-            </div>
-            <div class="text-center">
-                <a data-toggle="modal" class="btn btn-outline btn-primary" href="#modal-translation-noTM">Add Iterm</a>
             </div>
         </div>
     </div>

@@ -20,7 +20,7 @@
             <div class="panel-body">
                 <div class="tab-content">
                     <div id="tab-{{language.id}}" class="tab-pane {{$index == 0 ? 'active': ''}}"
-                         ng-repeat="language in project.targetLanguages">
+                         ng-repeat="language in project.targetLanguages">{{identifier = language;""}}
                         <?php include "order/translations.phtml" ?>
                         <?php include "order/desktop_publishing.phtml" ?>
                         <?php include "order/engineering.phtml" ?>

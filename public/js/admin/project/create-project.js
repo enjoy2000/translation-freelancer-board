@@ -35,7 +35,8 @@ angularApp.run(function($rootScope){
         addFile(this);
     });
 });
-angularApp.controller('CreateProjectController', function($scope, $http, $timeout, $q, $sce, $modal){
+
+angularApp.controller('CreateProjectController', function($scope, $http, $timeout, $q, $sce, CurrentUser){
     $scope.project = {
         dtps: [],
         translations: [],
@@ -43,6 +44,10 @@ angularApp.controller('CreateProjectController', function($scope, $http, $timeou
     };
 
     $scope.order = {
+    };
+
+    $scope.targets = {
+
     };
 
     function trustedHtml(){
@@ -59,15 +64,20 @@ angularApp.controller('CreateProjectController', function($scope, $http, $timeou
         $http.get("/api/data/project/")
             .success(function($data){
                 jQuery.extend(true, $scope, $data);  // copy data to scope
-
                 // trusted html
                 trustedHtml();
+                var shareData = ['interpretingUnits', 'engineeringUnits', 'dtpUnits'];
+                for(var i = 0; i < shareData.length; i++){
+                    var key = shareData[i];
+                    setModalControllerData(key, $scope[key]);
+                }
 
                 $scope.project.targetLanguages = [];
                 $timeout(function(){
                     jQuery("select.multiselect").multiselect("destroy").multiselect();
                 });
             });
+        setModalControllerData('project', $scope.project);
     };
 
     $scope.projectType = function(){
@@ -179,10 +189,88 @@ angularApp.controller('CreateProjectController', function($scope, $http, $timeou
     };
     /** end order information condition **/
 
+    $scope.getTarget = function(language){
+        if(typeof $scope.targets[language.id] == 'undefined'){
+            $scope.targets[language.id] = {
+                interpretings: []
+            };
+        }
+        return $scope.targets[language.id];
+    };
+
     $scope.init();
 
     $scope.test = function(){
         console.log($scope.project);
         console.log($scope.order);
     };
+});
+
+angularApp.factory("TableItemListService", function(){
+    var listener;
+    var isNew = false;
+    var modalId = "#modal-interpreting";
+    var vars = {
+        item: {}
+    };
+    var itemCloned = {};
+    function setListener($scope){
+        listener = $scope;
+    }
+    return {
+        cancel: function(){
+            jQuery.extend(true, vars.item, itemCloned);
+            $(modalId).modal("hide");
+        },
+        save: function(){
+            if(isNew){
+                listener.add(vars.item);
+            }
+            $(modalId).modal("hide");
+        },
+        setModalId: function(id){
+            modalId = id;
+        },
+        showModal: function($scope, $item){
+            if($item === false){
+                $item = {};
+                isNew = true;
+            } else {
+                isNew = false;
+            }
+            setListener($scope);
+            vars.item = $item;
+            itemCloned = {};
+            jQuery.extend(true, itemCloned, $item);
+            $(modalId).modal("show");
+        },
+        vars: vars
+    }
+});
+
+angularApp.controller('TableItemController', function($scope, CurrentUser, TableItemListService){
+    $scope.CurrentUser = CurrentUser;
+    $scope.TableItemListService = TableItemListService;
+    $scope.localIdentifier = $scope.identifier;
+    $scope.items = [];
+    $scope.$modalId = "";
+    $scope.add = function($item){
+        $scope.items.push($item);
+    };
+    $scope.remove = function($index){
+        $scope.items.splice($index, 1);
+    };
+    $scope.showModal = function($item){
+        TableItemListService.setModalId($scope.$modalId);
+        TableItemListService.showModal($scope, $item);
+    };
+    $scope.setModalId = function($modalId){
+        $scope.$modalId = $modalId;
+    }
+});
+
+angularApp.controller('TableModalController', function($scope, TableItemListService){
+    $scope.TableItemListService = TableItemListService;
+    $scope.vars = TableItemListService.vars;
+    $scope.cancel
 });

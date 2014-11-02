@@ -1,4 +1,5 @@
-<div class="panel panel-default" ng-show="hasTypeDesktopPublishingEngineer()">
+<div class="panel panel-default" ng-show="hasTypeDesktopPublishingEngineer()"
+     ng-controller="TableItemController">{{ setModalId('#modal-eng') }}
     <div class="panel-heading" style="padding-bottom: 10px;">
         Engineering
     </div>
@@ -18,36 +19,15 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>uploaded file name 1 / or Task Name</td>
-                    <td>Graphic</td>
-                    <td>CNY 10.00</td>
-                    <td>10</td>
-                    <td>CNY 100.00</td>
-                    <td>
-                        <a data-toggle="modal" href="#modal-eng"><i class="fa fa-edit"></i></a> &nbsp;&nbsp;
-                        <a href="#"><i class="fa fa-trash-o text-danger"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>uploaded file name 2 / or Task Name</td>
-                    <td>Hour</td>
-                    <td>CNY 50.00</td>
-                    <td>2</td>
-                    <td>CNY 100.00</td>
-                    <td>
-                        <a data-toggle="modal" href="#modal-eng"><i class="fa fa-edit"></i></a> &nbsp;&nbsp;
-                        <a href="#"><i class="fa fa-trash-o text-danger"></i></a>
-                    </td>
-                </tr>
-
+                    <?php include "table/row.phtml" ?>
                 </tbody>
             </table>
         </div>
         <div class="text-center">
-            <a data-toggle="modal" class="btn btn-outline btn-primary" href="#modal-eng">Add Iterm</a>
+            <a data-toggle="modal" class="btn btn-outline btn-primary"
+                                    ng-click="showModal(false)">
+                Add Iterm
+            </a>
         </div>
     </div>
 </div>
