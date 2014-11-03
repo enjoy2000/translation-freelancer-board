@@ -25,4 +25,11 @@ class Unit {
      * @ORM\Column(type="string")
      */
     protected $name;
+
+    public function getData(){
+        return [
+            'id' => $this->id,
+            'name' => $this->name
+        ];
+    }
 } 

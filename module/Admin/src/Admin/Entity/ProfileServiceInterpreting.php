@@ -8,10 +8,11 @@
 
 namespace Admin\Entity;
 
+use Common\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /** @ORM\Entity */
-class ProfileServiceInterpreting {
+class ProfileServiceInterpreting extends Entity {
     /**
      * @var integer
      *
@@ -45,4 +46,40 @@ class ProfileServiceInterpreting {
      * @ORM\Column(type="decimal", precision=19, scale=2)
      */
     protected $pricePerHalfDay;
+
+
+    /**
+     * Set data
+     * @param array $arr
+     * @return $this
+     */
+    public function setData(array $arr){
+        $keys = array(
+            'sourceLanguage',
+            'targetLanguage',
+            'interpretingService',
+            'pricePerDay',
+            'pricePerHalfDay',
+        );
+        foreach($keys as $key){
+            if(isset($arr[$key])){
+                $this->$key = $arr[$key];
+            }
+        }
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getData(){
+        return array(
+            'id' => $this->id,
+            'sourceLanguage' => $this->sourceLanguage->getData(),
+            'targetLanguage' => $this->targetLanguage->getData(),
+            'interpretingService' => $this->interpretingService->getData(),
+            'pricePerDay' => $this->pricePerDay,
+            'pricePerHalfDay' => $this->pricePerHalfDay,
+        );
+    }
 } 

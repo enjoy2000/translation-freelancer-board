@@ -63,6 +63,7 @@ class ProfileServiceDesktopPublishing extends Entity {
             'languageGroup',
             'desktopSoftware',
             'priceApplePerPage',
+            'priceWindowPerPage',
             'priceApplePerHour',
             'priceWindowPerHour',
         );
@@ -80,9 +81,10 @@ class ProfileServiceDesktopPublishing extends Entity {
     public function getData(){
         return array(
             'id' => $this->id,
-            'languageGroup' => $this->languageGroup,
-            'desktopSoftware' => $this->desktopSoftware,
+            'languageGroup' => $this->languageGroup->getData(),
+            'desktopSoftware' => $this->desktopSoftware->getData(),
             'priceApplePerPage' => $this->priceApplePerPage,
+            'priceWindowPerPage' => $this->priceWindowPerPage,
             'priceApplePerHour' => $this->priceApplePerHour,
             'priceWindowPerHour' => $this->priceWindowPerHour,
         );

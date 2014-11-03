@@ -23,7 +23,24 @@ class LanguageGroup{
     /** @ORM\Column(type="string") */
     protected $name;
 
+    /**
+     * @return array
+     */
     public function getData(){
-        return ['name' => $this->name];
+        return [
+            'id' => $this->id,
+            'name' => $this->name
+        ];
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId(){
+        return $this->id;
+    }
+
+    public function getName(){
+        return $this->name;
     }
 }
