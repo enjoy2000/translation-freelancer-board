@@ -3,64 +3,98 @@
         <ul class="nav" id="side-menu">
             <li class="nav-header">
 
-                <div class="dropdown profile-element"> <span>
-                            <img alt="image" class="img-circle" src="/img/profile_small.jpg">
-                             </span>
+                <div class="dropdown profile-element">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">Amelia Smith</strong>
-                             </span> <span class="text-muted text-xs block">Art Director <b class="caret"></b></span> </span> </a>
+                             </span> <span class="text-muted text-xs block">Administrator <b class="caret"></b></span> </span> </a>
                     <ul class="dropdown-menu animated fadeInRight m-t-xs">
                         <li><a href="profile.html">Profile</a></li>
-                        <li><a href="contacts.html">Contacts</a></li>
+                        <li><a href="contacts.html">Reset Password</a></li>
                         <li><a href="mailbox.html">Mailbox</a></li>
                         <li class="divider"></li>
                         <li><a href="login.html">Logout</a></li>
                     </ul>
                 </div>
                 <div class="logo-element">
-                    IN+
+                    PT
                 </div>
 
             </li>
+            <li> <!-- different roles have different dashboard, a little bit different, can do at last -->
+                <a href="<?php echo $this->url('admin') ?>"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span></a>
+            </li>
+
+            <li> <!-- admin, operation manager can see all info, pm can only see tasks belong to the clients who assigned to the pm, sales dir and sales manager can not see this -->
+                <a href="<?php echo $this->url('admin', array('controller' => 'task',
+                    'action' => 'index')) ?>"><i class="fa fa-tasks"></i> <span class="nav-label">Tasks</span></a>
+            </li>
+
             <li>
-                <a href="<?php echo $this->url('admin', array('controller' => 'email'));?>">
-                    <i class="fa fa-envelope"></i>
-                    <span class="nav-label">Email Templates </span>
-                    <span class="fa arrow"></span>
-                </a>
-                <ul class="nav nav-second-level">
-                    <li><a href="<?php
-                        echo $this->url('admin', array('controller' => 'email', 'action' => 'new'))
-                        ?>">Create new type</a></li>
-                    <li><a href="<?php
-                        echo $this->url('admin', array('controller' => 'email', 'action' => 'edit'))
-                        ?>">Change template</a></li>
+                <a href="<?php echo $this->url('admin', array('controller' => 'project',
+                    'action' => 'quote')) ?>"><i class="fa fa-files-o"></i> <span class="nav-label">Quotes</span></a>
+            </li>
+
+            <li> <!-- admin, sales director, operation manager can see full info, sales manager and pm can only see clients belong to them -->
+                <a href="<?php echo $this->url('admin', array('controller' => 'project',
+                    'action' => 'index')) ?>"><i class="fa fa-archive"></i> <span class="nav-label">Projects</span> <span class="label label-warning pull-right">16</span></a>
+            </li>
+
+            <li>
+                <a href="#"><i class="fa fa-book"></i> <span class="nav-lable">Finance</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    <li><a href="financial_report.html">Profit Report</a></li>  <!-- admin, sales director and operation manager can see all clients info, but sales manager can only see his own clients -->
+                    <li><a href="transaction.html">Transactions</a></li>  <!-- admin, sales director and operation manager can see all clients info, but sales manager can only see his own clients -->
+                    <li><a href="client-unpaid.html">Unpaid Projects</a></li>  <!-- admin, sales director and operation manager can see all clients info, but sales manager can only see his own clients -->
+                    <li><a href="freelancer-unpaid.html">Unpaid Tasks</a></li>  <!-- admin, operation manager can see, and PM can see, but sales and sales director can not see -->
+                    <li><a href="bankinfo.html">PaperTask Bank Info</a></li> <!-- all can see -->
                 </ul>
             </li>
-            <li>
-                <a href="<?php echo $this->url('admin', array('controller' => 'user'));?>">
-                    <i class="fa fa-envelope"></i>
-                    <span class="nav-label"><?php echo $this->translate("Freelancer") ?></span>
-                    <span class="fa arrow"></span>
-                </a>
-                <ul class="nav nav-second-level">
-                    <li><a href="<?php
-                        echo $this->url('admin', array('controller' => 'freelancer', 'action' => 'updateInfo'))
-                        ?>"><?php echo $this->translate("Update info") ?></a></li>
+
+            <li> <!-- sales director, and sales manager can not see/create resources, only admin, operation manager and project manager can see and create -->
+                <a href="#"><i class="fa fa-globe"></i> <span class="nav-lable">Freelancers</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    <li><a href="<?php echo $this->url('admin', array('controller' => 'freelancer',
+                            'action' => 'index')) ?>">Freelancer List</a></li>
+                    <li><a href="<?php echo $this->url('admin', array('controller' => 'freelancer',
+                            'action' => 'new')) ?>">New Freelancer</a></li>
                 </ul>
             </li>
-            <li>
-                <a href="<?php echo $this->url('admin', array('controller' => 'project')); ?>">
-                    <i class="fa fa-envelope"></i>
-                    <span class="nav-label"><?php echo $this->translate("Projects") ?></span>
-                    <span class="fa arrow"></span>
-                </a>
-                <ul class="nav nav-second-level">
-                    <li><a href="<?php
-                        echo $this->url('admin', array('controller' => 'project', 'action' => 'new'))
-                        ?>"><?php echo $this->translate("Create project") ?></a></li>
+
+            <li> <!-- admin, operation manager and sales director can see this, and can create, sales manager can only see client's belong to him/her, and can create client -->
+                <a href="#"><i class="fa fa-briefcase"></i> <span class="nav-lable">Clients</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    <li><a href="<?php echo $this->url('admin', array('controller' => 'client',
+                            'action' => 'index')) ?>">Client List</a></li>
+                    <li><a href="<?php echo $this->url('admin', array('controller' => 'client',
+                            'action' => 'new')) ?>">New Client</a></li>
                 </ul>
             </li>
+
+            <li> <!-- admin, operation manager, sales manager can see -->
+                <a href="#"><i class="fa fa-group"></i> <span class="nav-lable">Staffs</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    <li><a href="<?php echo $this->url('admin', array('controller' => 'staff', 'action' => 'index')) ?>">
+                            Staff List</a></li>
+                    <li><a href="<?php echo $this->url('admin', array('controller' => 'staff',
+                            'action' => 'new')) ?>">New Staff</a></li>
+                    <!-- operation manager sales director can not create new, only admin can do-->
+                </ul>
+            </li>
+
+            <li> <!-- only admin can see the mail system -->
+                <a href="#"><i class="fa fa-envelope"></i> <span class="nav-lable">Mail System</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse">
+                    <li><a href="<?php echo $this->url('admin', array('controller' => 'email')) ?>">Email Templates</a></li>
+                    <li><a href="<?php echo $this->url('admin', array('controller' => 'email', 'action'=>'new', )) ?>">
+                            New Template</a></li>
+                </ul>
+            </li>
+
+            <li> <!-- only admin can see the mail system -->
+                <a href="<?php echo $this->url('admin', array('controller' => 'papertask', 'action' => 'profile')) ?>">
+                    <i class="fa fa-random"></i> <span class="nav-lable">PaperTask Profile</span></a>
+            </li>
+
         </ul>
 
     </div>

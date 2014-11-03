@@ -11,7 +11,7 @@ namespace User\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /** @ORM\Entity */
-class DesktopSoftware{
+class LanguageGroup{
 
     /**
      * @ORM\Id
@@ -20,20 +20,22 @@ class DesktopSoftware{
      */
     protected $id;
 
-    /** @ORM\Column(type="string", length=50) */
-    protected $code;
-
-    /** @ORM\Column(type="string", length=50) */
+    /** @ORM\Column(type="string") */
     protected $name;
 
+    /**
+     * @return array
+     */
     public function getData(){
-        return array(
+        return [
             'id' => $this->id,
-            'code' => $this->code,
-            'name' => $this->name,
-        );
+            'name' => $this->name
+        ];
     }
 
+    /**
+     * @return mixed
+     */
     public function getId(){
         return $this->id;
     }

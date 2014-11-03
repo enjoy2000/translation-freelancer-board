@@ -57,6 +57,7 @@ return array(
             'Admin\Controller\Freelancer' => 'Admin\Controller\FreelancerController',
             'Admin\Controller\Employer' => 'Admin\Controller\EmployerController',
             'Admin\Controller\Project' => 'Admin\Controller\ProjectController',
+            'Admin\Controller\Papertask' => 'Admin\Controller\PapertaskController',
         ),
     ),
     'view_manager' => array(
@@ -74,6 +75,7 @@ return array(
             'admin/freelancer/update-info' => __DIR__ . '/../view/admin/freelancer/finish-registration.phtml',
             'admin/project/index' => __DIR__ . '/../view/admin/project/index.phtml',
             'admin/project/new' => __DIR__ . '/../view/admin/project/new.phtml',
+            'admin/papertask/profile' => __DIR__ . '/../view/admin/papertask/profile.phtml',
         ),
         'layout' => 'layout/admin',
         'template_path_stack' => array(

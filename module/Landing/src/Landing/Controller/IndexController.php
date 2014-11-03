@@ -9,8 +9,9 @@
 
 namespace Landing\Controller;
 
+use Zend\View\Model\JsonModel;
 use Zend\View\Model\ViewModel;
-
+use Admin\Entity\ProfileServiceTranslation;
 use Application\Controller\AbstractActionController;
 
 class IndexController extends AbstractActionController

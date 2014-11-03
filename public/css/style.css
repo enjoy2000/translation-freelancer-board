@@ -3600,3 +3600,7 @@ body.skin-3 {
     display: none;
   }
 }
+
+label.error{
+    color: #9d545b;
+}

@@ -80,7 +80,7 @@ class RegisterController extends AbstractActionController
                                     ->findOneBy(array(
                                         'token'=>$token)
                                     );
-
+            //var_dump($user);die;
             if(!$user){
                 $translator = $this->getTranslator();
                 $this->flashMessenger()->addErrorMessage($translator->translate('Your token has expired.'));

@@ -2,7 +2,7 @@
 <html lang="en" ng-app="project">
 <head>
     <meta charset="utf-8">
-    <?php echo $this->headTitle($this->translate('PaperTask'))->setSeparator(' - ')->setAutoEscape(false) ?>
+    <?php echo $this->headTitle()->setSeparator(' | ')->prepend($this->translate('PaperTask'))->setAutoEscape(false) ?>
 
     <?php echo $this->headMeta()
         ->appendName('viewport', 'width=device-width, initial-scale=1.0')
@@ -20,6 +20,8 @@
     <!-- Scripts -->
     <?php echo $this->headScript()
         ->prependFile($this->basePath() . '/js/common.js')
+        ->prependFile($this->basePath() . '/js/plugins/pace/pace.min.js')
+        ->prependFile($this->basePath() . '/js/inspinia.js')
         ->prependFile($this->basePath() . '/js/plugins/slimscroll/jquery.slimscroll.min.js')
         ->prependFile($this->basePath() . '/js/plugins/metisMenu/jquery.metisMenu.js')
         ->prependFile($this->basePath() . '/js/angular.min.js')

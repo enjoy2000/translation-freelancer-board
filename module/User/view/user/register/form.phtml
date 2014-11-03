@@ -29,7 +29,7 @@
             <div class="checkbox i-checks">
                 <label>
                     <input name="agree" type="checkbox" value="1" ><i></i> &nbsp;
-                    <?php echo $this->translate('Agree the <a href="%s" class="color-green">Terms and Conditions.</a>', $this->url('user').'/term') ?>
+                    <?php echo sprintf($this->translate('Agree the <a href="%s" class="color-green">Terms and Conditions.</a>'), $this->url('terms')) ?>
                 </label>
             </div>
 
