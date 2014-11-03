@@ -1,0 +1,54 @@
+<div class="ibox">
+    <div class="ibox-title" id="project-type">
+        <h5><i class="fa fa-puzzle-piece"></i> Project Type & Status</h5>
+        <input type="text" class="hidden-required required valid" ng-value="projectType()">
+    </div>
+    <div class="ibox-content">
+        <div class="form-group project-types">
+            <label class="col-sm-3 control-label">
+                <h4><i class="fa fa-coffee"></i>&nbsp; Translation</h4>
+            </label>
+            <div data-toggle="buttons">
+                <label class="btn btn-outline btn-primary {{translation_active[translation.id]}}"
+                       ng-repeat="translation in translations" ng-click="addTranslation(translation)">
+                    <input type="checkbox" name="type" ng-value="translation.id"/> {{translation.name}}
+                </label>
+            </div>
+        </div>
+        <div class="form-group project-types">
+            <label class="col-sm-3 control-label">
+                <h4><i class="fa fa-desktop"></i> &nbsp;DTP/Engineering</h4>
+            </label>
+            <div data-toggle="buttons">
+                <label class="btn btn-outline btn-primary {{dtp_active[dtp.id]}}" ng-repeat="dtp in dtps"
+                       ng-click="addDtp(dtp)">
+                    <input type="checkbox" name="type" ng-value="dtp.id" /> <span ng-bind-html="dtp.name"></span>
+                </label>
+            </div>
+        </div>
+        <div class="form-group" id="project-interpreting">
+            <label class="col-sm-3 control-label">
+                <h4><i class="fa fa-comments-o"></i> &nbsp; Interpreting</h4>
+            </label>
+            <div data-toggle="buttons">
+                <label class="btn btn-outline btn-primary {{interpreting == project.interpreting ? 'active': ''}}"
+                       ng-repeat="interpreting in interpretings" ng-click="setInterpreting(interpreting)">
+                    <input type="radio" name="type" ng-value="intepreting.id" /> {{interpreting.name}}
+                </label>
+            </div>
+        </div>
+        <div class="hr-line-dashed"></div>
+        <div class="form-group" style="margin-bottom: 0px;">
+            <label class="col-sm-3 control-label">
+                <h4><i class="fa fa-cube"></i> &nbsp;Status</h4>
+            </label>
+            <div data-toggle="buttons">
+                <label class="btn btn-outline btn-{{status.decorator}}" ng-repeat="status in statuses"
+                       ng-click="project.status=status">
+                    <input type="radio" name="status" ng-value="status.id" class="required valid"
+                           data-errorplace="element.parent().parent().after(error)"/> {{status.name}}
+                </label>
+            </div>
+        </div>
+    </div>
+</div>

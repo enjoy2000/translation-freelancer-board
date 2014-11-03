@@ -1,0 +1,66 @@
+<div class="panel panel-default" ng-show="hasTypeDesktopPublishingMacOrWin()">
+    <div class="panel-heading" style="padding-bottom: 10px;">
+        Desktop Publishing
+    </div>
+    <div class="panel-body">
+        <div ng-show="hasTypeDesktopPublishingMac()"
+             ng-controller="TableItemController">
+            {{ setModalId('#modal-dtp-mac') }}
+            {{ setIdentifier(["dtpMac", language]) }}
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Iterms - <span class="text-info">DTP <i class="fa fa-apple"></i></span></th>
+                        <th>Unit </th>
+                        <th>Unit Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <?php include "table/row.phtml" ?>
+                    </tbody>
+                </table>
+            </div>
+            <div class="text-center">
+                <a data-toggle="modal" class="btn btn-outline btn-primary"
+                   ng-click="showModal(false)">
+                    Add Iterm
+                </a>
+            </div>
+            <div class="hr-line-dashed"></div>
+        </div>
+        <div ng-show="hasTypeDesktopPublishingWin()"
+             ng-controller="TableItemController">
+            {{ setModalId('#modal-dtp-pc') }}
+            {{ setIdentifier(["dtpPc", language]) }}
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Iterms - <span class="text-info">DTP <i class="fa fa-windows"></i></span></th>
+                        <th>Unit </th>
+                        <th>Unit Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <?php include "table/row.phtml" ?>
+                    </tbody>
+                </table>
+            </div>
+            <div class="text-center">
+                <a data-toggle="modal" class="btn btn-outline btn-primary"
+                   ng-click="showModal(false)">
+                    Add Iterm
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

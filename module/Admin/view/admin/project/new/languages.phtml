@@ -1,0 +1,35 @@
+<div class="ibox">
+    <div class="ibox-title">
+        <h5><i class="fa fa-list-ol"></i> Translation Languages</h5>
+    </div>
+    <div class="ibox-content">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group form-horizontal">
+                    <label class="col-sm-4 control-label">Source Language *</label>
+                    <div class="col-sm-8">
+                        <select class="form-control required valid" name="sourceLanguage" aria-required="true"
+                                ng-options="language.name for language in languages"
+                                ng-model="project.sourceLanguage">
+                            <option value="">--</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label class="col-sm-5 control-label">Target Languages * &nbsp; </label>
+                    <div class="col-sm-7">
+                        <input type="text" class="hidden-required required valid" name="h1"
+                               ng-value="project.targetLanguages.length > 0 ? '1' : ''">
+                        <select class="form-control required valid multiselect" multiple="multiple" data-role="multiselect"
+                                ng-options="language.name for language in languages"
+                                ng-model="project.targetLanguages" ng-multiple="true">
+                            <option value="">--</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -28,6 +28,12 @@ class File extends Entity{
     protected $name;
 
     /**
+     * @var string
+     * @ORM\Column(type="string")
+     */
+    protected $path;
+
+    /**
      * @var integer
      * @ORM\Column(type="integer")
      */
@@ -42,6 +48,25 @@ class File extends Entity{
     /**
      * @var \User\Entity\Project
      * @ORM\ManyToOne(targetEntity="Project")
+     * @ORM\JoinColumn(name="project_id", referencedColumnName="id", nullable=true)
      */
     protected $project;
+
+    public function getData(){
+        return [
+            'id' => $this->id,
+        ];
+    }
+
+    public function getId(){
+        return $this->id;
+    }
+
+    public function getProject(){
+        return $this->project;
+    }
+
+    public function setProject($project){
+        $this->project = $project;
+    }
 }

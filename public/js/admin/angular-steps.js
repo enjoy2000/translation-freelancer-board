@@ -54,9 +54,7 @@ angularApp.run(function($rootScope){
             return form.valid();
         },
         onFinished: function (event, currentIndex) {
-            var form = $(this);
-
-            angular.element('#mainController').scope().submit();
+            angular.element(this).scope().submit();
         }
     }).validate({
         errorPlacement: function (error, element) {

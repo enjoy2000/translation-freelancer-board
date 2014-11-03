@@ -12,6 +12,7 @@ namespace Admin\Controller;
 use Zend\View\Model\ViewModel;
 
 use Application\Controller\AbstractActionController;
+use User\Entity\File;
 
 class ProjectController extends AbstractActionController
 {
@@ -25,6 +26,39 @@ class ProjectController extends AbstractActionController
     public function newAction()
     {
         return new ViewModel(array());
+    }
+
+    public function uploadFileAction(){
+        if ( !empty( $_FILES ) ) {
+
+            $tempPath = $_FILES[ 'file' ][ 'tmp_name' ];
+            $name = $_FILES[ 'file' ][ 'name' ];
+
+            $uploadPath = 'public/uploads' . DIRECTORY_SEPARATOR . $name;
+
+            move_uploaded_file( $tempPath, $uploadPath );
+            $file = new File();
+            $file->setData([
+                'name' => $_FILES[ 'file' ][ 'name' ],
+                'path' => $uploadPath,
+                'size' => $_FILES['file']['size'],
+                'time' => time(),
+            ]);
+            $file->save($this->getEntityManager());
+            $answer = [
+                'file' => $file->getData(),
+                'success' => true,
+            ];
+            $json = json_encode( $answer );
+
+            echo $json;
+            die;
+
+        } else {
+            $answer = ['success' => false];
+            $json = json_encode( $answer );
+            die($json);
+        }
     }
 
 }

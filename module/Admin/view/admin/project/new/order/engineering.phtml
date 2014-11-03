@@ -1,0 +1,35 @@
+<div class="panel panel-default" ng-show="hasTypeDesktopPublishingEngineer()"
+     ng-controller="TableItemController">
+    {{ setModalId('#modal-eng') }}
+    {{ setIdentifier(["engineering", language]) }}
+    <div class="panel-heading" style="padding-bottom: 10px;">
+        Engineering
+    </div>
+    <div class="panel-body">
+
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Iterms</th>
+                    <th>Unit </th>
+                    <th>Unit Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <?php include "table/row.phtml" ?>
+                </tbody>
+            </table>
+        </div>
+        <div class="text-center">
+            <a data-toggle="modal" class="btn btn-outline btn-primary"
+                                    ng-click="showModal(false)">
+                Add Iterm
+            </a>
+        </div>
+    </div>
+</div>
