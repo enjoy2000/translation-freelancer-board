@@ -28,6 +28,10 @@ class DesktopPublishingController extends AbstractRestfulController{
         $entityManager = $this->getEntityManager();
         $desktopPublishing = $entityManager->find('\Admin\Entity\ProfileServiceDesktopPublishing', (int)$id);
         $desktopPublishing->setData($option);
+        $desktopPublishing->setData([
+            'languageGroup' => $entityManager->find('\User\Entity\LanguageGroup', (int)$option['languageGroup']['id']),
+            'desktopSoftware' => $entityManager->find('\User\Entity\DesktopSoftware', (int)$option['desktopSoftware']['id']),
+        ]);
         $entityManager->merge($desktopPublishing);
         $entityManager->flush();
 
@@ -38,6 +42,10 @@ class DesktopPublishingController extends AbstractRestfulController{
         $entityManager = $this->getEntityManager();
         $desktopPublishing = new ProfileServiceDesktopPublishing();
         $desktopPublishing->setData($data);
+        $desktopPublishing->setData([
+            'languageGroup' => $entityManager->find('\User\Entity\LanguageGroup', (int)$data['languageGroup']['id']),
+            'desktopSoftware' => $entityManager->find('\User\Entity\DesktopSoftware', (int)$data['desktopSoftware']['id']),
+        ]);
         $desktopPublishing->save($entityManager);
 
         return new JsonModel([

@@ -85,10 +85,12 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
+            'Api\Controller\Common\EngineeringCategory' => 'Api\Controller\Common\EngineeringCategoryController',
             'Api\Controller\Common\Company' => 'Api\Controller\Common\CompanyController',
             'Api\Controller\Common\Country' => 'Api\Controller\Common\CountryController',
             'Api\Controller\Common\Language' => 'Api\Controller\Common\LanguageController',
             'Api\Controller\Common\LanguageGroup' => 'Api\Controller\Common\LanguageGroupController',
+            'Api\Controller\Common\Unit' => 'Api\Controller\Common\UnitController',
             'Api\Controller\Data\Project' => 'Api\Controller\Data\ProjectController',
             'Api\Controller\Index' => 'Api\Controller\IndexController',
             'Api\Controller\User\DesktopPrice' => 'Api\Controller\User\DesktopPriceController',
@@ -101,9 +103,11 @@ return array(
             'Api\Controller\User\PriceData' => 'Api\Controller\User\PriceDataController',
             'Api\Controller\User\Resource' => 'Api\Controller\User\ResourceController',
             'Api\Controller\User\TranslationPrice' => 'Api\Controller\User\TranslationPriceController',
+            'Api\Controller\Papertask\DesktopPublishing' => 'Api\Controller\Papertask\DesktopPublishingController',
+            'Api\Controller\Papertask\Engineering' => 'Api\Controller\Papertask\EngineeringController',
+            'Api\Controller\Papertask\Interpreting' => 'Api\Controller\Papertask\InterpretingController',
             'Api\Controller\Papertask\Translation' => 'Api\Controller\Papertask\TranslationController',
             'Api\Controller\Papertask\Translationtm' => 'Api\Controller\Papertask\TranslationtmController',
-            'Api\Controller\Papertask\DesktopPublishing' => 'Api\Controller\Papertask\DesktopPublishingController',
         ),
     ),
     'view_manager' => array(

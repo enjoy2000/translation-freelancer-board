@@ -37,3 +37,24 @@ INSERT INTO `papertask`.`ProfileServiceTranslationTM` (`template`, `rate`) VALUE
 INSERT INTO `papertask`.`ProfileServiceTranslationTM` (`template`, `rate`) VALUES ('50%-74%', '1');
 INSERT INTO `papertask`.`ProfileServiceTranslationTM` (`template`, `rate`) VALUES ('No Match', '1');
 
+INSERT INTO `papertask`.`LanguageGroup` (`name`) VALUES ('European/CE/Greek/Russian');
+INSERT INTO `papertask`.`LanguageGroup` (`name`) VALUES ('SC/TC/JP/KO');
+INSERT INTO `papertask`.`LanguageGroup` (`name`) VALUES ('TH/VN');
+INSERT INTO `papertask`.`LanguageGroup` (`name`) VALUES ('Others');
+
+INSERT INTO `papertask`.`Unit` (`name`) VALUES ('Hour');
+INSERT INTO `papertask`.`Unit` (`name`) VALUES ('Day');
+INSERT INTO `papertask`.`Unit` (`name`) VALUES ('Month');
+INSERT INTO `papertask`.`Unit` (`name`) VALUES ('Word');
+INSERT INTO `papertask`.`Unit` (`name`) VALUES ('Graphic');
+INSERT INTO `papertask`.`Unit` (`name`) VALUES ('Page');
+
+INSERT INTO `papertask`.`EngineeringCategory` (`category`) VALUES ('Engineering');
+INSERT INTO `papertask`.`EngineeringCategory` (`category`) VALUES ('Testing');
+INSERT INTO `papertask`.`EngineeringCategory` (`category`) VALUES ('Graphic');
+INSERT INTO `papertask`.`EngineeringCategory` (`category`) VALUES ('Typing');
+
+INSERT INTO `papertask`.`InterpretingService` (`name`) VALUES ('Simultaneous');
+INSERT INTO `papertask`.`InterpretingService` (`name`) VALUES ('Consecutive');
+INSERT INTO `papertask`.`InterpretingService` (`name`) VALUES ('Business');
+INSERT INTO `papertask`.`InterpretingService` (`name`) VALUES ('Tourist');

@@ -29,7 +29,7 @@ $this->inlineScript()->appendScript("
 <div class="panel-body">
 <div class="tab-content">
 <div id="tab-1" class="tab-pane active">
-    <div class="ibox float-e-margins">
+    <div id="translation" class="ibox float-e-margins">
         <div class="ibox-title">
             <h3><i class="fa fa-coffee"></i> <?php echo $this->translate('Translation') ?></h3>
         </div>
@@ -38,7 +38,7 @@ $this->inlineScript()->appendScript("
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th>TM Template</th>
+                        <th><?php echo $this->translate('TM Template') ?></th>
                         <th ng-repeat="template in translationTM">
                             {{template.template}}
                         </th>
@@ -47,7 +47,7 @@ $this->inlineScript()->appendScript("
                     </thead>
                     <tbody>
                     <tr>
-                        <td>TM Rate</td>
+                        <td><?php echo $this->translate('TM Rate') ?></td>
                         <td ng-repeat="template in translationTM">
                             {{template.rate*100}}%
                         </td>
@@ -109,7 +109,7 @@ $this->inlineScript()->appendScript("
                     </thead>
                     <tbody>
                     <tr ng-repeat="pair in translation">
-                        <td>{{pair.id}}</td>
+                        <td>{{$index+1}}</td>
                         <td>{{languages[pair.sourceLanguage]}}</td>
                         <td>{{languages[pair.targetLanguage]}}</td>
                         <td class="text-info"><strong>CNY {{pair.professionalPrice}}</strong></td>
@@ -127,7 +127,7 @@ $this->inlineScript()->appendScript("
             </div>
 
             <div class="text-center">
-                <a ng-click="initAddTranslation()"
+                <a ng-click="initAddNewRow()"
                    data-toggle="modal" class="btn btn-outline btn-primary" href="#modal-translation">
                     <?php echo $this->translate('Add Language pairs and prices') ?>
                 </a>
@@ -152,6 +152,7 @@ $this->inlineScript()->appendScript("
                                         <label><?php echo $this->translate('Source Language') ?> *</label>
                                         <select required ng-model="newLanguagePricePair.sourceLanguage"
                                                 class="form-control valid required" name="sourceLanguage" value="">
+                                            <option value=""><?php echo $this->translate('Please select') ?></option>
                                             <option ng-repeat="(id,name) in languages" value="{{id}}">
                                                 {{name}}
                                             </option>
@@ -161,6 +162,7 @@ $this->inlineScript()->appendScript("
                                         <label><?php echo $this->translate('Target Language') ?> *</label>
                                         <select ng-model="newLanguagePricePair.targetLanguage" required
                                                 class="form-control valid required" name="targetLanguage" value="">
+                                            <option value=""><?php echo $this->translate('Please select') ?></option>
                                             <option ng-repeat="(id,name) in languages" value="{{id}}">
                                                 {{name}}
                                             </option>
@@ -196,7 +198,7 @@ $this->inlineScript()->appendScript("
             </div>
         </div>
     </div>
-    <div class="ibox float-e-margins">
+    <div id="desktop-publishing" class="ibox float-e-margins">
         <div class="ibox-title">
             <h3><i class="fa fa-desktop"></i> <?php echo $this->translate('Desktop Publishing') ?></h3>
         </div>
@@ -218,22 +220,25 @@ $this->inlineScript()->appendScript("
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td><?php echo $this->translate('European/CE/Greek/Russian') ?></td>
-                        <td><?php echo $this->translate('Indesign') ?></td>
-                        <td class="text-info"><strong>CNY 10.00</strong></td>
-                        <td class="text-info"><strong>CNY 10.00</strong></td>
-                        <td class="text-info"><strong>CNY 40.00</strong></td>
-                        <td class="text-info"><strong>CNY 30.00</strong></td>
-                        <td><a data-toggle="modal" href="#modal-dtp"><i class="fa fa-edit"></i></a> &nbsp;<a href="#"><i
-                                    class="fa fa-trash-o text-danger"></i></a></td>
+                    <tr ng-repeat="price in softwarePrices">
+                        <td>{{$index+1}}</td>
+                        <td>{{price.languageGroup.name}}</td>
+                        <td>{{price.desktopSoftware.name}}</td>
+                        <td class="text-info"><strong>CNY {{price.priceApplePerPage}}</strong></td>
+                        <td class="text-info"><strong>CNY {{price.priceWindowPerPage}}</strong></td>
+                        <td class="text-info"><strong>CNY {{price.priceApplePerHour}}</strong></td>
+                        <td class="text-info"><strong>CNY {{price.priceWindowPerHour}}</strong></td>
+                        <td><a data-toggle="modal" href="#modal-dtp" ng-click="editSoftwarePrice(price)">
+                                <i class="fa fa-edit"></i></a>
+                            &nbsp;
+                            <a ng-click="deleteSoftwarePrice(price.id)" href="#">
+                                <i class="fa fa-trash-o text-danger"></i></a></td>
                     </tr>
                     </tbody>
                 </table>
             </div>
             <div class="text-center">
-                <a data-toggle="modal" class="btn btn-outline btn-info" href="#modal-dtp">
+                <a ng-click="initAddNewRow()" data-toggle="modal" class="btn btn-outline btn-info" href="#modal-dtp">
                     <?php echo $this->translate('Add DTP prices') ?></a>
             </div>
 
@@ -247,42 +252,49 @@ $this->inlineScript()->appendScript("
                             <h4 class="modal-title" id="myModalLabel"><?php echo $this->translate('Add DTP prices') ?></h4>
                         </div>
                         <div class="modal-body">
-                            <form>
+                            <form rol="form" name="softwarePriceForm" action="">
                                 <div class="row">
                                     <div class="col-lg-12">
+                                        <input type="hidden" ng-model="softwarePrice.id" />
                                         <div class="form-group">
                                             <label><?php echo $this->translate('Languages') ?> *</label>
-                                            <select class="form-control required" id="country" name="country" value="">
-                                                <option>European/CE/Greek/Russian</option>
-                                                <option>SC/TC/JP/KO</option>
-                                                <option>TH/VN</option>
-                                                <option>Others</option>
+                                            <select required class="form-control required" name="languageGroup"
+                                                ng-model="softwarePrice.languageGroup.id">
+                                                <option value=""><?php echo $this->translate('Please select') ?></option>
+                                                <option ng-repeat="(index,group) in languageGroups" value="{{index}}">
+                                                    {{group}}
+                                                </option>
                                             </select>
                                         </div>
                                         <div class="form-group">
                                             <label><?php echo $this->translate('DTP software') ?> *</label>
-                                            <select class="form-control required" id="country" name="country" value="">
-                                                <option>option 1</option>
-                                                <option>option 2</option>
-                                                <option>option 3</option>
-                                                <option>option 4</option>
+                                            <select required class="form-control required" name="desktopSoftware"
+                                                ng-model="softwarePrice.desktopSoftware.id">
+                                                <option value=""><?php echo $this->translate('Please select') ?></option>
+                                                <option ng-repeat="software in desktopSoftwares" value="{{software.id}}">
+                                                    {{software.name}}
+                                                </option>
                                             </select>
                                         </div>
                                         <div class="form-group">
                                             <label><?php echo $this->translate('Price/Page (MAC)') ?> *</label>
-                                            <input id="phone" name="phone" type="phone" value="" class="form-control required">
+                                            <input type="text" name="priceApplePerPage" class="form-control required"
+                                                   ng-model="softwarePrice.priceApplePerPage">
                                         </div>
                                         <div class="form-group">
                                             <label><?php echo $this->translate('Price/Page (PC)') ?> *</label>
-                                            <input id="phone" name="phone" type="phone" value="" class="form-control required">
+                                            <input type="text" name="priceWindowPerPage" class="form-control required"
+                                                   ng-model="softwarePrice.priceWindowPerPage">
                                         </div>
                                         <div class="form-group">
                                             <label><?php echo $this->translate('Price/Hour (MAC)') ?> *</label>
-                                            <input id="phone" name="phone" type="phone" value="" class="form-control required">
+                                            <input type="text" name="priceApplePerHour" class="form-control required"
+                                                   ng-model="softwarePrice.priceApplePerHour">
                                         </div>
                                         <div class="form-group">
                                             <label><?php echo $this->translate('Price/Hour (PC)') ?> *</label>
-                                            <input id="phone" name="phone" type="phone" value="" class="form-control required">
+                                            <input type="text" name="priceWindowPerHour" class="form-control required"
+                                                   ng-model="softwarePrice.priceWindowPerHour">
                                         </div>
                                     </div>
                                 </div>
@@ -291,7 +303,7 @@ $this->inlineScript()->appendScript("
                         <div class="modal-footer">
                             <button type="button" class="btn btn-w-m btn-white" data-dismiss="modal">
                                 <?php echo $this->translate('Close') ?></button>
-                            <button type="button" class="btn btn-w-m btn-primary">
+                            <button ng-click="addSoftwarePrice()" type="submit" class="btn btn-w-m btn-primary">
                                 <?php echo $this->translate('Save changes') ?></button>
                         </div>
                     </div>
@@ -299,7 +311,7 @@ $this->inlineScript()->appendScript("
             </div>
         </div>
     </div>
-    <div class="ibox float-e-margins">
+    <div id="engineering" class="ibox float-e-margins">
         <div class="ibox-title">
             <h3><i class="fa fa-gears"></i> <?php echo $this->translate('Engineering') ?></h3>
         </div>
@@ -318,61 +330,194 @@ $this->inlineScript()->appendScript("
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td><?php echo $this->translate('Engineering') ?></td>
-                        <td><?php echo $this->translate('Hour') ?></td>
-                        <td>CNY 100.00</td>
+                    <tr ng-repeat="price in engineeringPrices">
+                        <td>{{$index+1}}</td>
+                        <td>{{price.engineeringCategory.category}}</td>
+                        <td>{{price.unit.name}}</td>
+                        <td>CNY {{price.price}}</td>
                         <td>
-                            <a data-toggle="modal" href="#modal-eng"><i class="fa fa-edit"></i></a>
-                            <a href="#"><i class="fa fa-trash-o text-danger"></i></a>
+                            <a ng-click="editEngineeringPrice(price)" data-toggle="modal" href="#modal-eng">
+                                <i class="fa fa-edit"></i></a>
+                            <a ng-click="deleteEngineeringPrice(price.id)" href="#">
+                                <i class="fa fa-trash-o text-danger"></i></a>
                         </td>
                     </tr>
                     </tbody>
                 </table>
             </div>
             <div class="text-center">
-                <a data-toggle="modal" class="btn btn-outline btn-info" href="#modal-eng">Add ENG prices</a>
+                <a ng-click="initAddNewRow()" data-toggle="modal" class="btn btn-outline btn-info" href="#modal-eng">
+                    <?php echo $this->translate('Add Engineering prices') ?>
+                </a>
+            </div>
+
+            <!-- add ENG price -->
+            <div id="modal-eng" class="modal fade" aria-hidden="true">
+                <div class="modal-dialog">
+                    <form action="" name="engineeringPriceForm" role="form">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                                    class="sr-only"><?php echo $this->translate('Close') ?></span></button>
+                            <h4 class="modal-title" id="myModalLabel">
+                                <?php echo $this->translate('Add ENG prices') ?></h4>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <input type="hidden" ng-model="engineeringPrice.id" />
+                                        <div class="form-group">
+                                            <label><?php echo $this->translate('Category') ?> *</label>
+                                            <select class="form-control required" name="engineeringCategory"
+                                                ng-model="engineeringPrice.engineeringCategory.id">
+                                                <option value=""><?php echo $this->translate('Please select') ?></option>
+                                                <option ng-repeat="category in engineeringCategories"
+                                                        value="{{category.id}}">
+                                                    {{category.category}}
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label><?php echo $this->translate('Unit') ?> *</label>
+                                            <select class="form-control required" name="unit"
+                                                    ng-model="engineeringPrice.unit.id">
+                                                <option value=""><?php echo $this->translate('Please select') ?></option>
+                                                <option ng-repeat="unit in units" value="{{unit.id}}">
+                                                    {{unit.name}}
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label><?php echo $this->translate('Price') ?> *</label>
+                                            <input name="price" ng-model="engineeringPrice.price"
+                                                   class="form-control required">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-w-m btn-white" data-dismiss="modal">
+                                <?php echo $this->translate('Close') ?></button>
+                            <button ng-click="addEngineeringPrice()" type="submit" class="btn btn-w-m btn-primary">
+                                <?php echo $this->translate('Save changes') ?></button>
+                        </div>
+                    </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
     <div class="ibox float-e-margins">
         <div class="ibox-title">
-            <h3><i class="fa fa-comments-o"></i> Interpreting</h3>
+            <h3><i class="fa fa-comments-o"></i> <?php echo $this->translate('Interpreting') ?></h3>
         </div>
         <div class="ibox-content">
-            <h4>Languages and Price </h4>
+            <h4><?php echo $this->translate('Languages and Price') ?></h4>
 
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>Source Language</th>
-                        <th>Target Language</th>
-                        <th>Interpreting Service</th>
-                        <th>Price/Day</th>
-                        <th>Price/half-Day</th>
-                        <th>Action</th>
+                        <th><?php echo $this->translate('Source Language') ?></th>
+                        <th><?php echo $this->translate('Target Language') ?></th>
+                        <th><?php echo $this->translate('Interpreting Service') ?></th>
+                        <th><?php echo $this->translate('Price/Day') ?></th>
+                        <th><?php echo $this->translate('Price/half-Day') ?></th>
+                        <th><?php echo $this->translate('Action') ?></th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>English</td>
-                        <td>Chinese</td>
-                        <td>Consecutive</td>
-                        <td class="text-info"><strong>CNY 3000.00</strong></td>
-                        <td class="text-info"><strong>CNY 2000.00</strong></td>
-                        <td><a data-toggle="modal" href="#modal-interpreting"><i class="fa fa-edit"></i></a> &nbsp;<a
-                                href="#"><i class="fa fa-trash-o text-danger"></i></a></td>
+                    <tr ng-repeat="price in interpretingPrices">
+                        <td>{{$index+1}}</td>
+                        <td>{{price.sourceLanguage.name}}</td>
+                        <td>{{price.targetLanguage.name}}</td>
+                        <td>{{price.interpretingService.name}}</td>
+                        <td class="text-info"><strong>CNY {{price.pricePerDay}}</strong></td>
+                        <td class="text-info"><strong>CNY {{price.pricePerHalfDay}}</strong></td>
+                        <td><a ng-click="editInterpretingPrice(price)" data-toggle="modal" href="#modal-interpreting">
+                                <i class="fa fa-edit"></i></a>
+                            &nbsp;
+                            <a ng-click="deleteInterpretingPrice(price.id)" href="#"><i class="fa fa-trash-o text-danger"></i></a></td>
                     </tr>
                     </tbody>
                 </table>
             </div>
             <div class="text-center">
-                <a data-toggle="modal" class="btn btn-outline btn-success" href="#modal-interpreting">Add Interpreting
-                    prices</a>
+                <a ng-click="initAddnewRow()" data-toggle="modal" class="btn btn-outline btn-success"
+                   href="#modal-interpreting">
+                    <?php echo $this->translate('Add Interpreting prices') ?></a>
+            </div>
+
+            <!-- add interpreting price -->
+            <div id="modal-interpreting" class="modal fade" aria-hidden="true">
+                <div class="modal-dialog">
+                    <form role="form" action="" name="interpretingPriceForm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
+                                    class="sr-only"><?php echo $this->translate('Close') ?></span></button>
+                            <h4 class="modal-title" id="myModalLabel">
+                                <?php echo $this->translate('Add Interpreting prices') ?></h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <input type="hidden" ng-model="interpretingPrice.id"/>
+                                    <div class="form-group">
+                                        <label><?php echo $this->translate('Source Language') ?> *</label>
+                                        <select class="form-control required" name="sourceLanguage"
+                                                ng-model="interpretingPrice.sourceLanguage.id">
+                                            <option value=""><?php echo $this->translate('Please select') ?></option>
+                                            <option ng-repeat="(index,lang) in languages" value="{{index}}">
+                                                {{lang}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label><?php echo $this->translate('Target Language') ?> *</label>
+                                        <select class="form-control required" name="targetLanguage"
+                                            ng-model="interpretingPrice.targetLanguage.id">
+                                            <option value=""><?php echo $this->translate('Please select') ?></option>
+                                            <option ng-repeat="(index,lang) in languages" value="{{index}}">
+                                                {{lang}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label><?php echo $this->translate('Interpreting Service') ?> *</label>
+                                        <select class="form-control required" name="interpretingService"
+                                            ng-model="interpretingPrice.interpretingService.id">
+                                            <option value=""><?php echo $this->translate('Please select') ?></option>
+                                            <option ng-repeat="service in interpretingServices" value="{{service.id}}">
+                                                {{service.name}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label><?php echo $this->translate('Price/Day') ?> *</label>
+                                        <input name="pricePerDay" ng-model="interpretingPrice.pricePerDay"
+                                               class="form-control required">
+                                    </div>
+                                    <div class="form-group">
+                                        <label><?php echo $this->translate('Price/Half-day') ?> *</label>
+                                        <input name="pricePerHalfDay" ng-model="interpretingPrice.pricePerHalfDay"
+                                               class="form-control required">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-w-m btn-white" data-dismiss="modal">
+                                <?php echo $this->translate('Close') ?></button>
+                            <button ng-click="addInterpretingPrice()" type="submit" class="btn btn-w-m btn-primary">
+                                <?php echo $this->translate('Save changes') ?></button>
+                        </div>
+                    </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -599,116 +744,6 @@ $this->inlineScript()->appendScript("
 
 </div>
 
-<!-- add ENG price -->
-<div id="modal-eng" class="modal fade" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
-                        class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="myModalLabel">Add ENG prices</h4>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>Category *</label>
-                                <select class="form-control required" id="country" name="country" value="">
-                                    <option>Engineering</option>
-                                    <option>Testing</option>
-                                    <option>Graphic</option>
-                                    <option>Typing</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Unit *</label>
-                                <select class="form-control required" id="country" name="country" value="">
-                                    <option>Hour</option>
-                                    <option>Day</option>
-                                    <option>Month</option>
-                                    <option>Word</option>
-                                    <option>Graphic</option>
-                                    <option>Page</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Rate *</label>
-                                <input id="phone" name="phone" type="phone" value="" class="form-control required">
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-w-m btn-white" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-w-m btn-primary">Save changes</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- add interpreting price -->
-<div id="modal-interpreting" class="modal fade" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span
-                        class="sr-only">Close</span></button>
-                <h4 class="modal-title" id="myModalLabel">Add Interpreting prices</h4>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="form-group">
-                                <label>Source Language *</label>
-                                <select class="form-control required" id="country" name="country" value="">
-                                    <option>option 1</option>
-                                    <option>option 2</option>
-                                    <option>option 3</option>
-                                    <option>option 4</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Target Language *</label>
-                                <select class="form-control required" id="country" name="country" value="">
-                                    <option>option 1</option>
-                                    <option>option 2</option>
-                                    <option>option 3</option>
-                                    <option>option 4</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Interpreting Service *</label>
-                                <select class="form-control required" id="country" name="country" value="">
-                                    <option></option>
-                                    <option>Simultaneous</option>
-                                    <option>Consecutive</option>
-                                    <option>Business</option>
-                                    <option>Tourist</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Price/Day *</label>
-                                <input id="phone" name="phone" type="phone" value="" class="form-control required">
-                            </div>
-                            <div class="form-group">
-                                <label>Price/Half-day *</label>
-                                <input id="phone" name="phone" type="phone" value="" class="form-control required">
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-w-m btn-white" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-w-m btn-primary">Save changes</button>
-            </div>
-        </div>
-    </div>
-</div>
-
 <!-- add office info of Papertask -->
 <div id="modal-company" class="modal fade" aria-hidden="true">
     <div class="modal-dialog">
@@ -745,6 +780,7 @@ $this->inlineScript()->appendScript("
                             <div class="form-group">
                                 <label>Country *</label>
                                 <select class="form-control required" id="country" name="country" value="">
+                                    <option value=""><?php echo $this->translate('Please select') ?></option>
                                     <option>option 1</option>
                                     <option>option 2</option>
                                     <option>option 3</option>
@@ -811,6 +847,7 @@ $this->inlineScript()->appendScript("
                             <div class="form-group">
                                 <label>Country *</label>
                                 <select class="form-control required" id="country" name="country" value="">
+                                    <option value=""><?php echo $this->translate('Please select') ?></option>
                                     <option>option 1</option>
                                     <option>option 2</option>
                                     <option>option 3</option>

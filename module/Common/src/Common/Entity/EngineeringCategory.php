@@ -25,4 +25,11 @@ class EngineeringCategory {
      * @ORM\Column(type="string")
      */
     protected $category;
+
+    public function getData(){
+        return [
+            'id' => $this->id,
+            'category' => $this->category
+        ];
+    }
 } 
