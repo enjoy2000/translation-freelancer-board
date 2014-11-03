@@ -85,7 +85,8 @@ angularApp.controller('PapertaskProfileController', function($scope, $http, $tim
         // init add new row -> reset all row value val
         $scope.initAddNewRow = function(){
             $scope.newLanguagePricePair = nullTranslation;
-            $scope.softwarePrice = nullPrice
+            $scope.softwarePrice = nullPrice;
+            $scope.interpretingPrice = nullInterpretingPrice;
         };
 
         // create translation
