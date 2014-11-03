@@ -100,7 +100,7 @@ $this->inlineScript()
                             <li> Internal communication, customer support</li>
                         </div>
                         <hr />
-                        <p style="font-size: 35px;"> CNY {{price.professionalPrice*params.wordCount}}</p>
+                        <p style="font-size: 35px;"> CNY {{price.professionalPrice*params.wordCount | number:2}}</p>
                         <small>CNY {{price.professionalPrice}} / Word</small>
                         <hr />
                         <a href="javascript:;" target="_blank" class="btn btn-primary btn-lg">Order Now </a>
@@ -121,7 +121,7 @@ $this->inlineScript()
                             <li> Points translation, product description</li>
                         </div>
                         <hr />
-                        <p style="font-size: 35px;"> CNY {{price.businessPrice*params.wordCount}}</p>
+                        <p style="font-size: 35px;"> CNY {{price.businessPrice*params.wordCount | number:2}}</p>
                         <small>CNY {{price.businessPrice}} / Word</small>
                         <hr />
                         <a href="javascript:;" target="_blank" class="btn btn-primary btn-lg">Order Now </a>
@@ -142,7 +142,7 @@ $this->inlineScript()
                             <li> Promotional/marketing materials</li>
                         </div>
                         <hr />
-                        <p style="font-size: 35px;"> CNY {{price.premiumPrice*params.wordCount}}</p>
+                        <p style="font-size: 35px;"> CNY {{price.premiumPrice*params.wordCount | number:2}}</p>
                         <small>CNY {{price.premiumPrice}} / Word</small>
                         <hr />
                         <a href="javascript:;" target="_blank" class="btn btn-primary btn-lg">Order Now </a>
