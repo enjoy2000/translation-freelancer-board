@@ -15,7 +15,7 @@
     ->prependFile($this->basePath() . '/js/admin/common/angular/CurrentUser.js')
     ->prependFile($this->basePath() . '/js/admin/angular-steps.js')
     ->prependFile($this->basePath() . '/js/admin/bootstrap-modal.js')
-    ->prependScript("angularApp = angular.module('project', ['summernote']);")
+    ->prependScript("angularApp = angular.module('project', ['summernote', 'angularFileUpload']);")
     ->prependFile($this->basePath() . '/js/plugins/bootstrap-filestyle/bootstrap-filestyle.min.js')
     ->prependFile($this->basePath() . '/js/plugins/angular-summernote/angular-summernote.js')
     ->prependFile($this->basePath() . '/js/plugins/summernote/summernote.min.js')

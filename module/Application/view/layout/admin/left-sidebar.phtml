@@ -57,6 +57,9 @@
                 </a>
                 <ul class="nav nav-second-level">
                     <li><a href="<?php
+                        echo $this->url('admin', array('controller' => 'project'))
+                        ?>"><?php echo $this->translate("List projects") ?></a></li>
+                    <li><a href="<?php
                         echo $this->url('admin', array('controller' => 'project', 'action' => 'new'))
                         ?>"><?php echo $this->translate("Create project") ?></a></li>
                 </ul>

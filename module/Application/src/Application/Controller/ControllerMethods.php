@@ -76,6 +76,15 @@ trait ControllerMethods{
      * @param $id
      * @return object
      */
+    public function find($entityName, $id){
+        return $this->getEntityManager()->find($entityName, $id);
+    }
+
+    /**
+     * @param $entityName
+     * @param $id
+     * @return object
+     */
     public function getReference($entityName, $id){
         return $this->getEntityManager()->getReference($entityName, $id);
     }

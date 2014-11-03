@@ -1,5 +1,7 @@
 <div class="panel panel-default" ng-show="project.interpreting"
-     ng-controller="TableItemController">{{ setModalId('#modal-item') }}
+     ng-controller="TableItemController">
+    {{ setModalId('#modal-item') }}
+    {{ setIdentifier(["interpreting", language]) }}
     <div class="panel-heading" style="padding-bottom: 10px;">
         Interpreting
     </div>

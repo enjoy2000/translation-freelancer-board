@@ -4,35 +4,12 @@
 angularApp.run(function($rootScope){
     var i = 1;
     var element = jQuery("#files > input")[0];
-    var elementCloned = jQuery(element).clone(true);
-    function addFile(element){
-        angular.element(element).scope().addFile(element);
-        jQuery(element).filestyle("destroy");
-        jQuery(element).hide();
-        var newElement = jQuery(elementCloned).clone(true);
-        newElement.prop('id', "filestyle-" + i);
-        i++;
-        jQuery(element).after(newElement);
-        jQuery(newElement).filestyle({
-            input: false,
-            icon: false,
-            buttonText: "Add files",
-            buttonName: "btn-xs btn-primary",
-            badge: false
-        });
-        jQuery(newElement).change(function(){
-            addFile(this);
-        });
-    }
     jQuery(element).filestyle({
         input: false,
         icon: false,
         buttonText: "Add files",
         buttonName: "btn-xs btn-primary",
         badge: false
-    });
-    jQuery(element).change(function(){
-        addFile(this);
     });
 });
 
@@ -147,7 +124,7 @@ angularApp.controller('CreateProjectController', function($scope, $http, $timeou
     };
 
     $scope.submit = function(){
-        console.log(TableItemListService.data());
+        $scope.project.data = TableItemListService.data();
         $http.post("/api/admin/project/", $scope.project)
             .success(function($data){
 
@@ -228,7 +205,10 @@ angularApp.factory("TableItemListService", function(){
         data: function(){
             var data = [];
             for(var i = 0; i < $scopes.length; i++){
-                data.push($scopes[i].data());
+                var scopeData = $scopes[i].data();
+                if(scopeData !== false){
+                    data.push($scopes[i].data());
+                }
             }
             return data;
         },
@@ -269,10 +249,13 @@ angularApp.factory("TableItemListService", function(){
 angularApp.controller('TableItemController', function($scope, CurrentUser, TableItemListService){
     $scope.CurrentUser = CurrentUser;
     $scope.TableItemListService = TableItemListService;
-    $scope.localIdentifier = $scope.identifier;
+    $scope.identifier = {};
     $scope.items = [];
     $scope.$modalId = "";
     TableItemListService.addScope($scope);
+    $scope.setIdentifier = function($identifier){
+        $scope.identifier = $identifier;
+    };
     $scope.add = function($item){
         $scope.items.push($item);
     };
@@ -287,9 +270,12 @@ angularApp.controller('TableItemController', function($scope, CurrentUser, Table
         $scope.$modalId = $modalId;
     }
     $scope.data = function(){
+        if($scope.items.length == 0){
+            return false;
+        }
         return {
             items: $scope.items,
-            identifier: $scope.localIdentifier
+            identifier: $scope.identifier
         };
     }
 });
@@ -298,3 +284,91 @@ angularApp.controller('TableModalController', function($scope, TableItemListServ
     $scope.TableItemListService = TableItemListService;
     $scope.vars = TableItemListService.vars;
 });
+
+angularApp.controller('AppController', ['$scope', 'FileUploader', '$timeout', function($scope, FileUploader, $timeout) {
+    var uploader = $scope.uploader = new FileUploader({
+        url: '/admin/project/uploadFile'
+    });
+
+    // FILTERS
+
+    uploader.filters.push({
+        name: 'customFilter',
+        fn: function(item /*{File|FileLikeObject}*/, options) {
+            return this.queue.length < 10;
+        }
+    });
+
+
+    // CALLBACKS
+
+    uploader.onWhenAddingFileFailed = function(item /*{File|FileLikeObject}*/, filter, options) {
+        console.info('onWhenAddingFileFailed', item, filter, options);
+    };
+    uploader.onAfterAddingFile = function(fileItem) {
+        fileItem.upload();
+    };
+    uploader.onAfterAddingAll = function(addedFileItems) {
+        console.info('onAfterAddingAll', addedFileItems);
+    };
+    uploader.onBeforeUploadItem = function(item) {
+        console.info('onBeforeUploadItem', item);
+    };
+    uploader.onProgressItem = function(fileItem, progress) {
+        console.info('onProgressItem', fileItem, progress);
+    };
+    uploader.onProgressAll = function(progress) {
+        console.info('onProgressAll', progress);
+    };
+    uploader.onSuccessItem = function(fileItem, response, status, headers) {
+        if(!response.success){
+            fileItem.file.name += " - Uploading error";
+            $timeout(function(){
+                fileItem.remove();
+            }, 1000);
+            return;
+        }
+        fileItem.projectFile = {
+            name: fileItem.file.name,
+            id: response.file.id
+        };
+        $scope.project.files.push(fileItem.projectFile);
+    };
+    uploader.onErrorItem = function(fileItem, response, status, headers) {
+        console.info('onErrorItem', fileItem, response, status, headers);
+    };
+    uploader.onCancelItem = function(fileItem, response, status, headers) {
+        console.info('onCancelItem', fileItem, response, status, headers);
+    };
+    uploader.onCompleteItem = function(fileItem, response, status, headers) {
+    };
+    uploader.onCompleteAll = function() {
+        console.info('onCompleteAll');
+    };
+
+    console.info('uploader', uploader);
+
+
+    // -------------------------------
+
+
+    var controller = $scope.controller = {
+        isImage: function(item) {
+            var type = '|' + item.type.slice(item.type.lastIndexOf('/') + 1) + '|';
+            return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
+        }
+    };
+
+    $scope.removeItem = function(item){
+        if(item.isSuccess){
+            var id = item.projectFile.id;
+            for(var i = 0; i < $scope.project.files.length; i++){
+                if($scope.project.files[i].id == id){
+                    $scope.project.files.splice(i, 1);
+                    break;
+                }
+            }
+        };
+        item.remove();
+    };
+}]);

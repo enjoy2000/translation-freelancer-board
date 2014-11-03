@@ -4,7 +4,9 @@
     </div>
     <div class="panel-body">
         <div ng-show="hasTypeTranslationNoTM()"
-             ng-controller="TableItemController">{{ setModalId('#modal-translation-noTM') }}
+             ng-controller="TableItemController">
+            {{ setModalId('#modal-translation-noTM') }}
+            {{ setIdentifier(["translationNoTM", language]) }}
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
@@ -44,7 +46,9 @@
             <div class="hr-line-dashed"></div>
         </div>
         <div ng-show="hasTypeTranslationUseTM()"
-             ng-controller="TableItemController">{{ setModalId('#modal-translation-TM') }}
+             ng-controller="TableItemController">
+            {{ setModalId('#modal-translation-TM') }}
+            {{ setIdentifier(["translationTM", language]) }}
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>

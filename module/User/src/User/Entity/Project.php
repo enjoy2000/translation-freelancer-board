@@ -107,6 +107,34 @@ class Project extends Entity{
      */
     protected $duration = 0;
 
+    /**
+     * @var \User\Entity\Iterm
+     * @ORM\ManyToMany(targetEntity="Iterm")
+     * @ORM\JoinTable(name="ProjectInterpretingIterm")
+     */
+    protected $interpretingIterms;
+
+    /**
+     * @var \User\Entity\Iterm
+     * @ORM\ManyToMany(targetEntity="Iterm")
+     * @ORM\JoinTable(name="ProjectDtpPcIterm")
+     */
+    protected $dtpPcIterms;
+
+    /**
+     * @var \User\Entity\Iterm
+     * @ORM\ManyToMany(targetEntity="Iterm")
+     * @ORM\JoinTable(name="ProjectDtpMacIterm")
+     */
+    protected $dtpMacIterms;
+
+    /**
+     * @var \User\Entity\Iterm
+     * @ORM\ManyToMany(targetEntity="Iterm")
+     * @ORM\JoinTable(name="ProjectEngineeringIterm")
+     */
+    protected $engineeringIterms;
+
     public function getData(){
         return [
             'id' => $this->id,

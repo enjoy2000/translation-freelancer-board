@@ -1,5 +1,7 @@
 <div class="panel panel-default" ng-show="hasTypeDesktopPublishingEngineer()"
-     ng-controller="TableItemController">{{ setModalId('#modal-eng') }}
+     ng-controller="TableItemController">
+    {{ setModalId('#modal-eng') }}
+    {{ setIdentifier(["engineering", language]) }}
     <div class="panel-heading" style="padding-bottom: 10px;">
         Engineering
     </div>
