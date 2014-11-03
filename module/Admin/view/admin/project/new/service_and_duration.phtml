@@ -9,7 +9,8 @@
                     <div data-toggle="buttons">
                         <label class="btn btn-outline btn-primary" ng-repeat="level in levels"
                                ng-click="project.serviceLevel=level">
-                            <input type="radio" name="level" value="{{level.id}}" /> {{level.name}}
+                            <input class="required" type="radio" name="level" value="{{level.id}}"
+                                   data-errorplace="element.parent().parent().after(error)"/> {{level.name}}
                         </label>
                     </div>
                 </div>
@@ -18,7 +19,8 @@
                 <div class="form-group">
                     <label class="col-sm-6 control-label">Approximate duration *</label>
                     <div class="col-sm-3">
-                        <input ng-model="project.duration" type="text" class="form-control required" />
+                        <input ng-model="project.duration" type="text" class="form-control required"
+                            name="duration"/>
                     </div>
                     <span class="col-sm-3 control-label">Working days</span>
                 </div>

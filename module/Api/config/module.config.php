@@ -133,9 +133,18 @@ return array(
             ['id' => 2, 'name' => 'High', 'decorator' => 'danger'],
         ],
         'levels' => [
-            ['id' => 1, 'name' => 'Professional'],
-            ['id' => 2, 'name' => 'Business'],
-            ['id' => 3, 'name' => 'Premium'],
+            ['id' => 1, 'name' => 'Professional', 'price' => [
+                'USD' => 1.00,
+                'CNY' => 10.00,
+            ]],
+            ['id' => 2, 'name' => 'Business', 'price' => [
+                'USD' => 2.00,
+                'CNY' => 20.00,
+            ]],
+            ['id' => 3, 'name' => 'Premium', 'price' => [
+                'USD' => 3.00,
+                'CNY' => 30.00,
+            ]],
         ],
         'interpretingUnits' => [
             ['id' => 1, 'name' => 'Day'],

@@ -20,7 +20,20 @@
                     </thead>
                     <tbody>
                     <tbody>
-                    <?php include "table/row.phtml" ?>
+                    <tr ng-repeat="item in items">
+                        <td>{{ $index + 1 }}</td>
+                        <td>{{ item.file.name }}</td>
+                        <td><?php echo $this->translate("Source word") ?></td>
+                        <td>{{ CurrentUser.price(item.rate) }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>{{ CurrentUser.price(item.rate * item.quantity) }}</td>
+                        <td>
+                        <span ng-click="showModal(item)">
+                            <i class="fa fa-edit"></i>
+                        </span> &nbsp;&nbsp;
+                            <span ng-click="remove($index)"><i class="fa fa-trash-o text-danger"></i></span>
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
             </div>

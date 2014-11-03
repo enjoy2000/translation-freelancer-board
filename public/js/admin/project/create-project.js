@@ -36,7 +36,7 @@ angularApp.run(function($rootScope){
     });
 });
 
-angularApp.controller('CreateProjectController', function($scope, $http, $timeout, $q, $sce, CurrentUser){
+angularApp.controller('CreateProjectController', function($scope, $http, $timeout, $q, $sce, CurrentUser, TableItemListService){
     $scope.project = {
         dtps: [],
         translations: [],
@@ -147,6 +147,7 @@ angularApp.controller('CreateProjectController', function($scope, $http, $timeou
     };
 
     $scope.submit = function(){
+        console.log(TableItemListService.data());
         $http.post("/api/admin/project/", $scope.project)
             .success(function($data){
 
@@ -207,6 +208,7 @@ angularApp.controller('CreateProjectController', function($scope, $http, $timeou
 });
 
 angularApp.factory("TableItemListService", function(){
+    var $scopes = [];
     var listener;
     var isNew = false;
     var modalId = "#modal-interpreting";
@@ -218,11 +220,27 @@ angularApp.factory("TableItemListService", function(){
         listener = $scope;
     }
     return {
+        addScope: function($scope){
+            if($scopes.indexOf($scope) === -1){
+                $scopes.push($scope);
+            }
+        },
+        data: function(){
+            var data = [];
+            for(var i = 0; i < $scopes.length; i++){
+                data.push($scopes[i].data());
+            }
+            return data;
+        },
         cancel: function(){
             jQuery.extend(true, vars.item, itemCloned);
             $(modalId).modal("hide");
         },
         save: function(){
+            $(modalId).find("form").validate();
+            if(!$(modalId).find("form").valid()){
+                return;
+            }
             if(isNew){
                 listener.add(vars.item);
             }
@@ -254,6 +272,7 @@ angularApp.controller('TableItemController', function($scope, CurrentUser, Table
     $scope.localIdentifier = $scope.identifier;
     $scope.items = [];
     $scope.$modalId = "";
+    TableItemListService.addScope($scope);
     $scope.add = function($item){
         $scope.items.push($item);
     };
@@ -267,10 +286,15 @@ angularApp.controller('TableItemController', function($scope, CurrentUser, Table
     $scope.setModalId = function($modalId){
         $scope.$modalId = $modalId;
     }
+    $scope.data = function(){
+        return {
+            items: $scope.items,
+            identifier: $scope.localIdentifier
+        };
+    }
 });
 
 angularApp.controller('TableModalController', function($scope, TableItemListService){
     $scope.TableItemListService = TableItemListService;
     $scope.vars = TableItemListService.vars;
-    $scope.cancel
 });
