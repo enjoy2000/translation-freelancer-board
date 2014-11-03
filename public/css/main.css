@@ -5628,3 +5628,7 @@ h1, h2, h3 {
   background-color: #1c2b36;
   padding: 30px 0;
   font-size: 12px; }
+
+label.error{
+    color: #9d545b;
+}
