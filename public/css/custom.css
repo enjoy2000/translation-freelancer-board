@@ -1,0 +1,14 @@
+.wizard > .content > .body input.hidden-required{
+    width: 1px;
+    height: 1px;
+    border: none;
+    margin: 0;
+    background: transparent;
+    display: inline;
+}
+.wizard > .content > .body ul{
+    list-style: none;
+}
+.child-is-link > *{
+    cursor: pointer !important;
+}

@@ -1,7 +1,7 @@
 <?php
 namespace Api\Controller;
 
-use Zend\Mvc\Controller\AbstractRestfulController;
+use Application\Controller\AbstractRestfulController;
 use Zend\Http\Response;
 
 class AbstractRestfulJsonController extends AbstractRestfulController

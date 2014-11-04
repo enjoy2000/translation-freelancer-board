@@ -49,6 +49,19 @@
                     <li><a href="bankinfo.html">PaperTask Bank Info</a></li> <!-- all can see -->
                 </ul>
             </li>
+            <li>
+                <a href="<?php echo $this->url('admin', array('controller' => 'project')); ?>">
+                    <i class="fa fa-envelope"></i>
+                    <span class="nav-label"><?php echo $this->translate("Projects") ?></span>
+                    <span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level">
+                    <li><a href="<?php
+                        echo $this->url('admin', array('controller' => 'project'))
+                        ?>"><?php echo $this->translate("List projects") ?></a></li>
+                    <li><a href="<?php
+                        echo $this->url('admin', array('controller' => 'project', 'action' => 'new'))
+                        ?>"><?php echo $this->translate("Create project") ?></a></li>
 
             <li> <!-- sales director, and sales manager can not see/create resources, only admin, operation manager and project manager can see and create -->
                 <a href="#"><i class="fa fa-globe"></i> <span class="nav-lable">Freelancers</span><span class="fa arrow"></span></a>

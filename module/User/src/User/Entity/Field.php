@@ -28,4 +28,10 @@ class Field extends  Entity{
      */
     protected $name;
 
+    public function getData(){
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+        ];
+    }
 } 

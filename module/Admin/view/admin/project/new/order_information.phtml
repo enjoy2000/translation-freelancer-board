@@ -1,0 +1,33 @@
+<div class="ibox">
+    <div class="ibox-title">
+        <h4><i class="fa fa-file-text-o"></i> Order/Quote Information</h4>
+    </div>
+    <div class="ibox-content wrapper wrapper-content">
+        <div class="panel blank-panel">
+
+            <div class="panel-heading">
+                <div class="panel-title m-b-md"><h4>Source Language - {{project.sourceLanguage.name}}</h4></div>
+                <div class="panel-options">
+
+                    <ul class="nav nav-tabs">
+                        <li ng-repeat="language in project.targetLanguages" class="{{$index == 0 ? 'active': ''}}">
+                            <a data-toggle="tab" href="#tab-{{language.id}}">{{language.name}}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel-body">
+                <div class="tab-content">
+                    <div id="tab-{{language.id}}" class="tab-pane {{$index == 0 ? 'active': ''}}"
+                         ng-repeat="language in project.targetLanguages">{{identifier = language;""}}
+                        <?php include "order/translations.phtml" ?>
+                        <?php include "order/desktop_publishing.phtml" ?>
+                        <?php include "order/engineering.phtml" ?>
+                        <?php include "order/interpreting.phtml" ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

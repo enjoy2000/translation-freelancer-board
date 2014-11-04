@@ -15,6 +15,18 @@ return array(
                     ),
                 ),
                 'child_routes' => array(
+                    'admin' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '/admin/[:controller[/]]',
+                            'constraints' => array(
+                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
+                            'defaults' => array(
+                                '__NAMESPACE__' => 'Api\Controller\Admin',
+                            ),
+                        ),
+                    ),
                     'common' => array(
                         'type'    => 'Segment',
                         'options' => array(
@@ -93,6 +105,8 @@ return array(
             'Api\Controller\Common\Unit' => 'Api\Controller\Common\UnitController',
             'Api\Controller\Data\Project' => 'Api\Controller\Data\ProjectController',
             'Api\Controller\Index' => 'Api\Controller\IndexController',
+            'Api\Controller\Admin\Project' => 'Api\Controller\Admin\ProjectController',
+            'Api\Controller\User\Current' => 'Api\Controller\User\CurrentController',
             'Api\Controller\User\DesktopPrice' => 'Api\Controller\User\DesktopPriceController',
             'Api\Controller\User\Employer' => 'Api\Controller\User\EmployerController',
             'Api\Controller\User\EmployerData' => 'Api\Controller\User\EmployerDataController',
@@ -140,19 +154,34 @@ return array(
             ['id' => 1, 'name' => 'Normal', 'decorator' => 'primary'],
             ['id' => 2, 'name' => 'High', 'decorator' => 'danger'],
         ],
-        'fields' => [
-            ['id' => 1, 'name' => 'Field 1'],
-            ['id' => 2, 'name' => 'Field 2'],
-            ['id' => 3, 'name' => 'Field 3'],
-            ['id' => 4, 'name' => 'Field 4'],
-        ],
         'levels' => [
-            ['id' => 1, 'name' => 'Professional'],
-            ['id' => 2, 'name' => 'Business'],
-            ['id' => 3, 'name' => 'Premium'],
+            ['id' => 1, 'name' => 'Professional', 'price' => [
+                'USD' => 1.00,
+                'CNY' => 10.00,
+            ]],
+            ['id' => 2, 'name' => 'Business', 'price' => [
+                'USD' => 2.00,
+                'CNY' => 20.00,
+            ]],
+            ['id' => 3, 'name' => 'Premium', 'price' => [
+                'USD' => 3.00,
+                'CNY' => 30.00,
+            ]],
         ],
-        'order_section' => [
-            "Translation" => "Bus"
-        ]
+        'interpretingUnits' => [
+            ['id' => 1, 'name' => 'Day'],
+            ['id' => 2, 'name' => 'Half Day'],
+        ],
+        'engineeringUnits' => [
+            ['id' => 1, 'name' => 'Page'],
+            ['id' => 2, 'name' => 'Graphic'],
+            ['id' => 3, 'name' => 'Hour'],
+            ['id' => 4, 'name' => 'Day'],
+            ['id' => 5, 'name' => 'Month'],
+        ],
+        'dtpUnits' => [
+            ['id' => 1, 'name' => 'Hour'],
+            ['id' => 2, 'name' => 'Page'],
+        ],
     ],
 );

@@ -157,6 +157,11 @@ class User extends Entity implements InputFilterAwareInterface{
             'phone',
             'profileUpdated',
         );
+
+        if(isset($arr['currency']) and !in_array($arr['currency'], ['USD', 'CNY`'])){
+            throw new \Exception("Invalid currency '{$arr['currency']}'");
+        }
+
         foreach($keys as $key){
             if(isset($arr[$key])){
                 $this->$key = $arr[$key];

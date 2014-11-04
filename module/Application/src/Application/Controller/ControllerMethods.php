@@ -63,6 +63,33 @@ trait ControllerMethods{
     }
 
     /**
+     * @param $entityName
+     * @param $criteria
+     * @return object
+     */
+    public function findOneBy($entityName, $criteria){
+        $this->getEntityManager()->getRepository($entityName)->findOneBy($criteria);
+    }
+
+    /**
+     * @param $entityName
+     * @param $id
+     * @return object
+     */
+    public function find($entityName, $id){
+        return $this->getEntityManager()->find($entityName, $id);
+    }
+
+    /**
+     * @param $entityName
+     * @param $id
+     * @return object
+     */
+    public function getReference($entityName, $id){
+        return $this->getEntityManager()->getReference($entityName, $id);
+    }
+
+    /**
      * @param $criteria
      * @return null|\User\Entity\User
      */

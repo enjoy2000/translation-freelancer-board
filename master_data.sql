@@ -29,6 +29,11 @@ INSERT INTO `papertask`.`TemplateType` (`id`, `name`, `description`, `code`, `up
 INSERT INTO `papertask`.`InterpretingService` (`name`) VALUES ('Service 1');
 INSERT INTO `papertask`.`InterpretingService` (`name`) VALUES ('Service 2');
 
+INSERT INTO `papertask`.`Field` (`id`, `name`) VALUES ('1', 'Field 1');
+INSERT INTO `papertask`.`Field` (`id`, `name`) VALUES ('2', 'Field 2');
+INSERT INTO `papertask`.`Field` (`id`, `name`) VALUES ('3', 'Field 3');
+INSERT INTO `papertask`.`Field` (`id`, `name`) VALUES ('4', 'Field 4');
+
 INSERT INTO `papertask`.`ProfileServiceTranslationTM` (`template`, `rate`) VALUES ('Repetitions', '0.1');
 INSERT INTO `papertask`.`ProfileServiceTranslationTM` (`template`, `rate`) VALUES ('100%', '0.1');
 INSERT INTO `papertask`.`ProfileServiceTranslationTM` (`template`, `rate`) VALUES ('95%-99%', '0.1');
