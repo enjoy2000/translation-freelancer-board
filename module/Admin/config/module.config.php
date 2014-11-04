@@ -71,6 +71,7 @@ return array(
             'admin/email/index' => __DIR__ . '/../view/admin/email/index.phtml',
             'admin/email/edit' => __DIR__ . '/../view/admin/email/edit.phtml',
             'admin/email/new' => __DIR__ . '/../view/admin/email/new.phtml',
+            'admin/freelancer/index' => __DIR__ . '/../view/admin/freelancer/index.phtml',
             'admin/freelancer/finish-registration' => __DIR__ . '/../view/admin/freelancer/finish-registration.phtml',
             'admin/freelancer/update-info' => __DIR__ . '/../view/admin/freelancer/finish-registration.phtml',
             'admin/project/index' => __DIR__ . '/../view/admin/project/index.phtml',

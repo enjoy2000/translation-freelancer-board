@@ -17,6 +17,10 @@ class FreelancerController extends AbstractActionController
 {
     protected $requiredLogin = true;
 
+    public function indexAction(){
+        return new ViewModel();
+    }
+
     public function finishRegistrationAction()
     {
         return new ViewModel(array(
@@ -27,5 +31,4 @@ class FreelancerController extends AbstractActionController
     public function updateInfoAction(){
         return $this->finishRegistrationAction();
     }
-
 }
