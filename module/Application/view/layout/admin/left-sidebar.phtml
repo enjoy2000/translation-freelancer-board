@@ -62,7 +62,9 @@
                     <li><a href="<?php
                         echo $this->url('admin', array('controller' => 'project', 'action' => 'new'))
                         ?>"><?php echo $this->translate("Create project") ?></a></li>
-
+                </ul>
+            </li>
+            
             <li> <!-- sales director, and sales manager can not see/create resources, only admin, operation manager and project manager can see and create -->
                 <a href="#"><i class="fa fa-globe"></i> <span class="nav-lable">Freelancers</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse">
