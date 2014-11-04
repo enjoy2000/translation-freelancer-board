@@ -100,8 +100,8 @@ $this->inlineScript()
                             <li> Internal communication, customer support</li>
                         </div>
                         <hr />
-                        <p style="font-size: 35px;"> CNY {{price.professionalPrice*params.wordCount}}</p>
-                        <small>CNY {{price.professionalPrice}} / Word</small>
+                        <p style="font-size: 35px;"> {{params.currency}} {{price.professionalPrice*params.wordCount | number:2}}</p>
+                        <small>{{params.currency}} {{price.professionalPrice | number:2}} / Word</small>
                         <hr />
                         <a href="javascript:;" target="_blank" class="btn btn-primary btn-lg">Order Now </a>
                     </div>
@@ -121,8 +121,8 @@ $this->inlineScript()
                             <li> Points translation, product description</li>
                         </div>
                         <hr />
-                        <p style="font-size: 35px;"> CNY {{price.businessPrice*params.wordCount}}</p>
-                        <small>CNY {{price.businessPrice}} / Word</small>
+                        <p style="font-size: 35px;">{{params.currency}} {{price.businessPrice*params.wordCount | number:2}}</p>
+                        <small>{{params.currency}} {{price.businessPrice | number:2}} / Word</small>
                         <hr />
                         <a href="javascript:;" target="_blank" class="btn btn-primary btn-lg">Order Now </a>
                     </div>
@@ -142,8 +142,8 @@ $this->inlineScript()
                             <li> Promotional/marketing materials</li>
                         </div>
                         <hr />
-                        <p style="font-size: 35px;"> CNY {{price.premiumPrice*params.wordCount}}</p>
-                        <small>CNY {{price.premiumPrice}} / Word</small>
+                        <p style="font-size: 35px;"> {{params.currency}} {{price.premiumPrice*params.wordCount | number:2}}</p>
+                        <small>{{params.currency}} {{price.premiumPrice | number:2}} / Word</small>
                         <hr />
                         <a href="javascript:;" target="_blank" class="btn btn-primary btn-lg">Order Now </a>
                     </div>
