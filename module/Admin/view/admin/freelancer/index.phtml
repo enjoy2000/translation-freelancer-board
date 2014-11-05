@@ -2,8 +2,15 @@
 <!-- Scripts -->
 <?php $this->headScript()
     ->prependFile($this->basePath() . '/js/admin/freelancer/index.js')
+    ->prependFile($this->basePath() . '/js/plugins/bootbox/bootbox.min.js')
     ->prependScript("angularApp = angular.module('project', []);")
     ->prependFile($this->basePath() . '/js/inspinia.js')
+?>
+<?php
+$this->inlineScript()
+    ->prependScript("
+        var DELETE_CONFIRM_TEXT = '" . $this->translate('Are you sure to delete?') . "';
+    ");
 ?>
 <div class="ibox" id="mainController" ng-controller="listFreelancerController">
 <div class="ibox-title">
@@ -11,7 +18,7 @@
 
     <div class="ibox-tools">
         <a data-toggle="collapse" href="#search_freelancer" class="btn btn-primary btn-xs"><i class="fa fa-search"></i>
-            Search</a>
+            <?php echo $this->translate('Search') ?></a>
     </div>
 </div>
 
@@ -19,16 +26,16 @@
     <div class="row">
         <div class="col-lg-12">
             <div id="search_freelancer" class="panel-collapse collapse faq-answer">
-                <form method="" class="form-horizontal">
+                <form name="searchForm" method="" class="form-horizontal">
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">Name</label>
+                                <label class="col-sm-3 control-label"><?php echo $this->translate('Name') ?></label>
 
-                                <div class="col-sm-9"><input type="text" class="form-control"></div>
+                                <div class="col-sm-9"><input type="text" class="form-control" /></div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">Type</label>
+                                <label class="col-sm-3 control-label"><?php echo $this->translate('Type') ?></label>
 
                                 <div class="col-sm-9">
                                     <select class="form-control" name="">
@@ -40,7 +47,8 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">Rating</label>
+                                <label class="col-sm-3 control-label"><?php echo $this->translate('Type') ?>
+                                    <?php echo $this->translate('Rating') ?></label>
 
                                 <div class="col-sm-9">
                                     <select class="form-control" name="">
@@ -59,8 +67,8 @@
 
                                 <div class="col-sm-10">
                                     <label class="checkbox-inline">
-                                        <input type="checkbox" value="option1" id="unactive"> &nbsp;&nbsp;&nbsp;<strong>Include
-                                            unactive account </strong>
+                                        <input type="checkbox" value="option1" id="unactive"> &nbsp;&nbsp;&nbsp;
+                                        <strong><?php echo $this->translate('Include unactive account') ?></strong>
                                     </label>
                                 </div>
                             </div>
@@ -72,7 +80,7 @@
                                 <div class="col-sm-9"><input type="text" class="form-control"></div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">Source</label>
+                                <label class="col-sm-3 control-label"><?php echo $this->translate('Source') ?></label>
 
                                 <div class="col-sm-9">
                                     <select class="form-control" name="">
@@ -84,7 +92,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">Specialism</label>
+                                <label class="col-sm-3 control-label"><?php echo $this->translate('Specialism') ?></label>
 
                                 <div class="col-sm-9">
                                     <select class="form-control" name="">
@@ -103,20 +111,20 @@
 
                                 <div class="col-sm-10">
                                     <label class="checkbox-inline">
-                                        <input type="checkbox" value="option1" id="unactive"> &nbsp;&nbsp;&nbsp;<strong>Specialism
-                                            tested </strong>
+                                        <input type="checkbox" value="option1" id="unactive"> &nbsp;&nbsp;&nbsp;
+                                        <strong><?php echo $this->translate('Specialism tested') ?></strong>
                                     </label>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">Email</label>
+                                <label class="col-sm-3 control-label"><?php echo $this->translate('Email') ?></label>
 
                                 <div class="col-sm-9"><input type="text" class="form-control"></div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">Target</label>
+                                <label class="col-sm-3 control-label"><?php echo $this->translate('Target') ?></label>
 
                                 <div class="col-sm-9">
                                     <select class="form-control" name="">
@@ -128,7 +136,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">Country</label>
+                                <label class="col-sm-3 control-label"><?php echo $this->translate('Country') ?></label>
 
                                 <div class="col-sm-9">
                                     <select class="form-control" name="">
@@ -144,16 +152,18 @@
 
                                 <div class="col-sm-10">
                                     <label class="checkbox-inline">
-                                        <input type="checkbox" value="option1" id="unactive"> &nbsp;&nbsp;&nbsp;<strong>Senior
-                                            account </strong>
+                                        <input type="checkbox" value="option1" id="unactive"> &nbsp;&nbsp;&nbsp;
+                                        <strong><?php echo $this->translate('Senior account') ?></strong>
                                     </label>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="text-right tooltip-demo">
-                        <a href="#" class="btn btn-sm btn-primary"><i class="fa fa-search"></i> Search</a>
-                        <a href="#" class="btn btn-white btn-sm" type="reset"><i class="fa fa-times"></i> Reset</a>
+                        <a href="#" class="btn btn-sm btn-primary"><i class="fa fa-search"></i>
+                            <?php echo $this->translate('Search') ?></a>
+                        <a href="#" class="btn btn-white btn-sm" type="reset"><i class="fa fa-times"></i>
+                            <?php echo $this->translate('Reset') ?></a>
                     </div>
                 </form>
             </div>
@@ -166,13 +176,13 @@
             <tr ng-repeat="user in list">
                 <td class="project-status" width="1%">
                     <span class="label {{user.isActive ? 'label-primary' : 'label-default'}}">
-                        {{user.isActive ? 'Active' : 'Unactive'}}
+                        {{user.isActive ? '<?php echo $this->translate('Active') ?>' : '<?php echo $this->translate('Unactive') ?>'}}
                     </span>
                 </td>
                 <td class="project-title">
                     <strong><i class="fa fa-user"></i> {{user.lastName}}, {{user.firstName}}</strong>
                     <br/>
-                    <small>Created {{ user.createdTime }}</small>
+                    <small><?php echo $this->translate('Created') ?> {{ user.createdTime }}</small>
                 </td>
                 <td class="project-title">
                     <strong><i class="fa fa-envelope"></i> {{user.email}}</strong>
@@ -181,16 +191,23 @@
                 </td>
                 <td class="project-completion">
                     <!-- TODO: need to add tasksDone and rating here -->
-                    <small><i class="fa fa-tasks"></i> Tasks done: {{user.tasksDone}}</small>
+                    <small><i class="fa fa-tasks"></i>
+                        <?php echo $this->translate('Tasks done') ?>: {{user.tasksDone}}</small>
                     <br/>
-                    <small>Rating: <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                    <small><?php echo $this->translate('Rating') ?>:
+                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
                             class="fa fa-star"></i><i class="fa fa-star-half-o"></i><i class="fa fa-star-o"></i></small>
                 </td>
                 <td class="project-actions">
-                    <a href="#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
-                    <a href="#" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Edit </a>
-                    <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete </a>
-                    <!-- only admin has right to show the delete button -->
+                    <a href="<?php echo $this->url('admin', ['controller'=>'freelancer', 'action'=>'view']) ?>?id={{user.id}}"
+                       class="btn btn-white btn-sm">
+                        <i class="fa fa-folder"></i> <?php echo $this->translate('View') ?></a>
+                    <a href=""
+                       class="btn btn-white btn-sm">
+                        <i class="fa fa-pencil"></i> <?php echo $this->translate('Edit') ?></a>
+                    <a ng-click="deleteFreelancer(user.id)" href="#" class="btn btn-danger btn-sm">
+                        <i class="fa fa-trash"></i> <?php echo $this->translate('Delete') ?></a>
+                    <!-- TODO: only admin has right to show the delete button -->
                 </td>
             </tr>
             </tbody>

@@ -68,4 +68,13 @@ class FreelancerController extends AbstractRestfulController
                 'pages' => $paginator->getPages()
             ));
     }
+
+    public function delete($id){
+        $entityManager = $this->getEntityManager();
+        $user = $entityManager->find('\User\Entity\User', (int)$id);
+        $entityManager->remove($user);
+        $entityManager->flush();
+
+        return new JsonModel([]);
+    }
 }

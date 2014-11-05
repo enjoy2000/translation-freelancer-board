@@ -10,9 +10,21 @@ angularApp.controller('listFreelancerController', function($scope, $http, $timeo
         selectPage(1);
         jQuery(document).ready(function(){
            $('.pager.btn-group button').click(function(){
-              selectPage(parseInt(jQuery(this).data('page')));
+              selectPage(parseInt($(this).data('page')));
            });
         });
+
+        // delete freelancer
+        $scope.deleteFreelancer = function($id){
+            bootbox.confirm(DELETE_CONFIRM_TEXT, function(result) {
+                if(result == true){
+                    $http.delete('/api/user/'+$id+'/freelancer').success(function($data){
+                        console.log('Deleted user with id %s', $id);
+                        selectPage($scope.pages.current);
+                    });
+                }
+            });
+        }
     }
 
     function selectPage($page){
