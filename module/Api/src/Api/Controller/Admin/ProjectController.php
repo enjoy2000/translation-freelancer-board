@@ -2,10 +2,16 @@
 namespace Api\Controller\Admin;
 
 use Zend\View\Model\JsonModel;
+use Zend\Paginator\Paginator;
 
+use DoctrineORMModule\Paginator\Adapter\DoctrinePaginator as DoctrineAdapter;
+use Doctrine\ORM\Tools\Pagination\Paginator as ORMPaginator;
+
+use Admin\Model\Helper;
 use Api\Controller\AbstractRestfulJsonController;
 use User\Entity\Iterm;
 use User\Entity\Project;
+use User\Entity\UserGroup;
 
 class ProjectController extends AbstractRestfulJsonController
 {
@@ -70,4 +76,31 @@ class ProjectController extends AbstractRestfulJsonController
         ]);
     }
 
+    public function getList(){
+        $entityManager = $this->getEntityManager();
+
+        // Get freelancer group
+        $projectList = $entityManager->getRepository('User\Entity\Project');
+        //->findBy(array('group' => $freelancerGroup));
+        $queryBuilder = $freelancerList->createQueryBuilder('project');
+            ->orderBy('project.createdTime', 'ASC');
+        $adapter = new DoctrineAdapter(new ORMPaginator($queryBuilder));
+        $paginator = new Paginator($adapter);
+        $paginator->setDefaultItemCountPerPage(10);
+
+        $page = (int)$this->getRequest()->getQuery('page');
+        if($page) $paginator->setCurrentPageNumber($page);
+        $data = array();
+        $helper = new Helper();
+        foreach($paginator as $user){
+            $userData = $user->getData();
+            $userData['createdTime'] = $helper->formatDate($userData['createdTime']);
+            $data[] = $userData;
+        }
+        //var_dump($paginator);die;
+        return new JsonModel(array(
+            'projects' => $data,
+            'pages' => $paginator->getPages()
+        ));
+    }
 }
