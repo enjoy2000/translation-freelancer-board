@@ -31,4 +31,15 @@ class FreelancerController extends AbstractActionController
     public function updateInfoAction(){
         return $this->finishRegistrationAction();
     }
+
+    public function viewAction(){
+        $entityManager = $this->getEntityManager();
+        $id = $this->getRequest()->getQuery('id');
+        $user = $entityManager->find('\User\Entity\User', (int)$id);
+        if($entityManager->find('\User\Entity\Freelancer', $user->getFreelancer())){
+            return new ViewModel([
+                "user" => $user->getData()
+            ]);
+        }
+    }
 }
