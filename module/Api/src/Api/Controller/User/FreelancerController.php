@@ -74,7 +74,7 @@ class FreelancerController extends AbstractRestfulController
                     ->setParameter(1, (int)$request->getQuery('idFreelancer'));
             }
 
-            // search by country
+            // search by country aa
             if($request->getQuery('country')){
                 $queryBuilder->addWhere("user.country = ?1")
                     ->setParameter(1, $request->getQuery('country'));
