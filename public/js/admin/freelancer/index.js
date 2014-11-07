@@ -49,8 +49,8 @@ angularApp.controller('listFreelancerController', function($scope, $http, $timeo
                     });
                 }
             });
-        }
-
+        };
+        
         // get freelancer data
         getFreelancerData();
 

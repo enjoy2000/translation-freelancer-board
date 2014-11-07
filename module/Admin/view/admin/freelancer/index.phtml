@@ -26,15 +26,23 @@ $this->inlineScript()
     <div class="row">
         <div class="col-lg-12">
             <div id="search_freelancer" class="panel-collapse collapse faq-answer">
+<<<<<<< HEAD
                 <form name="searchForm" action="" class="form-horizontal">
+=======
+                <form name="searchForm" method="" class="form-horizontal">
+>>>>>>> origin/freelancer
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label class="col-sm-3 control-label"><?php echo $this->translate('Name') ?></label>
 
+<<<<<<< HEAD
                                 <div class="col-sm-9">
                                     <input ng-model="searchParams.name" name="name" type="text" class="form-control" />
                                 </div>
+=======
+                                <div class="col-sm-9"><input type="text" class="form-control" /></div>
+>>>>>>> origin/freelancer
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label"><?php echo $this->translate('Type') ?></label>
@@ -49,7 +57,11 @@ $this->inlineScript()
                                 </div>
                             </div>
                             <div class="form-group">
+<<<<<<< HEAD
                                 <label class="col-sm-3 control-label">
+=======
+                                <label class="col-sm-3 control-label"><?php echo $this->translate('Type') ?>
+>>>>>>> origin/freelancer
                                     <?php echo $this->translate('Rating') ?></label>
 
                                 <div class="col-sm-9">
@@ -66,9 +78,14 @@ $this->inlineScript()
 
                                 <div class="col-sm-10">
                                     <label class="checkbox-inline">
+<<<<<<< HEAD
                                         <input ng-model="searchParams.includeInactive" type="checkbox"
                                                name="includeInactive" value="1"> &nbsp;&nbsp;&nbsp;
                                         <strong><?php echo $this->translate('Include inactive accounts') ?></strong>
+=======
+                                        <input type="checkbox" value="option1" id="unactive"> &nbsp;&nbsp;&nbsp;
+                                        <strong><?php echo $this->translate('Include unactive account') ?></strong>
+>>>>>>> origin/freelancer
                                     </label>
                                 </div>
                             </div>
@@ -153,8 +170,12 @@ $this->inlineScript()
 
                                 <div class="col-sm-10">
                                     <label class="checkbox-inline">
+<<<<<<< HEAD
                                         <input ng-model="searchParams.senior" type="checkbox"
                                                value="1" name="senior"> &nbsp;&nbsp;&nbsp;
+=======
+                                        <input type="checkbox" value="option1" id="unactive"> &nbsp;&nbsp;&nbsp;
+>>>>>>> origin/freelancer
                                         <strong><?php echo $this->translate('Senior account') ?></strong>
                                     </label>
                                 </div>
@@ -162,11 +183,18 @@ $this->inlineScript()
                         </div>
                     </div>
                     <div class="text-right tooltip-demo">
+<<<<<<< HEAD
                         <button ng-click="advancedSearch()" name="submit" type="submit" class="btn btn-sm btn-primary">
                             <i class="fa fa-search"></i>
                             <?php echo $this->translate('Search') ?></button>
                         <button class="btn btn-white btn-sm" type="reset"><i class="fa fa-times"></i>
                             <?php echo $this->translate('Reset') ?></button>
+=======
+                        <a href="#" class="btn btn-sm btn-primary"><i class="fa fa-search"></i>
+                            <?php echo $this->translate('Search') ?></a>
+                        <a href="#" class="btn btn-white btn-sm" type="reset"><i class="fa fa-times"></i>
+                            <?php echo $this->translate('Reset') ?></a>
+>>>>>>> origin/freelancer
                     </div>
                 </form>
             </div>

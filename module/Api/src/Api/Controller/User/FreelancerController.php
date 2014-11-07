@@ -119,4 +119,13 @@ class FreelancerController extends AbstractRestfulController
 
         return new JsonModel([]);
     }
+
+    public function delete($id){
+        $entityManager = $this->getEntityManager();
+        $user = $entityManager->find('\User\Entity\User', (int)$id);
+        $entityManager->remove($user);
+        $entityManager->flush();
+
+        return new JsonModel([]);
+    }
 }
