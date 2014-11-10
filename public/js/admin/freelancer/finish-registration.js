@@ -17,7 +17,7 @@ angularApp.controller('UpdateInfoController', function($scope, $http, $timeout, 
     $scope.resource_active = {};
     $scope.translationPrices = [];
 
-    $scope.user = {
+    $scope.user = $scope.userInfo = {
         "city": null,
         "country": {
             "select": null
@@ -94,7 +94,7 @@ angularApp.controller('UpdateInfoController', function($scope, $http, $timeout, 
     function init($userId){
         $http.get("/api/user/" + $userId + "")
             .success(function($data){
-                $scope.user = $data['user'];
+                $scope.user = $scope.userInfo = $data['user'];
                 $scope.translationPrices = $data['translationPrices'];
                 $scope.interpretingPrices = $data['interpretingPrices'];
                 $scope.desktopPrices = $data['desktopPrices'];

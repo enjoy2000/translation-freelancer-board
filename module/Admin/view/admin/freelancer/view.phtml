@@ -1,6 +1,15 @@
 <?php $this->headTitle($this->translate('Freelancer Profile')) ?>
-<?php var_dump($this->user) ?>
-<div class="row animated fadeInRight">
+<?php
+$this->headScript()
+    ->prependFile($this->basePath() . '/js/admin/freelancer/view.js')
+    ->prependFile($this->basePath() . '/js/plugins/bootbox/bootbox.min.js')
+    ->prependScript("angularApp = angular.module('project', []);");
+$this->inlineScript()
+    ->prependScript("
+        var USER_ID = '" . $this->user['id'] . "';
+    ");
+?>
+<div ng-controller="viewFreelancerController" class="row animated fadeInRight">
 <div class="col-md-4">
     <div class="ibox">
         <div class="ibox-title">
