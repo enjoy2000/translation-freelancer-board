@@ -18,7 +18,7 @@ return array(
                     'admin' => array(
                         'type'    => 'Segment',
                         'options' => array(
-                            'route'    => '/admin/[:controller[/]]',
+                            'route'    => '/admin/[:controller[/[:id[/]]]]',
                             'constraints' => array(
                                 'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
                             ),

@@ -73,6 +73,7 @@ class ProjectController extends AbstractRestfulJsonController
 
         return new JsonModel([
             'project' => $project->getData(),
+            'success' => true,
         ]);
     }
 
@@ -82,8 +83,8 @@ class ProjectController extends AbstractRestfulJsonController
         // Get freelancer group
         $projectList = $entityManager->getRepository('User\Entity\Project');
         //->findBy(array('group' => $freelancerGroup));
-        $queryBuilder = $freelancerList->createQueryBuilder('project');
-            ->orderBy('project.createdTime', 'ASC');
+        $queryBuilder = $projectList->createQueryBuilder('project');
+        $queryBuilder->andWhere('project.is_deleted = 0');
         $adapter = new DoctrineAdapter(new ORMPaginator($queryBuilder));
         $paginator = new Paginator($adapter);
         $paginator->setDefaultItemCountPerPage(10);
@@ -94,7 +95,6 @@ class ProjectController extends AbstractRestfulJsonController
         $helper = new Helper();
         foreach($paginator as $user){
             $userData = $user->getData();
-            $userData['createdTime'] = $helper->formatDate($userData['createdTime']);
             $data[] = $userData;
         }
         //var_dump($paginator);die;
@@ -102,5 +102,24 @@ class ProjectController extends AbstractRestfulJsonController
             'projects' => $data,
             'pages' => $paginator->getPages()
         ));
+    }
+
+    public function get($id){
+        $project = $this->find('\User\Entity\Project', $id);
+        return new JsonModel([
+            'project' => $project->getData(),
+        ]);
+    }
+
+    public function delete($id){
+        /** @var \User\Entity\Project $project */
+        $project = $this->find('\User\Entity\Project', $id);
+        $project->setData([
+            'is_deleted' => true
+        ]);
+        $project->save($this->getEntityManager());
+        return new JsonModel([
+            'project' => $project->getData(),
+        ]);
     }
 }

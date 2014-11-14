@@ -135,9 +135,33 @@ class Project extends Entity{
      */
     protected $engineeringIterms;
 
+    /**
+     * @var bool
+     * @ORM\Column(type="boolean")
+     */
+    protected $is_deleted = 0;
+
     public function getData(){
         return [
             'id' => $this->id,
+            'status' => $this->status,
+            'sourceLanguage' => $this->sourceLanguage->getData(),
+            'targetLanguages' => $this->getArrayData($this->targetLanguages),
+            'reference' => $this->reference,
+            'priority' => $this->priority,
+            'startDate' => $this->startDate,
+            'dueDate' => $this->dueDate,
+            'field' => $this->field->getData(),
+            'client' => $this->client->getData(),
+            'sale' => $this->sale->getData(),
+            'pm' => $this->pm->getData(),
+            'interpretingInfo' => $this->interpretingInfo,
+            'serviceLevel' => $this->serviceLevel,
+            'duration' => $this->duration,
+            'interpretingIterms' => $this->interpretingIterms,
+            'dtpPcIterms' => $this->dtpPcIterms,
+            'dtpMacIterms' => $this->dtpMacIterms,
+            'engineeringIterms' => $this->engineeringIterms,
         ];
     }
 }

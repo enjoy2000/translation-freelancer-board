@@ -58,6 +58,7 @@ return array(
             'Admin\Controller\Employer' => 'Admin\Controller\EmployerController',
             'Admin\Controller\Project' => 'Admin\Controller\ProjectController',
             'Admin\Controller\Papertask' => 'Admin\Controller\PapertaskController',
+            'Admin\Controller\Quote' => 'Admin\Controller\QuoteController',
         ),
     ),
     'view_manager' => array(
@@ -74,9 +75,11 @@ return array(
             'admin/freelancer/index' => __DIR__ . '/../view/admin/freelancer/index.phtml',
             'admin/freelancer/finish-registration' => __DIR__ . '/../view/admin/freelancer/finish-registration.phtml',
             'admin/freelancer/update-info' => __DIR__ . '/../view/admin/freelancer/finish-registration.phtml',
+            'admin/project/detail' => __DIR__ . '/../view/admin/project/detail.phtml',
             'admin/project/index' => __DIR__ . '/../view/admin/project/index.phtml',
             'admin/project/new' => __DIR__ . '/../view/admin/project/new.phtml',
             'admin/papertask/profile' => __DIR__ . '/../view/admin/papertask/profile.phtml',
+            'admin/quote/detail' => __DIR__ . '/../view/admin/quote/detail.phtml',
         ),
         'layout' => 'layout/admin',
         'template_path_stack' => array(

@@ -19,6 +19,7 @@ angularApp.controller('CreateProjectController', function($scope, $http, $timeou
         translations: [],
         files: []
     };
+    $scope.editing = true;
 
     $scope.order = {
     };
@@ -127,7 +128,11 @@ angularApp.controller('CreateProjectController', function($scope, $http, $timeou
         $scope.project.data = TableItemListService.data();
         $http.post("/api/admin/project/", $scope.project)
             .success(function($data){
-
+                if($data.success){
+                    location.href = "/admin/project/detail/#id/" + $data.project.id;
+                } else {
+                    location.href = "/admin/quote/detail/#id/" + $data.project.id;
+                }
             })
             .error(function($data){
 

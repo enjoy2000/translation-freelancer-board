@@ -14,7 +14,7 @@ use Zend\View\Model\ViewModel;
 use Application\Controller\AbstractActionController;
 use User\Entity\File;
 
-class ProjectController extends AbstractActionController
+class QuoteController extends AbstractActionController
 {
     protected $requiredLogin = true;
 
@@ -60,7 +60,6 @@ class ProjectController extends AbstractActionController
             die($json);
         }
     }
-
 
     public function detailAction(){
         return new ViewModel(array());

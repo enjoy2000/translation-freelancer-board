@@ -77,7 +77,7 @@ class User extends Entity implements InputFilterAwareInterface{
     protected $gender = 0;
 
     /** @ORM\Column(type="string") */
-    protected $currency = 'cny';
+    protected $currency = 'CNY';
 
     /**
      * @var \User\Entity\Freelancer
