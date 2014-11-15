@@ -369,7 +369,8 @@
 .note-editor .note-editable {
     padding: 20px;
     overflow: auto;
-    outline: 0
+    outline: 0;
+    max-height: 240px
 }
 
 .note-editor .note-editable[contenteditable="false"] {

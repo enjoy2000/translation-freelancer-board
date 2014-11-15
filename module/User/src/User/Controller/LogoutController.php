@@ -17,7 +17,7 @@ class LogoutController extends AbstractActionController
 {
     public function indexAction(){
         $userSession = new Container('user');
-        $userSession->user_id = Flase;
+        $userSession->user_id = false;
 
         return $this->redirect()->toRoute('home');
     }
