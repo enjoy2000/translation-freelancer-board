@@ -11,6 +11,7 @@ angularApp.controller('ItemListController', function($scope, $location, ProjectA
     $scope.pages = {};
     $scope.maxSize = 7;
     $scope.page = 1;
+    $scope.search = {};
 
     function remove($index){
         var project = $scope.items[$index];
@@ -25,24 +26,54 @@ angularApp.controller('ItemListController', function($scope, $location, ProjectA
         });
     }
 
-    $scope.loadItems = function(){
-        ProjectApi.list({
-            page: $scope.page
-        }, function($projects, $pages){
+    function loadItems(page, func){
+        var params = $scope.search;
+        params.page = page;
+        $scope.items = [];
+        ProjectApi.list(params, function($projects, $pages){
             $scope.items = $projects;
             $scope.pages =$pages;
+            if(typeof(func) == 'function'){
+                func();
+            }
         });
     }
 
+    function search(){
+        $scope.loadItems(1);
+    }
+
     function pageChanged(){
-        $scope.loadItems();
+        $scope.loadItems($scope.page);
         console.log("Change to page " + $scope.page);
     }
 
     $scope.pageChanged = pageChanged;
     $scope.remove = remove;
+    $scope.search = search;
+    $scope.loadItems = loadItems;
 
-    $scope.loadItems();
+    $scope.loadItems($scope.page);
+
+    function simpleLoad(btn, state) {
+        if (state) {
+            btn.children().addClass('fa-spin');
+            btn.contents().last().replaceWith(" Loading");
+        } else {
+            btn.children().removeClass('fa-spin');
+            btn.contents().last().replaceWith(" Refresh");
+        }
+    }
+
+    $scope.refresh = function(){
+        $scope.items = [];
+        var btn = $('#loading-example-btn');
+        simpleLoad(btn, true);
+        $scope.loadItems(function(){
+            simpleLoad(btn, false);
+        });
+    };
+
 });
 
 angularApp.controller('ProjectIndexController', function($scope){
@@ -54,7 +85,4 @@ angularApp.controller('ProjectIndexController', function($scope){
         location.href = "/admin/project/detail/#edit?id=" + $project.id;
     };
 
-    $scope.refresh = function(){
-        angular.element('#projectsList').scope().loadItems();
-    }
 });
