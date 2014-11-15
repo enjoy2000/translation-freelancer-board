@@ -42,4 +42,32 @@ class FreelancerController extends AbstractActionController
             ]);
         }
     }
+
+    public function newAction(){
+        return new ViewModel(array(
+            "user" => '',
+        ));
+    }
+
+    public function editPaymentInfoAction(){
+        $entityManager = $this->getEntityManager();
+        $id = $this->getRequest()->getQuery('id');
+        $user = $entityManager->find('\User\Entity\User', (int)$id);
+        if($entityManager->find('\User\Entity\Freelancer', $user->getFreelancer())){
+            return new ViewModel([
+                "user" => $user->getData()
+            ]);
+        }
+    }
+
+    public function editProfileAction(){
+        $entityManager = $this->getEntityManager();
+        $id = $this->getRequest()->getQuery('id');
+        $user = $entityManager->find('\User\Entity\User', (int)$id);
+        if($entityManager->find('\User\Entity\Freelancer', $user->getFreelancer())){
+            return new ViewModel([
+                "user" => $user->getData()
+            ]);
+        }
+    }
 }

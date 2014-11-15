@@ -190,7 +190,7 @@ $this->inlineScript()
                 <td class="project-title">
                     <strong><i class="fa fa-envelope"></i> {{user.email}}</strong>
                     <br/>
-                    <small>{{user.country}}</small>
+                    <small>{{user.country.name}}</small>
                 </td>
                 <td class="project-completion">
                     <!-- TODO: need to add tasksDone and rating here -->
@@ -205,7 +205,7 @@ $this->inlineScript()
                     <a href="<?php echo $this->url('admin', ['controller'=>'freelancer', 'action'=>'view']) ?>?id={{user.id}}"
                        class="btn btn-white btn-sm">
                         <i class="fa fa-folder"></i> <?php echo $this->translate('View') ?></a>
-                    <a href=""
+                    <a href="<?php echo $this->url('admin', ['controller'=>'freelancer', 'action'=>'edit-profile']) ?>?id={{user.id}}"
                        class="btn btn-white btn-sm">
                         <i class="fa fa-pencil"></i> <?php echo $this->translate('Edit') ?></a>
                     <a ng-click="deleteFreelancer(user.id)" href="#" class="btn btn-danger btn-sm">

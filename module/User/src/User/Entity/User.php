@@ -67,7 +67,10 @@ class User extends Entity implements InputFilterAwareInterface{
     /** @ORM\Column(type="string", nullable=true) */
     protected $token = Null;
 
-    /** @ORM\Column(type="string", nullable=true) */
+    /**
+     * @var \User\Entity\Country
+     * @ORM\ManyToOne(targetEntity="Country")
+     */
     protected $country = null;
 
     /** @ORM\Column(type="string", nullable=true) */
@@ -405,7 +408,7 @@ class User extends Entity implements InputFilterAwareInterface{
     public function getData(){
         return array(
             "city" => $this->city,
-            "country" => $this->country,
+            "country" => $this->country->getData(),
             'currency' => $this->currency,
             "createdTime" => $this->createdTime,
             "email" => $this->email,
@@ -417,6 +420,7 @@ class User extends Entity implements InputFilterAwareInterface{
             "lastLogin" => $this->lastLogin,
             "lastName" => $this->lastName,
             "phone" => $this->phone,
+            'freelancer' => $this->freelancer,
             "profileUpdated" => $this->profileUpdated,
         );
     }

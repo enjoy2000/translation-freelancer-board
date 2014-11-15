@@ -10,6 +10,7 @@
 namespace User\Controller;
 
 use Zend\View\Model\ViewModel;
+use Zend\View\Model\JsonModel;
 
 use Application\Controller\AbstractActionController;
 use User\Entity\User;
@@ -57,5 +58,16 @@ class ForgotPasswordController extends AbstractActionController
         }
 
         return new ViewModel(array('form' => $form));
+    }
+
+    public function resetpasswordAction(){
+        $request = $this->getRequest();
+        if($request->isPost()){
+            $user = $this->getUserById((int)$request->getPost('user_id'));
+            $user->setData(['password' => $request->getPost('password')]);
+            $user->save($this->getEntityManager());
+
+            return new JsonModel(['success' => true]);
+        }
     }
 }

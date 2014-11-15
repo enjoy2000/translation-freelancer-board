@@ -19,9 +19,7 @@ angularApp.controller('UpdateInfoController', function($scope, $http, $timeout, 
 
     $scope.user = $scope.userInfo = {
         "city": null,
-        "country": {
-            "select": null
-        },
+        "country": null,
         "currency": null,
         "createdTime": null,
         "email": null,

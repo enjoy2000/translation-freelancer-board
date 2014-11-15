@@ -1,0 +1,111 @@
+<?php $this->headTitle($this->translate('Edit Profile')) ?>
+<?php
+$this->headLink()
+    ->prependStylesheet($this->basePath() . '/css/plugins/summernote/summernote.css')
+    ->prependStylesheet($this->basePath() . '/css/plugins/summernote/summernote-bs3.css');
+$this->headScript()
+    ->prependFile($this->basePath() . '/js/admin/freelancer/edit-profile.js')
+    ->prependFile($this->basePath() . '/js/common.js')
+    ->prependFile($this->basePath() . '/js/plugins/validate/jquery.validate.min.js')
+    ->prependFile($this->basePath() . '/js/admin/bootstrap-modal.js')
+    ->prependFile($this->basePath() . '/js/plugins/angular-file-upload/angular-file-upload.js')
+    ->prependScript("angularApp = angular.module('project', ['summernote', 'angularFileUpload']);")
+    ->prependFile($this->basePath() . '/js/plugins/bootstrap-filestyle/bootstrap-filestyle.min.js')
+    ->prependFile($this->basePath() . '/js/plugins/angular-summernote/angular-summernote.js')
+    ->prependFile($this->basePath() . '/js/plugins/summernote/summernote.min.js')
+    ->prependFile($this->basePath() . '/js/plugins/bootbox/bootbox.min.js');
+
+$this->inlineScript()
+    ->prependScript("
+        var USER_ID = '" . $this->user['id'] . "';
+        $(document).ready(function(){
+            //$('.summernote').summernote();
+        });
+        var edit = function() {
+            $('.click2edit').summernote({focus: true});
+        };
+        var save = function() {
+            var aHTML = $('.click2edit').code(); //save HTML If you need(aHTML: array).
+            $('.click2edit').destroy();
+        };
+        ");
+?>
+
+<div ng-controller="editProfileController" class="ibox float-e-margins">
+    <div class="ibox-title">
+        <h4><i class="fa fa-edit"></i> <?php echo $this->translate('Edit Profile') ?></h4>
+    </div>
+
+    <div class="ibox-content">
+        <form name="editProfileForm" method="">
+            <div class="panel panel-primary">
+                <div class="panel-body">
+                    <h4><i class="fa fa-info-circle"></i> <?php echo $this->translate('Basic Information') ?></h4>
+                    <div class="hr-line-dashed"></div>
+
+                    <?php include __DIR__ . "/../user/basic-info.phtml" ?>
+                </div>
+            </div>
+
+            <div class="panel panel-primary">
+                <div class="panel-body">
+                    <h4><i class="fa fa-file-text"></i> <?php echo $this->translate('Resume') ?></h4>
+                    <div class="hr-line-dashed"></div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div ng-controller="AppController" ng-file-drop uploader="uploader" class="form-group">
+                                <label><?php echo $this->translate('CV upload') ?> </label>
+                                <!-- TODO: file upload not working here -->
+                                <table class="table">
+                                    <tbody>
+                                    <tr>
+                                        <td class="project-title">
+                                            <i class="fa fa-file-text"></i>&nbsp; <a href="#">cv.docx</a> &nbsp;&nbsp;
+                                            <a href="#"><i class="fa fa-times-circle"></i></a>
+                                        </td>
+                                        <td class="project-title" width="10%">
+                                            <button type="button" class="btn btn-w-m btn-white btn-xs">
+                                                <i class="fa fa-cloud-upload">
+                                                    <?php echo $this->translate('Upload') ?></i></button>
+                                            <input type="file" ng-file-select="" uploader="uploader" />
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+                            <input type="hidden" ng-model="resume.id" />
+                            <div class="form-group">
+                                <label><?php echo $this->translate('Working Experiences') ?></label>
+                                <summernote ng-model="resume.workingExperiences" class="summernote">
+
+                                </summernote>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group">
+                                <label><?php echo $this->translate('Education') ?> </label>
+                                <summernote ng-model="resume.education" class="summernote">
+
+                                </summernote>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group">
+                                <label><?php echo $this->translate('Recommended') ?> </label>
+                                <input ng-model="resume.recommended" name="recommend" value=""
+                                       placeholder="Name/Email/Phone   " type="text" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-4 col-sm-offset-4">
+                    <button ng-click="editProfile()" class="btn btn-primary btn-block" type="submit">
+                        <?php echo $this->translate('Save') ?></button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
