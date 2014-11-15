@@ -8,20 +8,9 @@ angularApp.controller('ItemListController', function($scope, $location, ProjectA
     $scope.ProjectApi = ProjectApi;
     $scope.ProjectServiceLevel = ProjectServiceLevel;
     $scope.ProjectStatus = ProjectStatus;
-
-    var params = $location.search();
-    var page = 1;
-    if(typeof params['p'] != 'undefined'){
-        page = parseInt(params['page']);
-    }
-    var url = '/api/admin/project';
-
-    ProjectApi.list({
-        page: page
-    }, function($projects, $pages){
-        $scope.items = $projects;
-        $scope.pages = $pages;
-    });
+    $scope.pages = {};
+    $scope.maxSize = 7;
+    $scope.page = 1;
 
     function remove($index){
         var project = $scope.items[$index];
@@ -36,11 +25,24 @@ angularApp.controller('ItemListController', function($scope, $location, ProjectA
         });
     }
 
+    $scope.loadItems = function(){
+        ProjectApi.list({
+            page: $scope.page
+        }, function($projects, $pages){
+            $scope.items = $projects;
+            $scope.pages =$pages;
+        });
+    }
+
+    function pageChanged(){
+        $scope.loadItems();
+        console.log("Change to page " + $scope.page);
+    }
+
+    $scope.pageChanged = pageChanged;
     $scope.remove = remove;
 
-    /** paginator **/
-
-    /** end paginator **/
+    $scope.loadItems();
 });
 
 angularApp.controller('ProjectIndexController', function($scope){
@@ -51,4 +53,8 @@ angularApp.controller('ProjectIndexController', function($scope){
     $scope.goToEdit = function($project){
         location.href = "/admin/project/detail/#edit?id=" + $project.id;
     };
+
+    $scope.refresh = function(){
+        angular.element('#projectsList').scope().loadItems();
+    }
 });
