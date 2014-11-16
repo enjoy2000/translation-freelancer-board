@@ -12,7 +12,11 @@ angularApp.factory("CurrentUser", function($http) {
     function price($price){
         return $user.currency + " " + $price;
     }
-    $user.price = price;
-
-    return $user;
+    return {
+        info: $user,
+        is_admin: function(){
+            return true;
+        },
+        price: price
+    };
 });
