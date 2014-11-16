@@ -28,6 +28,9 @@ class LoginController extends AbstractActionController
     }
 
     public function indexAction(){
+        if($this->getCurrentUser()){
+            return $this->redirect()->toUrl('/admin/dashboard');
+        }
         $form = $this->getForm();
         $request = $this->getRequest();
         if($request->isPost()){

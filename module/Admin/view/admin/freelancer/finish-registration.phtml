@@ -45,7 +45,7 @@
 </style>
 <!-- End custom style -->
     <script>
-        USER_ID = "<?php echo $this->user->getId() ?>"
+        USER_ID = "<?php echo ($this->user) ? $this->user->getId() : '' ?>"
     </script>
     <div class="row">
         <div class="col-lg-12">

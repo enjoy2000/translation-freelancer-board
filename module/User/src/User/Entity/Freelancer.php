@@ -64,6 +64,18 @@ class Freelancer extends Entity{
      */
     protected $TranslationSpecialisms = null;
 
+    /**
+     * @var \Doctrine\ORM\PersistentCollection
+     * @ORM\ManyToMany(targetEntity="Rating")
+     * @ORM\JoinTable(name="UserRating")
+     */
+    protected $Rating = null;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    protected $isSenior = false;
+
     public function getData(){
         return array(
             'id' => $this->id,
@@ -73,6 +85,8 @@ class Freelancer extends Entity{
             'Resources' => Func::getReferenceIds($this->Resources),
             'TranslationCatTools' => Func::getReferenceIds($this->TranslationCatTools),
             'TranslationSpecialisms' => Func::getReferenceIds($this->TranslationSpecialisms),
+            'Rating' => Func::getReferenceIds($this->Rating),
+            'isSenior' => $this->isSenior
         );
     }
 
@@ -87,8 +101,13 @@ class Freelancer extends Entity{
             'InterpretingSpecialisms',
             'Resources',
             'TranslationCatTools',
-            'TranslationSpecialisms');
+            'TranslationSpecialisms',
+            'Rating'
+        );
         return $this->updateManyToOne($data, $keys, $entityManager);
     }
 
+    public function getId(){
+        return $this->id;
+    }
 } 

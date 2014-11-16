@@ -2,8 +2,14 @@
 <!-- Scripts -->
 <?php $this->headScript()
     ->prependFile($this->basePath() . '/js/admin/freelancer/index.js')
+    ->prependFile($this->basePath() . '/js/plugins/bootbox/bootbox.min.js')
     ->prependScript("angularApp = angular.module('project', []);")
-    ->prependFile($this->basePath() . '/js/inspinia.js')
+?>
+<?php
+$this->inlineScript()
+    ->prependScript("
+        var DELETE_CONFIRM_TEXT = '" . $this->translate('Are you sure to delete?') . "';
+    ");
 ?>
 <div class="ibox" id="mainController" ng-controller="listFreelancerController">
 <div class="ibox-title">
@@ -11,7 +17,7 @@
 
     <div class="ibox-tools">
         <a data-toggle="collapse" href="#search_freelancer" class="btn btn-primary btn-xs"><i class="fa fa-search"></i>
-            Search</a>
+            <?php echo $this->translate('Search') ?></a>
     </div>
 </div>
 
@@ -19,38 +25,37 @@
     <div class="row">
         <div class="col-lg-12">
             <div id="search_freelancer" class="panel-collapse collapse faq-answer">
-                <form method="" class="form-horizontal">
+                <form name="searchForm" action="" class="form-horizontal">
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">Name</label>
-
-                                <div class="col-sm-9"><input type="text" class="form-control"></div>
+                                <label class="col-sm-3 control-label"><?php echo $this->translate('Name') ?></label>
+                                <div class="col-sm-9">
+                                    <input ng-model="searchParams.name" name="name" type="text" class="form-control" />
+                                </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">Type</label>
+                                <label class="col-sm-3 control-label"><?php echo $this->translate('Type') ?></label>
 
                                 <div class="col-sm-9">
-                                    <select class="form-control" name="">
-                                        <option></option>
-                                        <option value="">Translation</option>
-                                        <option value="">Interpreting</option>
-                                        <option value="">Desktop Publishing</option>
+                                    <select ng-model="searchParams.type" name="type" class="form-control" >
+                                        <option value=""></option>
+                                        <option ng-repeat="resource in resources" value="{{resource.group.id}}">
+                                            {{resource.group.name}}
+                                        </option>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">Rating</label>
+                                <label class="col-sm-3 control-label">
+                                    <?php echo $this->translate('Rating') ?></label>
 
                                 <div class="col-sm-9">
-                                    <select class="form-control" name="">
-                                        <option></option>
-                                        <option value="">A+</option>
-                                        <option value="">A</option>
-                                        <option value="">A-</option>
-                                        <option value="">B+</option>
-                                        <option value="">B</option>
-                                        <option value="">B-</option>
+                                    <select ng-model="searchParams.rate" class="form-control" name="rate">
+                                        <option value=""></option>
+                                        <option ng-repeat="rate in ratings" value="{{rate.value}}">
+                                            {{rate.name}}
+                                        </option>
                                     </select>
                                 </div>
                             </div>
@@ -59,9 +64,9 @@
 
                                 <div class="col-sm-10">
                                     <label class="checkbox-inline">
-                                        <input type="checkbox" value="option1" id="unactive"> &nbsp;&nbsp;&nbsp;<strong>Include
-                                            unactive account </strong>
-                                    </label>
+                                        <input ng-model="searchParams.includeInactive" type="checkbox"
+                                               name="includeInactive" value="1"> &nbsp;&nbsp;&nbsp;
+                                        <strong><?php echo $this->translate('Include inactive accounts') ?></strong>
                                 </div>
                             </div>
                         </div>
@@ -69,32 +74,31 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">ID</label>
 
-                                <div class="col-sm-9"><input type="text" class="form-control"></div>
+                                <div class="col-sm-9">
+                                    <input ng-model="searchParams.idFreelancer" name="idFreelancer" type="text"
+                                           class="form-control"></div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">Source</label>
+                                <label class="col-sm-3 control-label"><?php echo $this->translate('Source') ?></label>
 
                                 <div class="col-sm-9">
-                                    <select class="form-control" name="">
-                                        <option></option>
-                                        <option value="">Translation</option>
-                                        <option value="">Interpreting</option>
-                                        <option value="">Desktop Publishing</option>
+                                    <select ng-model="searchParams.source" class="form-control" name="source">
+                                        <option value=""></option>
+                                        <option ng-repeat="source in sources" value="source.id">
+                                            {{source.name}}
+                                        </option>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">Specialism</label>
+                                <label class="col-sm-3 control-label"><?php echo $this->translate('Specialism') ?></label>
 
                                 <div class="col-sm-9">
-                                    <select class="form-control" name="">
-                                        <option></option>
-                                        <option value="">A+</option>
-                                        <option value="">A</option>
-                                        <option value="">A-</option>
-                                        <option value="">B+</option>
-                                        <option value="">B</option>
-                                        <option value="">B-</option>
+                                    <select ng-model="searchParams.specialism" class="form-control" name="specialism">
+                                        <option value=""></option>
+                                        <option ng-repeat="specialism in specialisms" value="{{specialism.id}}">
+                                            {{specialism.name}}
+                                        </option>
                                     </select>
                                 </div>
                             </div>
@@ -103,23 +107,25 @@
 
                                 <div class="col-sm-10">
                                     <label class="checkbox-inline">
-                                        <input type="checkbox" value="option1" id="unactive"> &nbsp;&nbsp;&nbsp;<strong>Specialism
-                                            tested </strong>
+                                        <input ng-model="searchParams.specialismTested" type="checkbox"
+                                               value="1" id="specialismTested"> &nbsp;&nbsp;&nbsp;
+                                        <strong><?php echo $this->translate('Specialism tested') ?></strong>
                                     </label>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-4">
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">Email</label>
+                                <label class="col-sm-3 control-label"><?php echo $this->translate('Email') ?></label>
 
-                                <div class="col-sm-9"><input type="text" class="form-control"></div>
+                                <div class="col-sm-9"><input ng-model="searchParams.email" name="email"
+                                                             type="email" class="form-control"></div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">Target</label>
+                                <label class="col-sm-3 control-label"><?php echo $this->translate('Target') ?></label>
 
                                 <div class="col-sm-9">
-                                    <select class="form-control" name="">
+                                    <select ng-model="searchParams.target" class="form-control" name="target">
                                         <option></option>
                                         <option value="">Translation</option>
                                         <option value="">Interpreting</option>
@@ -128,14 +134,14 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">Country</label>
+                                <label class="col-sm-3 control-label"><?php echo $this->translate('Country') ?></label>
 
                                 <div class="col-sm-9">
-                                    <select class="form-control" name="">
-                                        <option></option>
-                                        <option value="">Translation</option>
-                                        <option value="">Interpreting</option>
-                                        <option value="">Desktop Publishing</option>
+                                    <select ng-model="searchParams.country" class="form-control" name="country">
+                                        <option value=""></option>
+                                        <option ng-repeat="country in countries" value="{{country.id}}">
+                                            {{country.name}}
+                                        </option>
                                     </select>
                                 </div>
                             </div>
@@ -144,16 +150,20 @@
 
                                 <div class="col-sm-10">
                                     <label class="checkbox-inline">
-                                        <input type="checkbox" value="option1" id="unactive"> &nbsp;&nbsp;&nbsp;<strong>Senior
-                                            account </strong>
+                                        <input ng-model="searchParams.senior" type="checkbox"
+                                               value="1" name="senior"> &nbsp;&nbsp;&nbsp;
+                                        <strong><?php echo $this->translate('Senior account') ?></strong>
                                     </label>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="text-right tooltip-demo">
-                        <a href="#" class="btn btn-sm btn-primary"><i class="fa fa-search"></i> Search</a>
-                        <a href="#" class="btn btn-white btn-sm" type="reset"><i class="fa fa-times"></i> Reset</a>
+                        <button ng-click="advancedSearch()" name="submit" type="submit" class="btn btn-sm btn-primary">
+                            <i class="fa fa-search"></i>
+                            <?php echo $this->translate('Search') ?></button>
+                        <button class="btn btn-white btn-sm" type="reset"><i class="fa fa-times"></i>
+                            <?php echo $this->translate('Reset') ?></button>
                     </div>
                 </form>
             </div>
@@ -163,40 +173,50 @@
     <div class="project-list">
         <table class="table table-hover">
             <tbody>
+            <tr ng-hide="list.length">
+                <td class="text-danger"><h3><?php echo $this->translate('No result.') ?></h3></td>
+            </tr>
             <tr ng-repeat="user in list">
                 <td class="project-status" width="1%">
                     <span class="label {{user.isActive ? 'label-primary' : 'label-default'}}">
-                        {{user.isActive ? 'Active' : 'Unactive'}}
+                        {{user.isActive ? '<?php echo $this->translate('Active') ?>' : '<?php echo $this->translate('Unactive') ?>'}}
                     </span>
                 </td>
                 <td class="project-title">
                     <strong><i class="fa fa-user"></i> {{user.lastName}}, {{user.firstName}}</strong>
                     <br/>
-                    <small>Created {{ user.createdTime }}</small>
+                    <small><?php echo $this->translate('Created') ?> {{ user.createdTime }}</small>
                 </td>
                 <td class="project-title">
                     <strong><i class="fa fa-envelope"></i> {{user.email}}</strong>
                     <br/>
-                    <small>{{user.country}}</small>
+                    <small>{{user.country.name}}</small>
                 </td>
                 <td class="project-completion">
                     <!-- TODO: need to add tasksDone and rating here -->
-                    <small><i class="fa fa-tasks"></i> Tasks done: {{user.tasksDone}}</small>
+                    <small><i class="fa fa-tasks"></i>
+                        <?php echo $this->translate('Tasks done') ?>: {{user.tasksDone}}</small>
                     <br/>
-                    <small>Rating: <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                    <small><?php echo $this->translate('Rating') ?>:
+                        <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
                             class="fa fa-star"></i><i class="fa fa-star-half-o"></i><i class="fa fa-star-o"></i></small>
                 </td>
                 <td class="project-actions">
-                    <a href="#" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
-                    <a href="#" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Edit </a>
-                    <a href="#" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete </a>
-                    <!-- only admin has right to show the delete button -->
+                    <a href="<?php echo $this->url('admin', ['controller'=>'freelancer', 'action'=>'view']) ?>?id={{user.id}}"
+                       class="btn btn-white btn-sm">
+                        <i class="fa fa-folder"></i> <?php echo $this->translate('View') ?></a>
+                    <a href="<?php echo $this->url('admin', ['controller'=>'freelancer', 'action'=>'edit-profile']) ?>?id={{user.id}}"
+                       class="btn btn-white btn-sm">
+                        <i class="fa fa-pencil"></i> <?php echo $this->translate('Edit') ?></a>
+                    <a ng-click="deleteFreelancer(user.id)" href="#" class="btn btn-danger btn-sm">
+                        <i class="fa fa-trash"></i> <?php echo $this->translate('Delete') ?></a>
+                    <!-- TODO: only admin has right to show the delete button -->
                 </td>
             </tr>
             </tbody>
         </table>
     </div>
-    <div class="pager btn-group text-right">
+    <div ng-hide="!list.length" class="pager btn-group text-right">
         <button type="button" data-page="{{pages.current - 1}}"
                 class="btn btn-white"><i class="fa fa-chevron-left"></i></button>
         <button ng-repeat="n in rangeCustom" data-page="{{n+1}}"

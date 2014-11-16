@@ -1,4 +1,4 @@
-/**
+    /**
  * Created by antiprovn on 10/1/14.
  */
 angularApp.controller("TranslationPriceListController", function($scope, $http){

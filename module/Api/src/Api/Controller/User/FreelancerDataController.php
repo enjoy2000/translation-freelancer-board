@@ -20,12 +20,19 @@ class FreelancerDataController extends AbstractRestfulController
             'operatingSystems' => [],
             'resources' => [],
             'specialisms' => [],
+            'ratings' => [],
         ];
+
+        $countries = $this->getEntityManager()->getRepository('\User\Entity\Country')
+                        ->findBy([],['id' => 'desc']);
+
 
         $data['catTools'] = $this->getAllData('\User\Entity\CatTool');
         $data['operatingSystems'] = $this->getAllData('\User\Entity\OperatingSystem');
         $data['resources'] = $this->getGroupResources();
         $data['specialisms'] = $this->getAllData('\User\Entity\Specialism');
+        $data['ratings'] = $this->getAllData('\User\Entity\Rating');
+        $data['countries'] = $this->getDataList($countries);
 
         return new JsonModel($data);
     }
@@ -49,6 +56,6 @@ class FreelancerDataController extends AbstractRestfulController
             }
             $resourcesData[] = $resourceData;
         }
-        return $resourceData;
+        return $resourcesData;
     }
 }

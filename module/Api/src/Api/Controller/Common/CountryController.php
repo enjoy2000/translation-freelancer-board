@@ -15,14 +15,10 @@ class CountryController extends AbstractRestfulController
 {
     public function getList()
     {
-        $config = $this->getServiceLocator()->get('Config');
-        $countries = $config['countries'];
+        $countries = $this->getEntityManager()->getRepository('\User\Entity\Country')
+            ->findBy(array(),array('name'=>'ASC'));
+        $countries = $this->getDataList($countries);
 
-        $data = array('countries' => []);
-        foreach($countries as $code => $name){
-            $data['countries'][] = array('select' => $code, 'label' => $name);
-        }
-
-        return new JsonModel($data);
+        return new JsonModel(['countries' => $countries]);
     }
 }

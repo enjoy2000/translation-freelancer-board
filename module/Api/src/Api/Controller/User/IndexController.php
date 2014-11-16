@@ -36,7 +36,14 @@ class IndexController extends AbstractRestfulController
     }
 
     public function update($id, $data){
-        $data['country'] = $data['country']['select'];
+        if(isset($data['password']) && strlen($data['password']) > 5){
+            $user = $this->getUserById((int)$id);
+            $user->encodePassword($data['password']);
+            $user->save($this->getEntityManager());
+
+            return new JsonModel(['success' => 1]);
+        }
+        $data['country'] = $this->getEntityManager()->find('\User\Entity\Country', (int)$data['country']['id']);
 
         $data['profileUpdated'] = true;
         $user = $this->getCurrentUser();
