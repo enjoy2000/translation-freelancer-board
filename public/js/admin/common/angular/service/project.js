@@ -10,6 +10,75 @@ angularApp.factory("ProjectStatus", function(){
         'id': 2,
         'name': 'Ordered',
         'decorator': 'danger'
+    },{
+        'id': 3,
+        'name': 'Ongoing',
+        'decorator': 'danger'
+    },{
+        'id': 4,
+        'name': 'Reviewing',
+        'decorator': 'danger'
+    },{
+        'id': 5,
+        'name': 'Completed',
+        'decorator': 'danger'
+    },{
+        'id': 6,
+        'name': 'Rejected',
+        'decorator': 'danger'
+    }];
+
+    return {
+        get: function ($id) {
+            for (var i = 0; i < statuses.length; i++) {
+                if (statuses[i].id == $id) {
+                    return statuses[i];
+                }
+            }
+        },
+        all: function () {
+            return statuses;
+        }
+    }
+});
+
+
+angularApp.factory("ProjectField", function(){
+    var fields = [{
+        'id': 1,
+        'name': 'Field 1'
+    },{
+        'id': 2,
+        'name': 'Field 2'
+    },{
+        'id': 3,
+        'name': 'Field 3'
+    },{
+        'id': 4,
+        'name': 'Field 4'
+    }];
+    return {
+        get: function ($id) {
+            for (var i = 0; i < fields.length; i++) {
+                if (fields[i].id == $id) {
+                    return fields[i];
+                }
+            }
+        },
+        all: function () {
+            return fields;
+        }
+    }
+});
+
+
+angularApp.factory("PayStatus", function(){
+    var statuses = [{
+        'id': 1,
+        'name': 'Paid'
+    },{
+        'id': 2,
+        'name': 'Unpaid'
     }];
     return {
         get: function ($id) {
@@ -80,28 +149,60 @@ angularApp.factory("DateFormatter", function(){
 });
 
 
-angularApp.factory("ProjectApi", function($http){
-    return {
-        get: function($id, $func){
-            return $http.get("/api/admin/project/" + $id)
+angularApp.factory("API", function($http){
+
+    function factory(url, singleKey, multipleKey){
+        if(url[url.length - 1] != '/'){
+            url += "/";
+        }
+
+        function get($id, $func){
+            return $http.get(url + $id)
                 .success(function($data){
-                    var project = $data.project;
-                    $func(project);
-                });
-        },
-        list: function($params, $func){
-            return $http.get("/api/admin/project/?" + jQuery.param($params))
-                .success(function($data){
-                    var projects = $data.projects;
-                    var pages = $data.pages;
-                    $func(projects, pages);
-                });
-        },
-        delete: function($id, $func){
-            return $http.delete("/api/admin/project/" + $id)
-                .success(function($data){
-                    $func();
+                    var obj = $data[singleKey];
+                    $func(obj);
                 });
         }
+
+        function list($params, $func){
+            return $http.get(url + "?" + jQuery.param($params))
+                .success(function($data){
+                    var objs = $data[multipleKey];
+                    var pages = $data.pages;
+                    $func(objs, pages);
+                });
+        }
+
+        function del($id, $func){
+            return $http.delete(url + $id)
+                .success(function($data){
+                    var obj = $data[singleKey];
+                    $func(obj);
+                });
+        }
+
+        return {
+            get: get,
+            list: list,
+            delete: del
+        }
     }
+
+    return {
+        factory: factory
+    };
+});
+
+
+angularApp.factory("ProjectApi", function(API){
+    return API.factory('/api/admin/project/', 'project', 'projects');
+});
+
+
+angularApp.factory("StaffApi", function(API){
+    return API.factory('/api/admin/staff/', 'staff', 'staffs');
+});
+
+angularApp.factory("LanguageApi", function(API){
+    return API.factory('/api/admin/language/', 'language', 'languages');
 });

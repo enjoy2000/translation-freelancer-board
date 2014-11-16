@@ -141,6 +141,12 @@ class Project extends Entity{
      */
     protected $is_deleted = 0;
 
+    /**
+     * @var int
+     * @ORM\Column(type="integer")
+     */
+    protected $payStatus = 1;  # unpaid
+
     public function getData(){
         return [
             'id' => $this->id,

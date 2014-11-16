@@ -2,16 +2,21 @@
  * Created by eastagile on 11/11/14.
  */
 angularApp.controller('ItemListController', function($scope, $location, ProjectApi, ProjectServiceLevel, ProjectStatus,
-                                                     DateFormatter, CurrentUser, $timeout){
+                                                     DateFormatter, CurrentUser, $timeout, PayStatus, ProjectField,
+                                                     StaffApi){
     $scope.CurrentUser = CurrentUser;
     $scope.DateFormatter = DateFormatter;
     $scope.ProjectApi = ProjectApi;
     $scope.ProjectServiceLevel = ProjectServiceLevel;
     $scope.ProjectStatus = ProjectStatus;
+    $scope.PayStatus = PayStatus;
+    $scope.ProjectField = ProjectField;
+    $scope.StaffApi = StaffApi;
+
     $scope.pages = {};
     $scope.maxSize = 7;
     $scope.page = 1;
-    $scope.search = {};
+    $scope.filter = {};
 
     function remove($index){
         var project = $scope.items[$index];
@@ -27,7 +32,7 @@ angularApp.controller('ItemListController', function($scope, $location, ProjectA
     }
 
     function loadItems(page, func){
-        var params = $scope.search;
+        var params = $scope.filter;
         params.page = page;
         $scope.items = [];
         ProjectApi.list(params, function($projects, $pages){
@@ -76,7 +81,12 @@ angularApp.controller('ItemListController', function($scope, $location, ProjectA
 
 });
 
-angularApp.controller('ProjectIndexController', function($scope){
+angularApp.controller('ProjectIndexController', function($scope, StaffApi, LanguageApi){
+
+    $scope.languages = {};
+    $scope.pms = {};
+    $scope.sales = {};
+
     $scope.goToDetail = function($project){
         location.href = "/admin/project/detail/#?id=" + $project.id;
     };
@@ -85,4 +95,19 @@ angularApp.controller('ProjectIndexController', function($scope){
         location.href = "/admin/project/detail/#edit?id=" + $project.id;
     };
 
+    StaffApi.list({
+        type: 2
+    }, function($pms, $pages){
+        $scope.pms = $pms;
+    });
+
+    StaffApi.list({
+        type: 1
+    }, function($sales, $pages){
+        $scope.sales = $sales;
+    });
+
+    LanguageApi.list({}, function($languages){
+        $scope.languages = $languages;
+    })
 });

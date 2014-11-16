@@ -85,6 +85,66 @@ class ProjectController extends AbstractRestfulJsonController
         //->findBy(array('group' => $freelancerGroup));
         $queryBuilder = $projectList->createQueryBuilder('project');
         $queryBuilder->andWhere('project.is_deleted = 0');
+
+        /** start filter */
+        if($project_id = $this->params()->fromQuery('project_id')){
+            $queryBuilder->andWhere($queryBuilder->expr()->eq('project.id', $project_id));
+        }
+        if($reference = $this->params()->fromQuery('reference')){
+            $queryBuilder->andWhere(
+                $queryBuilder->expr()->like('project.reference',
+                $queryBuilder->expr()->literal("%$reference%")));
+        }
+        if($field = $this->params()->fromQuery('field')){
+            $queryBuilder->andWhere(
+                $queryBuilder->expr()->eq('project.field', $field['id'])
+            );
+        }
+        if($status = $this->params()->fromQuery('status')){
+            $queryBuilder->andWhere(
+                $queryBuilder->expr()->eq('project.status', $status['id'])
+            );
+        }
+        if($payStatus = $this->params()->fromQuery('payStatus')){
+            $queryBuilder->andWhere(
+                $queryBuilder->expr()->eq('project.payStatus', $payStatus['id'])
+            );
+        }
+        if($sale = $this->params()->fromQuery('sale')){
+            $queryBuilder->andWhere(
+                $queryBuilder->expr()->eq('project.sale', $sale['id'])
+            );
+        }
+        if($pm = $this->params()->fromQuery('pm')){
+            $queryBuilder->andWhere(
+                $queryBuilder->expr()->eq('project.pm', $pm['id'])
+            );
+        }
+        if($clientId = $this->params()->fromQuery('clientId')){
+            $queryBuilder->andWhere(
+                $queryBuilder->expr()->eq('project.client', $clientId)
+            );
+        }
+        if($startDate = $this->params()->fromQuery('startDate')){
+            $queryBuilder->andWhere(
+                $queryBuilder->expr()->gte('project.startDate', $startDate)
+            );
+        }
+        if($dueDate = $this->params()->fromQuery('dueDate')){
+            $queryBuilder->andWhere(
+                $queryBuilder->expr()->gte('project.dueDate', $dueDate)
+            );
+        }
+        if($source = $this->params()->fromQuery('source')){
+            $queryBuilder->andWhere(
+                $queryBuilder->expr()->gte('project.sourceLanguage', $source['id'])
+            );
+        }
+        if($target = $this->params()->fromQuery('target')){
+            // TODO: Many to many problem
+        }
+        /** end filter */
+
         $adapter = new DoctrineAdapter(new ORMPaginator($queryBuilder));
         $paginator = new Paginator($adapter);
         $paginator->setDefaultItemCountPerPage(10);
