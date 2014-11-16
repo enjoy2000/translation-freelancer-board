@@ -24,11 +24,11 @@ class BankInfo extends Entity {
     protected $id;
 
     /**
-     * @var \User\Entity\Freelancer
-     * @ORM\OneToOne(targetEntity="Freelancer")
-     * @ORM\JoinColumn(name="freelancer_id", referencedColumnName="id", nullable=true)
+     * @var \User\Entity\User
+     * @ORM\OneToOne(targetEntity="User")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=true)
      */
-    protected $freelancer;
+    protected $user;
 
     /**
      * @ORM\Column(type="string",nullable=true)
@@ -83,7 +83,7 @@ class BankInfo extends Entity {
     public function getData(){
         return [
             'id' => $this->id,
-            'freelancer' => $this->freelancer,
+            'user' => $this->user,
             'paypal' => $this->paypal,
             'alipay' => $this->alipay,
             'account' => $this->account,
@@ -105,7 +105,7 @@ class BankInfo extends Entity {
     public function setData(array $arr){
         $keys = array(
             'id',
-            'freelancer',
+            'user',
             'paypal',
             'alipay',
             'account',

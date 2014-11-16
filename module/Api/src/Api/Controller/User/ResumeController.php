@@ -16,8 +16,7 @@ class ResumeController extends AbstractRestfulController
 {
     public function get($id){
         $user = $this->getUserById($id);
-        $freelancer = $user->getFreelancer();
-        $resume = $this->getEntityManager()->getRepository('\User\Entity\Resume')->findOneBy(['freelancer' => $freelancer]);
+        $resume = $this->getEntityManager()->getRepository('\User\Entity\Resume')->findOneBy(['user' => $user]);
 
         return new JsonModel([
             'resume' => $resume->getData(),
@@ -27,10 +26,9 @@ class ResumeController extends AbstractRestfulController
     public function update($id, $data){
         $entityManager = $this->getEntityManager();
         $user = $this->getUserById($id);
-        $freelancer = $user->getFreelancer();
         $resume = $entityManager->getRepository('\User\Entity\Resume')
-            ->findOneBy(['freelancer' => $freelancer]);
-        $data['freelancer'] = $freelancer;
+            ->findOneBy(['user' => $user]);
+        $data['user'] = $user;
         $resume->setData($data);
         $resume->save($entityManager);
 
@@ -40,8 +38,7 @@ class ResumeController extends AbstractRestfulController
     public function create($data){
         $entityManager = $this->getEntityManager();
         $user = $this->getUserById($data['user_id']);
-        $freelancer = $user->getFreelancer();
-        $data['freelancer'] = $freelancer;
+        $data['user'] = $user;
         $resume = new Resume();
 
         $resume->setData($data);

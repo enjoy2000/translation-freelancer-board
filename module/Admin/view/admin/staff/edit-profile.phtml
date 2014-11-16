@@ -17,7 +17,6 @@ $this->headScript()
 
 $this->inlineScript()
     ->prependScript("
-        var USER_ID = '" . $this->user['id'] . "';
         $(document).ready(function(){
             //$('.summernote').summernote();
         });
@@ -30,7 +29,9 @@ $this->inlineScript()
         };
         ");
 ?>
-
+<Script>
+    var USER_ID = '<?php echo ($this->user) ? $this->user['id'] : '' ?>';
+</Script>
 <div ng-controller="editProfileController" class="ibox float-e-margins">
     <div class="ibox-title">
         <h4><i class="fa fa-edit"></i> <?php echo $this->translate('Edit Profile') ?></h4>
@@ -46,6 +47,24 @@ $this->inlineScript()
                     <?php include __DIR__ . "/../user/basic-info.phtml" ?>
                 </div>
             </div>
+
+            <?php if($this->user && $this->user['group']->getId()==3): ?>
+            <div class="panel panel-primary staff-type">
+                <div class="panel-body">
+
+                    <?php include __DIR__ . "/staff-type.phtml" ?>
+                </div>
+            </div>
+            <?php endif; ?>
+
+            <?php if($this->user && $this->user['group']->getId()==3): ?>
+            <div ng-show="{{userInfo.group.id==3}}" class="panel panel-primary staff-type">
+                <div class="panel-body">
+
+                    <?php include __DIR__ . "/../user/bank-info.phtml" ?>
+                </div>
+            </div>
+            <?php endif; ?>
 
             <div class="panel panel-primary">
                 <div class="panel-body">

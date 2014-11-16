@@ -1,0 +1,106 @@
+<?php $this->headTitle($this->translate('Freelancer Profile')) ?>
+<?php
+$this->headScript()
+    ->prependFile($this->basePath() . '/js/admin/freelancer/view.js')
+    ->prependFile($this->basePath() . '/js/common.js')
+    ->prependFile($this->basePath() . '/js/plugins/bootbox/bootbox.min.js')
+    ->prependScript("angularApp = angular.module('project', []);");
+$this->inlineScript()
+    ->prependScript("
+        var USER_ID = '" . $this->user['id'] . "';
+        var FREELANCER_ID = '" . $this->user['freelancer']->getId() . "';
+    ");
+?>
+<div ng-controller="viewFreelancerController" class="row animated fadeInRight">
+<div class="col-md-4">
+    <div class="ibox">
+        <div class="ibox-title">
+            <h5><?php echo $this->user['lastName'] ?>, <?php echo $this->user['firstName'] ?></h5>
+
+            <div class="ibox-tools">
+                <?php if ($this->user['isActive']): ?>
+                    <span class="label label-primary"><?php echo $this->translate('Active') ?></span>
+                <?php else: ?>
+                    <span class="label label-default"><?php echo $this->translate('Unactive') ?></span>
+                <?php endif; ?>
+            </div>
+        </div>
+
+        <div class="ibox-content profile-content">
+            <p><i class="fa fa-envelope"></i> &nbsp; <?php echo $this->user['email'] ?>
+                &nbsp;
+                <?php if (!$this->user['gender']): ?>
+                    <i class="fa fa-male"></i>
+                <?php else: ?>
+                    <i class="fa fa-female"></i>
+                <?php endif; ?>
+            </p>
+
+            <p><i class="fa fa-tag"></i> &nbsp; PT{{1000000 + user.user.id}}</p>
+            <!-- Freelancer Alias generate by system automaticly -->
+            <p><i class="fa fa-phone"></i> &nbsp; {{user.user.phone}}</p>
+            <p><i class="fa fa-mobile"></i> &nbsp; {{user.user.mobile}}</p>
+
+            <p><i class="fa fa-map-marker"></i> &nbsp; <?php echo $this->user['city'] ?>,
+                {{user.user.country.name}}</p>
+
+            <p><i class="fa fa-file-text"></i><a href="" class="text-info"> &nbsp; John.docx</a></p>
+
+            <form role="form" class="form-inline">
+                <div class="form-group">
+                    <input ng-model="password" type="password"
+                           placeholder="<?php echo $this->translate('Reset password') ?>"
+                           class="form-control required" required>
+                </div>
+                <button ng-click="resetPassword()" class="btn btn-danger" type="submit">
+                    <?php echo $this->translate('Reset') ?></button>
+                <p ng-show="passwordChanged==1" class="text-success">
+                    <?php echo $this->translate('Password changed.') ?></p>
+            </form>
+            <div class="hr-line-dashed"></div>
+            <h4><?php echo $this->translate('Staff Type') ?></h4>
+
+            <div class="row file-manager">
+                <ul class="tag-list" style="padding: 0">
+                    <li><a href="">{{user.user.group.name}}</a></li>
+                </ul>
+            </div>
+
+            <div class="hr-line-dashed"></div>
+            <h4><?php echo $this->translate('Payment information') ?></h4>
+
+            <p><strong><?php echo $this->translate('Paypal') ?></strong>: {{bankInfo.paypal}}</p>
+
+            <p><strong><?php echo $this->translate('Alipay') ?></strong>: {{bankInfo.alipay}}</p>
+
+            <p><strong><?php echo $this->translate('Bank Info') ?></strong>: </p>
+            <address class="well">
+                <strong>{{bankInfo.account}}</strong><br>
+                {{bankInfo.address}}<br>
+                {{bankInfo.city}}, {{bankInfo.country}}<br>
+                <strong>Beneficiary Name</strong>: {{bankInfo.name}}<br>
+                <strong>Account No./IBAN</strong>: {{bankInfo.accountNo}}<br>
+                <strong>Swift Code</strong>: {{bankInfo.swift}}<br>
+                <strong>ABA Routing Number</strong>: {{bankInfo.routingNumber}}
+            </address>
+
+            <a href="<?php echo $this->url('admin', ['controller'=>'freelancer', 'action'=>'edit-payment-info']) ?>?id={{user.user.id}}"
+               class="btn btn-primary btn-block"><i class="fa fa-paste"></i> Edit</a>
+        </div>
+    </div>
+</div>
+<div class="col-md-8">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h3><i class="fa fa-file-text-o"></i> <?php echo $this->translate('Resume') ?></h3>
+        </div>
+        <div class="ibox-content">
+            <h4><?php echo $this->translate('Working Experiences') ?></h4>
+            <p>{{resume.workingExperiences}}</p>
+            <div class="hr-line-dashed"></div>
+            <h4><?php echo $this->translate('Education') ?></h4>
+            <p>{{resume.education}}</p>
+        </div>
+    </div>
+</div>
+</div>

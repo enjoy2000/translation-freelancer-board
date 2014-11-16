@@ -24,11 +24,11 @@ class Resume extends Entity {
     protected $id;
 
     /**
-     * @var \User\Entity\Freelancer
-     * @ORM\OneToOne(targetEntity="Freelancer")
-     * @ORM\JoinColumn(name="freelancer_id", referencedColumnName="id", nullable=true)
+     * @var \User\Entity\User
+     * @ORM\OneToOne(targetEntity="User")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=true)
      */
-    protected $freelancer;
+    protected $user;
 
     /**
      * @ORM\Column(type="text",nullable=true)
@@ -58,7 +58,7 @@ class Resume extends Entity {
     public function getData(){
         return [
             'id' => $this->id,
-            'freelancer' => $this->freelancer,
+            'user' => $this->user,
             'workingExperiences' => $this->workingExperiences,
             'education' => $this->education,
             'recommended' => $this->recommended,

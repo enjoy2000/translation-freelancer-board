@@ -118,6 +118,7 @@ return array(
             'Api\Controller\User\PriceData' => 'Api\Controller\User\PriceDataController',
             'Api\Controller\User\Resource' => 'Api\Controller\User\ResourceController',
             'Api\Controller\User\Resume' => 'Api\Controller\User\ResumeController',
+            'Api\Controller\User\Staff' => 'Api\Controller\User\StaffController',
             'Api\Controller\User\TranslationPrice' => 'Api\Controller\User\TranslationPriceController',
             'Api\Controller\Papertask\DesktopPublishing' => 'Api\Controller\Papertask\DesktopPublishingController',
             'Api\Controller\Papertask\Engineering' => 'Api\Controller\Papertask\EngineeringController',
