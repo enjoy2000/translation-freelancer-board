@@ -1,33 +1,22 @@
 /**
  * Created by eastagile on 11/11/14.
  */
-angularApp.controller('ItemListController', function($scope, $location, ProjectApi, ProjectServiceLevel, ProjectStatus,
-                                                     DateFormatter, CurrentUser, $timeout, PayStatus, ProjectField,
-                                                     StaffApi){
-    $scope.CurrentUser = CurrentUser;
-    $scope.DateFormatter = DateFormatter;
-    $scope.ProjectApi = ProjectApi;
-    $scope.ProjectServiceLevel = ProjectServiceLevel;
-    $scope.ProjectStatus = ProjectStatus;
-    $scope.PayStatus = PayStatus;
-    $scope.ProjectField = ProjectField;
-    $scope.StaffApi = StaffApi;
-
+angularApp.controller('ItemListController', function($scope, $location, $timeout){
     $scope.pages = {};
     $scope.maxSize = 7;
     $scope.page = 1;
     $scope.filter = {};
 
     function remove($index){
-        var project = $scope.items[$index];
-        bootbox.confirm("Are you sure to delete project '" + project.reference + "'?", function(value){
+        var item = $scope.items[$index];
+        bootbox.confirm("Are you sure to delete?", function(value){
             if(value){
-                ProjectApi.delete(project.id, function(){
+                $scope.ItemApi.delete(item.id, function(){
                     $timeout(function(){
                         $scope.items.splice($index, 1);
-                    }, 1)
+                    }, 1);
                 });
-            };
+            }
         });
     }
 
@@ -35,8 +24,8 @@ angularApp.controller('ItemListController', function($scope, $location, ProjectA
         var params = $scope.filter;
         params.page = page;
         $scope.items = [];
-        ProjectApi.list(params, function($projects, $pages){
-            $scope.items = $projects;
+        $scope.ItemApi.list(params, function($items, $pages){
+            $scope.items = $items;
             $scope.pages =$pages;
             if(typeof(func) == 'function'){
                 func();
@@ -53,14 +42,7 @@ angularApp.controller('ItemListController', function($scope, $location, ProjectA
         console.log("Change to page " + $scope.page);
     }
 
-    $scope.pageChanged = pageChanged;
-    $scope.remove = remove;
-    $scope.search = search;
-    $scope.loadItems = loadItems;
-
-    $scope.loadItems($scope.page);
-
-    function simpleLoad(btn, state) {
+    function simpleLoad(btn, state){
         if (state) {
             btn.children().addClass('fa-spin');
             btn.contents().last().replaceWith(" Loading");
@@ -70,18 +52,40 @@ angularApp.controller('ItemListController', function($scope, $location, ProjectA
         }
     }
 
-    $scope.refresh = function(){
+    function refresh(){
         $scope.items = [];
         var btn = $('#loading-example-btn');
         simpleLoad(btn, true);
         $scope.loadItems(function(){
             simpleLoad(btn, false);
         });
-    };
+    }
+
+    $scope.pageChanged = pageChanged;
+    $scope.remove = remove;
+    $scope.search = search;
+    $scope.loadItems = loadItems;
+    $scope.refresh = refresh;
+
+    $scope.loadItems($scope.page);
 
 });
 
-angularApp.controller('ProjectIndexController', function($scope, StaffApi, LanguageApi){
+angularApp.controller('ProjectIndexController', function($scope, StaffApi, LanguageApi, ProjectApi, ProjectServiceLevel,
+                                                         ProjectStatus, DateFormatter, CurrentUser, PayStatus,
+                                                         ProjectField){
+
+    $scope.CurrentUser = CurrentUser;
+    $scope.DateFormatter = DateFormatter;
+    $scope.ProjectApi = ProjectApi;
+    $scope.ProjectServiceLevel = ProjectServiceLevel;
+    $scope.ProjectStatus = ProjectStatus;
+    $scope.PayStatus = PayStatus;
+    $scope.ProjectField = ProjectField;
+    $scope.StaffApi = StaffApi;
+
+    /** This is for listing item controller **/
+    $scope.ItemApi = ProjectApi;
 
     $scope.languages = {};
     $scope.pms = {};
@@ -97,13 +101,13 @@ angularApp.controller('ProjectIndexController', function($scope, StaffApi, Langu
 
     StaffApi.list({
         type: 2
-    }, function($pms, $pages){
+    }, function($pms){
         $scope.pms = $pms;
     });
 
     StaffApi.list({
         type: 1
-    }, function($sales, $pages){
+    }, function($sales){
         $scope.sales = $sales;
     });
 
