@@ -43,6 +43,32 @@ angularApp.factory("ProjectStatus", function(){
 });
 
 
+angularApp.factory("ProjectPriority", function(){
+    var priorities = [{
+        id: 1,
+        name: 'Normal',
+        decorator: 'primary'
+    }, {
+        id: 2,
+        name: 'High',
+        decorator: 'danger'
+    }];
+
+    return {
+        get: function ($id) {
+            for (var i = 0; i < priorities.length; i++) {
+                if (priorities[i].id == $id) {
+                    return priorities[i];
+                }
+            }
+        },
+        all: function () {
+            return priorities;
+        }
+    }
+});
+
+
 angularApp.factory("ProjectField", function(){
     var fields = [{
         'id': 1,
@@ -138,13 +164,33 @@ angularApp.factory("ProjectServiceLevel", function(){
 
 angularApp.factory("DateFormatter", function(){
     var month_names_short = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    var month_names_full = [ "January", "February", "March", "April", "May", "June",
+                             "July", "August", "September", "October", "November", "December" ];
     function short($date){
         var date = new Date($date.date);
+        // 2014.Oct.10
         return date.getFullYear() + "." + month_names_short[date.getMonth()] + "." + date.getDate();
     }
 
+    function format($date){
+        if(typeof($date) == 'undefined'){
+            return "";
+        }
+        var date = new Date($date.date);
+        //15 October 2014 - 11:04 AM
+        var hour = date.getHours();
+        var t = "AM";
+        if(hour > 12){
+            hour = hour -12;
+            t = "PM";
+        }
+        return date.getDate() + " " + month_names_full[date.getMonth()] + " " + date.getFullYear()
+                + " - " + hour + ":" + date.getSeconds() + " " + t;
+    }
+
     return {
-        short: short
+        short: short,
+        format: format
     }
 });
 

@@ -54,13 +54,13 @@ class Project extends Entity{
 
     /**
      * @var string
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="datetime")
      */
     protected $startDate;
 
     /**
      * @var string
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="datetime")
      */
     protected $dueDate;
 
