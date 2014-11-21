@@ -1,0 +1,84 @@
+
+<!-- Le styles -->
+<?php
+$this->headLink ()->prependStylesheet ( $this->basePath () . '/css/plugins/summernote/summernote-bs3.css' )
+				  ->prependStylesheet ( $this->basePath () . '/css/plugins/summernote/summernote.css' )
+?>
+
+<!-- Scripts -->
+<?php
+
+$this->headScript ()->prependFile ( $this->basePath () . '/js/admin/employer/employer.js' )
+					->prependFile ( $this->basePath () . '/js/admin/bootstrap-modal.js' )
+					->prependScript ( "angularApp = angular.module('project', []);" )
+					->prependFile ( $this->basePath () . '/js/plugins/summernote/summernote.min.js' )
+					->prependFile ( $this->basePath () . '/js/plugins/validate/jquery.validate.min.js' )
+					->prependFile ( $this->basePath () . '/js/plugins/steps/jquery.steps.min.js' )
+					->prependFile ( $this->basePath () . '/js/plugins/pace/pace.min.js' )
+					->prependFile ( $this->basePath () . '/js/inspinia.js' )?>
+<style type="text/css">
+.wizard-big.wizard>.content {
+	min-height: 1200px;
+}
+
+.label {
+	font-size: 15px;
+}
+
+h3 {
+	font-size: 18px;
+}
+
+.float-e-margins .btn {
+	margin-bottom: 0px;
+}
+
+.note-editor {
+	height: 150px;
+}
+</style>
+<div class="row" ng-controller="PapertaskEmployerController" ng-init="init()" id="EmployerController">
+	<div class="col-lg-12">
+		<div class="ibox float-e-margins">
+			<div class="ibox-title">
+				<h3>
+					<i class="fa fa-user"></i> Create Client Account
+				</h3>
+			</div>
+			<div class="ibox-content">
+				<form id="form">
+					<!-- Basic Information -->
+					<?php include "new/basic_information.phtml" ?>
+					<!-- Company Information -->
+					<?php include 'new/company_information.phtml' ?>
+					<!-- Service prices -->
+					<?php include 'new/service_prices.phtml' ?>
+					<!-- Comments -->
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							<i class="fa fa-file-text"> <strong>Comments from PaperTask</strong></i>
+						</div>
+						<div class="panel-body">
+							<div class="summernote"></div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-sm-4 col-sm-offset-4">
+							<button class="btn btn-primary btn-block" type="submit" ng-click='submit();'>Save</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<?php include "new/modal.phtml" ?>
+<script type="text/javascript">
+$(document).ready(function() {
+	$(".summernote").summernote();
+});
+var edit = function() {
+	$(".summernote").summernote({focus: true});
+}
+</script>

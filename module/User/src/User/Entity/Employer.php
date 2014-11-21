@@ -50,22 +50,24 @@ class Employer extends Entity{
 
     public function getData(){
         return [
-            'company' => $this->company ? $this->company->getData() : null,
-            'defaultServiceLevel' => $this->defaultServiceLevel,
             'id' => $this->id,
             'name' => $this->name,
             'position' => $this->position,
+            'defaultServiceLevel' => $this->defaultServiceLevel,
+            'company' => $this->company ? $this->company->getData() : null,
         ];
     }
 
     public function getListData(){
         return [
             'id' => $this->id,
-            'name' => $this->name
+            'name' => $this->name,
+            'position' => $this->position,
+            'defaultServiceLevel' => $this->defaultServiceLevel,
         ];
     }
 
     public function updateData($data){
-        $this->setData($data);
+    	$this->setData($data);
     }
 } 

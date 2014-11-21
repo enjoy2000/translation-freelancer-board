@@ -78,10 +78,12 @@
             <li> <!-- admin, operation manager and sales director can see this, and can create, sales manager can only see client's belong to him/her, and can create client -->
                 <a href="#"><i class="fa fa-briefcase"></i> <span class="nav-lable">Clients</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse">
-                    <li><a href="<?php echo $this->url('admin', array('controller' => 'client',
-                            'action' => 'index')) ?>">Client List</a></li>
-                    <li><a href="<?php echo $this->url('admin', array('controller' => 'client',
+                    <li><a href="<?php echo $this->url('admin', array('controller' => 'employer',
+                            'action' => 'list')) ?>">Client List</a></li>
+                    <li><a href="<?php echo $this->url('admin', array('controller' => 'employer',
                             'action' => 'new')) ?>">New Client</a></li>
+                    <li><a href="<?php echo $this->url('admin', array('controller' => 'employer',
+                            'action' => 'profile')) ?>">Edit Client (Admin)</a></li>
                 </ul>
             </li>
 

@@ -1,0 +1,347 @@
+<!-- Scripts -->
+<?php
+$this->headScript ()->prependFile ( $this->basePath () . '/js/admin/employer/details.js' )
+					->prependFile ( $this->basePath () . '/js/admin/bootstrap-modal.js' )
+					->prependScript ( "angularApp = angular.module('project', []);" )
+					->prependFile ( $this->basePath () . '/js/plugins/summernote/summernote.min.js' )
+					->prependFile ( $this->basePath () . '/js/plugins/validate/jquery.validate.min.js' )
+					->prependFile ( $this->basePath () . '/js/plugins/steps/jquery.steps.min.js' )
+					->prependFile ( $this->basePath () . '/js/plugins/pace/pace.min.js' )
+					->prependFile ( $this->basePath () . '/js/inspinia.js' )?>
+					
+<div class="row animated fadeInRight" ng-controller="PapertaskEmployerDetailController" ng-init="init(<?php echo $user['id'];?>)">
+	<div class="col-md-4">
+		<div class="ibox">
+			<div class="ibox-title">
+				<h5><?php echo $user['lastName'].", ".$user['firstName'];?></h5>
+				<div class="ibox-tools">
+				<?php if ($user['isActive']) {?>
+					<span class="label label-primary">Active</span>
+				<?php } else {?> 
+					<span class="label label-default">Unactive</span>
+				<?php } ?>
+				</div>
+			</div>
+
+			<div class="ibox-content profile-content">
+				<p><i class="fa fa-user"></i> &nbsp; <?php echo $user['lastName'].", ".$user['firstName'];?> &nbsp; <?php if ($user['gender'] == 0) { ?><i class="fa fa-male"></i><?php } else { ?><i class="fa fa-female"></i><?php }?></p>
+				<p><i class="fa fa-envelope"></i> &nbsp; <?php echo $user['email']?></p>
+				<p><i class="fa fa-phone"></i> &nbsp; <?php echo $user['phone'];?></p>
+				<p><i class="fa fa-briefcase"></i> &nbsp; Marketing Manager</p>
+				<p><i class="fa fa-building"></i> &nbsp; IBM China</p>
+				<p><i class="fa fa-map-marker"></i> &nbsp; City, United States</p>
+				<p><i class="fa fa-link"></i> &nbsp; www.ibm.com.cn</p>
+				<form role="form" class="form-inline">
+					<div class="form-group">
+						<input type="password" placeholder="Reset password" id="" class="form-control">
+					</div>
+					<button class="btn btn-danger" type="submit">Reset</button>
+				</form>
+				<div class="hr-line-dashed"></div>
+				<p><span class="label label-info">PM</span> Yang, Michael &nbsp;<span class="label label-info">Sales</span> Jiang, Kevin</p>
+				<div class="hr-line-dashed"></div>
+				<h4>Client Type </h4>
+				<div class="row file-manager">
+					<ul class="tag-list" style="padding: 0">
+						<li><?php if ($user['profileUpdated']) {?><a>Contracted</a><?php } else {?><a>UnContracted</a><?php }?></li>
+					</ul>
+				</div>
+				<div class="hr-line-dashed"></div>
+				<h4>Default Service Level </h4>
+				<div class="row file-manager">
+					<ul class="tag-list" style="padding: 0">
+						<li><a>Professional</a></li>
+					</ul>
+				</div>
+				<div class="hr-line-dashed"></div>
+				<h4>Comments of PaperTask</h4>
+				<?php echo $user['comments'];?>
+
+				<a class="btn btn-primary btn-block" type="button" href="#modal-comment"><i class="fa fa-paste"></i> Edit</a>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-8">
+		<div class="panel blank-panel">
+			<div class="panel-heading">
+				<div class="panel-options">
+					<ul class="nav nav-tabs">
+						<li class="active"><a data-toggle="tab" href="#tab-1">Service Prices</a></li>
+						<li class=""><a data-toggle="tab" href="#tab-2">Resource Pool</a></li>
+						<li class=""><a data-toggle="tab" href="#tab-3">Projects</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="panel-body">
+				<div class="tab-content">
+					<div id="tab-1" class="tab-pane active">
+						<div class="ibox float-e-margins">
+							<div class="ibox-title">
+								<h3><i class="fa fa-coffee"></i> Translation</h3>
+							</div>
+							<div class="ibox-content">
+								<h4>Languages and Price </h4>
+								<div class="table-responsive">
+									<table class="table table-striped">
+										<thead>
+										  <tr>
+											<th>TM Template</th>
+											<th>Repetitions</th>
+											<th>100%</th>
+											<th>95% - 99%</th>
+											<th>85% - 94%</th>
+											<th>75% - 84%</th>
+											<th>50% - 74%</th>
+											<th>No Match</th>
+										  </tr>
+										</thead>
+										<tbody>
+										<?php foreach ($tmRatios as $k=>$v) {?>
+										  <tr>
+											<td>TM Rate</td>
+											<td><?php echo $v['repetitions'];?>%</td>
+											<td><?php echo $v['yibai'];?>%</td>
+											<td><?php echo $v['jiuwu'];?>%</td>
+											<td><?php echo $v['bawu'];?>%</td>
+											<td><?php echo $v['qiwu'];?>%</td>
+											<td><?php echo $v['wushi'];?>%</td>
+											<td><?php echo $v['nomatch'];?>%</td>
+										  </tr>
+										  <?php }?>
+										</tbody>
+									  </table>
+								  </div>
+
+								<div class="table-responsive">
+									<table class="table table-striped">
+										<thead>
+											<tr>
+												<th>#</th>
+												<th>Source Language </th>
+												<th>Target Language </th>
+												<th>Translation Price</th>
+											</tr>
+											</thead>
+											<tbody>
+											<?php foreach ( $translationPrices as $k => $v ) {?>
+												<tr >
+													<td><?php echo ($k + 1);?></td>
+													<td><?php echo $v['sourceLanguage']['name'];?></td>
+													<td><?php echo $v['targetLanguage']['name'];?></td>
+													<td class="text-info"><strong><?php echo $user['currency']=='cny'?'CNY':'USD';?> <?php echo $v['price'];?></strong></td>
+												</tr>
+											<?php } ?>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+						<div class="ibox float-e-margins">
+							<div class="ibox-title">
+								<h3><i class="fa fa-desktop"></i> Desktop Publishing</h3>
+							</div>
+							<div class="ibox-content">
+								<h4>Softwares and Price </h4>
+								<div class="table-responsive">
+									<table class="table table-striped">
+										<thead>
+											<tr>
+												<th>#</th>
+												<th>Languages </th>
+												<th>Software </th>
+												<th>Page <i class="fa fa-apple"></th>
+												<th>Page <i class="fa fa-windows"></i></th>
+												<th>Hour <i class="fa fa-apple"></th>
+												<th>Hour <i class="fa fa-windows"></i></th>
+											</tr>
+											</thead>
+											<tbody>
+											<?php foreach ( $dptPrices as $k=>$v ) {?>
+												<tr>
+													<td>1</td>
+													<td><?php echo $v['language']['name'];?></td>
+													<td><?php echo $v['software']['name'];?></td>
+													<td class="text-info"><strong><?php echo $user['currency']=='cny'?'CNY':'USD';?> <?php echo $v['priceMac']?></strong></td>
+													<td class="text-info"><strong><?php echo $user['currency']=='cny'?'CNY':'USD';?> <?php echo $v['pricePc']?></strong></td>
+													<td class="text-info"><strong><?php echo $user['currency']=='cny'?'CNY':'USD';?> <?php echo $v['priceHourMac']?></strong></td>
+													<td class="text-info"><strong><?php echo $user['currency']=='cny'?'CNY':'USD';?> <?php echo $v['priceHourPc']?></strong></td>
+												</tr>
+											<?php } ?>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+						<div class="ibox float-e-margins">
+							<div class="ibox-title">
+								<h3><i class="fa fa-gears"></i> Engineering</h3>
+							</div>
+							<div class="ibox-content">
+								<h4>Categories and Price </h4>
+								<div class="table-responsive">
+									<table class="table table-striped">
+										<thead>
+											<tr>
+												<th>#</th>
+												<th>Category </th>
+												<th>Unit </th>
+												<th>Price </th>
+											</tr>
+											</thead>
+											<tbody>
+											<?php foreach ( $engineeringPrices as $k => $v ) {?>
+											<tr>
+												<td><?php echo $k + 1;?></td>
+												<td><?php echo $v['engineeringcategory']['category']?></td>
+												<td><?php echo $v['unit']['name'];?></td>
+												<td class="text-info"><strong><?php echo $user['currency']=='cny'?'CNY':'USD';?> <?php echo $v['price'];?></strong></td>
+											</tr>
+											<?php } ?>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+						<div class="ibox float-e-margins">
+							<div class="ibox-title">
+								<h3><i class="fa fa-comments-o"></i> Interpreting</h3>
+							</div>
+							<div class="ibox-content">
+								<h4>Languages and Price </h4>
+
+								<div class="table-responsive">
+									<table class="table table-striped">
+										<thead>
+											<tr>
+												<th>#</th>
+												<th>Source Language </th>
+												<th>Target Language </th>
+												<th>Interpreting Service</th>
+												<th>Price/Day</th>
+												<th>Price/half-Day</th>
+											</tr>
+											</thead>
+											<tbody>
+											<?php foreach ( $interpretingPrices as $k => $v ) { ?>
+												<tr>
+													<td><?php echo $k + 1;?></td>
+													<td><?php echo $v['sourceLanguage']['name'];?></td>
+													<td><?php echo $v['targetLanguage']['name'];?></td>
+													<td><?php echo $v['service']['name'];?></td>
+													<td class="text-info"><strong><?php echo $user['currency']=='cny'?'CNY':'USD';?> <?php echo $v['priceDay'];?></strong></td>
+													<td class="text-info"><strong><?php echo $user['currency']=='cny'?'CNY':'USD';?> <?php echo $v['priceHalfDay'];?></strong></td>
+												</tr>
+											<?php } ?>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="tab-2" class="tab-pane">
+						<div class="ibox">
+							<div class="ibox-title">
+								<h5>Translators Pool</h5>
+							</div>
+							<div class="ibox-content">
+								<table class="table">
+									<thead>
+									<tr>
+										<th>#</th>
+										<th>Name</th>
+										<th>Type</th>
+										<th>Task Done</th>
+										<th></th>
+									</tr>
+									</thead>
+									<tbody>
+									<tr>
+										<td>1</td>
+										<td><a href="">Doe, John</a></td>
+										<td><i class="fa fa-coffee"> Translation</i></td>
+										<td>88</td>
+										<td><a href=""><i class="fa fa-trash-o text-danger"></i></a></td>
+									</tr>
+									<tr>
+										<td>2</td>
+										<td><a href="">Leo, Jacob</a></td>
+										<td><i class="fa fa-desktop"> Desktop Publishing</i></td>
+										<td>68</td>
+										<td><a href=""><i class="fa fa-trash-o text-danger"></i></a></td>
+									</tr>
+									<tr>
+										<td>2</td>
+										<td><a href="">Leo, Jacob</a></td>
+										<td><i class="fa fa-comments-o"> Interpreting</i></td>
+										<td>68</td>
+										<td><a href=""><i class="fa fa-trash-o text-danger"></i></a></td>
+									</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div id="tab-3" class="tab-pane">
+						<div class="ibox">
+							<div class="ibox-content">
+								<div class="project-list">
+									<table class="table table-hover">
+										<tbody>
+											<tr>
+												<td class="project-status" width="1%">
+													<span class="label label-default">Completed</span>
+												</td>
+												<td class="project-title">
+													<a href="#">88888888</a>
+												</td>
+
+												</td>
+												<td class="project-title">
+													<strong>Project Name dfadsfja;kfja;dkfja;dfadsfja;kfja;dkfja;</strong>
+													<br />
+													<small>2014.Sep.08 -  2014.Oct.28</small>
+												</td>
+												<td class="project-title text-info">
+													<strong>CNY 868.88</strong>
+												</td>
+											</tr>
+											<tr>
+												<td class="project-status" width="1%">
+													<span class="label label-primary">Ongoing</span>
+												</td>
+												<td class="project-title">
+													<a href="#">88887366</a>
+												</td>
+												<td class="project-title">
+													<strong>Project Name</strong>
+													<br />
+													<small>2014.Sep.08 -  2014.Oct.28</small>
+												</td>
+												<td class="project-title text-info">
+													<strong>CNY 1868.88</strong>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="btn-group text-right">
+									<button type="button" class="btn btn-white"><i class="fa fa-chevron-left"></i></button>
+									<button class="btn btn-white">1</button>
+									<button class="btn btn-white  active">2</button>
+									<button class="btn btn-white">3</button>
+									<button class="btn btn-white">4</button>
+									<button type="button" class="btn btn-white"><i class="fa fa-chevron-right"></i> </button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+</div>
+ 
+<?php include "new/modal.phtml" ?>

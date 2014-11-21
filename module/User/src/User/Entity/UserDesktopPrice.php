@@ -79,4 +79,27 @@ class UserDesktopPrice extends Entity{
     public function getId(){
         return $this->id;
     }
+    
+    /**
+     * Set data
+     * @param array $arr
+     * @return $this
+     */
+    public function setData(array $arr){
+    	$keys = array(
+    			'user',
+    			'language',
+    			'software',
+    			'priceMac',
+    			'pricePc',
+    			'priceHourMac',
+    			'priceHourPc'
+    	);
+    	foreach($keys as $key){
+    		if(isset($arr[$key])){
+    			$this->$key = $arr[$key];
+    		}
+    	}
+    	return $this;
+    }
 }

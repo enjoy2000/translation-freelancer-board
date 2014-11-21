@@ -15,7 +15,14 @@ class EmployerDataController extends AbstractRestfulController
 {
     public function getList()
     {
-        $data = [];
+       $data = [
+            'companies' => [],
+            'countries' => [],
+        ];
+
+        $data['companies'] = $this->getAllData('\User\Entity\Company');
+        $data['countries'] = $this->getAllData('\User\Entity\Country');
+
 
         return new JsonModel($data);
     }

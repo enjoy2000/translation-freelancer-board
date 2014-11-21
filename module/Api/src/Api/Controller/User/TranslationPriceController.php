@@ -11,6 +11,8 @@ use Zend\View\Model\JsonModel;
 
 use Application\Controller\AbstractRestfulController;
 use User\Entity\UserTranslationPrice;
+use User\Entity\User;
+use Zend\Db\Sql\Update;
 
 class TranslationPriceController extends AbstractRestfulController
 {
@@ -42,5 +44,25 @@ class TranslationPriceController extends AbstractRestfulController
 
         return new JsonModel([]);
     }
+    
+    public function update( $id, $data) {
+    	$entityManager = $this->getEntityManager();
+        $user = $this->getUserById($data['userId']);
+        unset($data['userId']);
 
+        $translationPrice = $entityManager->find('\User\Entity\UserTranslationPrice', $id);
+        $translationPrice->setData([
+            'user' => $user,
+            'price' => $data['price'],
+            'sourceLanguage' => $entityManager->getReference('\User\Entity\Language', $data['sourceLanguageId']),
+            'targetLanguage' => $entityManager->getReference('\User\Entity\Language', $data['targetLanguageId']),
+        ]);
+
+        $translationPrice->save($entityManager);
+
+        return new JsonModel([
+            'translationPrice' => $translationPrice->getData(),
+        ]);
+    }
+    
 }

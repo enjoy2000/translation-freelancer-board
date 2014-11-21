@@ -14,6 +14,12 @@ use Application\Controller\AbstractActionController;
 use User\Form\UserForm;
 use User\Entity\User;
 use Hybridauth\Hybridauth;
+use Zend\View\Model\JsonModel;
+use User\Entity\UserDesktopPrice;
+use User\Entity\UserTranslationPrice;
+use User\Entity\UserInterpretingPrice;
+use User\Entity\UserTmRatio;
+use User\Entity\UserEngineeringPrice;
 
 class RegisterController extends AbstractActionController
 {
@@ -35,7 +41,7 @@ class RegisterController extends AbstractActionController
         $user = new User();
         $form->bind($user);
         return $form;
-    }
+    }    
 
     public function process($userType){
         $form = $this->getForm();

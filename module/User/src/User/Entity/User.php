@@ -67,10 +67,7 @@ class User extends Entity implements InputFilterAwareInterface{
     /** @ORM\Column(type="string", nullable=true) */
     protected $token = Null;
 
-    /**
-     * @var \User\Entity\Country
-     * @ORM\ManyToOne(targetEntity="Country")
-     */
+    /** @ORM\Column(type="string", nullable=true) */
     protected $country = null;
 
     /** @ORM\Column(type="string", nullable=true) */
@@ -80,7 +77,7 @@ class User extends Entity implements InputFilterAwareInterface{
     protected $gender = 0;
 
     /** @ORM\Column(type="string") */
-    protected $currency = 'CNY';
+    protected $currency = 'cny';
 
     /**
      * @var \User\Entity\Freelancer
@@ -93,10 +90,12 @@ class User extends Entity implements InputFilterAwareInterface{
      * @ORM\OneToOne(targetEntity="Employer")
      */
     protected $employer;
+    
+     /** @ORM\Column(type="string") */
+    protected $comments;
 
 
     // class variables
-
     protected $inputFilter;
 
     /**
@@ -135,6 +134,9 @@ class User extends Entity implements InputFilterAwareInterface{
             'lastName',
             'password',
             'phone',
+        	'comments',
+        	'isActive',
+        	'profileUpdated'
         );
         foreach($keys as $key){
             if(isset($arr[$key])){
@@ -159,9 +161,10 @@ class User extends Entity implements InputFilterAwareInterface{
             'lastName',
             'phone',
             'profileUpdated',
+        	'comments'
         );
 
-        if(isset($arr['currency']) and !in_array($arr['currency'], ['USD', 'CNY'])){
+        if(isset($arr['currency']) and !in_array($arr['currency'], ['usd', 'cny'])){
             throw new \Exception("Invalid currency '{$arr['currency']}'");
         }
 
@@ -408,7 +411,7 @@ class User extends Entity implements InputFilterAwareInterface{
     public function getData(){
         return array(
             "city" => $this->city,
-            "country" => $this->country->getData(),
+            "country" => $this->country,
             'currency' => $this->currency,
             "createdTime" => $this->createdTime,
             "email" => $this->email,
@@ -420,8 +423,8 @@ class User extends Entity implements InputFilterAwareInterface{
             "lastLogin" => $this->lastLogin,
             "lastName" => $this->lastName,
             "phone" => $this->phone,
-            'freelancer' => $this->freelancer,
             "profileUpdated" => $this->profileUpdated,
+        	'comments'=>$this->comments
         );
     }
 
@@ -500,5 +503,18 @@ class User extends Entity implements InputFilterAwareInterface{
         $entityManager->flush();
         $controller->redirect()->toUrl('/user/dashboard');
     }
+    
+    // Added by Gao
+    public function createEmployer ( $data, $entityManager ) {
+    	$this->setGroup($entityManager->getReference('\User\Entity\UserGroup', UserGroup::EMPLOYER_GROUP_ID));
+    	
+    	$data['lastLogin'] = new \DateTime('now');
+    	$this->setData($data);
+    	$this->encodePassword();
+    	$this->generateToken();
+    	$this->setGroupByName('employer', $entityManager);
+    	$entityManager->persist($this);
+    	$entityManager->flush();
+    	
+    }
 }
-

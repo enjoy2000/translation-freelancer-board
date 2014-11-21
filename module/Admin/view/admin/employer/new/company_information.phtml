@@ -1,0 +1,27 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<i class="fa fa-building"> <strong>Company Information</strong></i>
+	</div>
+	<div class="panel-body">
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="form-group">
+					<label>Position </label> 
+					<input id="position" name="position" ng-model="employer.position" type="text" class="form-control">
+				</div>
+
+			</div>
+			<div class="col-lg-6">
+				<div class="form-group">
+					<label>Company </label> 
+					<select class="form-control required" id="company" name="company" ng-model="employer.company">
+						<option ng-repeat="company in companies" value="{{company.id}}">{{company.name}}</option>
+					</select> <span class="help-block m-b-none"> &nbsp;Not in the
+						list? Please <a data-toggle="modal" class="text-info"
+						href="#modal-company">create a new company</a>.
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

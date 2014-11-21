@@ -18,7 +18,7 @@ return array(
                     'admin' => array(
                         'type'    => 'Segment',
                         'options' => array(
-                            'route'    => '/admin/[:controller[/[:id[/]]]]',
+                            'route'    => '/admin/[:controller[/]]',
                             'constraints' => array(
                                 'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
                             ),
@@ -105,10 +105,7 @@ return array(
             'Api\Controller\Common\Unit' => 'Api\Controller\Common\UnitController',
             'Api\Controller\Data\Project' => 'Api\Controller\Data\ProjectController',
             'Api\Controller\Index' => 'Api\Controller\IndexController',
-            'Api\Controller\Admin\Language' => 'Api\Controller\Admin\LanguageController',
             'Api\Controller\Admin\Project' => 'Api\Controller\Admin\ProjectController',
-            'Api\Controller\Admin\Staff' => 'Api\Controller\Admin\StaffController',
-            'Api\Controller\User\BankInfo' => 'Api\Controller\User\BankInfoController',
             'Api\Controller\User\Current' => 'Api\Controller\User\CurrentController',
             'Api\Controller\User\DesktopPrice' => 'Api\Controller\User\DesktopPriceController',
             'Api\Controller\User\Employer' => 'Api\Controller\User\EmployerController',
@@ -119,8 +116,8 @@ return array(
             'Api\Controller\User\InterpretingPrice' => 'Api\Controller\User\InterpretingPriceController',
             'Api\Controller\User\PriceData' => 'Api\Controller\User\PriceDataController',
             'Api\Controller\User\Resource' => 'Api\Controller\User\ResourceController',
-            'Api\Controller\User\Resume' => 'Api\Controller\User\ResumeController',
             'Api\Controller\User\TranslationPrice' => 'Api\Controller\User\TranslationPriceController',
+            'Api\Controller\User\TmRatio' => 'Api\Controller\User\TmRatioController',
             'Api\Controller\Papertask\DesktopPublishing' => 'Api\Controller\Papertask\DesktopPublishingController',
             'Api\Controller\Papertask\Engineering' => 'Api\Controller\Papertask\EngineeringController',
             'Api\Controller\Papertask\Interpreting' => 'Api\Controller\Papertask\InterpretingController',
