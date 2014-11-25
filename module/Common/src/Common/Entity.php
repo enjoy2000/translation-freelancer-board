@@ -73,4 +73,11 @@ class Entity {
         }
         return sprintf("%0.2f", $price);
     }
+
+    public function getArrayData($collection){
+        return $collection->map(function($obj){
+            /** @var \User\Entity\Resource $obj */
+            return $obj->getData();
+        })->toArray();
+    }
 } 

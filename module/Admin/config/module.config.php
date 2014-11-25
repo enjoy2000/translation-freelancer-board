@@ -59,6 +59,7 @@ return array(
             'Admin\Controller\Papertask' => 'Admin\Controller\PapertaskController',
             'Admin\Controller\Project' => 'Admin\Controller\ProjectController',
             'Admin\Controller\Staff' => 'Admin\Controller\StaffController',
+            'Admin\Controller\Quote' => 'Admin\Controller\QuoteController',
         ),
     ),
     'view_manager' => array(
@@ -84,9 +85,11 @@ return array(
             'admin/staff/edit-profile' => __DIR__ . '/../view/admin/staff/edit-profile.phtml',
             'admin/staff/new' => __DIR__ . '/../view/admin/staff/edit-profile.phtml',
             'admin/staff/view' => __DIR__ . '/../view/admin/staff/view.phtml',
+            'admin/project/detail' => __DIR__ . '/../view/admin/project/detail.phtml',
             'admin/project/index' => __DIR__ . '/../view/admin/project/index.phtml',
             'admin/project/new' => __DIR__ . '/../view/admin/project/new.phtml',
             'admin/papertask/profile' => __DIR__ . '/../view/admin/papertask/profile.phtml',
+            'admin/quote/detail' => __DIR__ . '/../view/admin/quote/detail.phtml',
         ),
         'layout' => 'layout/admin',
         'template_path_stack' => array(
