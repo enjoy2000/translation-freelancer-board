@@ -1,8 +1,11 @@
+<?php $this->headTitle($this->translate('ORDER YOUR TRANSLATION')) ?>
 <div class="banner">
     <div class="container">
         <div class="row">
-            <h1 class="text-center" style="font-size: 60px;"><strong>ORDER YOUR TRANSLATION</strong></h1>
-            <h3 class="text-center">PLEASE FOLLOW THE STEPS TO PLACE AN ORDER</h3>
+            <h1 class="text-center" style="font-size: 60px;"><strong>
+                <?php echo $this->translate('ORDER YOUR TRANSLATION') ?></strong></h1>
+            <h3 class="text-center">
+                <?php echo $this->translate('PLEASE FOLLOW THE STEPS TO PLACE AN ORDER') ?></h3>
             <br><br>
         </div>
     </div>
@@ -18,16 +21,22 @@
     <div class="col-md-12">
         <ul class="nav nav-pills nav-justified thumbnail setup-panel">
             <li class="active"><a href="#step-1">
-                    <h4 class="list-group-item-heading">Step 1</h4>
-                    <p class="list-group-item-text">Upload the file(s)</p>
+                    <h4 class="list-group-item-heading">
+                        <?php echo $this->translate('Step 1') ?></h4>
+                    <p class="list-group-item-text">
+                        <?php echo $this->translate('Upload the file(s)') ?></p>
                 </a></li>
             <li class="disabled"><a href="#step-2">
-                    <h4 class="list-group-item-heading">Step 2</h4>
-                    <p class="list-group-item-text">Select Languages and Quality</p>
+                    <h4 class="list-group-item-heading">
+                        <?php echo $this->translate('Step 2') ?></h4>
+                    <p class="list-group-item-text">
+                        <?php echo $this->translate('Select Languages and Quality') ?></p>
                 </a></li>
             <li class="disabled"><a href="#step-3">
-                    <h4 class="list-group-item-heading">Step 3</h4>
-                    <p class="list-group-item-text">Confirm Your Information</p>
+                    <h4 class="list-group-item-heading">
+                        <?php echo $this->translate('Step 3') ?></h4>
+                    <p class="list-group-item-text">
+                        <?php echo $this->translate('Confirm Your Information') ?></p>
                 </a></li>
         </ul>
     </div>
@@ -36,13 +45,14 @@
 <div class=" setup-content" id="step-1">
 
     <div class="col-md-12 well">
-        <p>We accept the following files, under <span class="text-danger">50MB</span> size:</p>
+        <p>
+            <?php echo $this->translate('We accept the following files, under <span class="text-danger">50MB</span> size') ?>:</p>
         <small><strong>Excel</strong> (.xls, .xlsx, .xlsm), <strong>Word</strong> (.doc, .docx), <strong>PowerPoint</strong> (.ppt, .pptx), <strong>Acrobat</strong> (.pdf), <strong>Open Office</strong> (.odt), <strong>Rich Text Format</strong> (.rtf), <strong>Plain text</strong> (.txt)</small>
         <br><br>
         <div class="col-md-4">
                         <span class="btn btn-primary btn fileinput-button">
                           <i class="fa fa-cloud-upload"></i>
-                          <span>Select files</span>
+                          <span><?php echo $this->translate('Select files') ?></span>
                           <input id="fileupload" type="file" name="files[]" multiple>
                         </span>
         </div>
@@ -63,10 +73,12 @@
                         file name1.doc
                     </td>
                     <td class="project-completion text-right">
-                        888 words
+                        888
+                        <?php echo $this->translate('words') ?>
                     </td>
                     <td class="project-actions text-right">
-                        <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
+                        <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>
+                            <?php echo $this->translate('Delete') ?> </a>
                     </td>
                 </tr>
                 <tr>
@@ -74,10 +86,12 @@
                         file name1.doc
                     </td>
                     <td class="project-actions text-right">
-                        888 words
+                        888
+                        <?php echo $this->translate('words') ?>
                     </td>
                     <td class="project-actions text-right">
-                        <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
+                        <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>
+                            <?php echo $this->translate('Delete') ?> </a>
                     </td>
                 </tr>
                 </tbody>
@@ -85,7 +99,8 @@
         </div>
         <hr>
         <div class="text-center">
-            <button id="activate-step-2" class="btn btn-primary btn-lg">Next</button> <!-- next button show after at least one file is uploaded -->
+            <button id="activate-step-2" class="btn btn-primary btn-lg">
+                <?php echo $this->translate('Next') ?></button> <!-- next button show after at least one file is uploaded -->
         </div>
     </div>
 </div>
@@ -93,7 +108,8 @@
     <div class="col-md-12 well">
         <div class="row">
             <div class="col-md-3">
-                <h5> Select Currency</h5>
+                <h5>
+                    <?php echo $this->translate('Select Currency') ?></h5>
                 <div data-toggle="buttons"> <!-- here do a judgement, if page load in chinese, then defaule currency is CNY, otherwise USD -->
                     <label class="btn btn-outline btn-primary">
                         <input type="radio" name="cny" value="" /> CNY
@@ -104,27 +120,32 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <h5> Select Quality Level</h5>
+                <h5>
+                    <?php echo $this->translate('Select Quality Level') ?></h5>
                 <div data-toggle="buttons"> <!-- here do a judgement, if page load in chinese, then defaule currency is CNY, otherwise USD -->
                     <label class="btn btn-outline btn-primary">
-                        <input type="radio" name="prof" value="" /> Professional <i class="fa fa-question-circle"></i>
+                        <input type="radio" name="prof" value="" />
+                        <?php echo $this->translate('Professional') ?> <i class="fa fa-question-circle"></i>
                     </label>
                     <label class="btn btn-outline btn-primary">
-                        <input type="radio" name="business" value="" /> Business <i class="fa fa-question-circle"></i>
+                        <input type="radio" name="business" value="" />
+                        <?php echo $this->translate('Business') ?> <i class="fa fa-question-circle"></i>
                     </label>
                     <label class="btn btn-outline btn-primary">
-                        <input type="radio" name="premium" value="" /> Premium <i class="fa fa-question-circle"></i>
+                        <input type="radio" name="premium" value="" />
+                        <?php echo $this->translate('Premium') ?> <i class="fa fa-question-circle"></i>
                     </label>
                 </div>
             </div>
             <div class="col-md-3">
-                <h5> Translate Graphics</h5>
+                <h5>
+                    <?php echo $this->translate('Translate Graphics') ?></h5>
                 <div data-toggle="buttons"> <!-- here put it in default NO -->
                     <label class="btn btn-outline btn-primary">
-                        <input type="radio" name="cny" value="" /> YES
+                        <input type="radio" name="cny" value="" /> <?php echo $this->translate('YES') ?>
                     </label>
                     <label class="btn btn-outline btn-primary">
-                        <input type="radio" name="usd" checked value="" /> NO
+                        <input type="radio" name="usd" checked value="" /> <?php echo $this->translate('NO') ?>
                     </label>
                 </div>
             </div>
@@ -134,9 +155,11 @@
         <hr>
         <div class="row">
             <div class="col-md-6">
-                <h4> Translate From *</h4>
+                <h4>
+                    <?php echo $this->translate('Translate From') ?> *</h4>
                 <select class="form-control" name="">
-                    <option>Select Source Language</option>
+                    <option>
+                        <?php echo $this->translate('Select Source Language') ?></option>
                     <option>option 2</option>
                     <option>option 3</option>
                     <option>option 4</option>
@@ -145,7 +168,8 @@
             <div class="col-md-6">
                 <h4> Translate To *</h4>
                 <select class="form-control" name="">
-                    <option>Add Target Languages</option>
+                    <option>
+                        <?php echo $this->translate('Add Target Languages') ?></option>
                     <option>option 2</option>
                     <option>option 3</option>
                     <option>option 4</option>
@@ -158,13 +182,15 @@
                 <tbody>
                 <tr>
                     <td class="project-status">
-                        <span class="label label-primary">Japanese</span>
+                        <span class="label label-primary">
+                            <?php echo $this->translate('Japanese') ?></span>
                     </td>
                     <td class="project-title text-center">
                         <strong>888 (words) &nbsp;&nbsp;&nbsp;&nbsp; x &nbsp;&nbsp;&nbsp;&nbsp; CNY 0.12 &nbsp;&nbsp;&nbsp;&nbsp; = &nbsp;&nbsp;&nbsp;&nbsp; CNY 120.87</strong>
                     </td>
                     <td class="project-actions text-right">
-                        <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
+                        <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>
+                            <?php echo $this->translate('Delete') ?> </a>
                     </td>
                 </tr>
                 <tr>
@@ -175,7 +201,8 @@
                         <strong>888 (words) &nbsp;&nbsp;&nbsp;&nbsp; x &nbsp;&nbsp;&nbsp;&nbsp; CNY 0.12 &nbsp;&nbsp;&nbsp;&nbsp; = &nbsp;&nbsp;&nbsp;&nbsp; CNY 120.87</strong>
                     </td>
                     <td class="project-actions text-right">
-                        <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
+                        <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i>
+                            <?php echo $this->translate('Delete') ?> </a>
                     </td>
                 </tr>
                 </tbody>
@@ -183,8 +210,10 @@
         </div>
         <hr>
         <div class="text-center">
-            <button id="" class="btn btn-primary btn-lg">Previous</button>
-            <button id="activate-step-3" class="btn btn-primary btn-lg">Next</button>
+            <button id="" class="btn btn-primary btn-lg">
+                <?php echo $this->translate('Previous') ?></button>
+            <button id="activate-step-3" class="btn btn-primary btn-lg">
+                <?php echo $this->translate('Next') ?></button>
         </div>
     </div>
 </div>
@@ -195,15 +224,18 @@
             <div class="row"> <!-- here need ajax verify to see if the email address is exist, if no show below infor to create a new account -->
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <label class="col-sm-4 control-label">Email *</label>
+                        <label class="col-sm-4 control-label">
+                            <?php echo $this->translate('Email') ?> *</label>
                         <div class="col-sm-8">
-                            <input type="email" class="form-control" value="" placeholder="Email Address">
+                            <input type="email" class="form-control" value="" placeholder="
+                            <?php echo $this->translate('Email Address') ?>">
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <label class="col-sm-5 control-label">Need Fapiao *</label>
+                        <label class="col-sm-5 control-label">
+                            <?php echo $this->translate('Need Fapiao') ?> *</label>
                         <div class="col-sm-7">
                             <div data-toggle="buttons"> <!-- here IF YES, THEN SHOW TITLE, "NO" = HIDE TITLE, by default "NO"-->
                                 <label class="btn btn-outline btn-primary">
@@ -220,17 +252,21 @@
             <div class="row"> <!-- here need ajax verify to see if the email address is exist, if no show below infor to create a new account -->
                 <div class="col-sm-12">
                     <div class="form-group">
-                        <label class="col-sm-2 control-label"> Title *</label>
+                        <label class="col-sm-2 control-label">
+                            <?php echo $this->translate('Title') ?> *</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" value="" placeholder="Your Chinese Company Title for Issue FAPIAO">
+                            <input type="text" class="form-control" value="" placeholder="
+                            <?php echo $this->translate('Your Chinese Company Title for Issue FAPIAO') ?>">
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-12">
                     <div class="form-group">
-                        <label class="col-sm-2 control-label"> Address *</label>
+                        <label class="col-sm-2 control-label">
+                            <?php echo $this->translate('Address') ?> *</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" value="" placeholder="Your Mailing Address">
+                            <input type="text" class="form-control" value="" placeholder="
+                            <?php echo $this->translate('Your Mailing Address') ?>">
                         </div>
                     </div>
                 </div>
@@ -239,47 +275,58 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <label class="col-sm-4 control-label">Last Name *</label>
+                        <label class="col-sm-4 control-label">
+                            <?php echo $this->translate('Last Name') ?> *</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" value="" placeholder="Last Name">
+                            <input type="text" class="form-control" value="" placeholder="
+                            <?php echo $this->translate('Last Name') ?>">
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <label for="inputPassword" class="col-sm-4 control-label">First Name *</label>
+                        <label for="inputPassword" class="col-sm-4 control-label">
+                            <?php echo $this->translate('First Name') ?> *</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" value="" placeholder="First Name">
+                            <input type="text" class="form-control" value="" placeholder="
+                            <?php echo $this->translate('First Name') ?>">
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <label class="col-sm-4 control-label">Password *</label>
+                        <label class="col-sm-4 control-label">
+                            <?php echo $this->translate('Password') ?> *</label>
                         <div class="col-sm-8">
-                            <input type="password" class="form-control" value="" placeholder="Type Your Password">
+                            <input type="password" class="form-control" value="" placeholder="
+                            <?php echo $this->translate('Type Your Password') ?>">
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <label class="col-sm-4 control-label">Cellphone *</label>
+                        <label class="col-sm-4 control-label">
+                            <?php echo $this->translate('Cellphone') ?> *</label>
                         <div class="col-sm-8">
-                            <input type="number" class="form-control" value="" placeholder="Your Cellphone/Landline">
+                            <input type="number" class="form-control" value="" placeholder="
+                            <?php echo $this->translate('Your Cellphone/Landline') ?>">
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <label for="inputPassword" class="col-sm-4 control-label">Company</label>
+                        <label for="inputPassword" class="col-sm-4 control-label">
+                            <?php echo $this->translate('Company') ?></label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" value="" placeholder="Your Company Full Name">
+                            <input type="text" class="form-control" value="" placeholder="
+                            <?php echo $this->translate('Your Company Full Name') ?>">
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <label for="inputPassword" class="col-sm-4 control-label">Country</label>
+                        <label for="inputPassword" class="col-sm-4 control-label">
+                            <?php echo $this->translate('Country') ?></label>
                         <div class="col-sm-8">
                             <select class="form-control">
                                 <option></option>
@@ -292,10 +339,12 @@
         </form>
         <hr>
         <div class="text-center"> <!-- if second step choose NO to translate graphic, then show this button -->
-            <button id="" class="btn btn-primary btn-lg">Pay and Start to Translate</button>
+            <button id="" class="btn btn-primary btn-lg">
+                <?php echo $this->translate('Pay and Start to Translate') ?></button>
         </div>
         <div class="text-center"> <!-- if second step choose yes to translate graphic, then show this button -->
-            <button id="" class="btn btn-primary btn-lg">Request a Quote</button>
+            <button id="" class="btn btn-primary btn-lg">
+                <?php echo $this->translate('Request a Quote') ?></button>
         </div>
     </div>
 
@@ -304,7 +353,8 @@
 </form>
 </div>
 <div class="col-lg-4 well">
-    <h1 class="text-center">Order Information</h1>
+    <h1 class="text-center">
+        <?php echo $this->translate('Order Information') ?></h1>
     <br>
     <table class="table">
         <thead>
@@ -313,11 +363,11 @@
             <th class="text-right"> 888 words</th>
         </tr>
         <tr>
-            <th>Languages</th>
+            <th><?php echo $this->translate('Languages') ?></th>
             <th class="text-right">4</th> <!-- target languages number -->
         </tr>
         <tr>
-            <th>Quality Level</th>
+            <th><?php echo $this->translate('Quality Level') ?></th>
             <th class="text-right"><span class="label label-primary">Business</span> CNY 0.12/Word</th>
         </tr>
         </thead>
@@ -326,20 +376,20 @@
     <table class="table">
         <thead>
         <tr>
-            <th>Iterms Total</th>
+            <th><?php echo $this->translate('Iterms Total') ?></th>
             <th class="text-right">CNY 1200.88</th>
         </tr>
         <tr>
-            <th>Tax</th>
+            <th><?php echo $this->translate('Tax') ?></th>
             <th class="text-right">CNY 200.88</th>
         </tr>
         <tr style="font-size: 22px;">
-            <th>Total</th>
+            <th><?php echo $this->translate('Total') ?></th>
             <th class="text-right">CNY 1200.88</th>
         </tr>
         </thead>
     </table>
-    <p>Estimated delivery <strong>34 hours.</strong></p> <!-- this hour based on the word count of the files, algorithm is estimate time = total word count / 2000 = number of hours, if the result is 1.2, then show 2, if 1.7, show 2 also-->
+    <p><?php echo $this->translate('Estimated delivery <strong>34 hours.</strong>') ?></p> <!-- this hour based on the word count of the files, algorithm is estimate time = total word count / 2000 = number of hours, if the result is 1.2, then show 2, if 1.7, show 2 also-->
 </div>
 </div>
 

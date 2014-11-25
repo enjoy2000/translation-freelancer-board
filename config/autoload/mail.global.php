@@ -9,6 +9,7 @@ return array(
     'mail' => array(
         'options' => array(
             'from' => 'papertask.dev@gmail.com',
+            'contact' => 'contact@gmail.com',
         ),
         'transport' => array(
             'class' => 'Zend\Mail\Transport\Smtp',
