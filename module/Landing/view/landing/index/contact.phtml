@@ -1,78 +1,96 @@
+<?php $this->headTitle($this->translate('GET IN TOUCH WITH PAPERTASK')) ?>
+<?php
+$this->headScript()
+    ->prependFile($this->basePath() . '/js/landing/contact.js')
+    ->prependFile($this->basePath() . '/js/plugins/validate/jquery.validate.min.js')
+    ->prependScript("angularApp = angular.module('contact', []);")
+    ->prependFile($this->basePath() . '/js/angular.min.js')
+?>
 <div class="banner">
     <div class="container">
         <br><br>
         <div class="row">
-            <h1 class="text-center" style="font-size: 60px;"><strong>GET IN TOUCH WITH PAPERTASK</strong></h1>
-            <h3 class="text-center">PLEASE CONTACT US TO GET MORE INFORMATION ABOUT OUR SERVICES</h3>
+            <h1 class="text-center" style="font-size: 60px;"><strong>
+                    <?php echo $this->translate('GET IN TOUCH WITH PAPERTASK') ?></strong></h1>
+            <h3 class="text-center">
+                <?php echo $this->translate('PLEASE CONTACT US TO GET MORE INFORMATION ABOUT OUR SERVICES') ?></h3>
             <br><br><br><br><br>
         </div>
     </div>
 </div>
-<div id="features" class="features">
-
+<div ng-app="contact" ng-controller="contactController" id="features" class="features">
     <div class="container">
         <div class="row">
-            <form class="form-horizontal" role="form">
+            <form name="contactForm" action="" class="form-horizontal" role="form">
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <label class="col-sm-4 control-label">First Name * </label>
+                        <label class="col-sm-4 control-label">
+                            <?php echo $this->translate('First Name') ?> * </label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control">
+                            <input name="firstName" type="text" ng-model="form.firstName" class="form-control required" required>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <label for="inputPassword" class="col-sm-4 control-label">Last Name *</label>
+                        <label for="inputPassword" class="col-sm-4 control-label">
+                            <?php echo $this->translate('Last Name') ?> *</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control">
+                            <input name="lastName" type="text" ng-model="form.lastName" class="form-control required" required>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <label class="col-sm-4 control-label">Phone Number</label>
+                        <label class="col-sm-4 control-label">
+                            <?php echo $this->translate('Phone Number') ?></label>
                         <div class="col-sm-8">
-                            <input type="number" class="form-control">
+                            <input name="phone" ng-model="form.phone" type="text" class="form-control">
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <label for="inputPassword" class="col-sm-4 control-label">Email Address *</label>
+                        <label for="inputPassword" class="col-sm-4 control-label">
+                            <?php echo $this->translate('Email Address') ?> *</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control">
+                            <input name="email" ng-model="form.email"
+                                   type="email" class="form-control email required" required>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <label class="col-sm-4 control-label">Company </label>
+                        <label class="col-sm-4 control-label">
+                            <?php echo $this->translate('Company') ?> </label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control">
+                            <input name="company" ng-model="form.company" type="text" class="form-control">
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group">
-                        <label for="inputPassword" class="col-sm-4 control-label">Job Title</label>
+                        <label for="inputPassword" class="col-sm-4 control-label">
+                            <?php echo $this->translate('Job Title') ?></label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control">
+                            <input name="jobTitle" ng-model="form.jobTitle" type="text" class="form-control">
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-12">
                     <div class="form-group">
-                        <label for="inputPassword" class="col-sm-2 control-label">Comments</label>
+                        <label for="inputPassword" class="col-sm-2 control-label">
+                            <?php echo $this->translate('Comments') ?></label>
                         <div class="col-sm-10">
-                            <textarea class="form-control" rows="10"></textarea>
+                            <textarea name="comments" ng-model="form.comments" class="form-control" rows="10"></textarea>
                         </div>
                     </div>
                 </div>
                 <br><br><br><br><br><br><br><br><br>
                 <div class="col-sm-2"></div>
                 <div class="col-sm-10 text-left">
-                    <a href="javascript:;" type="submit" class="btn btn-primary btn-lg">Get In Touch </a>
+                    <button name="submit" ng-click="submitForm()" type="submit" class="btn btn-primary btn-lg">
+                        <?php echo $this->translate('Get In Touch') ?> </button>
                 </div>
                 <br><br><br><br>
             </form>

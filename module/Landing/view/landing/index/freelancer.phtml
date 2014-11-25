@@ -1,25 +1,31 @@
+<?php $this->headTitle($this->translate('FREELANCER')) ?>
 <div class="banner">
     <div class="container">
         <br><br>
         <div class="row">
-            <h1 class="text-center" style="font-size: 80px;"><strong>WORK FREE!</strong></h1>
+            <h1 class="text-center" style="font-size: 80px;"><strong>
+                    <?php echo $this->translate('WORK FREE!') ?></strong></h1>
             <br><br>
-            <a href="javascript:;" target="_blank" class="btn btn-download btn-lg">Register As a Freelancer, Now!</a>
+            <a href="<?php echo $this->url('user') ?>/register/freelancer/"
+               target="_blank" class="btn btn-download btn-lg">
+                <?php echo $this->translate('Register As a Freelancer, Now!') ?></a>
             <br><br><br>
         </div>
     </div>
 </div>
 <div class="features">
     <div class="container">
-        <h1 class="text-center" style="font-size: 40px;">Work With PaperTask </h1>
+        <h1 class="text-center" style="font-size: 40px;">
+            <?php echo $this->translate('Work With PaperTask') ?></h1>
         <br><br><br>
         <div class="row">
             <div class="feature-item col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <button type="button" class="btn btn-primary btn-block btn-lg">1. Register</button>
+                        <button type="button" class="btn btn-primary btn-block btn-lg">1.
+                            <?php echo $this->translate('Register') ?></button>
                         <br>
-                        <p>Sign up PaperTask, you may work with PaperTask together for translation jobs.</p>
+                        <p><?php echo $this->translate('Sign up PaperTask, you may work with PaperTask together for translation jobs.') ?></p>
                         <br><br>
                     </div>
                 </div>
@@ -27,18 +33,20 @@
             <div class="feature-item col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <button type="button" class="btn btn-primary btn-block btn-lg">2. Qualify</button>
+                        <button type="button" class="btn btn-primary btn-block btn-lg">2.
+                            <?php echo $this->translate('Qualify') ?></button>
                         <br>
-                        <p>If you want to get a job here, you must pass our certification, after pass the evaluation of our senior translators, you can get the translation tasks.</p>
+                        <p><?php echo $this->translate('If you want to get a job here, you must pass our certification, after pass the evaluation of our senior translators, you can get the translation tasks.') ?></p>
                     </div>
                 </div>
             </div>
             <div class="feature-item col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <button type="button" class="btn btn-primary btn-block btn-lg">3. Work Free</button>
+                        <button type="button" class="btn btn-primary btn-block btn-lg">3.
+                            <?php echo $this->translate('Work Free') ?></button>
                         <br>
-                        <p>In success pass our testing, you can get the translation jobs and work with us, look forward to your joining!</p>
+                        <p><?php echo $this->translate('In success pass our testing, you can get the translation jobs and work with us, look forward to your joining!') ?></p>
                         <br>
                     </div>
                 </div>
@@ -46,7 +54,8 @@
         </div>
         <br>
         <div class="row text-center">
-            <a href="javascript:;" target="_blank" class="btn btn-primary btn-lg">Register As a Freelancer, Now!</a>
+            <a href="<?php echo $this->url('user') ?>/register/freelancer/" target="_blank" class="btn btn-primary btn-lg">
+                <?php echo $this->translate('Register As a Freelancer, Now!') ?></a>
         </div>
         <br><br><br>
     </div>

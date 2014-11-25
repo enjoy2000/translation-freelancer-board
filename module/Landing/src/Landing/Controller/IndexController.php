@@ -11,7 +11,7 @@ namespace Landing\Controller;
 
 use Zend\View\Model\JsonModel;
 use Zend\View\Model\ViewModel;
-use Admin\Entity\ProfileServiceTranslation;
+use Common\Mail;
 use Application\Controller\AbstractActionController;
 
 class IndexController extends AbstractActionController
@@ -30,6 +30,27 @@ class IndexController extends AbstractActionController
 
     public function contactAction(){
         return new ViewModel();
+    }
+
+    public function contactPostAction(){
+        $data = $this->params()->fromQuery();
+
+        $json = [
+            'result' => false,
+            'message' => $this->getTranslator()->translate('There is some error, please try again later.'),
+            'data' => null
+        ];
+        // check data
+        if($data['firstName'] && $data['lastName'] && $data['email']){
+            // validate email
+            if(filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+                Mail::sendContactMail($this, $data);
+                $json['result'] = true;
+                $json['data'] = $data;
+                $json['message'] = $this->getTranslator()->translate('Your contact has been sent.');
+            }
+        }
+        return new JsonModel($json);
     }
 
     public function orderAction(){

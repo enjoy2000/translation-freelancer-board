@@ -59,7 +59,9 @@
                 <?php echo $this->content ?>
             </div>
 
-            <p class="m-t"> <small><?php echo date('Y') ?> &copy; <a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('PaperTask') ?></a> {:L('copy_right')}</small> </p>
+            <p class="m-t"> <small><?php echo date('Y') ?> &copy; <a href="<?php echo $this->url('home') ?>">
+                        <?php echo $this->translate('PaperTask') ?></a> ·
+                    <?php echo $this->translate('All Rights Reserved') ?>.</small> </p>
         </div>
     </div>
         <?php echo $this->inlineScript() ?>

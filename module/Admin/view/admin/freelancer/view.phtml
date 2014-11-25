@@ -27,15 +27,13 @@ $this->inlineScript()
         </div>
 
         <div class="ibox-content profile-content">
-            <p><i class="fa fa-user"></i> &nbsp; johndoe &nbsp;
+            <p><i class="fa fa-envelope"></i> &nbsp; <?php echo $this->user['email'] ?>
                 <?php if (!$this->user['gender']): ?>
                     <i class="fa fa-male"></i>
                 <?php else: ?>
                     <i class="fa fa-female"></i>
                 <?php endif; ?>
             </p>
-
-            <p><i class="fa fa-envelope"></i> &nbsp; <?php echo $this->user['email'] ?></p>
 
             <p><i class="fa fa-tag"></i> &nbsp; FR{{1000000 + user.user.id}}</p>
             <!-- Freelancer Alias generate by system automaticly -->

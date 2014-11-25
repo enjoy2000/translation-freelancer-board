@@ -94,6 +94,12 @@ class User extends Entity implements InputFilterAwareInterface{
      */
     protected $employer;
 
+    /**
+     * @var \User\Entity\Staff
+     * @ORM\OneToOne(targetEntity="Staff")
+     */
+    protected $staff;
+
 
     // class variables
 
@@ -437,6 +443,13 @@ class User extends Entity implements InputFilterAwareInterface{
      */
     public function getEmployer(){
         return $this->employer;
+    }
+
+    /**
+     * @return Staff
+     */
+    public function getStaff(){
+        return $this->staff;
     }
 
     /**

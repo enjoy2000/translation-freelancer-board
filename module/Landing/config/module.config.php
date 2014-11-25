@@ -10,6 +10,21 @@
 return array(
     'router' => array(
         'routes' => array(
+            'landding' => array(
+                'type'    => 'Segment',
+                'options' => array(
+                    'route'    => '/landing/[:controller[/[:action[/]]]]',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Landing\Controller',
+                        'controller'    => 'Index',
+                        'action'        => 'index',
+                    ),
+                    'constraints' => array(
+                        'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                    ),
+                ),
+            ),
             'home' => array(
                 'type' => 'Literal',
                 'options' => array(

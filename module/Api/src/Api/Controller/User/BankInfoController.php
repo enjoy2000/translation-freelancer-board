@@ -17,8 +17,7 @@ class BankInfoController extends AbstractRestfulController
 {
     public function get($id){
         $user = $this->getUserById($id);
-        $freelancer = $user->getFreelancer();
-        $bankInfo = $this->getEntityManager()->getRepository('\User\Entity\BankInfo')->findOneBy(['freelancer' => $freelancer]);
+        $bankInfo = $this->getEntityManager()->getRepository('\User\Entity\BankInfo')->findOneBy(['user' => $user]);
 
         return new JsonModel([
             'bankInfo' => $bankInfo->getData(),
@@ -28,9 +27,8 @@ class BankInfoController extends AbstractRestfulController
     public function update($id, $data){
         $entityManager = $this->getEntityManager();
         $user = $this->getUserById($id);
-        $freelancer = $user->getFreelancer();
         $bankInfo = $entityManager->find('\User\Entity\BankInfo', (int)$data['id']);
-        $data['freelancer'] = $freelancer;
+        $data['user'] = $user;
         $bankInfo->setData($data);
         $bankInfo->save($entityManager);
 
@@ -40,7 +38,7 @@ class BankInfoController extends AbstractRestfulController
     public function create($data){
         $entityManager = $this->getEntityManager();
         $bankInfo = new BankInfo();
-        $data['freelancer'] = $this->getUserById((int)$data['user_id'])->getFreelancer();
+        $data['user'] = $this->getUserById((int)$data['user_id']);
         $bankInfo->setData($data);
         $bankInfo->save($entityManager);
 
