@@ -15,6 +15,7 @@ $this->headScript ()->prependFile ( $this->basePath () . '/js/admin/employer/pro
 					->prependFile ( $this->basePath () . '/js/plugins/validate/jquery.validate.min.js' )
 					->prependFile ( $this->basePath () . '/js/plugins/steps/jquery.steps.min.js' )
 					->prependFile ( $this->basePath () . '/js/plugins/pace/pace.min.js' )
+                    ->prependFile ( $this->basePath () . '/js/plugins/bootbox/bootbox.min.js' )
 					->prependFile ( $this->basePath () . '/js/inspinia.js' )?>
 <style type="text/css">
 .wizard-big.wizard>.content {
@@ -138,7 +139,7 @@ h3 {
 
 					<div class="row">
 						<div class="col-sm-4 col-sm-offset-4">
-							<button class="btn btn-primary btn-block" type="submit" ng-click='submit();'>Save</button>
+							<button class="btn btn-primary btn-block" type="submit" >Save</button>
 						</div>
 					</div>
 				</form>
@@ -147,11 +148,3 @@ h3 {
 	</div>
 </div>
 <?php include "edit/modal.phtml" ?>
-<script type="text/javascript">
-$(document).ready(function() {
-	$(".summernote").summernote();
-});
-var edit = function() {
-	$(".summernote").summernote({focus: true});
-}
-</script>

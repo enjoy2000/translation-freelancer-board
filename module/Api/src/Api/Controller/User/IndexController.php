@@ -13,7 +13,7 @@ use Application\Controller\AbstractRestfulController;
 
 class IndexController extends AbstractRestfulController
 {
-    public function get($id){    	
+    public function get($id){
         $user = $this->getUserById($id);
         $userData = $user->getData();
 
@@ -27,7 +27,7 @@ class IndexController extends AbstractRestfulController
             'user' => $user,
         ]);
         $engineeringPirceData = $this->getAllDataBy('\User\Entity\UserEngineeringPrice', [
-        	'user' => $user,
+            'user' => $user,
         ]);
         $entityManager = $this->getEntityManager();
         $repository = $entityManager->getRepository('User\Entity\UserTmRatio');
@@ -35,25 +35,32 @@ class IndexController extends AbstractRestfulController
 
         return new JsonModel([
             'user' => $userData,
-        	'employer' => $user->getEmployer()->getData(),
+            'employer' => $user->getEmployer()->getData(),
             'desktopPrices' => $desktopPriceData,
             'interpretingPrices' => $interpretingPriceData,
             'translationPrices' => $translationPriceData,
-        	'engineeringPrices' => $engineeringPirceData,
-        	'tmRatios'			=> $tmRatio?$tmRatio->getData():null
+            'engineeringPrices' => $engineeringPirceData,
+            'tmRatios'            => $tmRatio?$tmRatio->getData():null
         ]);
     }
 
     public function update($id, $data){
-        $data['country'] = $data['country']['select'];
+        if(isset($data['password']) && strlen($data['password']) > 5){
+            $user = $this->getUserById((int)$id);
+            $user->encodePassword($data['password']);
+            $user->save($this->getEntityManager());
+
+            return new JsonModel(['success' => 1]);
+        }
+        $data['country'] = $this->getEntityManager()->find('\User\Entity\Country', (int)$data['country']['id']);
 
         $data['profileUpdated'] = true;
-        $user = $this->getUserById($id);
+        $user = $this->getCurrentUser();
         $user->updateData($data);
 
         $entityManager = $this->getEntityManager();
         $user->save($entityManager);
-        
+
         return new JsonModel([]);
     }
 }

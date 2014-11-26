@@ -67,7 +67,10 @@ class User extends Entity implements InputFilterAwareInterface{
     /** @ORM\Column(type="string", nullable=true) */
     protected $token = Null;
 
-    /** @ORM\Column(type="string", nullable=true) */
+    /**
+     * @var \User\Entity\Country
+     * @ORM\ManyToOne(targetEntity="Country")
+     */
     protected $country = null;
 
     /** @ORM\Column(type="string", nullable=true) */
@@ -91,11 +94,12 @@ class User extends Entity implements InputFilterAwareInterface{
      */
     protected $employer;
     
-     /** @ORM\Column(type="string") */
+    /** @ORM\Column(type="string") */
     protected $comments;
 
 
     // class variables
+
     protected $inputFilter;
 
     /**
@@ -134,9 +138,9 @@ class User extends Entity implements InputFilterAwareInterface{
             'lastName',
             'password',
             'phone',
-        	'comments',
-        	'isActive',
-        	'profileUpdated'
+            'comments',
+            'isActive',
+            'profileUpdated'
         );
         foreach($keys as $key){
             if(isset($arr[$key])){
@@ -161,7 +165,7 @@ class User extends Entity implements InputFilterAwareInterface{
             'lastName',
             'phone',
             'profileUpdated',
-        	'comments'
+            'comments'
         );
 
         if(isset($arr['currency']) and !in_array($arr['currency'], ['usd', 'cny'])){
@@ -424,7 +428,7 @@ class User extends Entity implements InputFilterAwareInterface{
             "lastName" => $this->lastName,
             "phone" => $this->phone,
             "profileUpdated" => $this->profileUpdated,
-        	'comments'=>$this->comments
+            'comments'=>$this->comments
         );
     }
 
@@ -504,17 +508,17 @@ class User extends Entity implements InputFilterAwareInterface{
         $controller->redirect()->toUrl('/user/dashboard');
     }
     
-    // Added by Gao
     public function createEmployer ( $data, $entityManager ) {
-    	$this->setGroup($entityManager->getReference('\User\Entity\UserGroup', UserGroup::EMPLOYER_GROUP_ID));
-    	
-    	$data['lastLogin'] = new \DateTime('now');
-    	$this->setData($data);
-    	$this->encodePassword();
-    	$this->generateToken();
-    	$this->setGroupByName('employer', $entityManager);
-    	$entityManager->persist($this);
-    	$entityManager->flush();
-    	
+        $this->setGroup($entityManager->getReference('\User\Entity\UserGroup', UserGroup::EMPLOYER_GROUP_ID));
+        
+        $data['lastLogin'] = new \DateTime('now');
+        $this->setData($data);
+        $this->encodePassword();
+        $this->generateToken();
+        $this->setGroupByName('employer', $entityManager);
+        $entityManager->persist($this);
+        $entityManager->flush();
+        
     }
 }
+

@@ -47,26 +47,27 @@ class DesktopPriceController extends AbstractRestfulController
         return new JsonModel([]);
     }
     
-   	public function update( $id, $data ) {
-   		$entityManager = $this->getEntityManager();
-   		$user = $this->getUserById($data['userId']);
-   		unset($data['userId']);
-   		
-   		$desktopPrice = $entityManager->find('\User\Entity\UserDesktopPrice', $id);
-   		$desktopPrice->setData([
-   			'user' => $user,
-   			'language' => $entityManager->getReference('\User\Entity\Language', $data['languageId']),
-   			'software' => $entityManager->getReference('\User\Entity\DesktopSoftware', $data['softwareId']),
-   			'priceMac' => $data['priceMac'],
-   			'pricePc' => $data['pricePc'],
-   			'priceHourMac' => $data['priceHourMac'],
-   			'priceHourPc' => $data['priceHourPc']
-   		]);
-   		
-   		$desktopPrice->save($entityManager);
-   		
-   		return new JsonModel([
-   			'desktopPrice' => $desktopPrice->getData(),
-   		]);
-   	}
+    public function update( $id, $data ) {
+           $entityManager = $this->getEntityManager();
+           $user = $this->getUserById($data['userId']);
+           unset($data['userId']);
+           
+           $desktopPrice = $entityManager->find('\User\Entity\UserDesktopPrice', $id);
+           $desktopPrice->setData([
+               'user' => $user,
+               'language' => $entityManager->getReference('\User\Entity\Language', $data['languageId']),
+               'software' => $entityManager->getReference('\User\Entity\DesktopSoftware', $data['softwareId']),
+               'priceMac' => $data['priceMac'],
+               'pricePc' => $data['pricePc'],
+               'priceHourMac' => $data['priceHourMac'],
+               'priceHourPc' => $data['priceHourPc']
+           ]);
+           
+           $desktopPrice->save($entityManager);
+           
+           return new JsonModel([
+               'desktopPrice' => $desktopPrice->getData(),
+           ]);
+       }
+
 }

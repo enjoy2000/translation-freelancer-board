@@ -52,7 +52,7 @@ class UserTranslationPrice extends Entity{
             'id' => $this->id,
             'sourceLanguage' => $this->sourceLanguage->getData(),
             'targetLanguage' => $this->targetLanguage->getData(),
-            'price' => $this->formatPrice($this->price)
+            'price' => $this->formatPrice($this->price),
         );
     }
 

@@ -50,15 +50,19 @@ angularApp.controller('PapertaskEmployerListController', function($scope, $http,
 		document.location.href = "/admin/employer/edit?userId=" + str_empid;
 	}
 	$scope.onDeleteClicked = function ( str_empid ) {
-		var delEmp = $http.delete("/api/user/" + str_empid + "/employer", {id: str_empid});
-		$q.all([delEmp])
-        .then(function(result){
-        	$http.get("/api/user/employer?page=1")
-		        .success(function($data){
-		            $scope.pages = $data.pages;
-		            $scope.employers = $data.employers;
-		    });
-        });
+        bootbox.confirm ( "Are you sure!", function ( bflag ) {
+            if ( bflag ) {
+                var delEmp = $http.delete("/api/user/" + str_empid + "/employer", {id: str_empid});
+                $q.all([delEmp])
+                .then(function(result){
+                    $http.get("/api/user/employer?page=1")
+                        .success(function($data){
+                            $scope.pages = $data.pages;
+                            $scope.employers = $data.employers;
+                    });
+                });      
+            }
+        })		
 	}
 	
 	$scope.onBtnPreviousClicked = function () {

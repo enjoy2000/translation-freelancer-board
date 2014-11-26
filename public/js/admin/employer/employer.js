@@ -2,15 +2,23 @@
  * Created by G
  *
  */
-angularApp.run( function ( $rootScope ) {
+angularApp.run( function ( $rootScope ) {    
+    $(".summernote").summernote();
 	$("#form").validate({
         errorPlacement: function (error, element) {
             element.before(error);
         },
         rules: {
-            confirm: {
+            confirmpwd: {
                 equalTo: "#password"
+            },
+            email: {
+                required: true,
+                email: true
             }
+        },
+        submitHandler: function( form ) {
+            angular.element('#EmployerController').scope().submit();
         }
     });
 }) 
@@ -114,7 +122,7 @@ angularApp.controller('PapertaskEmployerController', function($scope, $http, $ti
      */
     $scope.submit = function(){
     	$scope.employer.comments = $('.summernote').code();
-
+        
     	var ptr_employer = {
     			isActive: $scope.employer.isActive,
     			profileUpdated: $scope.employer.profileUpdated,
@@ -124,7 +132,7 @@ angularApp.controller('PapertaskEmployerController', function($scope, $http, $ti
     			email: $scope.employer.email, 
     			password: $scope.employer.password,
     			city: $scope.employer.city,
-    			country: $scope.employer.country,
+    			country: $scope.employer.country.id,
     			currency: $scope.employer.currency,
     			phone: $scope.employer.phone,
     			gender: $scope.employer.gender,
@@ -137,8 +145,8 @@ angularApp.controller('PapertaskEmployerController', function($scope, $http, $ti
     			comments: $('.summernote').code(),
     			engineeringPrices: $scope.engineeringPrices
     	};
-    	console.log ( ptr_employer );
-    	$http.post("/admin/employer/newclient", ptr_employer)
+    	
+    	$http.post("/api/user/employer", ptr_employer)
         	.success(function($data){
 	            //location.href="/admin/dashboard";
 	            
@@ -167,7 +175,7 @@ angularApp.controller('PapertaskEmployerController', function($scope, $http, $ti
     	$scope.editTranslation = -1;
     };
     
-    $scope.deleteTranslationPrice = function ( index ) {
+    $scope.deleteTranslationPrice = function ( index ) {        
     	$scope.translationPrices.splice(index, 1);
     	setModalControllerData('translationPrice', $scope.translationPricePlaceholder);
     }

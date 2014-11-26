@@ -2,6 +2,26 @@
  * Created by G
  *
  */
+angularApp.run( function ($rootScope) {    
+    $(".summernote").summernote();
+    $("#form").validate({
+        errorPlacement: function (error, element) {
+            element.before(error);
+        },
+        rules: {
+            confirmpwd: {
+                equalTo: "#password"
+            },
+            email: {
+                required: true,
+                email: true
+            }
+        },
+        submitHandler: function( form ) {
+            angular.element('#EmployerController').scope().submit();
+        }
+    });
+});
 angularApp.controller('PapertaskEmployerEditController', function($scope, $http, $timeout, $q) {
     $scope.countries = [];
     $scope.languages = [];
@@ -197,12 +217,15 @@ angularApp.controller('PapertaskEmployerEditController', function($scope, $http,
     };
     
     $scope.deleteTranslationPrice = function ( index, tid ) {    	
-    	$http.delete("/api/user/" + tid + "/translationprice", {
-				userId: $scope.userId			
-			}).success(function( data ) {				
-				$scope.translationPrices.splice(index, 1);
-			});
-    	// setModalControllerData('translationPrice', $scope.translationPricePlaceholder);
+        bootbox.confirm("Are you sure", function( bflag ) {
+            if ( bflag == true ) {
+                $http.delete("/api/user/" + tid + "/translationprice", {
+                    userId: $scope.userId            
+                }).success(function( data ) {                
+                    $scope.translationPrices.splice(index, 1);
+                });                
+            }
+        });       
     }
     
     $scope.editTranslationPrice = function ( index, tid ) {
@@ -261,11 +284,15 @@ angularApp.controller('PapertaskEmployerEditController', function($scope, $http,
     	jQuery("#modal-dtp").modal("show");
     }
     $scope.deleteDesktopPrice = function ( ind, did ) {
-    	$http.delete("/api/user/" + did + "/desktopprice", {
-			userId: $scope.userId			
-		}).success(function( data ) {				
-			$scope.desktopPrices.splice( ind, 1 );
-		});
+        bootbox.confirm("Are you sure!", function (bflag) {
+            if ( bflag )
+                $http.delete("/api/user/" + did + "/desktopprice", {
+                    userId: $scope.userId            
+                }).success(function( data ) {                
+                    $scope.desktopPrices.splice( ind, 1 );
+                });    
+        });
+    	
     }
     
     /**
@@ -316,12 +343,14 @@ angularApp.controller('PapertaskEmployerEditController', function($scope, $http,
     	jQuery("#modal-interpreting").modal("show");
     }
     $scope.deleteInterpretingPrice = function (ind, iid) {
-    	$http.delete("/api/user/" + iid + "/interpretingprice", {
-			userId: $scope.userId			
-		}).success(function( data ) {				
-			$scope.interpretingPrices.splice( ind, 1 );
-		});
-    	
+        bootbox.confirm( "Are you sure!", function ( bflag ) {
+            if ( bflag ) 
+               $http.delete("/api/user/" + iid + "/interpretingprice", {
+                    userId: $scope.userId            
+                }).success(function( data ) {                
+                    $scope.interpretingPrices.splice( ind, 1 );
+                }); 
+        });
     }
     
     /**
@@ -374,11 +403,15 @@ angularApp.controller('PapertaskEmployerEditController', function($scope, $http,
     	$scope.editEngineering = -1;
     }
     $scope.deleteEngineeringPrice = function (ind, eid) {
-    	$http.delete("/api/user/" + eid + "/engineeringprice", {
-    		userId: $scope.userId
-    	}).success(function (data ){
-    		$scope.engineeringPrices.splice( ind, 1 );
-    	});    	
+        bootbox.confirm( "Are you sure!", function ( bflag ) {
+            if ( bflag ) {
+                $http.delete("/api/user/" + eid + "/engineeringprice", {
+                    userId: $scope.userId
+                }).success(function (data ){
+                    $scope.engineeringPrices.splice( ind, 1 );
+                });        
+            }
+        });    	
     }
     $scope.editEngineeringPrice = function (ind) {
     	$scope.editEngineering = ind;

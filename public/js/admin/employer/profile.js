@@ -3,9 +3,9 @@ angularApp.run( function ( $rootScope ) {
         errorPlacement: function (error, element) {
             element.before(error);
         },
-        rules: {
-            confirm: {
-                equalTo: "#password"
+        rules: {            
+            submitHandler: function ( form ) {
+                angular.element('#EmployerController').scope().submit();
             }
         }
     });
@@ -71,8 +71,8 @@ angularApp.controller('PapertaskEmployerEditController', function($scope, $http,
 			user_id: $scope.userId,
 			defaultServiceLevel: $("#defaultServiceLevel").val(),
 			gender: $scope.employer.gender
-		}
-		console.log (pParam);
+		}                     
+        
 		$http.put("/api/user/"+$scope.userId,pParam).success(function(){
 			
 		});
