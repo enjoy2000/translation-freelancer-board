@@ -94,8 +94,15 @@ class User extends Entity implements InputFilterAwareInterface{
      /** @ORM\Column(type="string") */
     protected $comments;
 
+    /**
+     * @var \User\Entity\Staff
+     * @ORM\OneToOne(targetEntity="Staff")
+     */
+    protected $staff;
+
 
     // class variables
+
     protected $inputFilter;
 
     /**
@@ -411,7 +418,7 @@ class User extends Entity implements InputFilterAwareInterface{
     public function getData(){
         return array(
             "city" => $this->city,
-            "country" => $this->country,
+            "country" => $this->country->getData(),
             'currency' => $this->currency,
             "createdTime" => $this->createdTime,
             "email" => $this->email,
@@ -423,8 +430,8 @@ class User extends Entity implements InputFilterAwareInterface{
             "lastLogin" => $this->lastLogin,
             "lastName" => $this->lastName,
             "phone" => $this->phone,
+            'freelancer' => $this->freelancer,
             "profileUpdated" => $this->profileUpdated,
-        	'comments'=>$this->comments
         );
     }
 
@@ -440,6 +447,13 @@ class User extends Entity implements InputFilterAwareInterface{
      */
     public function getEmployer(){
         return $this->employer;
+    }
+
+    /**
+     * @return Staff
+     */
+    public function getStaff(){
+        return $this->staff;
     }
 
     /**
@@ -503,18 +517,5 @@ class User extends Entity implements InputFilterAwareInterface{
         $entityManager->flush();
         $controller->redirect()->toUrl('/user/dashboard');
     }
-    
-    // Added by Gao
-    public function createEmployer ( $data, $entityManager ) {
-    	$this->setGroup($entityManager->getReference('\User\Entity\UserGroup', UserGroup::EMPLOYER_GROUP_ID));
-    	
-    	$data['lastLogin'] = new \DateTime('now');
-    	$this->setData($data);
-    	$this->encodePassword();
-    	$this->generateToken();
-    	$this->setGroupByName('employer', $entityManager);
-    	$entityManager->persist($this);
-    	$entityManager->flush();
-    	
-    }
 }
+
