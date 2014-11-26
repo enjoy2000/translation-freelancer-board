@@ -82,7 +82,7 @@ class Mail{
         // get transport
         $transport = $controller->getServiceLocator()->get('mail.transport');
         $message->addTo($transport->mailOptions['contact']);
-        $message->addFrom($transport->mailOptions['from']);
+        $message->addFrom($transport->mailOptions['contact']);
 
         $transport->send($message);
     }
