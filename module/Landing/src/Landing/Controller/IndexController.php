@@ -38,18 +38,22 @@ class IndexController extends AbstractActionController
         $json = [
             'result' => false,
             'message' => $this->getTranslator()->translate('There is some error, please try again later.'),
-            'data' => null
+            'data' => $data
         ];
+
         // check data
         if($data['firstName'] && $data['lastName'] && $data['email']){
             // validate email
             if(filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
                 Mail::sendContactMail($this, $data);
                 $json['result'] = true;
-                $json['data'] = $data;
+                $json['data'] = '';
                 $json['message'] = $this->getTranslator()->translate('Your contact has been sent.');
+            }else{
+                $json['message'] = $this->getTranslator()->translate('Your email is not correct.');
             }
         }
+
         return new JsonModel($json);
     }
 

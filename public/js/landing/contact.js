@@ -30,11 +30,14 @@ angularApp.controller('contactController', function($scope, $http) {
                         console.log($data);
                         $scope.form = $data['data'];
                         $scope.response.result = $data['result'];
-                        $scope.reponse.message = $data['message'];
+                        $scope.response.message = $data['message'];
                     },
                     error: function($error){
                         $scope.response.result = false;
-                        $scope.respomse.message = 'Please try again later';
+                        $scope.response.message = 'Please try again later';
+                    },
+                    complete: function(){
+                        $scope.submitted = true;
                     }
                 })
             }
