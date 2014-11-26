@@ -8,6 +8,11 @@ angularApp.controller('contactController', function($scope, $http) {
         jobTitle: null,
         comments: null
     };
+    $scope.response = {
+        result: null,
+        message: null
+    };
+    $scope.submitted = false;
 
     function init(){
         $('form[name=contactForm]').validate();
@@ -21,7 +26,15 @@ angularApp.controller('contactController', function($scope, $http) {
                     type: 'get',
                     data: $scope.form,
                     success: function($data){
+                        $scope.submitted = true;
                         console.log($data);
+                        $scope.form = $data['data'];
+                        $scope.response.result = $data['result'];
+                        $scope.reponse.message = $data['message'];
+                    },
+                    error: function($error){
+                        $scope.response.result = false;
+                        $scope.respomse.message = 'Please try again later';
                     }
                 })
             }
