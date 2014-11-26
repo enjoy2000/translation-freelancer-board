@@ -94,12 +94,11 @@ class User extends Entity implements InputFilterAwareInterface{
      */
     protected $employer;
     
-    /** @ORM\Column(type="string") */
+     /** @ORM\Column(type="string") */
     protected $comments;
 
 
     // class variables
-
     protected $inputFilter;
 
     /**
@@ -447,6 +446,13 @@ class User extends Entity implements InputFilterAwareInterface{
     }
 
     /**
+     * @return Staff
+     */
+    public function getStaff(){
+        return $this->staff;
+    }
+
+    /**
      * @return bool
      */
     public function isEmployer(){
@@ -507,18 +513,4 @@ class User extends Entity implements InputFilterAwareInterface{
         $entityManager->flush();
         $controller->redirect()->toUrl('/user/dashboard');
     }
-    
-    public function createEmployer ( $data, $entityManager ) {
-        $this->setGroup($entityManager->getReference('\User\Entity\UserGroup', UserGroup::EMPLOYER_GROUP_ID));
-        
-        $data['lastLogin'] = new \DateTime('now');
-        $this->setData($data);
-        $this->encodePassword();
-        $this->generateToken();
-        $this->setGroupByName('employer', $entityManager);
-        $entityManager->persist($this);
-        $entityManager->flush();
-        
-    }
 }
-
